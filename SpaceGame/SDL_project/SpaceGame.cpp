@@ -110,12 +110,17 @@ void SpaceGame::run()
 		{
 			for (int y = 0; y < room.grid[x].size(); y++)
 			{
-				int xPos = x * cellSize + cellSize / 2;
-				int yPos = y * cellSize + cellSize / 2;
-
-
 				//Renders all he cells
 				cellrenderer.RenderCells(room, renderer, x, y);
+
+				// Fill the screen with room cells
+				bool doOnce = false;
+				if (x > 1 && y > 1 && x < room.getLevelWidth() - 2 && y < room.getLevelHeight() - 2 && doOnce == false)
+				{
+					room.grid[x][y]->isRoom = true;
+					doOnce = true;
+					designroom.designRoom(room, x, y);
+				}
 
 				// Object Updates
 				//Spawns fire randomly in rooms over time
