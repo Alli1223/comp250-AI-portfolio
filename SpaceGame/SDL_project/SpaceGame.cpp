@@ -47,7 +47,7 @@ void SpaceGame::run()
 	//mapLoader.LoadMap("Resources\\Map\\Default_map.txt", room);
 	//mapLoader.generateMap(room, designroom);
 
-	
+
 	auto hydroponics = std::make_shared<Hydroponics>();
 
 
@@ -81,7 +81,7 @@ void SpaceGame::run()
 				menu = false;
 			}
 		}//End pollevent if
-		
+
 		// Checks the keyboard for input
 		const Uint8* keyboardState = SDL_GetKeyboardState(nullptr);
 
@@ -95,7 +95,7 @@ void SpaceGame::run()
 
 		/* Opens the door when a player goes through
 		//characterInteraction.Interaction(room, characterOne, oxygen);
-		
+
 		//ship management
 		shipmanager.shiptimer(room, allships);
 		//ship rendering
@@ -110,8 +110,8 @@ void SpaceGame::run()
 		{
 			characters.SpawnCharacter("Player", allCharacters, mouse_X / cellSize, mouse_Y / cellSize);
 		}
-
 		
+
 
 		//////////////////////////////////
 		//MAIN LOOP
@@ -152,7 +152,7 @@ void SpaceGame::run()
 
 		// Render characters
 		characters.RenderCharacters(allCharacters, renderer, room);
-		
+
 
 		// TOOLBAR
 		toolbar.ToolBarFunctionality(room, designroom, renderer, mouse_X, mouse_Y);
@@ -178,14 +178,13 @@ void SpaceGame::run()
 			}
 
 		}
-		
+
 		///////////////////////////////////////
 		//MENU
 		//////////////////////////////////////
-		
+
 		if (menu)
 		{
-			
 			escapemenu.RunEscapeMenu(renderer, WINDOW_WIDTH, WINDOW_HEIGHT, mouse_X, mouse_Y, running);
 			if (escapemenu.exit)
 			{

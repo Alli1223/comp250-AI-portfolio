@@ -13,6 +13,14 @@ Character::~Character()
 
 }
 
+void Character::MoveCharacter(Level& level, Point& StartPoint, Point& EndPoint, Character& CharacterToMove)
+{
+	Pathfinder pathfinder;
+	TraversePath traversePath;
+	path = pathfinder.findPath(level, StartPoint, EndPoint);
+	
+}
+
 void Character::SpawnCharacter(std::string CharacterTypeVar, std::vector<Character>& allCharacters, int x, int y)
 {
 	if (CharacterTypeVar == "NPC")

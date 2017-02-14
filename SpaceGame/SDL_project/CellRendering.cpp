@@ -21,7 +21,8 @@ CellRendering::CellRendering() : roomCell("Resources\\roomSprites\\texturePack\\
 	backgroundTexture("Resources\\background.png"),
 	hullBreachTexture("Resources\\roomSprites\\hullBreach2.png"),
 	deathAnim("Resources\\deathAnim.png"),
-	goalTexture("Resources\\roomSprites\\crate1.png")
+	goalTexture("Resources\\roomSprites\\crate1.png"),
+	bedSide("Resources\\SpawnItems\\Bed.png")
 {
 }
 
@@ -198,5 +199,9 @@ void CellRendering::RenderCells(Level& level, SDL_Renderer* renderer, int x, int
 	if (level.grid[x][y]->isCargo)
 	{
 		cargoTexture.render(renderer, xPos, yPos, cellSize, cellSize);
+	}
+	if (level.grid[x][y]->isBed)
+	{
+		bedSide.render(renderer, xPos, yPos, cellSize, cellSize);
 	}
 }

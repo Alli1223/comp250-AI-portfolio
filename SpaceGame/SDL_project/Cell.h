@@ -66,6 +66,9 @@ public:
 	//! Whether the cell is a hydroponics bay
 	bool isHydroponicsBay = false;
 	std::string hydroponicsOrientation = "NA";
+
+	//! Whether the cell is a bed
+	bool isBed = false;
 	
 
 	//! cell Orientation

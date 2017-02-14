@@ -52,6 +52,9 @@ private:
 	//! Is the texture for the cargo
 	Texture cargoTexture;
 
+	//! Is the texture for the beds
+	Texture bedSide;
+
 
 	//! Is the texture for hull breaches
 	Texture hullBreachTexture;

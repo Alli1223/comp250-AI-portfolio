@@ -171,7 +171,6 @@
     <ClInclude Include="Items.h" />
     <ClInclude Include="PlayerInteraction.h" />
     <ClInclude Include="Fire.h" />
-    <ClInclude Include="NPC.h" />
     <ClInclude Include="ObjectiveManager.h" />
     <ClInclude Include="PathFinder.h" />
     <ClInclude Include="PlayerStats.h" />
@@ -207,7 +206,6 @@
     <ClCompile Include="Items.cpp" />
     <ClCompile Include="PlayerInteraction.cpp" />
     <ClCompile Include="Fire.cpp" />
-    <ClCompile Include="NPC.cpp" />
     <ClCompile Include="ObjectiveManager.cpp" />
     <ClCompile Include="PathFinder.cpp" />
     <ClCompile Include="PlayerStats.cpp" />

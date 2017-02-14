@@ -3,12 +3,12 @@
 
 
 ToolBar::ToolBar()
-
 	: toolBarBackground("Resources\\Toolbar\\toolbarBackground.png"),
 	roomCell("Resources\\roomSprites\\center.png"), emptyCell("Resources\\roomSprites\\emptyCell.png"), 
 	emptyCellIcon("Resources\\Toolbar\\empty.png"),
 	DoorTexture("Resources\\door_sprite.png"),
-	HydroponicsIconTexture("Resources\\Toolbar\\hydroponicsIcon.png")
+	HydroponicsIconTexture("Resources\\Toolbar\\hydroponicsIcon.png"),
+	BedIconTexture("Resources\\Toolbar\\hydroponicsIcon.png")
 {
 
 }
@@ -148,6 +148,24 @@ void ToolBar::RenderToolbar(SDL_Renderer* renderer, int WINDOW_WIDTH, int WINDOW
 				}
 			}
 		}
+
+		// ICON SIX
+		if (icon->getIconID() == 6)
+		{
+			if (numberOfItem6 > 0)
+			{
+				BedIconTexture.render(renderer, icon->getX(), icon->getY(), toolbarIconSize, toolbarIconSize);
+				if (mouseX > icon->getX() - (toolbarIconSize / 2) && mouseX < icon->getX() + (toolbarIconSize / 2) && mouseY > toolbarYpos - toolbarIconSize / 2 && mouseY < toolbarYpos + toolbarSizeY / 2)
+				{
+
+					BedIconTexture.render(renderer, icon->getX(), icon->getY(), toolbarIconSize + mouseOverSizeIncrease, toolbarIconSize + mouseOverSizeIncrease);
+					if (SDL_GetMouseState(&mouseX, &mouseY) & SDL_BUTTON(SDL_BUTTON_LEFT))
+					{
+						setToolbarSelection(6);
+					}
+				}
+			}
+		}
 	}
 
 }
@@ -213,6 +231,12 @@ void ToolBar::ToolBarFunctionality(Level& room, RoomDesign& designroom, SDL_Rend
 	if (SDL_GetMouseState(&mouse_X, &mouse_Y) && toolbarSelection == 5)
 	{
 		
+	}
+
+	//Place Item 6
+	if (SDL_GetMouseState(&mouse_X, &mouse_Y) && toolbarSelection == 6)
+	{
+		room.grid[mouse_X / room.getCellSize()][mouse_Y / room.getCellSize()]->isBed = true;
 	}
 	
 	

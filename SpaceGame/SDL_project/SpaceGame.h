@@ -7,7 +7,6 @@
 #include "SDL2_image-2.0.1\include\SDL_image.h"
 #include "Cell.h"
 #include "MainCharacter.h"
-#include "NPC.h"
 #include "IdleState.h"
 #include "Oxygen.h"
 #include "Fire.h"
