@@ -10,5 +10,3 @@ Character::Character()
 Character::~Character()
 {
 }
-
-
