@@ -107,7 +107,9 @@ void SpaceGame::run()
 			NPC newChar;
 			newChar.setX(mouse_X / cellSize);
 			newChar.setY(mouse_Y / cellSize);
-			newChar.movementDirection = "down";
+			newChar.characterType = "NPC";
+			newChar.movementDirection = "Down";
+			allCharacters.push_back(newChar);
 				
 		}
 
@@ -151,7 +153,7 @@ void SpaceGame::run()
 		hydroponics->renderItems(renderer, room, allHydroponicsFarms);
 
 		// Render characters
-		
+		characters.RenderCharacters(allCharacters, renderer, room);
 		
 
 		// TOOLBAR

@@ -17,7 +17,7 @@ public:
 	//! A destructor
 	~Character();
 
-	void Character::RenderCharacters(std::vector<Character>& allCharacters, SDL_Renderer* renderer);
+	void Character::RenderCharacters(std::vector<Character>& allCharacters, SDL_Renderer* renderer, Level& level);
 		
 	//Getter methods
 	//! Gets the characters X value

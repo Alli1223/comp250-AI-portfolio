@@ -12,14 +12,14 @@ Character::~Character()
 {
 }
 
-void Character::RenderCharacters(std::vector<Character>& allCharacters, SDL_Renderer* renderer)
+void Character::RenderCharacters(std::vector<Character>& allCharacters, SDL_Renderer* renderer, Level& level)
 {
 	for each (auto character in allCharacters)
 	{
 		if (character.characterType == "NPC")
 		{
 			if (character.movementDirection == "Down")
-				npcDown.render(renderer, character.getX(), character.getY(), character.getSize(), character.getSize());
+				npcDown.render(renderer, character.getX() * level.getCellSize() , character.getY() * level.getCellSize(), character.getSize(), character.getSize());
 		}
 	}
 }

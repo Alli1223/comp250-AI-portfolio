@@ -55,7 +55,7 @@ public:
 	Oxygen oxygen;
 	Fire fire;
 	PlayerInteraction characterInteraction;
-	MainCharacter characterOne;
+	Character characters;
 	Cell cell;
 	TraversePath traversepath;
 	ObjectiveManager objectivemanager;
