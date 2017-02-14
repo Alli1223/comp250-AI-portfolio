@@ -182,8 +182,10 @@ void SpaceGame::run()
 		///////////////////////////////////////
 		//MENU
 		//////////////////////////////////////
+		
 		if (menu)
 		{
+			
 			escapemenu.RunEscapeMenu(renderer, WINDOW_WIDTH, WINDOW_HEIGHT, mouse_X, mouse_Y, running);
 			if (escapemenu.exit)
 			{
