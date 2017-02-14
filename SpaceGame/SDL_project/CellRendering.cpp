@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "CellRendering.h"
 
-
+//! Constructor that initalises all the texture file locations
 CellRendering::CellRendering() : roomCell("Resources\\roomSprites\\texturePack\\center.png"), emptyCell("Resources\\roomSprites\\emptyCell.png"),
 	topRoomCell("Resources\\roomSprites\\texturePack\\top.png"), topRightRoomCell("Resources\\roomSprites\\texturePack\\topRight.png"), rightRoomCell("Resources\\roomSprites\\texturePack\\right.png"), bottomRightRoomCell("Resources\\roomSprites\\texturePack\\bottomRight.png"), bottomRoomCell("Resources\\roomSprites\\texturePack\\bottom.png"), bottomLeftRoomCell("Resources\\roomSprites\\texturePack\\bottomLeft.png"), leftRoomCell("Resources\\roomSprites\\texturePack\\left.png"), topLeftRoomCell("Resources\\roomSprites\\texturePack\\topLeft.png"),
 	cargoBayTexture("Resources\\roomSprites\\texturePack\\cargoBayStorage.png"), cargoTexture("Resources\\roomSprites\\crate1.png"),
@@ -28,11 +28,12 @@ CellRendering::CellRendering() : roomCell("Resources\\roomSprites\\texturePack\\
 {
 }
 
-
+//! Destructor
 CellRendering::~CellRendering()
 {
 }
 
+//! Renders the cells
 void CellRendering::RenderCells(Level& level, SDL_Renderer* renderer, int x, int y)
 {
 	int cellSize = level.getCellSize();

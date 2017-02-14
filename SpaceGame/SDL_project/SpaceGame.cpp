@@ -47,23 +47,8 @@ void SpaceGame::run()
 	//mapLoader.LoadMap("Resources\\Map\\Default_map.txt", room);
 	//mapLoader.generateMap(room, designroom);
 
-	//Oxygen oxygen;
-	//Fire fire;
-	//PlayerInteraction characterInteraction;
-	MainCharacter characterOne;
-	//NPC NpcOne;
-	Cell cell;
-	Pathfinder pathfinder;
-	//Point point;
-	TraversePath traversepath;
-	ObjectiveManager objectivemanager;
-	ToolBar toolbar;
+	
 	auto hydroponics = std::make_shared<Hydroponics>();
-	EscapeMenu escapemenu;
-	DockingDoors dockingdoors;
-	ShipManager shipmanager;
-	PlayerStats playerstats;
-	CellRendering cellrenderer;
 
 
 	running = true;
@@ -128,9 +113,11 @@ void SpaceGame::run()
 				int xPos = x * cellSize + cellSize / 2;
 				int yPos = y * cellSize + cellSize / 2;
 
+
+				//Renders all he cells
 				cellrenderer.RenderCells(room, renderer, x, y);
 
-				/* Object Updates
+				// Object Updates
 				//Spawns fire randomly in rooms over time
 				fire.spawn(room, x, y);
 				fire.fireSpread(room, x, y);
@@ -139,11 +126,6 @@ void SpaceGame::run()
 				oxygen.update(room, x, y);
 
 				//hydroponics Update
-				hydroponics->update(room, allHydroponicsFarms, x, y);
-				*/
-
-				
-				// Update hydroponics
 				hydroponics->update(room, allHydroponicsFarms, x, y);
 
 			} //End for Y loop

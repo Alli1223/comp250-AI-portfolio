@@ -61,9 +61,6 @@
     <ClCompile Include="ToolBar.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerInteraction.cpp">
-      <Filter>Source Files\Level Classes</Filter>
-    </ClCompile>
     <ClCompile Include="ObjectiveManager.cpp">
       <Filter>Source Files\Main Game Classes</Filter>
     </ClCompile>
@@ -94,7 +91,12 @@
     <ClCompile Include="PlayerStats.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="CellRendering.cpp" />
+    <ClCompile Include="CellRendering.cpp">
+      <Filter>Source Files\Main Game Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerInteraction.cpp">
+      <Filter>Source Files\Character Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h">
@@ -163,9 +165,6 @@
     <ClInclude Include="ToolBar.h">
       <Filter>Headers\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerInteraction.h">
-      <Filter>Headers\Level Classes</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectiveManager.h">
       <Filter>Headers\Main Game Classes</Filter>
     </ClInclude>
@@ -196,7 +195,12 @@
     <ClInclude Include="PlayerStats.h">
       <Filter>Headers\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="CellRendering.h" />
+    <ClInclude Include="CellRendering.h">
+      <Filter>Headers\Main Game Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerInteraction.h">
+      <Filter>Headers\Character Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />

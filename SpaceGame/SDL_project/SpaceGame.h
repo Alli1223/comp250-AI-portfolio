@@ -39,6 +39,7 @@ public:
 	//! A deconstructor
 	~SpaceGame();
 
+	
 	const Point& getStartPoint() const { return startPoint; }
 	int getStartX() const { return startPoint.getX(); }
 	int getStartY() const { return startPoint.getY(); }
@@ -49,8 +50,21 @@ public:
 	//! Removes all the data from stored vectors
 	void SpaceGame::deleteVectors();
 
+	//! Initalising all classes needed for game
 	GameSettings gameSettings;
-
+	Oxygen oxygen;
+	Fire fire;
+	PlayerInteraction characterInteraction;
+	MainCharacter characterOne;
+	Cell cell;
+	TraversePath traversepath;
+	ObjectiveManager objectivemanager;
+	ToolBar toolbar;
+	EscapeMenu escapemenu;
+	DockingDoors dockingdoors;
+	ShipManager shipmanager;
+	PlayerStats playerstats;
+	CellRendering cellrenderer;
 	
 	//! Pathfinding function
 	void SpaceGame::drawPath(Point& point, Level& level);

@@ -1,5 +1,6 @@
 #pragma once
 #include"Level.h"
+#include "Point.h"
 
 //!  The abstract character class 
 /*!
@@ -32,7 +33,15 @@ public:
 	//! Sets the characters current speed
 	int setSpeed(int newSpeed) { return speed = newSpeed; }
 
+	//! Movement Direction
 	std::string movementDirection = "Down";
+
+	//! CHARACTER PATHFINDING
+
+	//! Conains the list of nodes that makes the path
+	std::vector<Point> path;
+
+
 
 
 	//! Gets and Sets the characters hunger
@@ -48,6 +57,10 @@ public:
 	bool isAlive = true; 
 
 private:
+
+	//! start point and end point for pathfinding
+	Point startPoint, endPoint;
+
 	//! Integers for the character's X and Y position
 	int x = 0; int y = 0;
 	//! Integer for the character's size when rendered
