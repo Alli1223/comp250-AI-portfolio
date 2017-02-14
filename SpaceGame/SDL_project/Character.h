@@ -16,6 +16,8 @@ public:
 	Character();
 	//! A destructor
 	~Character();
+
+	void Character::RenderCharacters(std::vector<Character>& allCharacters, SDL_Renderer* renderer);
 		
 	//Getter methods
 	//! Gets the characters X value
@@ -37,6 +39,9 @@ public:
 
 	//! Movement Direction
 	std::string movementDirection = "Down";
+
+	//! Character Type
+	std::string characterType = "NPC";
 
 	//! CHARACTER PATHFINDING
 

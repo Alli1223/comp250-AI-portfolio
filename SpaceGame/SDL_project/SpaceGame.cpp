@@ -102,7 +102,14 @@ void SpaceGame::run()
 		shipmanager.rendership(allships, renderer);
 		*/
 
-		
+		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_LEFT))
+		{
+			NPC newChar;
+			newChar.setX(mouse_X / cellSize);
+			newChar.setY(mouse_Y / cellSize);
+			newChar.movementDirection = "down";
+				
+		}
 
 		
 
@@ -142,13 +149,16 @@ void SpaceGame::run()
 
 		 // Render the vector of hydroponics
 		hydroponics->renderItems(renderer, room, allHydroponicsFarms);
+
+		// Render characters
+		
 		
 
 		// TOOLBAR
 		toolbar.ToolBarFunctionality(room, designroom, renderer, mouse_X, mouse_Y);
 		toolbar.RenderToolbar(renderer, WINDOW_WIDTH, WINDOW_HEIGHT, mouse_X, mouse_Y);
 
-		playerstats.renderAndUpdatePlayerStats(renderer, characterOne, WINDOW_WIDTH, WINDOW_HEIGHT);
+		//playerstats.renderAndUpdatePlayerStats(renderer, characterOne, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 
 		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_LEFT) && toolbar.getToolbarSelection() == 4)
