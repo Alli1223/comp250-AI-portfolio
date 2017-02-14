@@ -1,6 +1,8 @@
 #pragma once
 #include"Level.h"
 #include "Point.h"
+#include "PathFinder.h"
+#include "Texture.h"
 
 //!  The abstract character class 
 /*!
@@ -71,5 +73,20 @@ private:
 	double Hunger = 100;
 	//! Integer to store character tiredness
 	int Tiredness = 0;
+
+
+	//! For the Character
+	Texture characterTex;
+	//! Is the textures for the default character
+	Texture characterLeft;
+	Texture characterRight;
+	Texture characterUp;
+	Texture characterDown;
+
+	//! Are the textures for the NPC
+	Texture npcLeft;
+	Texture npcRight;
+	Texture npcUp;
+	Texture npcDown;
 };
 

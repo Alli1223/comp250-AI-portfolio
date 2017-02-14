@@ -15,8 +15,6 @@ private:
 	Texture roomCell;
 	//! For cells that are transparent
 	Texture emptyCell;
-	//! For the Character
-	Texture characterTex;
 	//! For door cells
 	Texture openDoorTexture;
 	Texture closedDoorTexture;
@@ -59,19 +57,6 @@ private:
 	Texture hullBreachTexture;
 	//! Is the death animation texture
 	Texture deathAnim;
-
-	//! Are the textures for the different character orientations
-	Texture characterLeft;
-	Texture characterRight;
-	Texture characterUp;
-	Texture characterDown;
-
-	//! Are the textures for the NPC
-	Texture NpcTex;
-	Texture npcLeft;
-	Texture npcRight;
-	Texture npcUp;
-	Texture npcDown;
 
 	//! Are the textures for the differnt sides of the room cells
 	Texture topRoomCell;

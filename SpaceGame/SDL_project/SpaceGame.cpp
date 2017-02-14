@@ -102,6 +102,10 @@ void SpaceGame::run()
 		shipmanager.rendership(allships, renderer);
 		*/
 
+		
+
+		
+
 		//////////////////////////////////
 		//MAIN LOOP
 		///////////////////////////////////
@@ -124,14 +128,14 @@ void SpaceGame::run()
 
 				// Object Updates
 				//Spawns fire randomly in rooms over time
-				fire.spawn(room, x, y);
-				fire.fireSpread(room, x, y);
+				//fire.spawn(room, x, y);
+				//fire.fireSpread(room, x, y);
 
 				// Runs Oxygen spread function
-				oxygen.update(room, x, y);
+				//oxygen.update(room, x, y);
 
 				//hydroponics Update
-				hydroponics->update(room, allHydroponicsFarms, x, y);
+				//hydroponics->update(room, allHydroponicsFarms, x, y);
 
 			} //End for Y loop
 		}//End for X loop
@@ -183,7 +187,6 @@ void SpaceGame::run()
 				SpaceGame::run();
 			}
 		}
-		
 		SDL_RenderPresent(renderer);
 	}
 }// End while running

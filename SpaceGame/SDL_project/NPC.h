@@ -6,5 +6,8 @@ public:
 	NPC();
 	~NPC();
 
+private:
+
+
 };
 
