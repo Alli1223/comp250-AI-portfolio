@@ -94,6 +94,7 @@
     <ClCompile Include="PlayerStats.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="CellRendering.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h">
@@ -195,6 +196,7 @@
     <ClInclude Include="PlayerStats.h">
       <Filter>Headers\GUI</Filter>
     </ClInclude>
+    <ClInclude Include="CellRendering.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />
