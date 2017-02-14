@@ -118,7 +118,7 @@ void SpaceGame::run()
 				menu = false;
 			}
 		}//End pollevent if
-
+		
 		// Checks the keyboard for input
 		const Uint8* keyboardState = SDL_GetKeyboardState(nullptr);
 
