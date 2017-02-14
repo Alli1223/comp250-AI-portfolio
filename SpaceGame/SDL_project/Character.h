@@ -18,6 +18,9 @@ public:
 	~Character();
 
 	void Character::RenderCharacters(std::vector<Character>& allCharacters, SDL_Renderer* renderer, Level& level);
+
+	//! Spawn character function (Character types are (NPC, Player)
+	void Character::SpawnCharacter(std::string CharacterType, std::vector<Character>& allCharacters, int x, int y);
 		
 	//Getter methods
 	//! Gets the characters X value

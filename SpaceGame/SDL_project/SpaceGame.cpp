@@ -104,13 +104,11 @@ void SpaceGame::run()
 
 		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 		{
-			NPC newChar;
-			newChar.setX(mouse_X / cellSize);
-			newChar.setY(mouse_Y / cellSize);
-			newChar.characterType = "NPC";
-			newChar.movementDirection = "Down";
-			allCharacters.push_back(newChar);
-				
+			characters.SpawnCharacter("NPC", allCharacters, mouse_X / cellSize, mouse_Y / cellSize);
+		}
+		else if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
+		{
+			characters.SpawnCharacter("Player", allCharacters, mouse_X / cellSize, mouse_Y / cellSize);
 		}
 
 		
