@@ -108,8 +108,15 @@ void SpaceGame::run()
 			default:
 				break;
 			}
-			
+			if (state[SDL_SCANCODE_ESCAPE] && menu == false)
+			{
+				menu = true;
 
+			}
+			else if (state[SDL_SCANCODE_ESCAPE] && menu == true)
+			{
+				menu = false;
+			}
 		}//End pollevent if
 
 		// Checks the keyboard for input
@@ -132,6 +139,10 @@ void SpaceGame::run()
 		shipmanager.rendership(allships, renderer);
 		*/
 
+		//////////////////////////////////
+		//MAIN LOOP
+		///////////////////////////////////
+
 		for (int x = 0; x < room.grid.size(); x++)
 		{
 			for (int y = 0; y < room.grid[x].size(); y++)
@@ -153,14 +164,14 @@ void SpaceGame::run()
 
 				//RENDERING THE CELLS
 
-					// Checks if the cell is a room
+				// Checks if the cell is a room
 				if (room.grid[x][y]->isRoom)
 				{
 					oxygenTex.alterTransparency(room.grid[x][y]->oxygenLevel);
 					roomCell.render(renderer, xPos, yPos, cellSize, cellSize);
 					oxygenTex.render(renderer, xPos, yPos, cellSize, cellSize);
 
-					// Removes oxyen from rooms
+					// Removes Oxyen from rooms
 					if (room.grid[x][y]->getOxygenLevel() > 0 && room.grid[x][y]->getOxygenLevel() <= 100)
 						room.grid[x][y]->setOxygenLevel(room.grid[x][y]->getOxygenLevel() - 0.5);
 				}
@@ -314,25 +325,21 @@ void SpaceGame::run()
 				{
 					cargoTexture.render(renderer, xPos, yPos, cellSize, cellSize);
 				}
-
-
 				// Update hydroponics
 				hydroponics->update(room, allHydroponicsFarms, x, y);
 
 			} //End for Y loop
 		}//End for X loop
 
-		/*Renders the path
-		SDL_SetRenderDrawColor(renderer, 255, 10, 128, 255);
-		drawPath(point, room);
-		*/
-
+		 // Render the vector of hydroponics
+		hydroponics->renderItems(renderer, room, allHydroponicsFarms);
+		
 
 		// TOOLBAR
 		toolbar.ToolBarFunctionality(room, designroom, renderer, mouse_X, mouse_Y);
 		toolbar.RenderToolbar(renderer, WINDOW_WIDTH, WINDOW_HEIGHT, mouse_X, mouse_Y);
 
-		//playerstats.renderAndUpdatePlayerStats(renderer, characterOne, WINDOW_WIDTH, WINDOW_HEIGHT);
+		playerstats.renderAndUpdatePlayerStats(renderer, characterOne, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 
 		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_LEFT) && toolbar.getToolbarSelection() == 4)
@@ -352,8 +359,25 @@ void SpaceGame::run()
 			}
 
 		}
-		// Render the vector of hydroponics
-		hydroponics->renderItems(renderer, room, allHydroponicsFarms);
+		
+		///////////////////////////////////////
+		//MENU
+		//////////////////////////////////////
+		if (menu)
+		{
+			escapemenu.RunEscapeMenu(renderer, WINDOW_WIDTH, WINDOW_HEIGHT, mouse_X, mouse_Y, running);
+			if (escapemenu.exit)
+			{
+				running = false;
+			}
+			if (escapemenu.restart)
+			{
+				deleteVectors();
+				traversepath.pathComplete = false;
+				traversepath.pathPointIterator = 0;
+				SpaceGame::run();
+			}
+		}
 		
 		SDL_RenderPresent(renderer);
 	}
