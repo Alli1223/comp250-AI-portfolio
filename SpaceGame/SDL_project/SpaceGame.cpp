@@ -104,11 +104,11 @@ void SpaceGame::run()
 
 		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 		{
-			characters.SpawnCharacter("NPC", allCharacters, mouse_X / cellSize, mouse_Y / cellSize);
+			characters.SpawnCharacter("NPC", allCharacters, mouse_X, mouse_Y);
 		}
 		else if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
 		{
-			characters.SpawnCharacter("Player", allCharacters, mouse_X / cellSize, mouse_Y / cellSize);
+			characters.SpawnCharacter("Player", allCharacters, mouse_X, mouse_Y);
 		}
 		
 

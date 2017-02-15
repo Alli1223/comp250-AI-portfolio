@@ -4,7 +4,7 @@
 #include "PathFinder.h"
 #include "Texture.h"
 #include "Point.h"
-#include "TraversePath.h"
+
 
 //!  The abstract character class 
 /*!
@@ -25,7 +25,7 @@ public:
 	void Character::SpawnCharacter(std::string CharacterType, std::vector<Character>& allCharacters, int x, int y);
 
 	//! Move the character
-	void Character::MoveCharacter(Level& level, Point& StartPoint, Point& EndPoint, Character& CharacterToMove));
+	void Character::MoveCharacter(Level& level, Point& StartPoint, Point& EndPoint, Character& CharacterToMove);
 		
 	//Getter methods
 	//! Gets the characters X value

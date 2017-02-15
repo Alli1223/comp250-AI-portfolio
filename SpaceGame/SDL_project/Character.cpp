@@ -15,9 +15,6 @@ Character::~Character()
 
 void Character::MoveCharacter(Level& level, Point& StartPoint, Point& EndPoint, Character& CharacterToMove)
 {
-	Pathfinder pathfinder;
-	TraversePath traversePath;
-	path = pathfinder.findPath(level, StartPoint, EndPoint);
 	
 }
 
@@ -48,30 +45,35 @@ void Character::RenderCharacters(std::vector<Character>& allCharacters, SDL_Rend
 {
 	for each (auto character in allCharacters)
 	{
-		int charX = character.getX() * level.getCellSize() + (level.getCellSize() / 2);
-		int charY = character.getY() * level.getCellSize() + (level.getCellSize() / 2);
-
+		Point startPoint(character.getX() * level.getCellSize() + (level.getCellSize() / 2), character.getX() * level.getCellSize() + (level.getCellSize() / 2));
+		Point endPoint(2, 2);
 		if (character.characterType == "NPC")
 		{
+			npcDown.alterTextureColour(rand() % 200, rand() % 200, rand() % 200);
 			if (character.movementDirection == "Up")
-				npcUp.render(renderer, character.getX() * level.getCellSize() , character.getY() * level.getCellSize(), character.getSize(), character.getSize());
+				npcUp.render(renderer, character.getX() , character.getY() , character.getSize(), character.getSize());
 			if (character.movementDirection == "Right")
-				npcRight.render(renderer, character.getX() * level.getCellSize(), character.getY() * level.getCellSize(), character.getSize(), character.getSize());
+				npcRight.render(renderer, character.getX(), character.getY(), character.getSize(), character.getSize());
 			if (character.movementDirection == "Down")
-				npcDown.render(renderer, charX, charY, character.getSize(), character.getSize());
+			{
+				npcDown.render(renderer, character.getX(), character.getY(), character.getSize(), character.getSize());
+			}
 			if (character.movementDirection == "Left")
-				npcLeft.render(renderer, character.getX() * level.getCellSize(), character.getY() * level.getCellSize(), character.getSize(), character.getSize());
+				npcLeft.render(renderer, character.getX(), character.getY(), character.getSize(), character.getSize());
+			character.MoveCharacter(level, startPoint, endPoint, character);
 		}
 		if (character.characterType == "Player")
 		{
 			if (character.movementDirection == "Up")
-				characterUp.render(renderer, character.getX() * level.getCellSize(), character.getY() * level.getCellSize(), character.getSize(), character.getSize());
+				characterUp.render(renderer, character.getX(), character.getY(), character.getSize(), character.getSize());
 			if (character.movementDirection == "Right")
-				characterRight.render(renderer, character.getX() * level.getCellSize(), character.getY() * level.getCellSize(), character.getSize(), character.getSize());
+				characterRight.render(renderer, character.getX(), character.getY(), character.getSize(), character.getSize());
 			if (character.movementDirection == "Down")
-				characterDown.render(renderer, character.getX() * level.getCellSize(), character.getY() * level.getCellSize(), character.getSize(), character.getSize());
+				characterDown.render(renderer, character.getX(), character.getY(), character.getSize(), character.getSize());
 			if (character.movementDirection == "Left")
-				characterLeft.render(renderer, character.getX() * level.getCellSize(), character.getY() * level.getCellSize(), character.getSize(), character.getSize());
+				characterLeft.render(renderer, character.getX() , character.getY(), character.getSize(), character.getSize());
 		}
+		character.MoveCharacter(level, startPoint, endPoint, character);
+		
 	}
 }
