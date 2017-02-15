@@ -104,11 +104,11 @@ void SpaceGame::run()
 
 		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 		{
-			characters.SpawnCharacter("NPC", allCharacters, mouse_X, mouse_Y);
+			characters.SpawnCharacter("NPC", allAgents, mouse_X, mouse_Y);
 		}
 		else if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
 		{
-			characters.SpawnCharacter("Player", allCharacters, mouse_X, mouse_Y);
+			characters.SpawnCharacter("Player", allAgents, mouse_X, mouse_Y);
 		}
 		
 
@@ -151,7 +151,7 @@ void SpaceGame::run()
 		hydroponics->renderItems(renderer, room, allHydroponicsFarms);
 
 		// Render characters
-		characters.RenderCharacters(allCharacters, renderer, room);
+		characters.RenderAgents(allAgents, renderer, room);
 
 
 		// TOOLBAR

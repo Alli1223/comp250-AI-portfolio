@@ -94,6 +94,7 @@
     <ClCompile Include="PlayerInteraction.cpp">
       <Filter>Source Files\Character Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Agent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h">
@@ -195,6 +196,7 @@
     <ClInclude Include="PlayerInteraction.h">
       <Filter>Headers\Character Classes</Filter>
     </ClInclude>
+    <ClInclude Include="Agent.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />

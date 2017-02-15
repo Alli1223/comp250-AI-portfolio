@@ -13,67 +13,48 @@ Character::~Character()
 
 }
 
-void Character::MoveCharacter(Level& level, Point& StartPoint, Point& EndPoint, Character& CharacterToMove)
+void Character::MoveCharacter(Level& level, Point& StartPoint, Point& EndPoint, Agent& AgentToMove)
 {
 	
 }
 
-void Character::SpawnCharacter(std::string CharacterTypeVar, std::vector<Character>& allCharacters, int x, int y)
+void Character::SpawnCharacter(std::string CharacterTypeVar, std::vector<Agent>& allAgents, int x, int y)
 {
-	if (CharacterTypeVar == "NPC")
-	{
-		Character newChar;
-		newChar.setX(x);
-		newChar.setY(y);
-		newChar.characterType = CharacterTypeVar;
-		newChar.movementDirection = "Down";
-		allCharacters.push_back(newChar);
-	}
+		Agent newAgent;
+		newAgent.setX(x);
+		newAgent.setY(y);
+		newAgent.characterType = CharacterTypeVar;
+		newAgent.movementDirection = "Down";
+		allAgents.push_back(newAgent);
 
-	if (CharacterTypeVar == "Player")
-	{
-		Character newChar;
-		newChar.setX(x);
-		newChar.setY(y);
-		newChar.characterType = CharacterTypeVar;
-		newChar.movementDirection = "Down";
-		allCharacters.push_back(newChar);
-	}
 }
 
-void Character::RenderCharacters(std::vector<Character>& allCharacters, SDL_Renderer* renderer, Level& level)
+void Character::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level)
 {
-	for each (auto character in allCharacters)
+	for each (auto agent in allAgents)
 	{
-		Point startPoint(character.getX() * level.getCellSize() + (level.getCellSize() / 2), character.getX() * level.getCellSize() + (level.getCellSize() / 2));
-		Point endPoint(2, 2);
-		if (character.characterType == "NPC")
+		if (agent.characterType == "NPC")
 		{
-			npcDown.alterTextureColour(rand() % 200, rand() % 200, rand() % 200);
-			if (character.movementDirection == "Up")
-				npcUp.render(renderer, character.getX() , character.getY() , character.getSize(), character.getSize());
-			if (character.movementDirection == "Right")
-				npcRight.render(renderer, character.getX(), character.getY(), character.getSize(), character.getSize());
-			if (character.movementDirection == "Down")
-			{
-				npcDown.render(renderer, character.getX(), character.getY(), character.getSize(), character.getSize());
-			}
-			if (character.movementDirection == "Left")
-				npcLeft.render(renderer, character.getX(), character.getY(), character.getSize(), character.getSize());
-			character.MoveCharacter(level, startPoint, endPoint, character);
+			npcDown.alterTextureColour(rand() % 200, 0,0);
+			if (agent.movementDirection == "Up")
+				npcUp.render(renderer, agent.getX() , agent.getY() , agent.getSize(), agent.getSize());
+			if (agent.movementDirection == "Right")
+				npcRight.render(renderer, agent.getX(), agent.getY(), agent.getSize(), agent.getSize());
+			if (agent.movementDirection == "Down")
+				npcDown.render(renderer, agent.getX(), agent.getY(), agent.getSize(), agent.getSize());
+			if (agent.movementDirection == "Left")
+				npcLeft.render(renderer, agent.getX(), agent.getY(), agent.getSize(), agent.getSize());
 		}
-		if (character.characterType == "Player")
+		if (agent.characterType == "Player")
 		{
-			if (character.movementDirection == "Up")
-				characterUp.render(renderer, character.getX(), character.getY(), character.getSize(), character.getSize());
-			if (character.movementDirection == "Right")
-				characterRight.render(renderer, character.getX(), character.getY(), character.getSize(), character.getSize());
-			if (character.movementDirection == "Down")
-				characterDown.render(renderer, character.getX(), character.getY(), character.getSize(), character.getSize());
-			if (character.movementDirection == "Left")
-				characterLeft.render(renderer, character.getX() , character.getY(), character.getSize(), character.getSize());
-		}
-		character.MoveCharacter(level, startPoint, endPoint, character);
-		
+			if (agent.movementDirection == "Up")
+				characterUp.render(renderer, agent.getX(), agent.getY(), agent.getSize(), agent.getSize());
+			if (agent.movementDirection == "Right")
+				characterRight.render(renderer, agent.getX(), agent.getY(), agent.getSize(), agent.getSize());
+			if (agent.movementDirection == "Down")
+				characterDown.render(renderer, agent.getX(), agent.getY(), agent.getSize(), agent.getSize());
+			if (agent.movementDirection == "Left")
+				characterLeft.render(renderer, agent.getX() , agent.getY(), agent.getSize(), agent.getSize());
+		}		
 	}
 }

@@ -40,12 +40,12 @@ std::vector<std::shared_ptr<Node>> Pathfinder::getNeighbours(std::shared_ptr<Nod
 				//down
 				result.push_back(getOrCreateNode(node->point.getX(), node->point.getY() + 1));
 
-				/* uncomment for diagonal paths
+				/* uncomment for diagonal paths */
 				result.push_back(getOrCreateNode(node->point.getX() - 1, node->point.getY() - 1));
 				result.push_back(getOrCreateNode(node->point.getX() - 1, node->point.getY() + 1));
 				result.push_back(getOrCreateNode(node->point.getX() + 1, node->point.getY() - 1));
 				result.push_back(getOrCreateNode(node->point.getX() + 1, node->point.getY() + 1));
-				*/
+				
 
 				return result;
 			}
@@ -165,3 +165,5 @@ std::vector<Point> Pathfinder::reconstructPath(std::shared_ptr<Node> goalNode)
 
 	return result;
 }
+
+

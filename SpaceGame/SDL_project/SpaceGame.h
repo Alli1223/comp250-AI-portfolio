@@ -25,6 +25,7 @@
 #include "ShipManager.h"
 #include "PlayerStats.h"
 #include "CellRendering.h"
+#include "Agent.h"
 
 //! The main class
 /*!
@@ -75,7 +76,7 @@ public:
 	std::vector<Hydroponics> allHydroponicsFarms;
 
 	//! Contains a list of all the characters
-	std::vector<Character> allCharacters;
+	std::vector<Agent> allAgents;
 
 	//! Contains a list of all the ship
 	std::vector<Ship> allShips;

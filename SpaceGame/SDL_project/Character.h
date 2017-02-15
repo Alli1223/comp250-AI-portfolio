@@ -4,12 +4,12 @@
 #include "PathFinder.h"
 #include "Texture.h"
 #include "Point.h"
+#include "Agent.h"
 
 
 //!  The abstract character class 
 /*!
-  This class is the base for the main character and the NPC. It contains all the functions
-  needed to make the character move and react to different states.
+  This class is the controller for the Agent class and will manage how the agents behave.
 */
 class Character
 {
@@ -19,31 +19,14 @@ public:
 	//! A destructor
 	~Character();
 
-	void Character::RenderCharacters(std::vector<Character>& allCharacters, SDL_Renderer* renderer, Level& level);
+	void Character::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level);
 
 	//! Spawn character function (Character types are (NPC, Player)
-	void Character::SpawnCharacter(std::string CharacterType, std::vector<Character>& allCharacters, int x, int y);
+	void Character::SpawnCharacter(std::string CharacterTypeVar, std::vector<Agent>& allAgents, int x, int y);
 
 	//! Move the character
-	void Character::MoveCharacter(Level& level, Point& StartPoint, Point& EndPoint, Character& CharacterToMove);
+	void Character::MoveCharacter(Level& level, Point& StartPoint, Point& EndPoint, Agent& AgentToMove);
 		
-	//Getter methods
-	//! Gets the characters X value
-	int getX() { return x; }
-	//! Gets the characters Y value
-	int getY() { return y; }
-	//! Gets the characters size
-	int getSize() { return size; }
-	//! Gets the characters speed
-	int getSpeed() { return speed; }
-
-	//Setter methods
-	//! Sets the characters X value
-	int setX(int newX) { return x = newX; }
-	//! Sets the characters Y value
-	int setY(int newY) { return y = newY; }
-	//! Sets the characters current speed
-	int setSpeed(int newSpeed) { return speed = newSpeed; }
 
 	//! Movement Direction
 	std::string movementDirection = "Down";
