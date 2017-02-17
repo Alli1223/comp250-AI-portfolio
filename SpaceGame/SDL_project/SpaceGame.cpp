@@ -198,14 +198,18 @@ void SpaceGame::run()
 			maxAgents--;
 		}
 
+		// UPDATE ALL AGENTS POSITION
 		for (int i = 0; i < allAgents.size(); i++)
 		{
-			allAgents[i].Update();
+			allAgents[i].Update(room);
+			/* DRAW THE PATH FOR ALL AGENTS (VERY RESOURCE INTENSIVE)
 			for (int it = 0; it < allAgents[i].path.size(); it++)
 			{
 				drawPath(allAgents[i].path[it], room, allAgents[i].path);
 			}
+			*/
 		}
+		
 		
 
 		///////////////////////////////////////

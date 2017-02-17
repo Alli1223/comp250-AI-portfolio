@@ -30,19 +30,21 @@ void Character::SpawnAgent(std::string CharacterTypeVar, std::vector<Agent>& all
 
 void Character::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level)
 {
-	for each (auto agent in allAgents)
+	for (Agent& agent : allAgents)
 	{
+		int x = agent.getX()  + (level.getCellSize() / 2);
+		int y = agent.getY() + (level.getCellSize() / 2);
 		if (agent.characterType == "NPC")
 		{
 			//npcDown.alterTextureColour(rand() % 200, 0,0);
 			if (agent.movementDirection == "Up")
-				npcUp.render(renderer, agent.getX() , agent.getY() , agent.getSize(), agent.getSize());
+				npcUp.render(renderer, x, y , agent.getSize(), agent.getSize());
 			if (agent.movementDirection == "Right")
-				npcRight.render(renderer, agent.getX(), agent.getY(), agent.getSize(), agent.getSize());
+				npcRight.render(renderer, x, y, agent.getSize(), agent.getSize());
 			if (agent.movementDirection == "Down")
-				npcDown.render(renderer, agent.getX(), agent.getY(), agent.getSize(), agent.getSize());
+				npcDown.render(renderer, x, y, agent.getSize(), agent.getSize());
 			if (agent.movementDirection == "Left")
-				npcLeft.render(renderer, agent.getX(), agent.getY(), agent.getSize(), agent.getSize());
+				npcLeft.render(renderer, x, y, agent.getSize(), agent.getSize());
 		}
 		if (agent.characterType == "Player")
 		{

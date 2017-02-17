@@ -94,7 +94,9 @@
     <ClCompile Include="PlayerInteraction.cpp">
       <Filter>Source Files\Character Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Agent.cpp" />
+    <ClCompile Include="Agent.cpp">
+      <Filter>Source Files\Character Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h">
@@ -196,7 +198,9 @@
     <ClInclude Include="PlayerInteraction.h">
       <Filter>Headers\Character Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Agent.h" />
+    <ClInclude Include="Agent.h">
+      <Filter>Headers\Character Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />
@@ -242,9 +246,6 @@
     <Filter Include="Headers\Level Classes\PathFinding">
       <UniqueIdentifier>{37765115-50b9-4cbb-80f0-1cdc119b11d4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Character Classes\NPC Classes">
-      <UniqueIdentifier>{5948eb68-75d0-4e4b-a7da-736d9c4df11e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\GUI">
       <UniqueIdentifier>{0d827652-d7fc-41e7-b8a4-5e5b0aff302e}</UniqueIdentifier>
     </Filter>
@@ -271,9 +272,6 @@
     </Filter>
     <Filter Include="Headers\Character Classes">
       <UniqueIdentifier>{0072aba4-18bc-42ba-8ec0-c5d7603daa9d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headers\Character Classes\NPC Classes">
-      <UniqueIdentifier>{fe432389-1c62-43a4-803c-135f08cd75fc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -9,7 +9,7 @@ public:
 	~Agent();
 
 	//! Update method for Agent
-	void Agent::Update();
+	void Agent::Update(Level& level);
 	void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint);
 
 
@@ -44,7 +44,7 @@ public:
 
 	//! Conains the list of nodes that makes the path
 	std::vector<Point> path;
-	std::string agentStatus = "Null";
+	std::string agentStatus = "Idle";
 
 
 	//! Gets and Sets the characters hunger

@@ -11,9 +11,9 @@ Agent::~Agent()
 {
 }
 
-void Agent::Update()
+void Agent::Update(Level& level)
 {
-	int cellSize = 50;
+	int cellSize = level.getCellSize();
 	if (agentStatus == "FoundPath")
 	{
 		// Move Right
@@ -52,6 +52,7 @@ void Agent::Update()
 		if (pathPointIterator == path.size())
 		{
 			agentStatus = "Idle";
+			pathPointIterator = 0;
 		}
 
 	}
@@ -61,8 +62,11 @@ void Agent::Update()
 
 void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint)
 {
-	
-	path = pathfinder.findPath(level, StartPoint, EndPoint);
-	agentStatus = "FoundPath";
+	// Only move if Idle
+	if (agentStatus == "Idle")
+	{
+		path = pathfinder.findPath(level, StartPoint, EndPoint);
+		agentStatus = "FoundPath";
+	}
 	
 }
