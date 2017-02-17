@@ -32,8 +32,8 @@ void Character::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* render
 {
 	for (Agent& agent : allAgents)
 	{
-		int x = agent.getX()  + (level.getCellSize() / 2);
-		int y = agent.getY() + (level.getCellSize() / 2);
+		int x = agent.getX()  - (level.getCellSize() / 2);
+		int y = agent.getY() - (level.getCellSize() / 2);
 		if (agent.characterType == "NPC")
 		{
 			//npcDown.alterTextureColour(rand() % 200, 0,0);

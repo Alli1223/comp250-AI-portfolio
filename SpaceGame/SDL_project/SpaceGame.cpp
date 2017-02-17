@@ -244,10 +244,11 @@ void SpaceGame::deleteVectors()
 void SpaceGame::drawPath(Point& point, Level& level, std::vector<Point>& path)
 {
 	// Start at the start point
-	
+
 	// tileSize / 2 is added to all coordinates to put them in the centre of the tile
-	int lastX = point.getX() * (level.getCellSize() + level.getCellSize()  / 2);
+	int lastX = point.getX() * (level.getCellSize() + level.getCellSize() / 2);
 	int lastY = point.getY() * (level.getCellSize() + level.getCellSize() / 2);
+
 
 	// Step through the path
 	for (const Point& point : path)
@@ -258,6 +259,6 @@ void SpaceGame::drawPath(Point& point, Level& level, std::vector<Point>& path)
 		SDL_RenderDrawLine(renderer, lastX, lastY, nextX, nextY);
 		lastX = nextX;
 		lastY = nextY;
-		
+
 	}
 }

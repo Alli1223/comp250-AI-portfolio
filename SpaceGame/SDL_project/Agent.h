@@ -44,6 +44,8 @@ public:
 
 	//! Conains the list of nodes that makes the path
 	std::vector<Point> path;
+
+	//! Contains what the current status of the agent is doing
 	std::string agentStatus = "Idle";
 
 
