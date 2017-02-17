@@ -226,8 +226,6 @@ void SpaceGame::run()
 			if (escapemenu.restart)
 			{
 				deleteVectors();
-				traversepath.pathComplete = false;
-				traversepath.pathPointIterator = 0;
 				SpaceGame::run();
 			}
 		}

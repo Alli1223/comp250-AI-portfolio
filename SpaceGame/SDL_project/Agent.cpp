@@ -16,29 +16,29 @@ void Agent::Update(Level& level)
 	int cellSize = level.getCellSize();
 	if (agentStatus == "FoundPath")
 	{
-		// Move Right
+		// Move Left
 		if (getX() / cellSize > path[pathPointIterator].getX() && getY() / cellSize == path[pathPointIterator].getY())
 		{
 			setX(getX() - 1);
-			movementDirection = "Right";
+			movementDirection = "Left";
 		}
-		// Move Left
+		// Move Right
 		if (getX() / cellSize < path[pathPointIterator].getX() && getY() / cellSize == path[pathPointIterator].getY())
 		{
 			setX(getX() + 1);
-			movementDirection = "Left";
+			movementDirection = "Right";
 		}
-		// Move Down
+		// Move Up
 		if (getY() / cellSize > path[pathPointIterator].getY() && getX() / cellSize == path[pathPointIterator].getX())
 		{
 			setY(getY() - 1);
-			movementDirection = "Down";
+			movementDirection = "Up";
 		}
-		// Move Up
+		// Move Down
 		if (getY() / cellSize < path[pathPointIterator].getY() && getX() / cellSize == path[pathPointIterator].getX())
 		{
 			setY(getY() + 1);
-			movementDirection = "Up";
+			movementDirection = "Down";
 		}
 
 
@@ -49,10 +49,12 @@ void Agent::Update(Level& level)
 			pathPointIterator++;
 		}
 
+		// If the Agent has reached the end of the path then reset the pathfinder and set the agent to idle.
 		if (pathPointIterator == path.size())
 		{
 			agentStatus = "Idle";
 			pathPointIterator = 0;
+			path.erase(path.begin(), path.end());
 		}
 
 	}
