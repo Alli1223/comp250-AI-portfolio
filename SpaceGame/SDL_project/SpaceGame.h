@@ -106,5 +106,7 @@ private:
 	//! Whether the game is running or not
 	bool running;
 	bool menu;
+
+	int maxAgents = 10;
 };
 

@@ -30,31 +30,30 @@ void Character::SpawnAgent(std::string CharacterTypeVar, std::vector<Agent>& all
 
 void Character::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level)
 {
-	for (int i = 0; i < allAgents.size(); i++)
+	for each (auto agent in allAgents)
 	{
-		allAgents[i].Update();
-		if (allAgents[i].characterType == "NPC")
+		if (agent.characterType == "NPC")
 		{
 			//npcDown.alterTextureColour(rand() % 200, 0,0);
-			if (allAgents[i].movementDirection == "Up")
-				npcUp.render(renderer, allAgents[i].getX() , allAgents[i].getY() , allAgents[i].getSize(), allAgents[i].getSize());
-			if (allAgents[i].movementDirection == "Right")
-				npcRight.render(renderer, allAgents[i].getX(), allAgents[i].getY(), allAgents[i].getSize(), allAgents[i].getSize());
-			if (allAgents[i].movementDirection == "Down")
-				npcDown.render(renderer, allAgents[i].getX(), allAgents[i].getY(), allAgents[i].getSize(), allAgents[i].getSize());
-			if (allAgents[i].movementDirection == "Left")
-				npcLeft.render(renderer, allAgents[i].getX(), allAgents[i].getY(), allAgents[i].getSize(), allAgents[i].getSize());
+			if (agent.movementDirection == "Up")
+				npcUp.render(renderer, agent.getX() , agent.getY() , agent.getSize(), agent.getSize());
+			if (agent.movementDirection == "Right")
+				npcRight.render(renderer, agent.getX(), agent.getY(), agent.getSize(), agent.getSize());
+			if (agent.movementDirection == "Down")
+				npcDown.render(renderer, agent.getX(), agent.getY(), agent.getSize(), agent.getSize());
+			if (agent.movementDirection == "Left")
+				npcLeft.render(renderer, agent.getX(), agent.getY(), agent.getSize(), agent.getSize());
 		}
-		if (allAgents[i].characterType == "Player")
+		if (agent.characterType == "Player")
 		{
-			if (allAgents[i].movementDirection == "Up")
-				characterUp.render(renderer, allAgents[i].getX(), allAgents[i].getY(), allAgents[i].getSize(), allAgents[i].getSize());
-			if (allAgents[i].movementDirection == "Right")
-				characterRight.render(renderer, allAgents[i].getX(), allAgents[i].getY(), allAgents[i].getSize(), allAgents[i].getSize());
-			if (allAgents[i].movementDirection == "Down")
-				characterDown.render(renderer, allAgents[i].getX(), allAgents[i].getY(), allAgents[i].getSize(), allAgents[i].getSize());
-			if (allAgents[i].movementDirection == "Left")
-				characterLeft.render(renderer, allAgents[i].getX() , allAgents[i].getY(), allAgents[i].getSize(), allAgents[i].getSize());
+			if (agent.movementDirection == "Up")
+				characterUp.render(renderer, agent.getX(), agent.getY(), agent.getSize(), agent.getSize());
+			if (agent.movementDirection == "Right")
+				characterRight.render(renderer, agent.getX(), agent.getY(), agent.getSize(), agent.getSize());
+			if (agent.movementDirection == "Down")
+				characterDown.render(renderer, agent.getX(), agent.getY(), agent.getSize(), agent.getSize());
+			if (agent.movementDirection == "Left")
+				characterLeft.render(renderer, agent.getX() , agent.getY(), agent.getSize(), agent.getSize());
 		}		
 	}
 }

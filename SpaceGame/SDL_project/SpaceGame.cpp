@@ -102,7 +102,7 @@ void SpaceGame::run()
 		shipmanager.rendership(allships, renderer);
 		*/
 		
-		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_LEFT) && SDL_BUTTON(SDL_SCANCODE_F))
+		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_RIGHT) )
 		{
 			characters.SpawnAgent("NPC", allAgents, mouse_X, mouse_Y);
 		}
@@ -127,13 +127,13 @@ void SpaceGame::run()
 				//Renders all he cells
 				cellrenderer.RenderCells(room, renderer, x, y);
 
-				// Fill the screen with room cells
-				if (x > 1 && y > 1 && x < room.getLevelWidth() - 2 && y < room.getLevelHeight() - 2)
+				/* Fill the screen with room cells
+				if (x > 0 && y > 0 && x < room.getLevelWidth()  && y < room.getLevelHeight() )
 				{
 					room.grid[x][y]->isRoom = true;
 					//designroom.designRoom(room, x, y);
 				}
-				
+				*/
 
 				// Object Updates
 				//Spawns fire randomly in rooms over time
@@ -185,19 +185,22 @@ void SpaceGame::run()
 		}
 
 		// All agents move to mouse position
-		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_MIDDLE))
+		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_MIDDLE) && maxAgents > 0)
 		{
 			for (int i = 0; i < allAgents.size(); i++)
 			{
-				Point StartPoint(allAgents[i].getX() / cellSize, allAgents[i].getX() / cellSize);
+				allAgents[i].path.erase(allAgents[i].path.begin(), allAgents[i].path.end());
+				Point StartPoint(allAgents[i].getX() / cellSize, allAgents[i].getY() / cellSize);
 				Point EndPoint(mouse_X / cellSize, mouse_Y / cellSize);
 
 				allAgents[i].Move(room, StartPoint, EndPoint);
 			}
+			maxAgents--;
 		}
 
 		for (int i = 0; i < allAgents.size(); i++)
 		{
+			allAgents[i].Update();
 			for (int it = 0; it < allAgents[i].path.size(); it++)
 			{
 				drawPath(allAgents[i].path[it], room, allAgents[i].path);

@@ -13,38 +13,46 @@ Agent::~Agent()
 
 void Agent::Update()
 {
+	int cellSize = 50;
 	if (agentStatus == "FoundPath")
 	{
 		// Move Right
-		if (getX() > path[pathPointIterator].getX() && getY() == path[pathPointIterator].getY())
+		if (getX() / cellSize > path[pathPointIterator].getX() && getY() / cellSize == path[pathPointIterator].getY())
 		{
-			setX(getX() + 1);
+			setX(getX() - 1);
 			movementDirection = "Right";
 		}
 		// Move Left
-		if (getX() < path[pathPointIterator].getX() && getY() == path[pathPointIterator].getY())
+		if (getX() / cellSize < path[pathPointIterator].getX() && getY() / cellSize == path[pathPointIterator].getY())
 		{
-			setX(getX() - 1);
+			setX(getX() + 1);
 			movementDirection = "Left";
 		}
 		// Move Down
-		if (getY() > path[pathPointIterator].getY() && getX() == path[pathPointIterator].getX())
+		if (getY() / cellSize > path[pathPointIterator].getY() && getX() / cellSize == path[pathPointIterator].getX())
 		{
-			setY(getY() + 1);
+			setY(getY() - 1);
 			movementDirection = "Down";
 		}
 		// Move Up
-		if (getY() < path[pathPointIterator].getY() && getX() == path[pathPointIterator].getX())
+		if (getY() / cellSize < path[pathPointIterator].getY() && getX() / cellSize == path[pathPointIterator].getX())
 		{
-			setY(getY() - 1);
+			setY(getY() + 1);
 			movementDirection = "Up";
 		}
+
+
+
 		// If the agent is at the point then iterate to the next point
-		else if (getX() == path[pathPointIterator].getX() && getY() == path[pathPointIterator].getY())
+		if (getX() / cellSize == path[pathPointIterator].getX() && getY() / cellSize == path[pathPointIterator].getY())
 		{
 			pathPointIterator++;
 		}
 
+		if (pathPointIterator == path.size())
+		{
+			agentStatus = "Idle";
+		}
 
 	}
 		
