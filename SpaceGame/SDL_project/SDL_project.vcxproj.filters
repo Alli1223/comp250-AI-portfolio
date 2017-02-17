@@ -46,9 +46,6 @@
     <ClCompile Include="Point.cpp">
       <Filter>Source Files\Level Classes\PathFinding</Filter>
     </ClCompile>
-    <ClCompile Include="TraversePath.cpp">
-      <Filter>Source Files\Level Classes\PathFinding</Filter>
-    </ClCompile>
     <ClCompile Include="GameSettings.cpp">
       <Filter>Source Files\Main Game Classes</Filter>
     </ClCompile>
@@ -57,9 +54,6 @@
     </ClCompile>
     <ClCompile Include="ToolBar.cpp">
       <Filter>Source Files\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectiveManager.cpp">
-      <Filter>Source Files\Main Game Classes</Filter>
     </ClCompile>
     <ClCompile Include="Items.cpp">
       <Filter>Source Files\Items</Filter>
@@ -150,9 +144,6 @@
     <ClInclude Include="Point.h">
       <Filter>Headers\Level Classes\PathFinding</Filter>
     </ClInclude>
-    <ClInclude Include="TraversePath.h">
-      <Filter>Headers\Level Classes\PathFinding</Filter>
-    </ClInclude>
     <ClInclude Include="GameSettings.h">
       <Filter>Headers\Main Game Classes</Filter>
     </ClInclude>
@@ -161,9 +152,6 @@
     </ClInclude>
     <ClInclude Include="ToolBar.h">
       <Filter>Headers\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectiveManager.h">
-      <Filter>Headers\Main Game Classes</Filter>
     </ClInclude>
     <ClInclude Include="Items.h">
       <Filter>Headers\Items</Filter>

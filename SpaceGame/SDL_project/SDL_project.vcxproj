@@ -172,7 +172,6 @@
     <ClInclude Include="Items.h" />
     <ClInclude Include="PlayerInteraction.h" />
     <ClInclude Include="Fire.h" />
-    <ClInclude Include="ObjectiveManager.h" />
     <ClInclude Include="PathFinder.h" />
     <ClInclude Include="PlayerStats.h" />
     <ClInclude Include="Point.h" />
@@ -191,7 +190,6 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="ToolBar.h" />
-    <ClInclude Include="TraversePath.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
@@ -208,7 +206,6 @@
     <ClCompile Include="Items.cpp" />
     <ClCompile Include="PlayerInteraction.cpp" />
     <ClCompile Include="Fire.cpp" />
-    <ClCompile Include="ObjectiveManager.cpp" />
     <ClCompile Include="PathFinder.cpp" />
     <ClCompile Include="PlayerStats.cpp" />
     <ClCompile Include="Point.cpp" />
@@ -230,7 +227,6 @@
     </ClCompile>
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="ToolBar.cpp" />
-    <ClCompile Include="TraversePath.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />

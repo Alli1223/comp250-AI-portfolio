@@ -13,8 +13,6 @@
 #include "RoomDesign.h"
 #include "PlayerInteraction.h"
 #include "PathFinder.h"
-#include "TraversePath.h"
-#include "ObjectiveManager.h"
 #include "GameSettings.h"
 #include "GUI.h"
 #include "ToolBar.h"
@@ -57,8 +55,6 @@ public:
 	PlayerInteraction characterInteraction;
 	Character characters;
 	Cell cell;
-	TraversePath traversepath;
-	ObjectiveManager objectivemanager;
 	ToolBar toolbar;
 	EscapeMenu escapemenu;
 	DockingDoors dockingdoors;
