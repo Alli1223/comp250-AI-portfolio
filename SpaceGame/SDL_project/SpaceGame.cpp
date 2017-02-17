@@ -102,16 +102,19 @@ void SpaceGame::run()
 		shipmanager.rendership(allships, renderer);
 		*/
 
-		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_LEFT))
+		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_LEFT) && SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
 		{
-			characters.SpawnCharacter("NPC", allAgents, mouse_X, mouse_Y);
+			characters.SpawnAgent("NPC", allAgents, mouse_X, mouse_Y);
 		}
-		else if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
+		/*else if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
 		{
-			characters.SpawnCharacter("Player", allAgents, mouse_X, mouse_Y);
+			characters.SpawnAgent("Player", allAgents, mouse_X, mouse_Y);
 		}
+		*/
 		
 
+		
+		
 
 		//////////////////////////////////
 		//MAIN LOOP
@@ -124,14 +127,13 @@ void SpaceGame::run()
 				//Renders all he cells
 				cellrenderer.RenderCells(room, renderer, x, y);
 
-				// Fill the screen with room cells
-				bool doOnce = false;
-				if (x > 1 && y > 1 && x < room.getLevelWidth() - 2 && y < room.getLevelHeight() - 2 && doOnce == false)
+				/* Fill the screen with room cells
+				if (x > 1 && y > 1 && x < room.getLevelWidth() - 2 && y < room.getLevelHeight() - 2)
 				{
 					room.grid[x][y]->isRoom = true;
-					doOnce = true;
-					designroom.designRoom(room, x, y);
+					//designroom.designRoom(room, x, y);
 				}
+				*/
 
 				// Object Updates
 				//Spawns fire randomly in rooms over time
@@ -152,6 +154,9 @@ void SpaceGame::run()
 
 		// Render characters
 		characters.RenderAgents(allAgents, renderer, room);
+
+		
+
 
 
 		// TOOLBAR
@@ -177,6 +182,27 @@ void SpaceGame::run()
 				dockingdoors.placeDockingDoors(renderer, room);
 			}
 
+		}
+
+		// All agents move to mouse position
+		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_MIDDLE))
+		{
+			for (int i = 0; i < allAgents.size(); i++)
+			{
+				Point StartPoint(allAgents[i].getX() / cellSize, allAgents[i].getX() / cellSize);
+				Point EndPoint(mouse_X / cellSize, mouse_Y / cellSize);
+
+				
+
+				allAgents[i].Move(room, StartPoint, EndPoint);
+
+				for (int it = 0; it < allAgents[i].path.size(); it++)
+				{
+					drawPath(allAgents[0].path[it], room);
+				}
+
+
+			}
 		}
 
 		///////////////////////////////////////

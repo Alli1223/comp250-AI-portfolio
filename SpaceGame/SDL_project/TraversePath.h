@@ -1,7 +1,8 @@
 #pragma once
-#include "Character.h"
 #include "Point.h"
 #include "Level.h"
+#include "Character.h"
+
 class TraversePath
 {
 public:

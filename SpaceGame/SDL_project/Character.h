@@ -22,7 +22,7 @@ public:
 	void Character::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level);
 
 	//! Spawn character function (Character types are (NPC, Player)
-	void Character::SpawnCharacter(std::string CharacterTypeVar, std::vector<Agent>& allAgents, int x, int y);
+	void Character::SpawnAgent(std::string CharacterTypeVar, std::vector<Agent>& allAgents, int x, int y);
 
 	//! Move the character
 	void Character::MoveCharacter(Level& level, Point& StartPoint, Point& EndPoint, Agent& AgentToMove);

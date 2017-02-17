@@ -165,5 +165,3 @@ std::vector<Point> Pathfinder::reconstructPath(std::shared_ptr<Node> goalNode)
 
 	return result;
 }
-
-

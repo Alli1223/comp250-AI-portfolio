@@ -1,10 +1,16 @@
 #pragma once
 #include "Point.h"
+#include "PathFinder.h"
+
 class Agent
 {
 public:
 	Agent();
 	~Agent();
+
+	//! Update method for Agent
+	void Agent::Update();
+	void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint);
 
 
 	//Getter methods
@@ -33,9 +39,12 @@ public:
 
 	//! CHARACTER PATHFINDING
 
+	//! Create an instance of pathfinder
+	Pathfinder pathfinder;
+
 	//! Conains the list of nodes that makes the path
 	std::vector<Point> path;
-
+	std::string agentStatus = "Null";
 
 
 	//! Gets and Sets the characters hunger
@@ -62,5 +71,7 @@ private:
 	double Hunger = 100;
 	//! Integer to store character tiredness
 	int Tiredness = 0;
+
+	int pathPointIterator = 0;
 };
 

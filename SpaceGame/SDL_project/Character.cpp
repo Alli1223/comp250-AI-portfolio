@@ -15,10 +15,10 @@ Character::~Character()
 
 void Character::MoveCharacter(Level& level, Point& StartPoint, Point& EndPoint, Agent& AgentToMove)
 {
-	
+
 }
 
-void Character::SpawnCharacter(std::string CharacterTypeVar, std::vector<Agent>& allAgents, int x, int y)
+void Character::SpawnAgent(std::string CharacterTypeVar, std::vector<Agent>& allAgents, int x, int y)
 {
 		Agent newAgent;
 		newAgent.setX(x);
@@ -26,16 +26,16 @@ void Character::SpawnCharacter(std::string CharacterTypeVar, std::vector<Agent>&
 		newAgent.characterType = CharacterTypeVar;
 		newAgent.movementDirection = "Down";
 		allAgents.push_back(newAgent);
-
 }
 
 void Character::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level)
 {
 	for each (auto agent in allAgents)
 	{
+		agent.Update();
 		if (agent.characterType == "NPC")
 		{
-			npcDown.alterTextureColour(rand() % 200, 0,0);
+			//npcDown.alterTextureColour(rand() % 200, 0,0);
 			if (agent.movementDirection == "Up")
 				npcUp.render(renderer, agent.getX() , agent.getY() , agent.getSize(), agent.getSize());
 			if (agent.movementDirection == "Right")
