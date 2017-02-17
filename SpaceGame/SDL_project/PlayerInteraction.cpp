@@ -15,12 +15,12 @@ PlayerInteraction::~PlayerInteraction()
 {
 }
 
-void PlayerInteraction::Interaction(Level& level, Character& character, Oxygen& oxygen)
+void PlayerInteraction::Interaction(Level& level, Agent& agent, Oxygen& oxygen)
 {
 	
 	//Gets the player X and Y values
-	int pX = character.getX();
-	int pY = character.getY();
+	int pX = agent.getX();
+	int pY = agent.getY();
 	int playerX = pX / level.getCellSize();
 	int playerY = pY / level.getCellSize();
 
@@ -78,7 +78,7 @@ void PlayerInteraction::Interaction(Level& level, Character& character, Oxygen& 
 	if (level.grid[playerX][playerY]->isHealthPack == true)
 	{
 		level.grid[playerX][playerY]->isHealthPack = false;	
-		character.health = 100;
+		agent.health = 100;
 	}
 
 	

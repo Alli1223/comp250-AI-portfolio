@@ -5,9 +5,6 @@
 CellRendering::CellRendering() : roomCell("Resources\\roomSprites\\texturePack\\center.png"), emptyCell("Resources\\roomSprites\\emptyCell.png"),
 	topRoomCell("Resources\\roomSprites\\texturePack\\top.png"), topRightRoomCell("Resources\\roomSprites\\texturePack\\topRight.png"), rightRoomCell("Resources\\roomSprites\\texturePack\\right.png"), bottomRightRoomCell("Resources\\roomSprites\\texturePack\\bottomRight.png"), bottomRoomCell("Resources\\roomSprites\\texturePack\\bottom.png"), bottomLeftRoomCell("Resources\\roomSprites\\texturePack\\bottomLeft.png"), leftRoomCell("Resources\\roomSprites\\texturePack\\left.png"), topLeftRoomCell("Resources\\roomSprites\\texturePack\\topLeft.png"),
 	cargoBayTexture("Resources\\roomSprites\\texturePack\\cargoBayStorage.png"), cargoTexture("Resources\\roomSprites\\crate1.png"),
-	characterTex("Resources\\crew2.png"), characterLeft("Resources\\Character\\crewLeft.png"), characterRight("Resources\\Character\\crewRight.png"), characterUp("Resources\\Character\\crewUp.png"), characterDown("Resources\\Character\\crewDown.png"),
-	npcLeft("Resources\\Character\\npcLeft.png"), npcRight("Resources\\Character\\npcRight.png"), npcUp("Resources\\Character\\npcUp.png"), npcDown("Resources\\Character\\npcDown.png"),
-	NpcTex("Resources\\Character\\NPC.png"),
 	openDoorTexture("Resources\\roomSprites\\texturePack\\center.png"),
 	closedDoorTexture("Resources\\roomSprites\\texturePack\\door.png"),
 	oxygenTex("Resources\\oxygen.png"),
@@ -24,7 +21,8 @@ CellRendering::CellRendering() : roomCell("Resources\\roomSprites\\texturePack\\
 	backgroundTexture("Resources\\background.png"),
 	hullBreachTexture("Resources\\roomSprites\\hullBreach2.png"),
 	deathAnim("Resources\\deathAnim.png"),
-	goalTexture("Resources\\roomSprites\\crate1.png")
+	goalTexture("Resources\\roomSprites\\crate1.png"),
+	bedSide("Resources\\SpawnItems\\Bed.png")
 {
 }
 
@@ -201,5 +199,9 @@ void CellRendering::RenderCells(Level& level, SDL_Renderer* renderer, int x, int
 	if (level.grid[x][y]->isCargo)
 	{
 		cargoTexture.render(renderer, xPos, yPos, cellSize, cellSize);
+	}
+	if (level.grid[x][y]->isBed)
+	{
+		bedSide.render(renderer, xPos, yPos, cellSize, cellSize);
 	}
 }

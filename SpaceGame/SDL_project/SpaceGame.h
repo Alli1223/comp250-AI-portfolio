@@ -7,7 +7,6 @@
 #include "SDL2_image-2.0.1\include\SDL_image.h"
 #include "Cell.h"
 #include "MainCharacter.h"
-#include "NPC.h"
 #include "IdleState.h"
 #include "Oxygen.h"
 #include "Fire.h"
@@ -26,6 +25,7 @@
 #include "ShipManager.h"
 #include "PlayerStats.h"
 #include "CellRendering.h"
+#include "Agent.h"
 
 //! The main class
 /*!
@@ -55,7 +55,7 @@ public:
 	Oxygen oxygen;
 	Fire fire;
 	PlayerInteraction characterInteraction;
-	MainCharacter characterOne;
+	Character characters;
 	Cell cell;
 	TraversePath traversepath;
 	ObjectiveManager objectivemanager;
@@ -67,13 +67,16 @@ public:
 	CellRendering cellrenderer;
 	
 	//! Pathfinding function
-	void SpaceGame::drawPath(Point& point, Level& level);
+	void SpaceGame::drawPath(Point& point, Level& level, std::vector<Point>& path);
 
 	//! Conains the list of nodes that makes the path
-	std::vector<Point> path;
+	//std::vector<Point> path;
 	
 	//! Contains a list of all the hydroponic farms
 	std::vector<Hydroponics> allHydroponicsFarms;
+
+	//! Contains a list of all the characters
+	std::vector<Agent> allAgents;
 
 	//! Contains a list of all the ship
 	std::vector<Ship> allShips;
@@ -104,6 +107,6 @@ private:
 	bool running;
 	bool menu;
 
-	
+	int maxAgents = 10;
 };
 

@@ -2,7 +2,6 @@
 #include "Level.h"
 #include "Point.h"
 #include "PathFinder.h"
-#include "NPC.h"
 #include "TraversePath.h"
 
 class ObjectiveManager

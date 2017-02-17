@@ -1,11 +1,15 @@
 #pragma once
 #include"Level.h"
 #include "Point.h"
+#include "PathFinder.h"
+#include "Texture.h"
+#include "Point.h"
+#include "Agent.h"
+
 
 //!  The abstract character class 
 /*!
-  This class is the base for the main character and the NPC. It contains all the functions
-  needed to make the character move and react to different states.
+  This class is the controller for the Agent class and will manage how the agents behave.
 */
 class Character
 {
@@ -14,27 +18,21 @@ public:
 	Character();
 	//! A destructor
 	~Character();
-		
-	//Getter methods
-	//! Gets the characters X value
-	int getX() { return x; }
-	//! Gets the characters Y value
-	int getY() { return y; }
-	//! Gets the characters size
-	int getSize() { return size; }
-	//! Gets the characters speed
-	int getSpeed() { return speed; }
 
-	//Setter methods
-	//! Sets the characters X value
-	int setX(int newX) { return x = newX; }
-	//! Sets the characters Y value
-	int setY(int newY) { return y = newY; }
-	//! Sets the characters current speed
-	int setSpeed(int newSpeed) { return speed = newSpeed; }
+	void Character::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level);
+
+	//! Spawn character function (Character types are (NPC, Player)
+	void Character::SpawnAgent(std::string CharacterTypeVar, std::vector<Agent>& allAgents, int x, int y);
+
+	//! Move the character
+	void Character::MoveCharacter(Level& level, Point& StartPoint, Point& EndPoint, Agent& AgentToMove);
+		
 
 	//! Movement Direction
 	std::string movementDirection = "Down";
+
+	//! Character Type
+	std::string characterType = "NPC";
 
 	//! CHARACTER PATHFINDING
 
@@ -71,5 +69,20 @@ private:
 	double Hunger = 100;
 	//! Integer to store character tiredness
 	int Tiredness = 0;
+
+
+	//! For the Character
+	Texture characterTex;
+	//! Is the textures for the default character
+	Texture characterLeft;
+	Texture characterRight;
+	Texture characterUp;
+	Texture characterDown;
+
+	//! Are the textures for the NPC
+	Texture npcLeft;
+	Texture npcRight;
+	Texture npcUp;
+	Texture npcDown;
 };
 

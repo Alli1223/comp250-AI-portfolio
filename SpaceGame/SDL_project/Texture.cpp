@@ -43,4 +43,8 @@ void Texture::alterTransparency(int transparencyLevel)
 	SDL_SetTextureAlphaMod(texture, transparencyLevel);
 }
 
+void Texture::alterTextureColour(int r, int g, int b)
+{
+	SDL_SetTextureColorMod(texture, r, g, b);
+}
 

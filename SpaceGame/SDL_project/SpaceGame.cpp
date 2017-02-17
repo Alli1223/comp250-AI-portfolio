@@ -47,7 +47,7 @@ void SpaceGame::run()
 	//mapLoader.LoadMap("Resources\\Map\\Default_map.txt", room);
 	//mapLoader.generateMap(room, designroom);
 
-	
+
 	auto hydroponics = std::make_shared<Hydroponics>();
 
 
@@ -81,7 +81,7 @@ void SpaceGame::run()
 				menu = false;
 			}
 		}//End pollevent if
-		
+
 		// Checks the keyboard for input
 		const Uint8* keyboardState = SDL_GetKeyboardState(nullptr);
 
@@ -95,12 +95,26 @@ void SpaceGame::run()
 
 		/* Opens the door when a player goes through
 		//characterInteraction.Interaction(room, characterOne, oxygen);
-		
+
 		//ship management
 		shipmanager.shiptimer(room, allships);
 		//ship rendering
 		shipmanager.rendership(allships, renderer);
 		*/
+		
+		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_RIGHT) )
+		{
+			characters.SpawnAgent("NPC", allAgents, mouse_X, mouse_Y);
+		}
+		/*else if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
+		{
+			characters.SpawnAgent("Player", allAgents, mouse_X, mouse_Y);
+		}
+		*/
+		
+
+		
+		
 
 		//////////////////////////////////
 		//MAIN LOOP
@@ -110,36 +124,46 @@ void SpaceGame::run()
 		{
 			for (int y = 0; y < room.grid[x].size(); y++)
 			{
-				int xPos = x * cellSize + cellSize / 2;
-				int yPos = y * cellSize + cellSize / 2;
-
-
 				//Renders all he cells
 				cellrenderer.RenderCells(room, renderer, x, y);
 
+				/* Fill the screen with room cells
+				if (x > 0 && y > 0 && x < room.getLevelWidth()  && y < room.getLevelHeight() )
+				{
+					room.grid[x][y]->isRoom = true;
+					//designroom.designRoom(room, x, y);
+				}
+				*/
+
 				// Object Updates
 				//Spawns fire randomly in rooms over time
-				fire.spawn(room, x, y);
-				fire.fireSpread(room, x, y);
+				//fire.spawn(room, x, y);
+				//fire.fireSpread(room, x, y);
 
 				// Runs Oxygen spread function
-				oxygen.update(room, x, y);
+				//oxygen.update(room, x, y);
 
 				//hydroponics Update
-				hydroponics->update(room, allHydroponicsFarms, x, y);
+				//hydroponics->update(room, allHydroponicsFarms, x, y);
 
 			} //End for Y loop
 		}//End for X loop
 
 		 // Render the vector of hydroponics
 		hydroponics->renderItems(renderer, room, allHydroponicsFarms);
+
+		// Render characters
+		characters.RenderAgents(allAgents, renderer, room);
+
 		
+
+
 
 		// TOOLBAR
 		toolbar.ToolBarFunctionality(room, designroom, renderer, mouse_X, mouse_Y);
 		toolbar.RenderToolbar(renderer, WINDOW_WIDTH, WINDOW_HEIGHT, mouse_X, mouse_Y);
 
-		playerstats.renderAndUpdatePlayerStats(renderer, characterOne, WINDOW_WIDTH, WINDOW_HEIGHT);
+		//playerstats.renderAndUpdatePlayerStats(renderer, characterOne, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 
 		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_LEFT) && toolbar.getToolbarSelection() == 4)
@@ -159,10 +183,35 @@ void SpaceGame::run()
 			}
 
 		}
+
+		// All agents move to mouse position
+		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_MIDDLE) && maxAgents > 0)
+		{
+			for (int i = 0; i < allAgents.size(); i++)
+			{
+				allAgents[i].path.erase(allAgents[i].path.begin(), allAgents[i].path.end());
+				Point StartPoint(allAgents[i].getX() / cellSize, allAgents[i].getY() / cellSize);
+				Point EndPoint(mouse_X / cellSize, mouse_Y / cellSize);
+
+				allAgents[i].Move(room, StartPoint, EndPoint);
+			}
+			maxAgents--;
+		}
+
+		for (int i = 0; i < allAgents.size(); i++)
+		{
+			allAgents[i].Update();
+			for (int it = 0; it < allAgents[i].path.size(); it++)
+			{
+				drawPath(allAgents[i].path[it], room, allAgents[i].path);
+			}
+		}
 		
+
 		///////////////////////////////////////
 		//MENU
 		//////////////////////////////////////
+
 		if (menu)
 		{
 			escapemenu.RunEscapeMenu(renderer, WINDOW_WIDTH, WINDOW_HEIGHT, mouse_X, mouse_Y, running);
@@ -178,7 +227,6 @@ void SpaceGame::run()
 				SpaceGame::run();
 			}
 		}
-		
 		SDL_RenderPresent(renderer);
 	}
 }// End while running
@@ -186,11 +234,10 @@ void SpaceGame::run()
 
 void SpaceGame::deleteVectors()
 {
-	path.erase(path.begin(), path.end());
 	allHydroponicsFarms.erase(allHydroponicsFarms.begin(), allHydroponicsFarms.end());
 }
 
-void SpaceGame::drawPath(Point& point, Level& level)
+void SpaceGame::drawPath(Point& point, Level& level, std::vector<Point>& path)
 {
 	// Start at the start point
 	

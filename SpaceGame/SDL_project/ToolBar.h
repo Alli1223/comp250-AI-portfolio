@@ -47,13 +47,15 @@ public:
 	Texture DoorTexture;
 	//! Is the texture for the door
 	Texture HydroponicsIconTexture;
+	//! Is the texture for the bed
+	Texture BedIconTexture;
 
 	std::vector<std::shared_ptr<Icon>> allIcons;
 
 	// IconSize
 	int toolbarIconSize = 50;
 
-	int numberOfIcons = 5;
+	int numberOfIcons = 6;
 
 	// How much they increase in size when mouseover
 	int mouseOverSizeIncrease = 10;
@@ -63,6 +65,7 @@ public:
 	int numberOfItem3 = 15;
 	int numberOfItem4 = 15;
 	int numberOfItem5 = 15;
+	int numberOfItem6 = 15;
 
 	bool doOnce = true;
 

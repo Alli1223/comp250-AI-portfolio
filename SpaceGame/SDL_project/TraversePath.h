@@ -1,26 +1,27 @@
 #pragma once
-#include "Character.h"
 #include "Point.h"
 #include "Level.h"
+#include "Character.h"
+
 class TraversePath
 {
 public:
 	TraversePath();
 
 	//! Choses which direction the player should move
-	void TraversePath::Move(Character& characterOne, Point point);
+	void TraversePath::Move(Agent& agent, Point& point);
 
 	//! Gets the next node for the object to walk to
-	void TraversePath::IterateToNextNode(Character& characterOne, Point point);
+	void TraversePath::IterateToNextNode(Agent& agent, Point point);
 
 	//! Returns the point of the next node in the path
 	Point TraversePath::getNextPoint(std::vector<Point> path);
 
 	//! Controls how he player moves vertiacally
-	void TraversePath::VerticalMovement(Character& characterOne, Point point);
+	void TraversePath::VerticalMovement(Agent& agent, Point point);
 
 	//! Controls how he player moves horizontally
-	void TraversePath::HorizontalMovement(Character& characterOne, Point point);
+	void TraversePath::HorizontalMovement(Agent& agent, Point point);
 
 	//! contains a point of the previous node
 	Point previousNode;

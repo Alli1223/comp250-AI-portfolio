@@ -49,9 +49,6 @@
     <ClCompile Include="TraversePath.cpp">
       <Filter>Source Files\Level Classes\PathFinding</Filter>
     </ClCompile>
-    <ClCompile Include="NPC.cpp">
-      <Filter>Source Files\Character Classes\NPC Classes</Filter>
-    </ClCompile>
     <ClCompile Include="GameSettings.cpp">
       <Filter>Source Files\Main Game Classes</Filter>
     </ClCompile>
@@ -97,6 +94,7 @@
     <ClCompile Include="PlayerInteraction.cpp">
       <Filter>Source Files\Character Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Agent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h">
@@ -153,9 +151,6 @@
     <ClInclude Include="TraversePath.h">
       <Filter>Headers\Level Classes\PathFinding</Filter>
     </ClInclude>
-    <ClInclude Include="NPC.h">
-      <Filter>Headers\Character Classes\NPC Classes</Filter>
-    </ClInclude>
     <ClInclude Include="GameSettings.h">
       <Filter>Headers\Main Game Classes</Filter>
     </ClInclude>
@@ -201,6 +196,7 @@
     <ClInclude Include="PlayerInteraction.h">
       <Filter>Headers\Character Classes</Filter>
     </ClInclude>
+    <ClInclude Include="Agent.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />

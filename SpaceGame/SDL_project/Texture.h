@@ -22,6 +22,8 @@ public:
 	void render(SDL_Renderer* renderer, int x, int y, int width, int height);
 	//! Alters the alpha value of the image to make it appear transparent in the window
 	void alterTransparency(int transparencyLevel);
+	//! Alters the r,g,b colours of the texture
+	void Texture::alterTextureColour(int r, int g, int b);
 
 private:
 	//! The image location
