@@ -39,7 +39,7 @@ void Agent::Update()
 			setY(getY() - 1);
 			movementDirection = "Up";
 		}
-
+		// If the agent is at the point then iterate to the next point
 		else if (getX() == path[pathPointIterator].getX() && getY() == path[pathPointIterator].getY())
 		{
 			pathPointIterator++;

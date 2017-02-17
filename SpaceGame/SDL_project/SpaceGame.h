@@ -67,10 +67,10 @@ public:
 	CellRendering cellrenderer;
 	
 	//! Pathfinding function
-	void SpaceGame::drawPath(Point& point, Level& level);
+	void SpaceGame::drawPath(Point& point, Level& level, std::vector<Point>& path);
 
 	//! Conains the list of nodes that makes the path
-	std::vector<Point> path;
+	//std::vector<Point> path;
 	
 	//! Contains a list of all the hydroponic farms
 	std::vector<Hydroponics> allHydroponicsFarms;
@@ -106,7 +106,5 @@ private:
 	//! Whether the game is running or not
 	bool running;
 	bool menu;
-
-	
 };
 

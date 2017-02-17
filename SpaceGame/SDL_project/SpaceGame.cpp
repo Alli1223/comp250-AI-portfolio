@@ -101,8 +101,8 @@ void SpaceGame::run()
 		//ship rendering
 		shipmanager.rendership(allships, renderer);
 		*/
-
-		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_LEFT) && SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
+		
+		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_LEFT) && SDL_BUTTON(SDL_SCANCODE_F))
 		{
 			characters.SpawnAgent("NPC", allAgents, mouse_X, mouse_Y);
 		}
@@ -127,13 +127,13 @@ void SpaceGame::run()
 				//Renders all he cells
 				cellrenderer.RenderCells(room, renderer, x, y);
 
-				/* Fill the screen with room cells
+				// Fill the screen with room cells
 				if (x > 1 && y > 1 && x < room.getLevelWidth() - 2 && y < room.getLevelHeight() - 2)
 				{
 					room.grid[x][y]->isRoom = true;
 					//designroom.designRoom(room, x, y);
 				}
-				*/
+				
 
 				// Object Updates
 				//Spawns fire randomly in rooms over time
@@ -192,18 +192,18 @@ void SpaceGame::run()
 				Point StartPoint(allAgents[i].getX() / cellSize, allAgents[i].getX() / cellSize);
 				Point EndPoint(mouse_X / cellSize, mouse_Y / cellSize);
 
-				
-
 				allAgents[i].Move(room, StartPoint, EndPoint);
-
-				for (int it = 0; it < allAgents[i].path.size(); it++)
-				{
-					drawPath(allAgents[0].path[it], room);
-				}
-
-
 			}
 		}
+
+		for (int i = 0; i < allAgents.size(); i++)
+		{
+			for (int it = 0; it < allAgents[i].path.size(); it++)
+			{
+				drawPath(allAgents[i].path[it], room, allAgents[i].path);
+			}
+		}
+		
 
 		///////////////////////////////////////
 		//MENU
@@ -231,11 +231,10 @@ void SpaceGame::run()
 
 void SpaceGame::deleteVectors()
 {
-	path.erase(path.begin(), path.end());
 	allHydroponicsFarms.erase(allHydroponicsFarms.begin(), allHydroponicsFarms.end());
 }
 
-void SpaceGame::drawPath(Point& point, Level& level)
+void SpaceGame::drawPath(Point& point, Level& level, std::vector<Point>& path)
 {
 	// Start at the start point
 	
