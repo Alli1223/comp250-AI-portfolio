@@ -46,6 +46,7 @@ public:
 	std::vector<Point> path;
 
 	//! Contains what the current status of the agent is doing
+	/*! Types of agent state: (Idle, FoundPath, Dead)*/
 	std::string agentStatus = "Idle";
 
 
@@ -56,8 +57,8 @@ public:
 
 	//! A double for the character's health
 	double health = 100;
-	//! A double for the character's stored oxygen
-	double charactersOxygenReserves = 100;
+	//! A int for the character's stored oxygen
+	int agentsOxygenReserves = 100;
 	//! Boolean for whether character is alive
 	bool isAlive = true;
 
@@ -68,7 +69,7 @@ private:
 	//! Integer for the character's size when rendered
 	int size = 25;
 	//! Integer for the characters current speed
-	int speed = 3;
+	int speed = 1;
 	//! Double to store character hunger
 	double Hunger = 100;
 	//! Integer to store character tiredness

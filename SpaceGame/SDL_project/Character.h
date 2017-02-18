@@ -24,10 +24,6 @@ public:
 	//! Spawn character function (Character types are (NPC, Player)
 	void Character::SpawnAgent(std::string CharacterTypeVar, std::vector<Agent>& allAgents, int x, int y);
 
-	//! Move the character
-	void Character::MoveCharacter(Level& level, Point& StartPoint, Point& EndPoint, Agent& AgentToMove);
-		
-
 	//! Movement Direction
 	std::string movementDirection = "Down";
 

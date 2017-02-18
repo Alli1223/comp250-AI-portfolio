@@ -13,11 +13,6 @@ Character::~Character()
 
 }
 
-void Character::MoveCharacter(Level& level, Point& StartPoint, Point& EndPoint, Agent& AgentToMove)
-{
-
-}
-
 void Character::SpawnAgent(std::string CharacterTypeVar, std::vector<Agent>& allAgents, int x, int y)
 {
 		Agent newAgent;
