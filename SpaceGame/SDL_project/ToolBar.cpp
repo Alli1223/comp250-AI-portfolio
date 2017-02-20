@@ -46,24 +46,8 @@ void ToolBar::RenderToolbar(SDL_Renderer* renderer, int WINDOW_WIDTH, int WINDOW
 		doOnce = false;
 	}
 	
-	/*
-	int toobarIconXPos = toolbarXpos + (toolbarIconSize * 2);
-	int iconOneXpos = toolbarXpos;
-	int iconOneYpos = toolbarYpos;
-	toobarIconXPos = toolbarXpos + toolbarIconSize * 2;
 
-	int iconTwoXpos = toobarIconXPos;
-	int iconTwoYpos = toolbarYpos;
-	toobarIconXPos = toobarIconXPos + toolbarIconSize * 2;
-
-	int iconThreeXpos = toobarIconXPos;
-	int iconThreeYpos = toolbarYpos;
-	toobarIconXPos = toobarIconXPos + toolbarIconSize * 2;
-
-	int iconFourXpos = toobarIconXPos;
-	int iconFourYpos = toolbarYpos;
-	*/
-	//toolBarBackground.alterTransparency(20);
+	toolBarBackground.alterTransparency(200);
 	toolBarBackground.render(renderer, toolbarXpos, toolbarYpos, toolbarSizeX, toolbarSizeY);
 
 	for each (auto icon in allIcons)

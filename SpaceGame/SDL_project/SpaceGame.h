@@ -53,7 +53,7 @@ public:
 	Oxygen oxygen;
 	Fire fire;
 	PlayerInteraction characterInteraction;
-	Character characters;
+	AgentManager agentManager;
 	Cell cell;
 	ToolBar toolbar;
 	EscapeMenu escapemenu;
@@ -102,7 +102,5 @@ private:
 	//! Whether the game is running or not
 	bool running;
 	bool menu;
-
-	int maxAgents = 10;
 };
 

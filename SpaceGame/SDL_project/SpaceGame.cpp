@@ -80,6 +80,10 @@ void SpaceGame::run()
 			{
 				menu = false;
 			}
+			else if (state[SDL_SCANCODE_0])
+			{
+				agentManager.EraseAllAgents(allAgents);
+			}
 		}//End pollevent if
 
 		// Checks the keyboard for input
@@ -104,13 +108,8 @@ void SpaceGame::run()
 		
 		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_RIGHT) )
 		{
-			characters.SpawnAgent("NPC", allAgents, mouse_X, mouse_Y);
+			agentManager.SpawnAgent("NPC", allAgents, mouse_X, mouse_Y);
 		}
-		/*else if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
-		{
-			characters.SpawnAgent("Player", allAgents, mouse_X, mouse_Y);
-		}
-		*/
 		
 
 		
@@ -127,13 +126,13 @@ void SpaceGame::run()
 				//Renders all he cells
 				cellrenderer.RenderCells(room, renderer, x, y);
 
-				/* Fill the screen with room cells
+				// Fill the screen with room cells
 				if (x > 0 && y > 0 && x < room.getLevelWidth()  && y < room.getLevelHeight() )
 				{
 					room.grid[x][y]->isRoom = true;
 					//designroom.designRoom(room, x, y);
 				}
-				*/
+				
 
 				// Object Updates
 				//Spawns fire randomly in rooms over time
@@ -153,7 +152,7 @@ void SpaceGame::run()
 		hydroponics->renderItems(renderer, room, allHydroponicsFarms);
 
 		// Render characters
-		characters.RenderAgents(allAgents, renderer, room);
+		agentManager.RenderAgents(allAgents, renderer, room);
 
 		
 
@@ -185,7 +184,7 @@ void SpaceGame::run()
 		}
 
 		// All agents move to mouse position
-		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_MIDDLE) && maxAgents > 0)
+		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_MIDDLE) )
 		{
 			for (int i = 0; i < allAgents.size(); i++)
 			{
@@ -195,7 +194,6 @@ void SpaceGame::run()
 
 				allAgents[i].Move(room, StartPoint, EndPoint);
 			}
-			maxAgents--;
 		}
 
 		// UPDATE ALL AGENTS POSITION
@@ -237,6 +235,7 @@ void SpaceGame::run()
 void SpaceGame::deleteVectors()
 {
 	allHydroponicsFarms.erase(allHydroponicsFarms.begin(), allHydroponicsFarms.end());
+	allAgents.erase(allAgents.begin(), allAgents.end());
 }
 
 void SpaceGame::drawPath(Point& point, Level& level, std::vector<Point>& path)

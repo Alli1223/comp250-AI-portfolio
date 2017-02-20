@@ -1,19 +1,19 @@
 #include "stdafx.h"
-#include "Character.h"
+#include "AgentManager.h"
 
 
-Character::Character() : characterTex("Resources\\crew2.png"), characterLeft("Resources\\Character\\crewLeft.png"), characterRight("Resources\\Character\\crewRight.png"), characterUp("Resources\\Character\\crewUp.png"), characterDown("Resources\\Character\\crewDown.png"),
+AgentManager::AgentManager() : characterTex("Resources\\crew2.png"), characterLeft("Resources\\Character\\crewLeft.png"), characterRight("Resources\\Character\\crewRight.png"), characterUp("Resources\\Character\\crewUp.png"), characterDown("Resources\\Character\\crewDown.png"),
 npcLeft("Resources\\Character\\npcLeft.png"), npcRight("Resources\\Character\\npcRight.png"), npcUp("Resources\\Character\\npcUp.png"), npcDown("Resources\\Character\\npcDown.png")
 {
 }
 
 
-Character::~Character()
+AgentManager::~AgentManager()
 {
 
 }
 
-void Character::SpawnAgent(std::string CharacterTypeVar, std::vector<Agent>& allAgents, int x, int y)
+void AgentManager::SpawnAgent(std::string CharacterTypeVar, std::vector<Agent>& allAgents, int x, int y)
 {
 		Agent newAgent;
 		newAgent.setX(x);
@@ -23,7 +23,20 @@ void Character::SpawnAgent(std::string CharacterTypeVar, std::vector<Agent>& all
 		allAgents.push_back(newAgent);
 }
 
-void Character::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level)
+void AgentManager::EraseAllAgentPaths(std::vector<Agent>& allAgents) 
+{
+	for (int i = 0; i < allAgents.size(); i++)
+	{
+		allAgents[i].path.erase(allAgents[i].path.begin(), allAgents[i].path.end());
+	}
+}
+
+void AgentManager::EraseAllAgents(std::vector<Agent>& allAgents)
+{
+	allAgents.erase(allAgents.begin(), allAgents.end());
+}
+
+void AgentManager::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level)
 {
 	for (Agent& agent : allAgents)
 	{

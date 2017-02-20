@@ -1,7 +1,7 @@
 #pragma once
 #include "GUI.h"
 #include "Texture.h"
-#include "Character.h"
+#include "AgentManager.h"
 class PlayerStats : public GUI
 {
 public:
@@ -15,7 +15,7 @@ public:
 	Texture healthText;
 	Texture oxygenText;
 
-	void renderAndUpdatePlayerStats(SDL_Renderer* renderer, Character& character, int windowWidth, int windowHeight);
+	void renderAndUpdatePlayerStats(SDL_Renderer* renderer, AgentManager& character, int windowWidth, int windowHeight);
 
 protected:
 	int barXPos, barYPos;

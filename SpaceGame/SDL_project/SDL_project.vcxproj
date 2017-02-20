@@ -162,7 +162,7 @@
     <ClInclude Include="CargoShip.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellRendering.h" />
-    <ClInclude Include="Character.h" />
+    <ClInclude Include="AgentManager.h" />
     <ClInclude Include="DockingDoors.h" />
     <ClInclude Include="EscapeMenu.h" />
     <ClInclude Include="GameSettings.h" />
@@ -196,7 +196,7 @@
     <ClCompile Include="CargoShip.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellRendering.cpp" />
-    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="AgentManager.cpp" />
     <ClCompile Include="DockingDoors.cpp" />
     <ClCompile Include="EscapeMenu.cpp" />
     <ClCompile Include="GameSettings.cpp" />

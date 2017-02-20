@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Character.cpp">
-      <Filter>Source Files\Character Classes</Filter>
-    </ClCompile>
     <ClCompile Include="MainCharacter.cpp">
       <Filter>Source Files\Character Classes</Filter>
     </ClCompile>
@@ -91,11 +88,11 @@
     <ClCompile Include="Agent.cpp">
       <Filter>Source Files\Character Classes</Filter>
     </ClCompile>
+    <ClCompile Include="AgentManager.cpp">
+      <Filter>Source Files\Character Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Character.h">
-      <Filter>Headers\Character Classes</Filter>
-    </ClInclude>
     <ClInclude Include="MainCharacter.h">
       <Filter>Headers\Character Classes</Filter>
     </ClInclude>
@@ -187,6 +184,9 @@
       <Filter>Headers\Character Classes</Filter>
     </ClInclude>
     <ClInclude Include="Agent.h">
+      <Filter>Headers\Character Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="AgentManager.h">
       <Filter>Headers\Character Classes</Filter>
     </ClInclude>
   </ItemGroup>
