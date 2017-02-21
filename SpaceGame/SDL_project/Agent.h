@@ -9,7 +9,7 @@ public:
 	~Agent();
 
 	//! Update method for Agent
-	void Agent::Update();
+	void Agent::Update(Level& level);
 	void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint);
 
 
@@ -44,7 +44,10 @@ public:
 
 	//! Conains the list of nodes that makes the path
 	std::vector<Point> path;
-	std::string agentStatus = "Null";
+
+	//! Contains what the current status of the agent is doing
+	/*! Types of agent state: (Idle, FoundPath, Dead)*/
+	std::string agentStatus = "Idle";
 
 
 	//! Gets and Sets the characters hunger
@@ -54,8 +57,8 @@ public:
 
 	//! A double for the character's health
 	double health = 100;
-	//! A double for the character's stored oxygen
-	double charactersOxygenReserves = 100;
+	//! A int for the character's stored oxygen
+	int agentsOxygenReserves = 100;
 	//! Boolean for whether character is alive
 	bool isAlive = true;
 
@@ -66,7 +69,7 @@ private:
 	//! Integer for the character's size when rendered
 	int size = 25;
 	//! Integer for the characters current speed
-	int speed = 3;
+	int speed = 10;
 	//! Double to store character hunger
 	double Hunger = 100;
 	//! Integer to store character tiredness

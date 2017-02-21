@@ -86,7 +86,7 @@ void Oxygen::update(Level& grid, int cellX, int cellY)
 }
 	
 
-std::vector<Point> Oxygen::getNeighbourCells(Point point, Level& grid)
+std::vector<Point> Oxygen::getNeighbourCells(Point& point, Level& grid)
 {
 	//Retuns neighbouring cells
 	std::vector<Point> result;

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "PlayerInteraction.h"
-#include "Character.h"
+#include "AgentManager.h"
 #include "level.h"
 #include "Oxygen.h"
 

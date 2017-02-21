@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Character.cpp">
-      <Filter>Source Files\Character Classes</Filter>
-    </ClCompile>
     <ClCompile Include="MainCharacter.cpp">
       <Filter>Source Files\Character Classes</Filter>
     </ClCompile>
@@ -46,9 +43,6 @@
     <ClCompile Include="Point.cpp">
       <Filter>Source Files\Level Classes\PathFinding</Filter>
     </ClCompile>
-    <ClCompile Include="TraversePath.cpp">
-      <Filter>Source Files\Level Classes\PathFinding</Filter>
-    </ClCompile>
     <ClCompile Include="GameSettings.cpp">
       <Filter>Source Files\Main Game Classes</Filter>
     </ClCompile>
@@ -57,9 +51,6 @@
     </ClCompile>
     <ClCompile Include="ToolBar.cpp">
       <Filter>Source Files\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectiveManager.cpp">
-      <Filter>Source Files\Main Game Classes</Filter>
     </ClCompile>
     <ClCompile Include="Items.cpp">
       <Filter>Source Files\Items</Filter>
@@ -94,12 +85,14 @@
     <ClCompile Include="PlayerInteraction.cpp">
       <Filter>Source Files\Character Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Agent.cpp" />
+    <ClCompile Include="Agent.cpp">
+      <Filter>Source Files\Character Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="AgentManager.cpp">
+      <Filter>Source Files\Character Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Character.h">
-      <Filter>Headers\Character Classes</Filter>
-    </ClInclude>
     <ClInclude Include="MainCharacter.h">
       <Filter>Headers\Character Classes</Filter>
     </ClInclude>
@@ -148,9 +141,6 @@
     <ClInclude Include="Point.h">
       <Filter>Headers\Level Classes\PathFinding</Filter>
     </ClInclude>
-    <ClInclude Include="TraversePath.h">
-      <Filter>Headers\Level Classes\PathFinding</Filter>
-    </ClInclude>
     <ClInclude Include="GameSettings.h">
       <Filter>Headers\Main Game Classes</Filter>
     </ClInclude>
@@ -159,9 +149,6 @@
     </ClInclude>
     <ClInclude Include="ToolBar.h">
       <Filter>Headers\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectiveManager.h">
-      <Filter>Headers\Main Game Classes</Filter>
     </ClInclude>
     <ClInclude Include="Items.h">
       <Filter>Headers\Items</Filter>
@@ -196,7 +183,12 @@
     <ClInclude Include="PlayerInteraction.h">
       <Filter>Headers\Character Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Agent.h" />
+    <ClInclude Include="Agent.h">
+      <Filter>Headers\Character Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="AgentManager.h">
+      <Filter>Headers\Character Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />
@@ -242,9 +234,6 @@
     <Filter Include="Headers\Level Classes\PathFinding">
       <UniqueIdentifier>{37765115-50b9-4cbb-80f0-1cdc119b11d4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Character Classes\NPC Classes">
-      <UniqueIdentifier>{5948eb68-75d0-4e4b-a7da-736d9c4df11e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\GUI">
       <UniqueIdentifier>{0d827652-d7fc-41e7-b8a4-5e5b0aff302e}</UniqueIdentifier>
     </Filter>
@@ -271,9 +260,6 @@
     </Filter>
     <Filter Include="Headers\Character Classes">
       <UniqueIdentifier>{0072aba4-18bc-42ba-8ec0-c5d7603daa9d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headers\Character Classes\NPC Classes">
-      <UniqueIdentifier>{fe432389-1c62-43a4-803c-135f08cd75fc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -6,7 +6,13 @@ double euclideanDistance(const Point& a, const Point& b)
 {
 	double dx = a.getX() - a.getX();
 	double dy = b.getY() - b.getY();
-	return sqrt(dx*dx + dy*dy);
+	double dist;
+
+	dist = pow(dx, 2) + pow(dy, 2);
+	dist = sqrt(dist);
+	//sqrt(dx*dx + dy*dy);
+	return dist;
+
 }
 
 void Pathfinder::addToClosedSet(std::shared_ptr<Node> node)
@@ -22,9 +28,7 @@ void Pathfinder::addToOpenSet(std::shared_ptr<Node> node)
 std::vector<std::shared_ptr<Node>> Pathfinder::getNeighbours(std::shared_ptr<Node> node, Level& level)
 {
 	std::vector<std::shared_ptr<Node>> result;
-	
-	
-	
+	// If the node is within the level
 	if (node->point.getX() - 1 >= 0 && node->point.getX() + 1 <= level.getLevelWidth())
 	{
 		if (node->point.getY() - 1 >= 0 && node->point.getY() + 1 <= level.getLevelHeight())
@@ -102,10 +106,10 @@ std::shared_ptr<Node> Pathfinder::getOpenSetElementWithLowestScore()
 
 std::vector<Point> Pathfinder::findPath(Level& map, const Point& start, const Point& goal)
 {
-	//clear all the node for fresh pathfind
+	// Clear all the node for fresh pathfind
 	nodes.clear();
 
-	//create nodes for evert cell in the grid
+	// Create nodes for every cell in the grid
 	for (int x = 0; x < map.grid.size(); x++)
 	{
 		nodes.push_back(std::vector<std::shared_ptr<Node>>(map.grid.size(), nullptr));
@@ -118,7 +122,7 @@ std::vector<Point> Pathfinder::findPath(Level& map, const Point& start, const Po
 	addToOpenSet(startNode);
 
 
-	//chooses the best neighbour cell to move to
+	// Chooses the best neighbour cell to move to
 	while (auto currentNode = getOpenSetElementWithLowestScore())
 	{
 		//if the current cell is the goal, make the path
@@ -129,7 +133,7 @@ std::vector<Point> Pathfinder::findPath(Level& map, const Point& start, const Po
 
 		addToClosedSet(currentNode);
 
-		//loops through each of the neighbours
+		// Loops through each of the neighbours
 		for (auto neighbour : getNeighbours(currentNode, map))
 		{
 			//if the cell is a room and not in closed set and not on fire
@@ -158,6 +162,7 @@ std::vector<Point> Pathfinder::findPath(Level& map, const Point& start, const Po
 std::vector<Point> Pathfinder::reconstructPath(std::shared_ptr<Node> goalNode)
 {
 	std::vector<Point> result;
+	// Goes back through the path and reconstruct it and then return the result
 	for (auto currentNode = goalNode; currentNode; currentNode = currentNode->cameFrom)
 	{
 		result.insert(result.begin(), currentNode->point);

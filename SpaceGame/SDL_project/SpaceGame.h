@@ -7,14 +7,11 @@
 #include "SDL2_image-2.0.1\include\SDL_image.h"
 #include "Cell.h"
 #include "MainCharacter.h"
-#include "IdleState.h"
 #include "Oxygen.h"
 #include "Fire.h"
 #include "RoomDesign.h"
 #include "PlayerInteraction.h"
 #include "PathFinder.h"
-#include "TraversePath.h"
-#include "ObjectiveManager.h"
 #include "GameSettings.h"
 #include "GUI.h"
 #include "ToolBar.h"
@@ -51,20 +48,22 @@ public:
 	void SpaceGame::deleteVectors();
 
 	//! Initalising all classes needed for game
+	Level level;
 	GameSettings gameSettings;
+	Map mapLoader;
+	RoomDesign designroom;
 	Oxygen oxygen;
 	Fire fire;
 	PlayerInteraction characterInteraction;
-	Character characters;
+	AgentManager agentManager;
 	Cell cell;
-	TraversePath traversepath;
-	ObjectiveManager objectivemanager;
 	ToolBar toolbar;
 	EscapeMenu escapemenu;
 	DockingDoors dockingdoors;
 	ShipManager shipmanager;
 	PlayerStats playerstats;
 	CellRendering cellrenderer;
+	Hydroponics hydroponics;
 	
 	//! Pathfinding function
 	void SpaceGame::drawPath(Point& point, Level& level, std::vector<Point>& path);
@@ -106,7 +105,5 @@ private:
 	//! Whether the game is running or not
 	bool running;
 	bool menu;
-
-	int maxAgents = 10;
 };
 
