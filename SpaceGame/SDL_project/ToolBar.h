@@ -14,9 +14,9 @@ public:
 	~ToolBar();
 	
 	//! Function that renders the toolbar
-	void ToolBar::RenderToolbar(SDL_Renderer* renderer, int WINDOW_WIDTH, int WINDOW_HEIGHT, int mouseX, int mouseY);
+	void ToolBar::RenderToolbar(SDL_Renderer* renderer, int& WINDOW_WIDTH, int& WINDOW_HEIGHT, int& mouseX, int& mouseY);
 
-	void ToolBar::ToolBarFunctionality(Level& room, RoomDesign& designroom,SDL_Renderer* renderer, int mouseX, int mouseY);
+	void ToolBar::ToolBarFunctionality(Level& room, RoomDesign& designroom, DockingDoors& dockingdoors,Hydroponics& hydroponics, std::vector<Hydroponics>& allHydroponicsFarms, SDL_Renderer* renderer, int& mouseX, int& mouseY);
 
 	//! The getters and setters for the toolbar selection
 	int getToolbarSelection() const { return toolbarSelection; }
@@ -49,6 +49,8 @@ public:
 	Texture HydroponicsIconTexture;
 	//! Is the texture for the bed
 	Texture BedIconTexture;
+	//! Is the texture for the shipDock
+	Texture ShipDockTexture;
 
 	std::vector<std::shared_ptr<Icon>> allIcons;
 

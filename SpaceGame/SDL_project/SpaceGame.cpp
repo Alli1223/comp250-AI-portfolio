@@ -38,17 +38,11 @@ SpaceGame::~SpaceGame()
 void SpaceGame::run()
 {
 	// Level generation
-	Level room;
 	room.makeGrid(WINDOW_WIDTH, WINDOW_HEIGHT);
-	Map mapLoader;
-	RoomDesign designroom;
 
 	// Choose whether to generate or load a map
 	//mapLoader.LoadMap("Resources\\Map\\Default_map.txt", room);
 	//mapLoader.generateMap(room, designroom);
-
-
-	auto hydroponics = std::make_shared<Hydroponics>();
 
 
 	running = true;
@@ -126,13 +120,13 @@ void SpaceGame::run()
 				//Renders all he cells
 				cellrenderer.RenderCells(room, renderer, x, y);
 
-				// Fill the screen with room cells
-				if (x > 0 && y > 0 && x < room.getLevelWidth()  && y < room.getLevelHeight() )
+				/* Fill the screen with room cells
+				if (x > 0 && y > 0 && x < room.getLevelWidth() - 1 && y < room.getLevelHeight() - 1 )
 				{
 					room.grid[x][y]->isRoom = true;
 					//designroom.designRoom(room, x, y);
 				}
-				
+				*/
 
 				// Object Updates
 				//Spawns fire randomly in rooms over time
@@ -149,7 +143,7 @@ void SpaceGame::run()
 		}//End for X loop
 
 		 // Render the vector of hydroponics
-		hydroponics->renderItems(renderer, room, allHydroponicsFarms);
+		hydroponics.renderItems(renderer, room, allHydroponicsFarms);
 
 		// Render characters
 		agentManager.RenderAgents(allAgents, renderer, room);
@@ -159,7 +153,7 @@ void SpaceGame::run()
 
 
 		// TOOLBAR
-		toolbar.ToolBarFunctionality(room, designroom, renderer, mouse_X, mouse_Y);
+		toolbar.ToolBarFunctionality(room, designroom, dockingdoors, hydroponics, allHydroponicsFarms, renderer, mouse_X, mouse_Y);
 		toolbar.RenderToolbar(renderer, WINDOW_WIDTH, WINDOW_HEIGHT, mouse_X, mouse_Y);
 
 		//playerstats.renderAndUpdatePlayerStats(renderer, characterOne, WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -167,21 +161,9 @@ void SpaceGame::run()
 
 		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_LEFT) && toolbar.getToolbarSelection() == 4)
 		{
-			if (room.grid[mouse_X / cellSize][mouse_Y / cellSize]->isRoom && toolbar.numberOfItem4 > 0)
-			{
-				hydroponics->spawnHydroponicBase(renderer, room, allHydroponicsFarms, mouse_X, mouse_Y);
-				//toolbar.numberOfItem4--;
-			}
+			
 		}
 
-		if (toolbar.getToolbarSelection() == 5)
-		{
-			if (toolbar.numberOfItem4 > 0)
-			{
-				dockingdoors.placeDockingDoors(renderer, room);
-			}
-
-		}
 
 		// All agents move to mouse position
 		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_MIDDLE) )
