@@ -48,7 +48,7 @@ public:
 	void SpaceGame::deleteVectors();
 
 	//! Initalising all classes needed for game
-	Level room;
+	Level level;
 	GameSettings gameSettings;
 	Map mapLoader;
 	RoomDesign designroom;
