@@ -52,7 +52,7 @@ void Agent::Update(Level& level)
 		}
 
 		// If the Agent has reached the end of the path then reset the pathfinder and set the agent to idle.
-		if (pathPointIterator == path.size())
+		if (pathPointIterator >= path.size())
 		{
 			agentStatus = "Idle";
 			pathPointIterator = 0;
@@ -66,6 +66,25 @@ void Agent::Update(Level& level)
 	{
 		//->agentStatus = "Dead";
 	}
+	/* TODO: finish this code to make the agent wonder randomly
+	if (this->agentStatus == "Idle")
+	{
+		bool foundEndPoint = false;
+		Point endPoint;
+		while (!foundEndPoint)
+		{
+			int x = rand() % level.getLevelWidth() / cellSize;
+			int y = rand() % level.getLevelHeight() / cellSize;
+			if (level.grid[x][y]->isRoom)
+			{
+				endPoint = Point(level.grid[x][y]->getX(), level.grid[x][y]->getY());
+				foundEndPoint = true;
+			}
+		}
+		Point startPoint(this->getX() / cellSize, this->getY() / cellSize);
+		this->Move(level, startPoint, endPoint);
+	}
+	*/
 
 	//! Changes what the agent looks like based on how much oxyen it has
 	if (level.grid[this->getX() / cellSize][this->getY() / cellSize]->oxygenLevel < 30)
@@ -84,7 +103,8 @@ void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint)
 	if (agentStatus == "Idle")
 	{
 		path = pathfinder.findPath(level, StartPoint, EndPoint);
-		agentStatus = "FoundPath";
+		if (path.size() > 0)
+			agentStatus = "FoundPath";
 	}
-	
+
 }

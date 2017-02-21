@@ -116,7 +116,7 @@ void ToolBar::RenderToolbar(SDL_Renderer* renderer, int& WINDOW_WIDTH, int& WIND
 			}
 		}
 
-		// ICON FIVE
+		// ICON FIVE (ShipDock)
 		else if (icon->getIconID() == 5)
 		{
 			if (numberOfItem5 > 0)
@@ -124,7 +124,6 @@ void ToolBar::RenderToolbar(SDL_Renderer* renderer, int& WINDOW_WIDTH, int& WIND
 				ShipDockTexture.render(renderer, icon->getX(), icon->getY(), toolbarIconSize, toolbarIconSize);
 				if (mouseX > icon->getX() - (toolbarIconSize / 2) && mouseX < icon->getX() + (toolbarIconSize / 2) && mouseY > toolbarYpos - toolbarIconSize / 2 && mouseY < toolbarYpos + toolbarSizeY / 2)
 				{
-
 					ShipDockTexture.render(renderer, icon->getX(), icon->getY(), toolbarIconSize + mouseOverSizeIncrease, toolbarIconSize + mouseOverSizeIncrease);
 					if (SDL_GetMouseState(&mouseX, &mouseY) & SDL_BUTTON(SDL_BUTTON_LEFT))
 					{
@@ -134,7 +133,7 @@ void ToolBar::RenderToolbar(SDL_Renderer* renderer, int& WINDOW_WIDTH, int& WIND
 			}
 		}
 
-		// ICON SIX
+		// ICON SIX (Bed)
 		else if (icon->getIconID() == 6)
 		{
 			if (numberOfItem6 > 0)
@@ -223,7 +222,7 @@ void ToolBar::ToolBarFunctionality(Level& level, RoomDesign& designroom,DockingD
 		
 
 		//Place Item 5 ( Docking Doors)
-		if (SDL_GetMouseState(&mouse_X, &mouse_Y) && toolbarSelection == 5)
+		if (toolbarSelection == 5)
 		{
 			dockingdoors.placeDockingDoors(renderer, level);
 		}

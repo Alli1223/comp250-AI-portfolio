@@ -69,7 +69,7 @@ private:
 	//! Integer for the character's size when rendered
 	int size = 25;
 	//! Integer for the characters current speed
-	int speed = 1;
+	int speed = 10;
 	//! Double to store character hunger
 	double Hunger = 100;
 	//! Integer to store character tiredness

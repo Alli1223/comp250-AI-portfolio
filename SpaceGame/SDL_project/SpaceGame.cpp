@@ -2,7 +2,7 @@
 #include "SpaceGame.h"
 #include "InitialisationError.h"
 
-SpaceGame::SpaceGame() : backgroundTexture("Resources\\background.png")
+SpaceGame::SpaceGame() : backgroundTexture("Resources\\background5.jpg")
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
@@ -78,6 +78,10 @@ void SpaceGame::run()
 			{
 				agentManager.EraseAllAgents(allAgents);
 			}
+			else if (state[SDL_SCANCODE_9])
+			{
+				agentManager.EraseAllAgentPaths(allAgents);
+			}
 		}//End pollevent if
 
 		// Checks the keyboard for input
@@ -134,10 +138,10 @@ void SpaceGame::run()
 				//fire.fireSpread(room, x, y);
 
 				// Runs Oxygen spread function
-				//oxygen.update(room, x, y);
+				oxygen.update(room, x, y);
 
-				//hydroponics Update
-				//hydroponics->update(room, allHydroponicsFarms, x, y);
+				
+				hydroponics.update(room, allHydroponicsFarms, x, y);
 
 			} //End for Y loop
 		}//End for X loop
@@ -182,6 +186,8 @@ void SpaceGame::run()
 		for (int i = 0; i < allAgents.size(); i++)
 		{
 			allAgents[i].Update(room);
+
+
 			/* DRAW THE PATH FOR ALL AGENTS (VERY RESOURCE INTENSIVE)
 			for (int it = 0; it < allAgents[i].path.size(); it++)
 			{
@@ -189,6 +195,7 @@ void SpaceGame::run()
 			}
 			*/
 		}
+		
 		
 		
 

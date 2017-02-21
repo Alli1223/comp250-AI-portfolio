@@ -28,6 +28,7 @@ void AgentManager::EraseAllAgentPaths(std::vector<Agent>& allAgents)
 	for (int i = 0; i < allAgents.size(); i++)
 	{
 		allAgents[i].path.erase(allAgents[i].path.begin(), allAgents[i].path.end());
+		allAgents[i].agentStatus = "Idle";
 	}
 }
 
@@ -40,8 +41,8 @@ void AgentManager::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* ren
 {
 	for (Agent& agent : allAgents)
 	{
-		int x = agent.getX()  - (level.getCellSize() / 2);
-		int y = agent.getY() - (level.getCellSize() / 2);
+		int x = agent.getX()  + (level.getCellSize() / 4);
+		int y = agent.getY() + (level.getCellSize() / 4);
 		if (agent.characterType == "NPC")
 		{
 			//npcDown.alterTextureColour(rand() % 200, 0,0);
