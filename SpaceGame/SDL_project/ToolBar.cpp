@@ -151,9 +151,13 @@ void ToolBar::RenderToolbar(SDL_Renderer* renderer, int& WINDOW_WIDTH, int& WIND
 				}
 			}
 		}
-	}
+		else if (icon->getIconID() == 7)
+		{
 
+		}
+	}
 }
+
 
 void ToolBar::ToolBarFunctionality(Level& level, RoomDesign& designroom,DockingDoors& dockingdoors, Hydroponics& hydroponics, std::vector<Hydroponics>& allHydroponicsFarms, SDL_Renderer* renderer, int& mouse_X, int& mouse_Y)
 {
@@ -198,43 +202,36 @@ void ToolBar::ToolBarFunctionality(Level& level, RoomDesign& designroom,DockingD
 				}
 			}
 		}
-		// Place Item 3
+		// Place Item 3 (Doors)
 		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_LEFT) && toolbarSelection == 3)
 		{
-			if (numberOfItem3 > 0 && !level.grid[mouse_X / level.getCellSize()][mouse_Y / level.getCellSize()]->isOpenDoor)
+			if (!level.grid[mouse_X / level.getCellSize()][mouse_Y / level.getCellSize()]->isOpenDoor)
 			{
 				level.grid[mouse_X / level.getCellSize()][mouse_Y / level.getCellSize()]->isOpenDoor = true;
-				numberOfItem3--;
 			}
 		}
 
+		// Place Item 4 (Hydroponics)
 		if (SDL_GetMouseState(&mouse_X, &mouse_Y) && toolbarSelection == 4)
 		{
 			if (level.grid[mouse_X / level.getCellSize()][mouse_Y / level.getCellSize()]->isRoom)
 			{
 				hydroponics.spawnHydroponicBase(renderer, level, allHydroponicsFarms, mouse_X, mouse_Y);
-				//toolbar.numberOfItem4--;
+				level.grid[mouse_X / level.getCellSize()][mouse_Y / level.getCellSize()]->isWalkable = false;
 			}
 		}
 		
 
-		//Place Item 5
+		//Place Item 5 ( Docking Doors)
 		if (SDL_GetMouseState(&mouse_X, &mouse_Y) && toolbarSelection == 5)
 		{
 			dockingdoors.placeDockingDoors(renderer, level);
 		}
 
-		//Place Item 6
+		//Place Item 6 ( Bed )
 		if (SDL_GetMouseState(&mouse_X, &mouse_Y) && toolbarSelection == 6)
 		{
 			level.grid[mouse_X / level.getCellSize()][mouse_Y / level.getCellSize()]->isBed = true;
-		}
-
-
-
-		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_MIDDLE))
-		{
-			level.grid[mouse_X / level.getCellSize()][mouse_Y / level.getCellSize()]->oxygenLevel = 100;
 		}
 	}
 }

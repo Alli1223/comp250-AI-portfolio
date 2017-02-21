@@ -54,10 +54,11 @@ public:
 
 	std::vector<std::shared_ptr<Icon>> allIcons;
 
-	// IconSize
+	//! IconSize
 	int toolbarIconSize = 50;
 
-	int numberOfIcons = 6;
+	//! Numer of icons on the toolbar
+	int numberOfIcons = 7;
 
 	// How much they increase in size when mouseover
 	int mouseOverSizeIncrease = 10;
