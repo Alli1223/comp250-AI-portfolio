@@ -53,7 +53,11 @@ private:
 	Texture cargoTexture;
 
 	//! Is the texture for the beds
-	Texture bedSide;
+	Texture bedSideTexture;
+	//! Is the texture for the toilet
+	Texture toiletTexture;
+	//! Is the texture for the kitchen
+	Texture kitchenTexture;
 
 
 	//! Is the texture for hull breaches

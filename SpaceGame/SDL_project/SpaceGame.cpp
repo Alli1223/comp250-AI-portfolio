@@ -138,10 +138,10 @@ void SpaceGame::run()
 				//fire.fireSpread(room, x, y);
 
 				// Runs Oxygen spread function
-				oxygen.update(level, x, y);
+				//oxygen.update(level, x, y);
 
 				
-				hydroponics.update(level, allHydroponicsFarms, x, y);
+				//hydroponics.update(level, allHydroponicsFarms, x, y);
 
 			} //End for Y loop
 		}//End for X loop

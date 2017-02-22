@@ -22,7 +22,9 @@ CellRendering::CellRendering() : roomCell("Resources\\roomSprites\\texturePack\\
 	hullBreachTexture("Resources\\roomSprites\\hullBreach2.png"),
 	deathAnim("Resources\\deathAnim.png"),
 	goalTexture("Resources\\roomSprites\\crate1.png"),
-	bedSide("Resources\\SpawnItems\\Bed.png")
+	bedSideTexture("Resources\\SpawnItems\\Bed.png"),
+	toiletTexture("Resources\\roomSprites\\texturePack\\door.png"),
+	kitchenTexture("Resources\\roomSprites\\texturePack\\door.png")
 {
 }
 
@@ -202,6 +204,14 @@ void CellRendering::RenderCells(Level& level, SDL_Renderer* renderer, int x, int
 	}
 	if (level.grid[x][y]->isBed)
 	{
-		bedSide.render(renderer, xPos, yPos, cellSize, cellSize);
+		bedSideTexture.render(renderer, xPos, yPos, cellSize, cellSize);
+	}
+	if (level.grid[x][y]->isToilet)
+	{
+		toiletTexture.render(renderer, xPos, yPos, cellSize, cellSize);
+	}
+	if (level.grid[x][y]->isKitchen)
+	{
+		kitchenTexture.render(renderer, xPos, yPos, cellSize, cellSize);
 	}
 }
