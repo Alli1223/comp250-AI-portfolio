@@ -10,7 +10,7 @@ double euclideanDistance(const Point& a, const Point& b)
 
 	dist = pow(dx, 2) + pow(dy, 2);
 	dist = sqrt(dist);
-	//sqrt(dx*dx + dy*dy);
+	
 	return dist;
 
 }
@@ -92,7 +92,7 @@ std::shared_ptr<Node> Pathfinder::getOpenSetElementWithLowestScore()
 			if (node != nullptr && node->status == NodeStatus::Open)
 			{
 				double f = node->g + node->h;
-				if (result == nullptr || f > lowestFScore)
+				if (result == nullptr || f < lowestFScore)
 				{
 					result = node;
 					lowestFScore = f;

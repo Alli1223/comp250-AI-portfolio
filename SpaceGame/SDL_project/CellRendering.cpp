@@ -23,8 +23,8 @@ CellRendering::CellRendering() : roomCell(RoomSpriteTextureLocation + "center.pn
 	deathAnim("Resources\\deathAnim.png"),
 	goalTexture("Resources\\roomSprites\\crate1.png"),
 	bedSideTexture(RoomSpriteTextureLocation + "Bed.png"),
-	toiletTexture(RoomSpriteTextureLocation + "door.png"),
-	kitchenTexture(RoomSpriteTextureLocation + "door.png")
+	toiletTexture(RoomSpriteTextureLocation + "crate1.png"),
+	kitchenTexture(RoomSpriteTextureLocation + "cargoBayStorage.png")
 {
 }
 

@@ -86,7 +86,7 @@ void Agent::Update(Level& level)
 	}
 	*/
 
-	//! Changes what the agent looks like based on how much oxyen it has
+	/*! Changes what the agent looks like based on how much oxyen it has
 	if (level.grid[this->getX() / cellSize][this->getY() / cellSize]->oxygenLevel < 30)
 	{
 		this->characterType = "NPC";
@@ -95,6 +95,7 @@ void Agent::Update(Level& level)
 	{
 		this->characterType = "Player";
 	}
+	*/
 }
 
 void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint)

@@ -82,6 +82,15 @@ void SpaceGame::run()
 			{
 				agentManager.EraseAllAgentPaths(allAgents);
 			}
+			else if (state[SDL_SCANCODE_LEFTBRACKET])
+			{
+				level.setCellSize(level.getCellSize() * 2);
+			}
+			else if (state[SDL_SCANCODE_RIGHTBRACKET])
+			{
+				level.setCellSize(level.getCellSize() / 2);
+			}
+
 		}//End pollevent if
 
 		// Checks the keyboard for input
@@ -106,7 +115,8 @@ void SpaceGame::run()
 		
 		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
 		{
-			if(level.grid[mouse_X / cellSize][mouse_Y / cellSize]->isRoom)
+
+			if (level.grid[mouse_X / cellSize][mouse_Y / cellSize]->isRoom)
 				agentManager.SpawnAgent("NPC", allAgents, mouse_X, mouse_Y);
 		}
 		
@@ -184,7 +194,7 @@ void SpaceGame::run()
 			/* DRAW THE PATH FOR ALL AGENTS (VERY RESOURCE INTENSIVE)
 			for (int it = 0; it < allAgents[i].path.size(); it++)
 			{
-				drawPath(allAgents[i].path[it], room, allAgents[i].path);
+				drawPath(allAgents[i].path[i], level, allAgents[i].path);
 			}
 			*/
 		}
