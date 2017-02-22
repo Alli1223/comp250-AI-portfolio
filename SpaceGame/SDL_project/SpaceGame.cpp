@@ -106,7 +106,8 @@ void SpaceGame::run()
 		
 		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
 		{
-			agentManager.SpawnAgent("NPC", allAgents, mouse_X, mouse_Y);
+			if(level.grid[mouse_X / cellSize][mouse_Y / cellSize]->isRoom)
+				agentManager.SpawnAgent("NPC", allAgents, mouse_X, mouse_Y);
 		}
 		
 
