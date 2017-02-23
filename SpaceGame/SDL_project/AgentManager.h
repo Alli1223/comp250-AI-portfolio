@@ -3,7 +3,6 @@
 #include "Point.h"
 #include "PathFinder.h"
 #include "Texture.h"
-#include "Point.h"
 #include "Agent.h"
 
 
@@ -18,6 +17,9 @@ public:
 	AgentManager();
 	//! A destructor
 	~AgentManager();
+
+	//! Contains a list of all the characters
+	std::vector<Agent> allAgents;
 
 	void AgentManager::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level);
 

@@ -74,9 +74,6 @@ public:
 	//! Contains a list of all the hydroponic farms
 	std::vector<Hydroponics> allHydroponicsFarms;
 
-	//! Contains a list of all the characters
-	std::vector<Agent> allAgents;
-
 	//! Contains a list of all the ship
 	std::vector<Ship> allShips;
 
