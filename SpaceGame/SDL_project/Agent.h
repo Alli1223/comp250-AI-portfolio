@@ -49,16 +49,25 @@ public:
 	/*! Types of agent state: (Idle, FoundPath, Dead)*/
 	std::string agentStatus = "Idle";
 
+	//! Gets and Sets the agents health
+	int getHealth() { return health; }
+	int setHealth(int newHealth) { return health = newHealth; }
 
-	//! Gets and Sets the characters hunger
-	double getHunger() { return Hunger; }
-	double setHunger(int newHunger) { return Hunger = newHunger; }
+	//! Gets and Sets the agents hunger
+	int getHunger() { return hunger; }
+	int setHunger(int newHunger) { return hunger = newHunger; }
+
+	//! Gets and Sets the agents tiredness
+	int getTiredness() { return tiredness; }
+	int setTiredness(int newTiredness) { return tiredness = newTiredness; }
+
+	//! Gets and Sets the agents oxygen level
+	int getOxygenLevel() { return oxygenLevel; }
+	int setOxygenLevel(int newOxygenLevel) { return oxygenLevel = newOxygenLevel; }
 
 
-	//! A double for the character's health
-	double health = 100;
-	//! A int for the character's stored oxygen
-	int agentsOxygenReserves = 100;
+	
+	
 	//! Boolean for whether character is alive
 	bool isAlive = true;
 
@@ -70,10 +79,14 @@ private:
 	int size = 25;
 	//! Integer for the characters current speed
 	int speed = 1;
+	//! A double for the agents's health
+	int health = 100;
 	//! Double to store character hunger
-	double Hunger = 100;
+	int hunger = 100;
 	//! Integer to store character tiredness
-	int Tiredness = 0;
+	int tiredness = 0;
+	//! A int for the agents's stored oxygen
+	int oxygenLevel = 100;
 
 	int pathPointIterator = 0;
 };

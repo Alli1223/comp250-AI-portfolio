@@ -84,11 +84,11 @@ void SpaceGame::run()
 			}
 			else if (state[SDL_SCANCODE_LEFTBRACKET])
 			{
-				level.setCellSize(level.getCellSize() * 2);
+				level.setCellSize(level.getCellSize() - 2);
 			}
 			else if (state[SDL_SCANCODE_RIGHTBRACKET])
 			{
-				level.setCellSize(level.getCellSize() / 2);
+				level.setCellSize(level.getCellSize() + 2);
 			}
 
 		}//End pollevent if

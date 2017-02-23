@@ -62,12 +62,13 @@ void Agent::Update(Level& level)
 	}
 
 	// If the agent dies
-	if (!this->isAlive)
+	if (this->getHealth() <= 0)
 	{
+		this->isAlive = false;
 		this->agentStatus = "Dead";
 	}
 
-	// TODO: finish this code to make the agent wonder randomly
+	// Agent will wonder randomly when idle
 	if (this->agentStatus == "Idle")
 	{
 		bool foundEndPoint = false;
@@ -86,18 +87,12 @@ void Agent::Update(Level& level)
 		Point startPoint(this->getX() / cellSize, this->getY() / cellSize);
 		this->Move(level, startPoint, endPoint);
 	}
-	
 
-	/*! Changes what the agent looks like based on how much oxyen it has
-	if (level.grid[this->getX() / cellSize][this->getY() / cellSize]->oxygenLevel < 30)
+	//Decrease health if suffocating
+	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->getOxygenLevel() == 0)
 	{
-		this->characterType = "NPC";
+		this->setHealth(this->getHealth() - 1);
 	}
-	else
-	{
-		this->characterType = "Player";
-	}
-	*/
 }
 
 void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint)

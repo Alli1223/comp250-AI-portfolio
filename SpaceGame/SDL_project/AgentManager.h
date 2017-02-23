@@ -31,8 +31,8 @@ public:
 	void AgentManager::EraseAllAgents(std::vector<Agent>& allAgents);
 
 private:
-
-
+	std::string characterTextureLocation = "Resources\\Character\\";
+	std::string playerStatsTextureLocation = "Resources\\GUI\\PlayerStats\\";
 	//! For the Character
 	Texture characterTex;
 	//! Is the textures for the default character
@@ -46,5 +46,10 @@ private:
 	Texture npcRight;
 	Texture npcUp;
 	Texture npcDown;
+
+	//! Are the textures for the statusbars
+	Texture healthBarTexture;
+	Texture hungerBarTexture;
+	Texture tiredBarTexture;
 };
 
