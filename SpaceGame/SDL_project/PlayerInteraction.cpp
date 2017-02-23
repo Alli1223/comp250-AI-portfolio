@@ -78,7 +78,6 @@ void PlayerInteraction::Interaction(Level& level, Agent& agent, Oxygen& oxygen)
 	if (level.grid[playerX][playerY]->isHealthPack == true)
 	{
 		level.grid[playerX][playerY]->isHealthPack = false;	
-		agent.health = 100;
 	}
 
 	

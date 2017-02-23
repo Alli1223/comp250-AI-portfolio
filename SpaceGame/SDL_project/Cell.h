@@ -69,6 +69,11 @@ public:
 
 	//! Whether the cell is a bed
 	bool isBed = false;
+	//! Whether the cell is a toilet
+	bool isToilet = false;
+	//! Whether the cell is a kitchen
+	bool isKitchen = false;
+
 	
 
 	//! cell Orientation

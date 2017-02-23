@@ -2,13 +2,13 @@
 #include "CellRendering.h"
 
 //! Constructor that initalises all the texture file locations
-CellRendering::CellRendering() : roomCell("Resources\\roomSprites\\texturePack\\center.png"), emptyCell("Resources\\roomSprites\\emptyCell.png"),
-	topRoomCell("Resources\\roomSprites\\texturePack\\top.png"), topRightRoomCell("Resources\\roomSprites\\texturePack\\topRight.png"), rightRoomCell("Resources\\roomSprites\\texturePack\\right.png"), bottomRightRoomCell("Resources\\roomSprites\\texturePack\\bottomRight.png"), bottomRoomCell("Resources\\roomSprites\\texturePack\\bottom.png"), bottomLeftRoomCell("Resources\\roomSprites\\texturePack\\bottomLeft.png"), leftRoomCell("Resources\\roomSprites\\texturePack\\left.png"), topLeftRoomCell("Resources\\roomSprites\\texturePack\\topLeft.png"),
-	cargoBayTexture("Resources\\roomSprites\\texturePack\\cargoBayStorage.png"), cargoTexture("Resources\\roomSprites\\crate1.png"),
-	openDoorTexture("Resources\\roomSprites\\texturePack\\center.png"),
-	closedDoorTexture("Resources\\roomSprites\\texturePack\\door.png"),
+CellRendering::CellRendering() : roomCell(RoomSpriteTextureLocation + "center.png"), emptyCell(RoomSpriteTextureLocation + "emptyCell.png"),
+	topRoomCell(RoomSpriteTextureLocation + "top.png"), topRightRoomCell(RoomSpriteTextureLocation + "topRight.png"), rightRoomCell(RoomSpriteTextureLocation + "right.png"), bottomRightRoomCell(RoomSpriteTextureLocation + "bottomRight.png"), bottomRoomCell(RoomSpriteTextureLocation + "bottom.png"), bottomLeftRoomCell(RoomSpriteTextureLocation + "bottomLeft.png"), leftRoomCell(RoomSpriteTextureLocation + "left.png"), topLeftRoomCell(RoomSpriteTextureLocation + "topLeft.png"),
+	cargoBayTexture(RoomSpriteTextureLocation + "cargoBayStorage.png"), cargoTexture("Resources\\roomSprites\\crate1.png"),
+	openDoorTexture(RoomSpriteTextureLocation + "center.png"),
+	closedDoorTexture(RoomSpriteTextureLocation + "door.png"),
 	oxygenTex("Resources\\oxygen.png"),
-	oxygenTank("Resources\\SpawnItems\\oxygenTank.png"), healthPack("Resources\\SpawnItems\\healthPack.png"),
+	oxygenTank(ItemsSpriteTextureLocation + "oxygenTank.png"), healthPack(ItemsSpriteTextureLocation + "healthPack.png"),
 	healthBar("Resources\\health.png"),
 	healthText("Resources\\healthText.png"),
 	winTexture("Resources\\oxygenBar.png"),
@@ -17,12 +17,14 @@ CellRendering::CellRendering() : roomCell("Resources\\roomSprites\\texturePack\\
 	oxygenText("Resources\\oxygenText.png"),
 	gameOver("Resources\\health.png"),
 	gameOverText("Resources\\game_over.png"),
-	fireTexture("Resources\\SpawnItems\\fire1.png"),
+	fireTexture(ItemsSpriteTextureLocation + "fire1.png"),
 	backgroundTexture("Resources\\background.png"),
 	hullBreachTexture("Resources\\roomSprites\\hullBreach2.png"),
 	deathAnim("Resources\\deathAnim.png"),
 	goalTexture("Resources\\roomSprites\\crate1.png"),
-	bedSide("Resources\\SpawnItems\\Bed.png")
+	bedSideTexture(RoomSpriteTextureLocation + "Bed.png"),
+	toiletTexture(RoomSpriteTextureLocation + "crate1.png"),
+	kitchenTexture(RoomSpriteTextureLocation + "cargoBayStorage.png")
 {
 }
 
@@ -202,6 +204,14 @@ void CellRendering::RenderCells(Level& level, SDL_Renderer* renderer, int x, int
 	}
 	if (level.grid[x][y]->isBed)
 	{
-		bedSide.render(renderer, xPos, yPos, cellSize, cellSize);
+		bedSideTexture.render(renderer, xPos, yPos, cellSize, cellSize);
+	}
+	if (level.grid[x][y]->isToilet)
+	{
+		toiletTexture.render(renderer, xPos, yPos, cellSize, cellSize);
+	}
+	if (level.grid[x][y]->isKitchen)
+	{
+		kitchenTexture.render(renderer, xPos, yPos, cellSize, cellSize);
 	}
 }

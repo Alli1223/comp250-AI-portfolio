@@ -76,12 +76,21 @@ void SpaceGame::run()
 			}
 			else if (state[SDL_SCANCODE_0])
 			{
-				agentManager.EraseAllAgents(allAgents);
+				agentManager.EraseAllAgents(agentManager.allAgents);
 			}
 			else if (state[SDL_SCANCODE_9])
 			{
-				agentManager.EraseAllAgentPaths(allAgents);
+				agentManager.EraseAllAgentPaths(agentManager.allAgents);
 			}
+			else if (state[SDL_SCANCODE_LEFTBRACKET])
+			{
+				level.setCellSize(level.getCellSize() - 2);
+			}
+			else if (state[SDL_SCANCODE_RIGHTBRACKET])
+			{
+				level.setCellSize(level.getCellSize() + 2);
+			}
+
 		}//End pollevent if
 
 		// Checks the keyboard for input
@@ -106,7 +115,9 @@ void SpaceGame::run()
 		
 		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
 		{
-			agentManager.SpawnAgent("NPC", allAgents, mouse_X, mouse_Y);
+
+			if (level.grid[mouse_X / cellSize][mouse_Y / cellSize]->isRoom)
+				agentManager.SpawnAgent("NPC", agentManager.allAgents, mouse_X, mouse_Y);
 		}
 		
 
@@ -138,10 +149,10 @@ void SpaceGame::run()
 				//fire.fireSpread(room, x, y);
 
 				// Runs Oxygen spread function
-				oxygen.update(level, x, y);
+				//oxygen.update(level, x, y);
 
 				
-				hydroponics.update(level, allHydroponicsFarms, x, y);
+				//hydroponics.update(level, allHydroponicsFarms, x, y);
 
 			} //End for Y loop
 		}//End for X loop
@@ -150,11 +161,7 @@ void SpaceGame::run()
 		hydroponics.renderItems(renderer, level, allHydroponicsFarms);
 
 		// Render characters
-		agentManager.RenderAgents(allAgents, renderer, level);
-
-		
-
-
+		agentManager.RenderAgents(agentManager.allAgents, renderer, level);
 
 		// TOOLBAR
 		toolbar.ToolBarFunctionality(level, designroom, dockingdoors, hydroponics, allHydroponicsFarms, renderer, mouse_X, mouse_Y);
@@ -164,26 +171,26 @@ void SpaceGame::run()
 		// All agents move to mouse position
 		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_MIDDLE) )
 		{
-			for (int i = 0; i < allAgents.size(); i++)
+			for (int i = 0; i < agentManager.allAgents.size(); i++)
 			{
-				allAgents[i].path.erase(allAgents[i].path.begin(), allAgents[i].path.end());
-				Point StartPoint(allAgents[i].getX() / cellSize, allAgents[i].getY() / cellSize);
+				agentManager.allAgents[i].path.erase(agentManager.allAgents[i].path.begin(), agentManager.allAgents[i].path.end());
+				Point StartPoint(agentManager.allAgents[i].getX() / cellSize, agentManager.allAgents[i].getY() / cellSize);
 				Point EndPoint(mouse_X / cellSize, mouse_Y / cellSize);
 
-				allAgents[i].Move(level, StartPoint, EndPoint);
+				agentManager.allAgents[i].Move(level, StartPoint, EndPoint);
 			}
 		}
 
 		// UPDATE ALL AGENTS POSITION
-		for (int i = 0; i < allAgents.size(); i++)
+		for (int i = 0; i < agentManager.allAgents.size(); i++)
 		{
-			allAgents[i].Update(level);
+			agentManager.allAgents[i].Update(level);
 
 
 			/* DRAW THE PATH FOR ALL AGENTS (VERY RESOURCE INTENSIVE)
 			for (int it = 0; it < allAgents[i].path.size(); it++)
 			{
-				drawPath(allAgents[i].path[it], room, allAgents[i].path);
+				drawPath(allAgents[i].path[i], level, allAgents[i].path);
 			}
 			*/
 		}
@@ -216,7 +223,6 @@ void SpaceGame::run()
 void SpaceGame::deleteVectors()
 {
 	allHydroponicsFarms.erase(allHydroponicsFarms.begin(), allHydroponicsFarms.end());
-	allAgents.erase(allAgents.begin(), allAgents.end());
 }
 
 void SpaceGame::drawPath(Point& point, Level& level, std::vector<Point>& path)

@@ -230,7 +230,8 @@ void ToolBar::ToolBarFunctionality(Level& level, RoomDesign& designroom,DockingD
 		//Place Item 6 ( Bed )
 		if (SDL_GetMouseState(&mouse_X, &mouse_Y) && toolbarSelection == 6)
 		{
-			level.grid[mouse_X / level.getCellSize()][mouse_Y / level.getCellSize()]->isBed = true;
+			if(level.grid[mouse_X / level.getCellSize()][mouse_Y / level.getCellSize()]->isRoom)
+				level.grid[mouse_X / level.getCellSize()][mouse_Y / level.getCellSize()]->isBed = true;
 		}
 	}
 }

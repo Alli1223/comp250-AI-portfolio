@@ -74,9 +74,6 @@ public:
 	//! Contains a list of all the hydroponic farms
 	std::vector<Hydroponics> allHydroponicsFarms;
 
-	//! Contains a list of all the characters
-	std::vector<Agent> allAgents;
-
 	//! Contains a list of all the ship
 	std::vector<Ship> allShips;
 
@@ -88,8 +85,6 @@ public:
 	//! Coordinates of the mouse 
 	int mouse_X, mouse_Y;
 
-	//! Fog of War distance
-	int fogOfWar = WINDOW_WIDTH;
 private:
 
 	//! start point and end point for pathfinding

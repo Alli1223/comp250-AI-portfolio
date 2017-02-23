@@ -16,6 +16,7 @@ public:
 
 	//! Return the cellSize
 	int getCellSize() { return cellSize; }
+	int setCellSize(int newCellSize) { return cellSize = newCellSize; }
 	int getLevelWidth() { return levelWidth; }
 	int getLevelHeight() { return levelHeight; }
 
