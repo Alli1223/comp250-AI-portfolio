@@ -88,8 +88,6 @@ public:
 	//! Coordinates of the mouse 
 	int mouse_X, mouse_Y;
 
-	//! Fog of War distance
-	int fogOfWar = WINDOW_WIDTH;
 private:
 
 	//! start point and end point for pathfinding

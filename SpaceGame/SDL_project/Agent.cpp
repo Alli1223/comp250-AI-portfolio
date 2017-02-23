@@ -15,6 +15,10 @@ void Agent::Update(Level& level)
 {
 	int cellSize = level.getCellSize();
 
+	// Decrease stats over time
+	tiredness = tiredness - tirednessDecayRate;
+	hunger = hunger - hungerDecayRate;
+
 	// If the agent has a path move along it
 	if (agentStatus == "FoundPath")
 	{
@@ -91,15 +95,24 @@ void Agent::Update(Level& level)
 	//Decrease health if suffocating
 	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->getOxygenLevel() == 0)
 	{
-		this->setHealth(this->getHealth() - 1);
+		//this->setHealth(this->getHealth() - 1);
 	}
+	//If the agent reaches a bed
+	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->isBed && agentStatus == "SearchingForBed")
+	{
+		//Increase rest at twice the speed
+		tiredness = tiredness + tirednessDecayRate * 2;
+		agentStatus = "Sleeping";
+	}
+	
+
+
+	
 }
 
 void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint)
 {
-		path = pathfinder.findPath(level, StartPoint, EndPoint);
-		if (path.size() > 0)
-			agentStatus = "FoundPath";
-	
-
+	path = pathfinder.findPath(level, StartPoint, EndPoint);
+	if (path.size() > 0)
+		agentStatus = "FoundPath";
 }

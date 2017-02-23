@@ -60,7 +60,7 @@ void AgentManager::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* ren
 			if (agent.getHealth() < 100)
 				healthBarTexture.render(renderer, x + agent.getSize() - agent.getSize() / 10, y, agent.getSize() / 10, agent.getHealth() / 2);
 			if (agent.getHunger() < 100)
-				hungerBarTexture.render(renderer, x + agent.getSize(), y, agent.getSize() / 10, agent.getHunger());
+				hungerBarTexture.render(renderer, x + agent.getSize(), y, agent.getSize() / 10, agent.getHunger() * 30.0);
 			if (agent.getTiredness() > 0)
 				tiredBarTexture.render(renderer, x + agent.getSize() + agent.getSize() / 10, y, agent.getSize() / 10, agent.getTiredness() / 2);
 

@@ -10,6 +10,7 @@ public:
 
 	//! Update method for Agent
 	void Agent::Update(Level& level);
+	//! Movement method for Agent
 	void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint);
 
 
@@ -37,11 +38,9 @@ public:
 	//! Character Type
 	std::string characterType = "NPC";
 
-	//! CHARACTER PATHFINDING
-
+	//!* CHARACTER PATHFINDING */
 	//! Create an instance of pathfinder
 	Pathfinder pathfinder;
-
 	//! Conains the list of nodes that makes the path
 	std::vector<Point> path;
 
@@ -54,20 +53,17 @@ public:
 	int setHealth(int newHealth) { return health = newHealth; }
 
 	//! Gets and Sets the agents hunger
-	int getHunger() { return hunger; }
-	int setHunger(int newHunger) { return hunger = newHunger; }
+	double getHunger() { return hunger; }
+	double setHunger(int newHunger) { return hunger = newHunger; }
 
 	//! Gets and Sets the agents tiredness
-	int getTiredness() { return tiredness; }
-	int setTiredness(int newTiredness) { return tiredness = newTiredness; }
+	double getTiredness() { return tiredness; }
+	double setTiredness(int newTiredness) { return tiredness = newTiredness; }
 
 	//! Gets and Sets the agents oxygen level
 	int getOxygenLevel() { return oxygenLevel; }
 	int setOxygenLevel(int newOxygenLevel) { return oxygenLevel = newOxygenLevel; }
 
-
-	
-	
 	//! Boolean for whether character is alive
 	bool isAlive = true;
 
@@ -82,12 +78,17 @@ private:
 	//! A double for the agents's health
 	int health = 100;
 	//! Double to store character hunger
-	int hunger = 100;
+	double hunger = 1.0;
 	//! Integer to store character tiredness
-	int tiredness = 0;
+	double tiredness = 0;
 	//! A int for the agents's stored oxygen
 	int oxygenLevel = 100;
+	//! A double for storing agents hunger decay rate
+	double hungerDecayRate = 0.001;
+	//! A double for storing agents tiredness decay rate
+	double tirednessDecayRate = 0.001;
 
+	//! Stores where the agent is along the path
 	int pathPointIterator = 0;
 };
 
