@@ -15,6 +15,10 @@ void Agent::Update(Level& level)
 {
 	int cellSize = level.getCellSize();
 
+	// Decrease stats over time
+	tiredness = tiredness - tirednessDecayRate;
+	hunger = hunger - hungerDecayRate;
+
 	// If the agent has a path move along it
 	if (agentStatus == "FoundPath")
 	{
@@ -52,7 +56,7 @@ void Agent::Update(Level& level)
 		}
 
 		// If the Agent has reached the end of the path then reset the pathfinder and set the agent to idle.
-		if (pathPointIterator == path.size())
+		if (pathPointIterator >= path.size())
 		{
 			agentStatus = "Idle";
 			pathPointIterator = 0;
@@ -62,29 +66,53 @@ void Agent::Update(Level& level)
 	}
 
 	// If the agent dies
-	if (!this->isAlive)
+	if (this->getHealth() <= 0)
 	{
-		//->agentStatus = "Dead";
+		this->isAlive = false;
+		this->agentStatus = "Dead";
 	}
 
-	//! Changes what the agent looks like based on how much oxyen it has
-	if (level.grid[this->getX() / cellSize][this->getY() / cellSize]->oxygenLevel < 30)
+	// Agent will wonder randomly when idle
+	if (this->agentStatus == "Idle")
 	{
-		this->characterType = "NPC";
+		bool foundEndPoint = false;
+		Point endPoint;
+		while (!foundEndPoint)
+		{
+			int x = rand() % level.getLevelWidth();
+			int y = rand() % level.getLevelHeight();
+			if (level.grid[x][y]->isRoom)
+			{
+				endPoint = Point(level.grid[x][y]->getX(), level.grid[x][y]->getY());
+				foundEndPoint = true;
+				this->agentStatus = "Wandering";
+			}
+		}
+		Point startPoint(this->getX() / cellSize, this->getY() / cellSize);
+		this->Move(level, startPoint, endPoint);
 	}
-	else
+
+	//Decrease health if suffocating
+	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->getOxygenLevel() == 0)
 	{
-		this->characterType = "Player";
+		//this->setHealth(this->getHealth() - 1);
 	}
+	//If the agent reaches a bed
+	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->isBed && agentStatus == "SearchingForBed")
+	{
+		//Increase rest at twice the speed
+		tiredness = tiredness + tirednessDecayRate * 2;
+		agentStatus = "Sleeping";
+	}
+	
+
+
+	
 }
 
 void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint)
 {
-	// Only move if Idle
-	if (agentStatus == "Idle")
-	{
-		path = pathfinder.findPath(level, StartPoint, EndPoint);
+	path = pathfinder.findPath(level, StartPoint, EndPoint);
+	if (path.size() > 0)
 		agentStatus = "FoundPath";
-	}
-	
 }

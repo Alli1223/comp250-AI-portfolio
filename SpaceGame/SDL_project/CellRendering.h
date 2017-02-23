@@ -10,6 +10,9 @@ public:
 	void RenderCells(Level& level, SDL_Renderer* renderer, int x, int y);
 
 private:
+	const std::string RoomSpriteTextureLocation = "Resources\\roomSprites\\texturePack\\";
+	const std::string ItemsSpriteTextureLocation = "Resources\\SpawnItems\\";
+
 	// Textures for game objects
 	//! For cells that are a room
 	Texture roomCell;
@@ -53,7 +56,11 @@ private:
 	Texture cargoTexture;
 
 	//! Is the texture for the beds
-	Texture bedSide;
+	Texture bedSideTexture;
+	//! Is the texture for the toilet
+	Texture toiletTexture;
+	//! Is the texture for the kitchen
+	Texture kitchenTexture;
 
 
 	//! Is the texture for hull breaches

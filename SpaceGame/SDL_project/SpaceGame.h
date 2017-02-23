@@ -7,7 +7,6 @@
 #include "SDL2_image-2.0.1\include\SDL_image.h"
 #include "Cell.h"
 #include "MainCharacter.h"
-#include "IdleState.h"
 #include "Oxygen.h"
 #include "Fire.h"
 #include "RoomDesign.h"
@@ -49,11 +48,14 @@ public:
 	void SpaceGame::deleteVectors();
 
 	//! Initalising all classes needed for game
+	Level level;
 	GameSettings gameSettings;
+	Map mapLoader;
+	RoomDesign designroom;
 	Oxygen oxygen;
 	Fire fire;
 	PlayerInteraction characterInteraction;
-	Character characters;
+	AgentManager agentManager;
 	Cell cell;
 	ToolBar toolbar;
 	EscapeMenu escapemenu;
@@ -61,6 +63,7 @@ public:
 	ShipManager shipmanager;
 	PlayerStats playerstats;
 	CellRendering cellrenderer;
+	Hydroponics hydroponics;
 	
 	//! Pathfinding function
 	void SpaceGame::drawPath(Point& point, Level& level, std::vector<Point>& path);
@@ -70,9 +73,6 @@ public:
 	
 	//! Contains a list of all the hydroponic farms
 	std::vector<Hydroponics> allHydroponicsFarms;
-
-	//! Contains a list of all the characters
-	std::vector<Agent> allAgents;
 
 	//! Contains a list of all the ship
 	std::vector<Ship> allShips;
@@ -85,8 +85,6 @@ public:
 	//! Coordinates of the mouse 
 	int mouse_X, mouse_Y;
 
-	//! Fog of War distance
-	int fogOfWar = WINDOW_WIDTH;
 private:
 
 	//! start point and end point for pathfinding
@@ -102,7 +100,5 @@ private:
 	//! Whether the game is running or not
 	bool running;
 	bool menu;
-
-	int maxAgents = 10;
 };
 

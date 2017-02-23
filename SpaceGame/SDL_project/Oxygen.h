@@ -28,7 +28,7 @@ public:
 	int setOxygenReserves(int newOxygenReserveLevel) { return oxygenReserves = newOxygenReserveLevel; }
 
 	//! Gets the neighbouring cells
-	std::vector<Point> Oxygen::getNeighbourCells(Point point, Level& grid);
+	std::vector<Point> Oxygen::getNeighbourCells(Point& point, Level& grid);
 
 	//! oxygen spread rate
 	int oxygenSpreadRate = 10;

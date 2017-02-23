@@ -2,7 +2,7 @@
 #include "SpaceGame.h"
 #include "InitialisationError.h"
 
-SpaceGame::SpaceGame() : backgroundTexture("Resources\\background.png")
+SpaceGame::SpaceGame() : backgroundTexture("Resources\\background5.jpg")
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
@@ -38,22 +38,16 @@ SpaceGame::~SpaceGame()
 void SpaceGame::run()
 {
 	// Level generation
-	Level room;
-	room.makeGrid(WINDOW_WIDTH, WINDOW_HEIGHT);
-	Map mapLoader;
-	RoomDesign designroom;
+	level.makeGrid(WINDOW_WIDTH, WINDOW_HEIGHT);
 
 	// Choose whether to generate or load a map
 	//mapLoader.LoadMap("Resources\\Map\\Default_map.txt", room);
 	//mapLoader.generateMap(room, designroom);
 
 
-	auto hydroponics = std::make_shared<Hydroponics>();
-
-
 	running = true;
 	unsigned int timer = 0;
-	int cellSize = room.getCellSize();
+	int cellSize = level.getCellSize();
 
 	while (running)
 	{
@@ -80,6 +74,23 @@ void SpaceGame::run()
 			{
 				menu = false;
 			}
+			else if (state[SDL_SCANCODE_0])
+			{
+				agentManager.EraseAllAgents(agentManager.allAgents);
+			}
+			else if (state[SDL_SCANCODE_9])
+			{
+				agentManager.EraseAllAgentPaths(agentManager.allAgents);
+			}
+			else if (state[SDL_SCANCODE_LEFTBRACKET])
+			{
+				level.setCellSize(level.getCellSize() - 2);
+			}
+			else if (state[SDL_SCANCODE_RIGHTBRACKET])
+			{
+				level.setCellSize(level.getCellSize() + 2);
+			}
+
 		}//End pollevent if
 
 		// Checks the keyboard for input
@@ -102,15 +113,12 @@ void SpaceGame::run()
 		shipmanager.rendership(allships, renderer);
 		*/
 		
-		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_RIGHT) )
+		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
 		{
-			characters.SpawnAgent("NPC", allAgents, mouse_X, mouse_Y);
+
+			if (level.grid[mouse_X / cellSize][mouse_Y / cellSize]->isRoom)
+				agentManager.SpawnAgent("NPC", agentManager.allAgents, mouse_X, mouse_Y);
 		}
-		/*else if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
-		{
-			characters.SpawnAgent("Player", allAgents, mouse_X, mouse_Y);
-		}
-		*/
 		
 
 		
@@ -120,15 +128,15 @@ void SpaceGame::run()
 		//MAIN LOOP
 		///////////////////////////////////
 
-		for (int x = 0; x < room.grid.size(); x++)
+		for (int x = 0; x < level.grid.size(); x++)
 		{
-			for (int y = 0; y < room.grid[x].size(); y++)
+			for (int y = 0; y < level.grid[x].size(); y++)
 			{
 				//Renders all he cells
-				cellrenderer.RenderCells(room, renderer, x, y);
+				cellrenderer.RenderCells(level, renderer, x, y);
 
 				/* Fill the screen with room cells
-				if (x > 0 && y > 0 && x < room.getLevelWidth()  && y < room.getLevelHeight() )
+				if (x > 0 && y > 0 && x < room.getLevelWidth() - 1 && y < room.getLevelHeight() - 1 )
 				{
 					room.grid[x][y]->isRoom = true;
 					//designroom.designRoom(room, x, y);
@@ -141,74 +149,52 @@ void SpaceGame::run()
 				//fire.fireSpread(room, x, y);
 
 				// Runs Oxygen spread function
-				//oxygen.update(room, x, y);
+				//oxygen.update(level, x, y);
 
-				//hydroponics Update
-				//hydroponics->update(room, allHydroponicsFarms, x, y);
+				
+				//hydroponics.update(level, allHydroponicsFarms, x, y);
 
 			} //End for Y loop
 		}//End for X loop
 
 		 // Render the vector of hydroponics
-		hydroponics->renderItems(renderer, room, allHydroponicsFarms);
+		hydroponics.renderItems(renderer, level, allHydroponicsFarms);
 
 		// Render characters
-		characters.RenderAgents(allAgents, renderer, room);
-
-		
-
-
+		agentManager.RenderAgents(agentManager.allAgents, renderer, level);
 
 		// TOOLBAR
-		toolbar.ToolBarFunctionality(room, designroom, renderer, mouse_X, mouse_Y);
+		toolbar.ToolBarFunctionality(level, designroom, dockingdoors, hydroponics, allHydroponicsFarms, renderer, mouse_X, mouse_Y);
 		toolbar.RenderToolbar(renderer, WINDOW_WIDTH, WINDOW_HEIGHT, mouse_X, mouse_Y);
 
-		//playerstats.renderAndUpdatePlayerStats(renderer, characterOne, WINDOW_WIDTH, WINDOW_HEIGHT);
-
-
-		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_LEFT) && toolbar.getToolbarSelection() == 4)
-		{
-			if (room.grid[mouse_X / cellSize][mouse_Y / cellSize]->isRoom && toolbar.numberOfItem4 > 0)
-			{
-				hydroponics->spawnHydroponicBase(renderer, room, allHydroponicsFarms, mouse_X, mouse_Y);
-				//toolbar.numberOfItem4--;
-			}
-		}
-
-		if (toolbar.getToolbarSelection() == 5)
-		{
-			if (toolbar.numberOfItem4 > 0)
-			{
-				dockingdoors.placeDockingDoors(renderer, room);
-			}
-
-		}
 
 		// All agents move to mouse position
-		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_MIDDLE) && maxAgents > 0)
+		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_MIDDLE) )
 		{
-			for (int i = 0; i < allAgents.size(); i++)
+			for (int i = 0; i < agentManager.allAgents.size(); i++)
 			{
-				allAgents[i].path.erase(allAgents[i].path.begin(), allAgents[i].path.end());
-				Point StartPoint(allAgents[i].getX() / cellSize, allAgents[i].getY() / cellSize);
+				agentManager.allAgents[i].path.erase(agentManager.allAgents[i].path.begin(), agentManager.allAgents[i].path.end());
+				Point StartPoint(agentManager.allAgents[i].getX() / cellSize, agentManager.allAgents[i].getY() / cellSize);
 				Point EndPoint(mouse_X / cellSize, mouse_Y / cellSize);
 
-				allAgents[i].Move(room, StartPoint, EndPoint);
+				agentManager.allAgents[i].Move(level, StartPoint, EndPoint);
 			}
-			maxAgents--;
 		}
 
 		// UPDATE ALL AGENTS POSITION
-		for (int i = 0; i < allAgents.size(); i++)
+		for (int i = 0; i < agentManager.allAgents.size(); i++)
 		{
-			allAgents[i].Update(room);
+			agentManager.allAgents[i].Update(level);
+
+
 			/* DRAW THE PATH FOR ALL AGENTS (VERY RESOURCE INTENSIVE)
 			for (int it = 0; it < allAgents[i].path.size(); it++)
 			{
-				drawPath(allAgents[i].path[it], room, allAgents[i].path);
+				drawPath(allAgents[i].path[i], level, allAgents[i].path);
 			}
 			*/
 		}
+		
 		
 		
 
@@ -258,5 +244,19 @@ void SpaceGame::drawPath(Point& point, Level& level, std::vector<Point>& path)
 		lastX = nextX;
 		lastY = nextY;
 
+	}
+}
+
+bool static isMouseOverRoomCell(Level& level)
+{
+	int mouse_X, mouse_Y;
+	SDL_GetMouseState(&mouse_X, &mouse_Y);
+	if (level.grid[mouse_X / level.getCellSize()][mouse_Y / level.getCellSize()]->isRoom)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }

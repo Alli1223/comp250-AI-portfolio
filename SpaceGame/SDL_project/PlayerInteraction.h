@@ -1,6 +1,6 @@
 #pragma once
 #include "Level.h"
-#include "Character.h"
+#include "AgentManager.h"
 #include "Oxygen.h"
 class PlayerInteraction
 {
