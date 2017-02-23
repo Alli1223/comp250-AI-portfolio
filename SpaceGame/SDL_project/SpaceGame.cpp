@@ -163,10 +163,6 @@ void SpaceGame::run()
 		// Render characters
 		agentManager.RenderAgents(allAgents, renderer, level);
 
-		
-
-
-
 		// TOOLBAR
 		toolbar.ToolBarFunctionality(level, designroom, dockingdoors, hydroponics, allHydroponicsFarms, renderer, mouse_X, mouse_Y);
 		toolbar.RenderToolbar(renderer, WINDOW_WIDTH, WINDOW_HEIGHT, mouse_X, mouse_Y);

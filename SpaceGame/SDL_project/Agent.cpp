@@ -64,27 +64,29 @@ void Agent::Update(Level& level)
 	// If the agent dies
 	if (!this->isAlive)
 	{
-		//->agentStatus = "Dead";
+		this->agentStatus = "Dead";
 	}
-	/* TODO: finish this code to make the agent wonder randomly
+
+	// TODO: finish this code to make the agent wonder randomly
 	if (this->agentStatus == "Idle")
 	{
 		bool foundEndPoint = false;
 		Point endPoint;
 		while (!foundEndPoint)
 		{
-			int x = rand() % level.getLevelWidth() / cellSize;
-			int y = rand() % level.getLevelHeight() / cellSize;
+			int x = rand() % level.getLevelWidth();
+			int y = rand() % level.getLevelHeight();
 			if (level.grid[x][y]->isRoom)
 			{
 				endPoint = Point(level.grid[x][y]->getX(), level.grid[x][y]->getY());
 				foundEndPoint = true;
+				this->agentStatus = "Wandering";
 			}
 		}
 		Point startPoint(this->getX() / cellSize, this->getY() / cellSize);
 		this->Move(level, startPoint, endPoint);
 	}
-	*/
+	
 
 	/*! Changes what the agent looks like based on how much oxyen it has
 	if (level.grid[this->getX() / cellSize][this->getY() / cellSize]->oxygenLevel < 30)
@@ -100,12 +102,9 @@ void Agent::Update(Level& level)
 
 void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint)
 {
-	// Only move if Idle
-	if (agentStatus == "Idle")
-	{
 		path = pathfinder.findPath(level, StartPoint, EndPoint);
 		if (path.size() > 0)
 			agentStatus = "FoundPath";
-	}
+	
 
 }

@@ -45,7 +45,7 @@ void AgentManager::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* ren
 		int y = agent.getY() + (level.getCellSize() / 2);
 		if (agent.characterType == "NPC")
 		{
-			//npcDown.alterTextureColour(rand() % 200, 0,0);
+			//npcDown.alterTextureColour(200, 100,100);
 			if (agent.movementDirection == "Up")
 				npcUp.render(renderer, x, y , agent.getSize(), agent.getSize());
 			if (agent.movementDirection == "Right")
