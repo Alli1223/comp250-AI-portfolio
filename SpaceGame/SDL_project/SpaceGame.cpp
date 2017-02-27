@@ -38,11 +38,11 @@ SpaceGame::~SpaceGame()
 void SpaceGame::run()
 {
 	// Level generation
-	level.makeGrid(WINDOW_WIDTH, WINDOW_HEIGHT);
+	level.makeGrid(WINDOW_WIDTH * 2, WINDOW_HEIGHT * 2);
 
 	// Choose whether to generate or load a map
-	//mapLoader.LoadMap("Resources\\Map\\Default_map.txt", room);
-	//mapLoader.generateMap(room, designroom);
+	//mapLoader.LoadMap("Resources\\Map\\Default_map.txt", level);
+	//mapLoader.generateMap(level, designroom);
 
 
 	running = true;
@@ -180,7 +180,7 @@ void SpaceGame::run()
 				agentManager.allAgents[i].Move(level, StartPoint, EndPoint);
 			}
 		}
-
+		
 		// UPDATE ALL AGENTS POSITION
 		for (int i = 0; i < agentManager.allAgents.size(); i++)
 		{

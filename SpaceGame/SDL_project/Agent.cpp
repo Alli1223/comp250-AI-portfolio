@@ -18,6 +18,7 @@ void Agent::Update(Level& level)
 	// Decrease stats over time
 	tiredness = tiredness - tirednessDecayRate;
 	hunger = hunger - hungerDecayRate;
+	
 
 	// If the agent has a path move along it
 	if (agentStatus == "FoundPath")
@@ -46,8 +47,6 @@ void Agent::Update(Level& level)
 			setY(getY() + speed);
 			movementDirection = "Down";
 		}
-
-
 
 		// If the agent is at the point then iterate to the next point
 		if (getX() / cellSize == path[pathPointIterator].getX() && getY() / cellSize == path[pathPointIterator].getY())
@@ -88,7 +87,7 @@ void Agent::Update(Level& level)
 				this->agentStatus = "Wandering";
 			}
 		}
-		Point startPoint(this->getX() / cellSize, this->getY() / cellSize);
+		Point startPoint(this->getX() / level.getCellSize(), this->getY() / level.getCellSize());
 		this->Move(level, startPoint, endPoint);
 	}
 
