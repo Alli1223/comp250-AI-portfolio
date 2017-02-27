@@ -19,7 +19,7 @@ void Agent::Update(Level& level)
 	tiredness = tiredness - tirednessDecayRate;
 	hunger = hunger - hungerDecayRate;
 
-	behaviour.BehaviourTree(*this, level);
+	//behaviour.BehaviourTree(*this, level);
 	
 
 	// If the agent has a path move along it

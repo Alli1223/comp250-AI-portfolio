@@ -91,9 +91,6 @@
     <ClCompile Include="AgentManager.cpp">
       <Filter>Source Files\AI Classes</Filter>
     </ClCompile>
-    <ClCompile Include="AgentBehaviour.cpp">
-      <Filter>Source Files\AI Classes</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainCharacter.h">
@@ -190,9 +187,6 @@
       <Filter>Headers\AI Classes</Filter>
     </ClInclude>
     <ClInclude Include="AgentManager.h">
-      <Filter>Headers\AI Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="AgentBehaviour.h">
       <Filter>Headers\AI Classes</Filter>
     </ClInclude>
   </ItemGroup>

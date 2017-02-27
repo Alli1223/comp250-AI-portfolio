@@ -1,7 +1,6 @@
 #pragma once
 #include "Point.h"
 #include "PathFinder.h"
-#include "AgentBehaviour.h"
 
 class Agent
 {
@@ -9,7 +8,7 @@ public:
 	Agent();
 	~Agent();
 
-	AgentBehaviour behaviour;
+
 
 	//! Update method for Agent
 	void Agent::Update(Level& level);
