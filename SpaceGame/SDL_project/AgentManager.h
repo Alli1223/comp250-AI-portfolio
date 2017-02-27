@@ -36,7 +36,7 @@ public:
 	//! Finds the nearest cell to the agent from the string cellType (e.g. "BED" || "TOILET")
 	Point AgentManager::FindNearestCelltoAgent(Agent& agent, Level& level, std::string& cellType);
 
-	int localSearchSize = 10;
+	int localSearchSize = 2;
 
 private:
 	std::string characterTextureLocation = "Resources\\Character\\";

@@ -1,8 +1,8 @@
 #pragma once
+// This is the root class for each node
 class TreeNode
 {
 public:
-	TreeNode();
-	~TreeNode();
+	virtual bool run() = 0;
 };
 
