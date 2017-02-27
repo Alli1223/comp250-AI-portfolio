@@ -1,12 +1,12 @@
 #pragma once
 #include "Agent.h"
-class AgentBehaviour : public Agent
+class AgentBehaviour
 {
 public:
 	AgentBehaviour();
 	~AgentBehaviour();
 
-	void AgentBehaviour::BehaviourTree(Agent& agent, Level& level);
+	void AgentBehaviour::BehaviourTree(Agent& agent, Level& level, Pathfinder& agentPathfinder);
 
 	void AgentBehaviour::AgentMovement(Agent& agent, Level& level);
 private:

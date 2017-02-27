@@ -1,12 +1,15 @@
 #pragma once
 #include "Point.h"
 #include "PathFinder.h"
+#include "AgentBehaviour.h"
 
 class Agent
 {
 public:
 	Agent();
 	~Agent();
+
+	AgentBehaviour behaviour;
 
 	//! Update method for Agent
 	void Agent::Update(Level& level);
@@ -91,7 +94,7 @@ private:
 	//! A double for storing agents tiredness decay rate
 	double tirednessDecayRate = 0.001;
 	//! A double for storing agents oxygen decay rate
-	double oxygenDecayRate = 0.1;
+	double oxygenDecayRate = 0.01;
 
 	//! Stores where the agent is along the path
 	int pathPointIterator = 0;

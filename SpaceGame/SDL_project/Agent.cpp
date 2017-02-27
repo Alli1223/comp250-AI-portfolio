@@ -18,6 +18,8 @@ void Agent::Update(Level& level)
 	// Decrease stats over time
 	tiredness = tiredness - tirednessDecayRate;
 	hunger = hunger - hungerDecayRate;
+
+	behaviour.BehaviourTree(*this, level);
 	
 
 	// If the agent has a path move along it
@@ -84,6 +86,7 @@ void Agent::Update(Level& level)
 		this->Move(level, startPoint, endPoint);
 	}
 
+	/* DECREASE OXYGEN WHEN IN CELL WITH NO OXYGEN */
 	// If the cell has no oxygen
 	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->getOxygenLevel() == 0.0)
 	{
