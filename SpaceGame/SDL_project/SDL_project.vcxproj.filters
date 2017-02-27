@@ -91,6 +91,9 @@
     <ClCompile Include="AgentManager.cpp">
       <Filter>Source Files\AI Classes</Filter>
     </ClCompile>
+    <ClCompile Include="TreeNode.cpp">
+      <Filter>Source Files\AI Classes\BehaviourTree</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainCharacter.h">
@@ -189,6 +192,9 @@
     <ClInclude Include="AgentManager.h">
       <Filter>Headers\AI Classes</Filter>
     </ClInclude>
+    <ClInclude Include="TreeNode.h">
+      <Filter>Headers\AI Classes\BehaviourTree</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />
@@ -260,6 +266,12 @@
     </Filter>
     <Filter Include="Headers\AI Classes">
       <UniqueIdentifier>{0072aba4-18bc-42ba-8ec0-c5d7603daa9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\AI Classes\BehaviourTree">
+      <UniqueIdentifier>{db0a5e59-1c0b-4930-aed7-3cc1b7af3814}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AI Classes\BehaviourTree">
+      <UniqueIdentifier>{ff694f21-84df-4b18-8560-6797e343383a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -33,6 +33,11 @@ public:
 	//! Erases all the agents in the game
 	void AgentManager::EraseAllAgents(std::vector<Agent>& allAgents);
 
+	//! Finds the nearest cell to the agent from the string cellType (e.g. "BED" || "TOILET")
+	Point AgentManager::FindNearestCelltoAgent(Agent& agent, Level& level, std::string& cellType);
+
+	int localSearchSize = 10;
+
 private:
 	std::string characterTextureLocation = "Resources\\Character\\";
 	std::string playerStatsTextureLocation = "Resources\\GUI\\PlayerStats\\";

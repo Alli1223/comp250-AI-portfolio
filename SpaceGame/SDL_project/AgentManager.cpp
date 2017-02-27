@@ -38,6 +38,66 @@ void AgentManager::EraseAllAgents(std::vector<Agent>& allAgents)
 	allAgents.erase(allAgents.begin(), allAgents.end());
 }
 
+Point AgentManager::FindNearestCelltoAgent(Agent& agent, Level& level, std::string& cellType)
+{
+	Point endPoint;
+
+	// Do a local search of nearest 10 cells 
+	for (int x = agent.getX() - localSearchSize; x <= agent.getX() + localSearchSize; x++)
+	{
+		for (int y = agent.getY() - localSearchSize; y <= agent.getY() + localSearchSize; y++)
+		{
+			if (x > 0 && y > 0 && x < level.grid.size() && y < level.grid[x].size())
+			{
+				if (cellType == "BED" || cellType == "Bed")
+				{
+					if (level.grid[x][y]->isBed)
+					{
+						endPoint = Point(x, y);
+						return endPoint;
+					}
+				}
+				else if (cellType == "TOILET" || cellType == "Toilet")
+				{
+					if (level.grid[x][y]->isToilet)
+					{
+						endPoint = Point(x, y);
+						return endPoint;
+					}
+				}
+			}
+		}
+	}
+
+	localSearchSize = localSearchSize * 2;
+
+	// Seach entire map
+	for (int x = 0; x <= level.grid.size(); x++)
+	{
+		for (int y = 0; y <= level.grid[x].size(); y++)
+		{
+			if (cellType == "BED" || cellType == "Bed")
+			{
+				if (level.grid[x][y]->isBed)
+				{
+					endPoint = Point(x, y);
+					return endPoint;
+				}
+			}
+			else if (cellType == "TOILET" || cellType == "Toilet")
+			{
+				if (level.grid[x][y]->isToilet)
+				{
+					endPoint = Point(x, y);
+					return endPoint;
+				}
+			}
+		}
+	}
+}
+
+
+
 void AgentManager::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level)
 {
 	for (Agent& agent : allAgents)
