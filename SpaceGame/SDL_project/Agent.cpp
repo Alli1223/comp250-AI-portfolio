@@ -18,6 +18,7 @@ void Agent::Update(Level& level)
 	// Decrease stats over time
 	tiredness = tiredness - tirednessDecayRate;
 	hunger = hunger - hungerDecayRate;
+	
 
 	// If the agent has a path move along it
 	if (agentStatus == "FoundPath")
@@ -47,8 +48,6 @@ void Agent::Update(Level& level)
 			movementDirection = "Down";
 		}
 
-
-
 		// If the agent is at the point then iterate to the next point
 		if (getX() / cellSize == path[pathPointIterator].getX() && getY() / cellSize == path[pathPointIterator].getY())
 		{
@@ -63,13 +62,6 @@ void Agent::Update(Level& level)
 			path.erase(path.begin(), path.end());
 		}
 
-	}
-
-	// If the agent dies
-	if (this->getHealth() <= 0)
-	{
-		this->isAlive = false;
-		this->agentStatus = "Dead";
 	}
 
 	// Agent will wonder randomly when idle
@@ -88,15 +80,24 @@ void Agent::Update(Level& level)
 				this->agentStatus = "Wandering";
 			}
 		}
-		Point startPoint(this->getX() / cellSize, this->getY() / cellSize);
+		Point startPoint(this->getX() / level.getCellSize(), this->getY() / level.getCellSize());
 		this->Move(level, startPoint, endPoint);
 	}
 
-	//Decrease health if suffocating
-	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->getOxygenLevel() == 0)
+	// If the cell has no oxygen
+	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->getOxygenLevel() == 0.0)
 	{
-		//this->setHealth(this->getHealth() - 1);
+		// And agent has personal oxygen
+		if (this->getOxygenLevel() > 0.0)
+			this->setOxygenLevel(this->getOxygenLevel() - oxygenDecayRate); //Reduce it's personal oxygen
+
+		// Decay health if the agent has no personal oxygen left
+		else if (this->getOxygenLevel() <= 0.0)
+			this->setHealth(this->getHealth() - healthDecayRate);
 	}
+	else if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->getOxygenLevel() > 0.0)
+		this->setOxygenLevel(this->getOxygenLevel() + oxygenDecayRate);
+	
 	//If the agent reaches a bed
 	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->isBed && agentStatus == "SearchingForBed")
 	{

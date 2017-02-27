@@ -24,6 +24,7 @@
 #include "CellRendering.h"
 #include "Agent.h"
 
+
 //! The main class
 /*!
 This is the main class where the game is laoded and run. 

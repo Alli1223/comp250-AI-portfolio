@@ -4,6 +4,7 @@
 #include "PathFinder.h"
 #include "Texture.h"
 #include "Agent.h"
+#include "AgentBehaviour.h"
 
 
 //!  The abstract character class 
@@ -17,6 +18,8 @@ public:
 	AgentManager();
 	//! A destructor
 	~AgentManager();
+
+	AgentBehaviour agentBehaviour;
 
 	//! Contains a list of all the characters
 	std::vector<Agent> allAgents;
@@ -53,5 +56,6 @@ private:
 	Texture healthBarTexture;
 	Texture hungerBarTexture;
 	Texture tiredBarTexture;
+	Texture oxygenBarTexture;
 };
 

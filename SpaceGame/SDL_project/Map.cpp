@@ -25,6 +25,7 @@ void Map::LoadMap(std::string filename, Level room)
 	RoomDesign roomdesign;
 	for (int y = 0; y < height; y++)
 	{
+		char character;
 		const std::string& line = lines[y];
 		for (int x = 0; x < width; x++)
 		{
@@ -52,7 +53,7 @@ void Map::LoadMap(std::string filename, Level room)
 	// Loop through the level and change the orientation of each cell
 	for (int x = 0; x < room.grid.size() - 1; x++)
 	{
-		for (int y = 0; y < room.grid.size() - 1; y++)
+		for (int y = 0; y < room.grid[x].size() - 1; y++)
 		{
 			roomdesign.designRoom(room, x, y);
 		}
