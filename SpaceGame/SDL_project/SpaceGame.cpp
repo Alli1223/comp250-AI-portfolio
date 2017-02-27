@@ -38,7 +38,7 @@ SpaceGame::~SpaceGame()
 void SpaceGame::run()
 {
 	// Level generation
-	level.makeGrid(WINDOW_WIDTH * 2, WINDOW_HEIGHT * 2);
+	level.makeGrid(WINDOW_WIDTH, WINDOW_HEIGHT);
 
 	// Choose whether to generate or load a map
 	//mapLoader.LoadMap("Resources\\Map\\Default_map.txt", level);
@@ -81,14 +81,6 @@ void SpaceGame::run()
 			else if (state[SDL_SCANCODE_9])
 			{
 				agentManager.EraseAllAgentPaths(agentManager.allAgents);
-			}
-			else if (state[SDL_SCANCODE_LEFTBRACKET])
-			{
-				level.setCellSize(level.getCellSize() - 2);
-			}
-			else if (state[SDL_SCANCODE_RIGHTBRACKET])
-			{
-				level.setCellSize(level.getCellSize() + 2);
 			}
 
 		}//End pollevent if

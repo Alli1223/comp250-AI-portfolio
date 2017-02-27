@@ -64,13 +64,6 @@ void Agent::Update(Level& level)
 
 	}
 
-	// If the agent dies
-	if (this->getHealth() <= 0)
-	{
-		this->isAlive = false;
-		this->agentStatus = "Dead";
-	}
-
 	// Agent will wonder randomly when idle
 	if (this->agentStatus == "Idle")
 	{
@@ -91,11 +84,20 @@ void Agent::Update(Level& level)
 		this->Move(level, startPoint, endPoint);
 	}
 
-	//Decrease health if suffocating
-	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->getOxygenLevel() == 0)
+	// If the cell has no oxygen
+	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->getOxygenLevel() == 0.0)
 	{
-		//this->setHealth(this->getHealth() - 1);
+		// And agent has personal oxygen
+		if (this->getOxygenLevel() > 0.0)
+			this->setOxygenLevel(this->getOxygenLevel() - oxygenDecayRate); //Reduce it's personal oxygen
+
+		// Decay health if the agent has no personal oxygen left
+		else if (this->getOxygenLevel() <= 0.0)
+			this->setHealth(this->getHealth() - healthDecayRate);
 	}
+	else if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->getOxygenLevel() > 0.0)
+		this->setOxygenLevel(this->getOxygenLevel() + oxygenDecayRate);
+	
 	//If the agent reaches a bed
 	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->isBed && agentStatus == "SearchingForBed")
 	{

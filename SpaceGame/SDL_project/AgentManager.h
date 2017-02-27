@@ -56,5 +56,6 @@ private:
 	Texture healthBarTexture;
 	Texture hungerBarTexture;
 	Texture tiredBarTexture;
+	Texture oxygenBarTexture;
 };
 

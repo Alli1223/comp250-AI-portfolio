@@ -49,20 +49,20 @@ public:
 	std::string agentStatus = "Idle";
 
 	//! Gets and Sets the agents health
-	int getHealth() { return health; }
-	int setHealth(int newHealth) { return health = newHealth; }
+	double getHealth() { return health; }
+	double setHealth(double newHealth) { return health = newHealth; }
 
 	//! Gets and Sets the agents hunger
 	double getHunger() { return hunger; }
-	double setHunger(int newHunger) { return hunger = newHunger; }
+	double setHunger(double newHunger) { return hunger = newHunger; }
 
 	//! Gets and Sets the agents tiredness
 	double getTiredness() { return tiredness; }
-	double setTiredness(int newTiredness) { return tiredness = newTiredness; }
+	double setTiredness(double newTiredness) { return tiredness = newTiredness; }
 
 	//! Gets and Sets the agents oxygen level
-	int getOxygenLevel() { return oxygenLevel; }
-	int setOxygenLevel(int newOxygenLevel) { return oxygenLevel = newOxygenLevel; }
+	double getOxygenLevel() { return oxygenLevel; }
+	double setOxygenLevel(double newOxygenLevel) { return oxygenLevel = newOxygenLevel; }
 
 	//! Boolean for whether character is alive
 	bool isAlive = true;
@@ -76,17 +76,22 @@ private:
 	//! Integer for the characters current speed
 	int speed = 1;
 	//! A double for the agents's health
-	int health = 100;
+	double health = 100.0;
 	//! Double to store character hunger
 	double hunger = 1.0;
 	//! Integer to store character tiredness
-	double tiredness = 0;
+	double tiredness = 0.0;
 	//! A int for the agents's stored oxygen
-	int oxygenLevel = 100;
+	double oxygenLevel = 3.0;
+
+	//! A double for storing agents health decay rate
+	double healthDecayRate = 0.1;
 	//! A double for storing agents hunger decay rate
 	double hungerDecayRate = 0.001;
 	//! A double for storing agents tiredness decay rate
 	double tirednessDecayRate = 0.001;
+	//! A double for storing agents oxygen decay rate
+	double oxygenDecayRate = 0.1;
 
 	//! Stores where the agent is along the path
 	int pathPointIterator = 0;
