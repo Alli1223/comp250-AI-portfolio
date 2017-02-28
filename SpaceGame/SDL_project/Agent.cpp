@@ -66,6 +66,9 @@ void Agent::Update(Level& level)
 
 	}
 
+	if (this->getHealth() <= 0)
+		this->isAlive = false;
+
 	// Agent will wonder randomly when idle
 	if (this->agentStatus == "Idle")
 	{

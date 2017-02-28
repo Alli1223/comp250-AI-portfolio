@@ -91,9 +91,6 @@
     <ClCompile Include="AgentManager.cpp">
       <Filter>Source Files\AI Classes</Filter>
     </ClCompile>
-    <ClCompile Include="TreeNode.cpp">
-      <Filter>Source Files\AI Classes\BehaviourTree</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainCharacter.h">

@@ -104,7 +104,7 @@ void AgentManager::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* ren
 	{
 		int x = agent.getX()  + (agent.getSize() / 2);
 		int y = agent.getY() - (agent.getSize() / 2);
-		if (agent.characterType == "NPC")
+		if (agent.characterType == "NPC" && agent.isAlive)
 		{
 			//npcDown.alterTextureColour(200, 100,100);
 			if (agent.movementDirection == "Up")
@@ -127,7 +127,7 @@ void AgentManager::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* ren
 				//tiredBarTexture.render(renderer, x + ((agent.getSize() + agent.getSize()) * 2) / 10, y, agent.getSize() / 10, agent.getTiredness() / 2);
 
 		}
-		if (agent.characterType == "Player")
+		if (agent.characterType == "Player" && agent.isAlive)
 		{
 			if (agent.movementDirection == "Up")
 				characterUp.render(renderer, x, y, agent.getSize(), agent.getSize());

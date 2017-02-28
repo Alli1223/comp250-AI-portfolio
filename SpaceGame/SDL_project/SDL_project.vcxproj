@@ -228,7 +228,6 @@
     </ClCompile>
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="ToolBar.cpp" />
-    <ClCompile Include="TreeNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />
