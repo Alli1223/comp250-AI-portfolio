@@ -180,7 +180,6 @@
     <ClInclude Include="InitialisationError.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="ShipManager.h" />
-    <ClInclude Include="MainCharacter.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Oxygen.h" />
     <ClInclude Include="Resource.h" />
@@ -190,7 +189,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="ToolBar.h" />
-    <ClInclude Include="TreeNode.h" />
+    <ClInclude Include="Node.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
@@ -215,7 +214,6 @@
     <ClCompile Include="InitialisationError.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="ShipManager.cpp" />
-    <ClCompile Include="MainCharacter.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Oxygen.cpp" />
     <ClCompile Include="SDL_project.cpp" />
@@ -235,6 +233,9 @@
   <ItemGroup>
     <Image Include="SDL_project.ico" />
     <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

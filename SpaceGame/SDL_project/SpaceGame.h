@@ -6,7 +6,6 @@
 #include "Point.h"
 #include "SDL2_image-2.0.1\include\SDL_image.h"
 #include "Cell.h"
-#include "MainCharacter.h"
 #include "Oxygen.h"
 #include "Fire.h"
 #include "RoomDesign.h"
