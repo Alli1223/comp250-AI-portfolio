@@ -47,6 +47,7 @@ Point AgentManager::FindNearestCelltoAgent(Agent& agent, Level& level, std::stri
 	{
 		for (int y = agent.getY() - localSearchSize; y <= agent.getY() + localSearchSize; y++)
 		{
+			// If within grid
 			if (x > 0 && y > 0 && x < level.grid.size() && y < level.grid[x].size())
 			{
 				if (cellType == "BED" || cellType == "Bed")
@@ -69,9 +70,10 @@ Point AgentManager::FindNearestCelltoAgent(Agent& agent, Level& level, std::stri
 		}
 	}
 
+	//Increase searchsize if not found
 	localSearchSize = localSearchSize * 2;
 
-	// Seach entire map
+	/* Seach entire map
 	for (int x = 0; x <= level.grid.size(); x++)
 	{
 		for (int y = 0; y <= level.grid[x].size(); y++)
@@ -94,6 +96,7 @@ Point AgentManager::FindNearestCelltoAgent(Agent& agent, Level& level, std::stri
 			}
 		}
 	}
+	*/
 }
 
 

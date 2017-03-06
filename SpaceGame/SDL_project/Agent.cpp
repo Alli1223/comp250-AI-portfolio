@@ -16,7 +16,7 @@ void Agent::Update(Level& level)
 	int cellSize = level.getCellSize();
 
 	// Decrease stats over time
-	tiredness = tiredness - tirednessDecayRate;
+	tiredness = tiredness + tirednessDecayRate;
 	hunger = hunger - hungerDecayRate;
 
 	//behaviour.BehaviourTree(*this, level);
@@ -69,6 +69,15 @@ void Agent::Update(Level& level)
 	if (this->getHealth() <= 0)
 		this->isAlive = false;
 
+	if (this->tiredness > 3.0)
+	{
+		Point bedlocation = FindNearestCelltoAgent(*this, level, "Bed");
+		Point agentLocation(this->x / cellSize, this->y / cellSize);
+		this->Move(level, agentLocation, bedlocation);
+	}
+
+
+
 	// Agent will wonder randomly when idle
 	if (this->agentStatus == "Idle")
 	{
@@ -88,6 +97,8 @@ void Agent::Update(Level& level)
 		Point startPoint(this->getX() / level.getCellSize(), this->getY() / level.getCellSize());
 		this->Move(level, startPoint, endPoint);
 	}
+
+	
 
 	/* DECREASE OXYGEN WHEN IN CELL WITH NO OXYGEN */
 	// If the cell has no oxygen
@@ -112,9 +123,63 @@ void Agent::Update(Level& level)
 		agentStatus = "Sleeping";
 	}
 	
+}
+Point Agent::FindNearestCelltoAgent(Agent& agent, Level& level, std::string cellType)
+{
+	Point endPoint;
 
+	// Do a local search of nearest 10 cells 
+	for (int x = agent.getX() - localSearchSize; x <= agent.getX() + localSearchSize; x++)
+	{
+		for (int y = agent.getY() - localSearchSize; y <= agent.getY() + localSearchSize; y++)
+		{
+			if (x > 0 && y > 0 && x < level.grid.size() && y < level.grid[x].size())
+			{
+				if (cellType == "BED" || cellType == "Bed")
+				{
+					if (level.grid[x][y]->isBed)
+					{
+						endPoint = Point(x, y);
+						return endPoint;
+					}
+				}
+				else if (cellType == "TOILET" || cellType == "Toilet")
+				{
+					if (level.grid[x][y]->isToilet)
+					{
+						endPoint = Point(x, y);
+						return endPoint;
+					}
+				}
+			}
+		}
+	}
 
-	
+	localSearchSize = localSearchSize * 2;
+
+	// Seach entire map
+	for (int x = 0; x <= level.grid.size(); x++)
+	{
+		for (int y = 0; y <= level.grid[x].size(); y++)
+		{
+			if (cellType == "BED" || cellType == "Bed")
+			{
+				if (level.grid[x][y]->isBed)
+				{
+					endPoint = Point(x, y);
+					return endPoint;
+				}
+			}
+			else if (cellType == "TOILET" || cellType == "Toilet")
+			{
+				if (level.grid[x][y]->isToilet)
+				{
+					endPoint = Point(x, y);
+					return endPoint;
+				}
+			}
+		}
+	}
 }
 
 void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint)

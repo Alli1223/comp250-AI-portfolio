@@ -4,15 +4,15 @@
 
 double euclideanDistance(const Point& a, const Point& b)
 {
-	double dx = a.getX() - a.getX();
-	double dy = b.getY() - b.getY();
+	double dx = a.getX() - a.getY();
+	double dy = b.getX() - b.getY();
+	//pythagoras(sp)
 	double dist;
 
 	dist = pow(dx, 2) + pow(dy, 2);
 	dist = sqrt(dist);
 	
 	return dist;
-
 }
 
 void Pathfinder::addToClosedSet(std::shared_ptr<Node> node)

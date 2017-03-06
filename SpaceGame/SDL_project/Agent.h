@@ -15,6 +15,10 @@ public:
 	//! Movement method for Agent
 	void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint);
 
+	Point Agent::FindNearestCelltoAgent(Agent& agent, Level& level, std::string cellType);
+
+	double localSearchSize = 3.0;
+
 
 	//Getter methods
 	//! Gets the characters X value
