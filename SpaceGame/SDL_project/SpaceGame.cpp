@@ -153,7 +153,7 @@ void SpaceGame::run()
 		hydroponics.renderItems(renderer, level, allHydroponicsFarms);
 
 		// Render characters
-		agentManager.RenderAgents(agentManager.allAgents, renderer, level);
+		agentManager.UpdateAgents(agentManager.allAgents, renderer, level);
 
 		// TOOLBAR
 		toolbar.ToolBarFunctionality(level, designroom, dockingdoors, hydroponics, allHydroponicsFarms, renderer, mouse_X, mouse_Y);

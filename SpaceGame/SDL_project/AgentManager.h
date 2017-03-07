@@ -4,6 +4,7 @@
 #include "PathFinder.h"
 #include "Texture.h"
 #include "Agent.h"
+#include "AgentBehaviour.h"
 
 
 
@@ -19,10 +20,14 @@ public:
 	//! A destructor
 	~AgentManager();
 
+	//! Create an instance of AgentBehavour
+	AgentBehaviour agentBehaviour;
+
 	//! Contains a list of all the characters
 	std::vector<Agent> allAgents;
 
-	void AgentManager::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level);
+	void AgentManager::UpdateAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level);
+	void AgentManager::RenderAgents(Agent& agent, SDL_Renderer* renderer, Level& level);
 
 	//! Spawn character function (Character types are (NPC, Player)
 	void AgentManager::SpawnAgent(std::string CharacterTypeVar, std::vector<Agent>& allAgents, int x, int y);
@@ -32,11 +37,6 @@ public:
 
 	//! Erases all the agents in the game
 	void AgentManager::EraseAllAgents(std::vector<Agent>& allAgents);
-
-	//! Finds the nearest cell to the agent from the string cellType (e.g. "BED" || "TOILET")
-	Point AgentManager::FindNearestCelltoAgent(Agent& agent, Level& level, std::string& cellType);
-
-	int localSearchSize = 2;
 
 private:
 	std::string characterTextureLocation = "Resources\\Character\\";

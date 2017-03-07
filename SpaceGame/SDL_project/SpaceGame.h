@@ -65,6 +65,7 @@ public:
 	CellRendering cellrenderer;
 	Hydroponics hydroponics;
 	
+	
 	//! Pathfinding function
 	void SpaceGame::drawPath(Point& point, Level& level, std::vector<Point>& path);
 

@@ -88,6 +88,9 @@
     <ClCompile Include="AgentManager.cpp">
       <Filter>Source Files\AI Classes</Filter>
     </ClCompile>
+    <ClCompile Include="AgentBehaviour.cpp">
+      <Filter>Source Files\AI Classes\BehaviourTree</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fire.h">
@@ -183,7 +186,13 @@
     <ClInclude Include="AgentManager.h">
       <Filter>Headers\AI Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Node.h">
+    <ClInclude Include="AgentBehaviour.h">
+      <Filter>Headers\AI Classes\BehaviourTree</Filter>
+    </ClInclude>
+    <ClInclude Include="BehaviourTree.h">
+      <Filter>Headers\AI Classes\BehaviourTree</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositeNode.h">
       <Filter>Headers\AI Classes\BehaviourTree</Filter>
     </ClInclude>
   </ItemGroup>
@@ -263,6 +272,9 @@
     </Filter>
     <Filter Include="Source Files\AI Classes\BehaviourTree">
       <UniqueIdentifier>{ff694f21-84df-4b18-8560-6797e343383a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\AI Classes\BehaviourTree\Tasks">
+      <UniqueIdentifier>{573f0559-96f8-4d31-9fc6-3f991cdb622e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

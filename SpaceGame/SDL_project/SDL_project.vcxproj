@@ -159,10 +159,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Agent.h" />
+    <ClInclude Include="AgentBehaviour.h" />
     <ClInclude Include="CargoShip.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellRendering.h" />
     <ClInclude Include="AgentManager.h" />
+    <ClInclude Include="CompositeNode.h" />
     <ClInclude Include="DockingDoors.h" />
     <ClInclude Include="EscapeMenu.h" />
     <ClInclude Include="GameSettings.h" />
@@ -189,10 +191,11 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="ToolBar.h" />
-    <ClInclude Include="Node.h" />
+    <ClInclude Include="BehaviourTree.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
+    <ClCompile Include="AgentBehaviour.cpp" />
     <ClCompile Include="CargoShip.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellRendering.cpp" />

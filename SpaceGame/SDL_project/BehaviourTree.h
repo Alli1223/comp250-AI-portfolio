@@ -3,24 +3,28 @@
 
 // This is the root class for each node
 // These classes and code are derrived from this fourm code http://www.cplusplus.com/forum/general/141582/
-class Node
+class BehaviourTreeNode
 {
 public:
 	virtual bool run() = 0;
 };
 
-class CompositeNode : public Node {  //  This type of Node follows the Composite Pattern, containing a list of other Nodes.
+class CompositeNode : public BehaviourTreeNode 
+{  //  This type of Node follows the Composite Pattern, containing a list of other Nodes.
 private:
-	std::list<Node*> children;
+	std::list<BehaviourTreeNode*> children;
 public:
-	const std::list<Node*>& getChildren() const { return children; }
-	void addChild(Node* child) { children.emplace_back(child); }
+	const std::list<BehaviourTreeNode*>& getChildren() const { return children; }
+	void addChild(BehaviourTreeNode* child) { children.emplace_back(child); }
 };
 
-class Selector : public CompositeNode {
+class Selector : public CompositeNode 
+{
 public:
-	virtual bool run() override {
-		for (Node* child : getChildren()) {  // The generic Selector implementation
+	virtual bool run() override 
+	{
+		for (BehaviourTreeNode* child : getChildren()) 
+		{  // The generic Selector implementation
 			if (child->run())  // If one child succeeds, the entire operation run() succeeds.  Failure only results if all children fail.
 				return true;
 		}
@@ -28,10 +32,13 @@ public:
 	}
 };
 
-class Sequence : public CompositeNode {
+class Sequence : public CompositeNode 
+{
 public:
-	virtual bool run() override {
-		for (Node* child : getChildren()) {  // The generic Sequence implementation.
+	virtual bool run() override 
+	{
+		for (BehaviourTreeNode* child : getChildren()) 
+		{  // The generic Sequence implementation.
 			if (!child->run())  // If one child fails, then enter operation run() fails.  Success only results if all children succeed.
 				return false;
 		}
