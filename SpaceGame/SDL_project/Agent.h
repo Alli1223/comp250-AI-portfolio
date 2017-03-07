@@ -94,7 +94,7 @@ private:
 	//! Integer for the agent's size when rendered
 	int size = 35;
 	//! Integer for the agent current speed
-	int speed = 3;
+	int speed = 1;
 	//! A double for the agents's health
 	double health = 100.0;
 	//! Double to store agent hunger

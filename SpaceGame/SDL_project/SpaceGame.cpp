@@ -185,7 +185,8 @@ void SpaceGame::run()
 			// DRAW THE PATH FOR ALL AGENTS (VERY RESOURCE INTENSIVE)
 			for (int it = 0; it < agentManager.allAgents[i].path.size(); it++)
 			{
-				drawPath(agentManager.allAgents[i].path[i], level, agentManager.allAgents[i].path);
+				if(agentManager.allAgents[i].path.size() > 0)
+					drawPath(agentManager.allAgents[i].path[i], level, agentManager.allAgents[i].path);
 			}
 			
 		}

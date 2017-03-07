@@ -39,7 +39,8 @@ public:
 
 private:
 	std::vector<std::vector<std::shared_ptr<Node>>> nodes;
-	
+	std::vector<Point> Pathfinder::StringPulling(std::vector<Point> path, Level& level);
+	bool Pathfinder::isPathObsructed(Level& level, Point firstPoint, Point secondPoint);
 
 	void addToClosedSet(std::shared_ptr<Node> node);
 	void addToOpenSet(std::shared_ptr<Node> node);

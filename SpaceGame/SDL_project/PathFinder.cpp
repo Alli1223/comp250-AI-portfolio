@@ -104,15 +104,15 @@ std::shared_ptr<Node> Pathfinder::getOpenSetElementWithLowestScore()
 	return result;
 }
 
-std::vector<Point> Pathfinder::findPath(Level& map, const Point& start, const Point& goal)
+std::vector<Point> Pathfinder::findPath(Level& level, const Point& start, const Point& goal)
 {
 	// Clear all the node for fresh pathfind
 	nodes.clear();
 
 	// Create nodes for every cell in the grid
-	for (int x = 0; x < map.grid.size(); x++)
+	for (int x = 0; x < level.grid.size(); x++)
 	{
-		nodes.push_back(std::vector<std::shared_ptr<Node>>(map.grid.size(), nullptr));
+		nodes.push_back(std::vector<std::shared_ptr<Node>>(level.grid.size(), nullptr));
 	}
 
 	auto startNode = getOrCreateNode(start);
@@ -128,16 +128,16 @@ std::vector<Point> Pathfinder::findPath(Level& map, const Point& start, const Po
 		//if the current cell is the goal, make the path
 		if (currentNode->point.getX() == goal.getX() && currentNode->point.getY() == goal.getY())
 		{
-			return reconstructPath(currentNode);
+			return StringPulling(reconstructPath(currentNode), level);
 		}
 
 		addToClosedSet(currentNode);
 
 		// Loops through each of the neighbours
-		for (auto neighbour : getNeighbours(currentNode, map))
+		for (auto neighbour : getNeighbours(currentNode, level))
 		{
 			//if the cell is a room and not in closed set and not on fire
-			if (map.grid[currentNode->point.getX()][currentNode->point.getY()]->isRoom && !isInClosedSet(neighbour->point))
+			if (level.grid[currentNode->point.getX()][currentNode->point.getY()]->isRoom && !isInClosedSet(neighbour->point))
 			{
 				double gTentative = currentNode->g + euclideanDistance(neighbour->point, goal);
 
@@ -167,6 +167,81 @@ std::vector<Point> Pathfinder::reconstructPath(std::shared_ptr<Node> goalNode)
 	{
 		result.insert(result.begin(), currentNode->point);
 	}
-
 	return result;
+}
+
+std::vector<Point> Pathfinder::StringPulling(std::vector<Point> path, Level& level)
+{
+	int pathPointIterator = 0;
+	for (int i = 0; i < path.size() - 2; i++)
+	{
+		
+		
+		if (isPathObsructed(level, path[i + 1], path[i + 2]))
+		{
+			std::cout << "TEST" << std::endl;
+		}
+		else
+		{
+			path.erase(path.begin() + i + 1);
+		}
+		return path;
+	}
+
+	//TODO: Draw line between points and get the x and y values
+	
+}
+
+bool Pathfinder::isPathObsructed(Level& level, Point firstPoint, Point secondPoint)
+{
+	float x1 = firstPoint.getX();
+	float y1 = firstPoint.getY();
+	float x2 = secondPoint.getX();
+	float y2 = secondPoint.getY();
+	// Bresenham's line algorithm
+	const bool steep = (fabs(y2 - y1) > fabs(x2 - x1));
+	if (steep)
+	{
+		std::swap(x1, y1);
+		std::swap(x2, y2);
+	}
+
+	if (x1 > x2)
+	{
+		std::swap(x1, x2);
+		std::swap(y1, y2);
+	}
+
+	const float dx = x2 - x1;
+	const float dy = fabs(y2 - y1);
+
+	float error = dx / 2.0f;
+	const int ystep = (y1 < y2) ? 1 : -1;
+	int y = (int)y1;
+
+	const int maxX = (int)x2;
+
+	for (int x = (int)x1; x<maxX; x++)
+	{
+		if (steep)
+		{
+			if (level.grid[y][x]->isRoom == false)
+				return false;
+			//SetPixel(y, x);
+		}
+		else
+		{
+			if (level.grid[x][y]->isRoom == false)
+				return false;
+			//SetPixel(x, y);
+		}
+
+		error -= dy;
+		if (error < 0)
+		{
+			y += ystep;
+			error += dx;
+		}
+	}
+	return true;
 }
