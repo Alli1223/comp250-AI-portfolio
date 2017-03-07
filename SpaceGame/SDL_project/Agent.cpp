@@ -28,63 +28,39 @@ void Agent::Update(Level& level)
 	// If the agent has a path move along it
 	if (agentStatus == "TraversingPath")
 	{
-		// Move Left
-		if (getCellX() > path[pathPointIterator].getX() && getCellY() == path[pathPointIterator].getY())
-		{
-			setX(getX() - speed);
-			movementDirection = "Left";
-		}
+		/* Calculate angle
 
-		// Move Right
-		if (getCellX() < path[pathPointIterator].getX() && getCellY() == path[pathPointIterator].getY())
-		{
-			setX(getX() + speed);
-			movementDirection = "Right";
-		}
-		// Move Up
-		if (getCellY() > path[pathPointIterator].getY() && getCellX() == path[pathPointIterator].getX())
-		{
-			setY(getY() - speed);
-			movementDirection = "Up";
-		}
-		// Move Down
-		if (getCellY() < path[pathPointIterator].getY() && getCellX() == path[pathPointIterator].getX())
-		{
-			setY(getY() + speed);
-			movementDirection = "Down";
-		}
+		double deltaY = (path[pathPointIterator].getY() * cellSize) + getY();
+		double deltaX = (path[pathPointIterator].getX() * cellSize) + getX();
 
-		/////// DIAGONAL /////////
-		// Move up left
-		if (getX() / cellSize > path[pathPointIterator].getX() && getY() / cellSize > path[pathPointIterator].getY())
-		{
-			setX(getX() - speed); setY(getY() - speed);
-			movementDirection = "Left";
-		}
-		// Move up right
-		else if (getX() / cellSize < path[pathPointIterator].getX() && getY() / cellSize > path[pathPointIterator].getY())
-		{
-			setX(getX() + speed); setY(getY() - speed);
-			movementDirection = "Right";
-		}
-		// Move down left
-		if (getX() / cellSize > path[pathPointIterator].getX() && getY() / cellSize > path[pathPointIterator].getY())
-		{
-			setX(getX() - speed); setY(getY() + speed);
-			movementDirection = "Left";
-		}
-		// Move down right
-		else if (getX() / cellSize < path[pathPointIterator].getX() && getY() / cellSize > path[pathPointIterator].getY())
-		{
-			setX(getX() + speed); setY(getY() + speed);
-			movementDirection = "Right";
-		}
+		deltaX = deltaX * deltaX;
+		deltaY = deltaY * deltaY;
+	
+		int magnitude = sqrt(pow(deltaX, 2) + pow(deltaY, 2));
+		
+		deltaX = (double)(cos(magnitude) * speed);
+		deltaY = (double)(sin(magnitude) * speed);
+		*/
+		double deltaY = (path[pathPointIterator].getY() * cellSize) + getY();
+		double deltaX = (path[pathPointIterator].getX() * cellSize) + getX();
+
+
+		setX(getX() + deltaX);
+		setY(getY() + deltaY);
+
+		/*
+		A.x += dx;
+		A.y += dy;
+		*/
+
+		//TODO: normalize angle
 		
 
-		/////////END////
+		
+		
 
 		// If the agent is at the point then iterate to the next point
-		if (getX() / cellSize == path[pathPointIterator].getX() && getY() / cellSize == path[pathPointIterator].getY())
+		if (getCellX() == path[pathPointIterator].getX() && getCellY() == path[pathPointIterator].getY())
 		{
 			pathPointIterator++;
 		}
@@ -115,7 +91,7 @@ void Agent::Update(Level& level)
 		{
 			int x = rand() % level.getLevelWidth();
 			int y = rand() % level.getLevelHeight();
-			if (level.grid[x][y]->isRoom)
+			if (level.grid[x][y]->isWalkable)
 			{
 				endPoint = Point(level.grid[x][y]->getX(), level.grid[x][y]->getY());
 				foundEndPoint = true;

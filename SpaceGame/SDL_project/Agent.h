@@ -18,9 +18,9 @@ public:
 
 	//Getter methods
 	//! Gets the characters X value
-	int getX() { return x; }
+	double getX() { return x; }
 	//! Gets the characters Y value
-	int getY() { return y; }
+	double getY() { return y; }
 	//! Gets the characters X value
 	int getCellX() { return cellX; }
 	//! Gets the characters Y value
@@ -94,7 +94,7 @@ private:
 	//! Integer for the agent's size when rendered
 	int size = 35;
 	//! Integer for the agent current speed
-	int speed = 1;
+	double speed = 1.0;
 	//! A double for the agents's health
 	double health = 100.0;
 	//! Double to store agent hunger
