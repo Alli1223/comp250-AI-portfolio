@@ -182,7 +182,7 @@ void SpaceGame::run()
 			agentManager.allAgents[i].Update(level);
 
 
-			// DRAW THE PATH FOR ALL AGENTS (VERY RESOURCE INTENSIVE)
+			// DRAW THE PATH FOR ALL AGENTS
 			for (int it = 0; it < agentManager.allAgents[i].path.size(); it++)
 			{
 				if(agentManager.allAgents[i].path.size() > 0)

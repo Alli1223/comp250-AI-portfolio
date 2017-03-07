@@ -177,28 +177,31 @@ std::vector<Point> Pathfinder::StringPulling(std::vector<Point> path, Level& lev
 	{
 		
 		
-		if (isPathObsructed(level, path[i + 1], path[i + 2]))
-		{
-			std::cout << "TEST" << std::endl;
-		}
-		else
+		if (isPathObsructed(level, path[i], path[i + 2]))
 		{
 			path.erase(path.begin() + i + 1);
 		}
-		return path;
+		else
+		{
+			
+		}
+		
 	}
+	return path;
 
 	//TODO: Draw line between points and get the x and y values
 	
 }
 
+// Returns false if is obstructed
 bool Pathfinder::isPathObsructed(Level& level, Point firstPoint, Point secondPoint)
 {
 	float x1 = firstPoint.getX();
 	float y1 = firstPoint.getY();
 	float x2 = secondPoint.getX();
 	float y2 = secondPoint.getY();
-	// Bresenham's line algorithm
+
+	// Bresenham's line algorithm copied and modified from internet
 	const bool steep = (fabs(y2 - y1) > fabs(x2 - x1));
 	if (steep)
 	{
