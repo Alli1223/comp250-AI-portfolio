@@ -9,7 +9,7 @@
 #include "Oxygen.h"
 #include "Fire.h"
 #include "RoomDesign.h"
-#include "PlayerInteraction.h"
+#include "AgentInteraction.h"
 #include "PathFinder.h"
 #include "GameSettings.h"
 #include "GUI.h"

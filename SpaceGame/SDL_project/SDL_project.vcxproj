@@ -172,7 +172,7 @@
     <ClInclude Include="Hydroponics.h" />
     <ClInclude Include="Icon.h" />
     <ClInclude Include="Items.h" />
-    <ClInclude Include="PlayerInteraction.h" />
+    <ClInclude Include="AgentInteraction.h" />
     <ClInclude Include="Fire.h" />
     <ClInclude Include="PathFinder.h" />
     <ClInclude Include="PlayerStats.h" />

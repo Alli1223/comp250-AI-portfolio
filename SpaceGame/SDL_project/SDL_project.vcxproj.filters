@@ -177,9 +177,6 @@
     <ClInclude Include="CellRendering.h">
       <Filter>Headers\Main Game Classes</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerInteraction.h">
-      <Filter>Headers\AI Classes</Filter>
-    </ClInclude>
     <ClInclude Include="Agent.h">
       <Filter>Headers\AI Classes</Filter>
     </ClInclude>
@@ -194,6 +191,9 @@
     </ClInclude>
     <ClInclude Include="CompositeNode.h">
       <Filter>Headers\AI Classes\BehaviourTree</Filter>
+    </ClInclude>
+    <ClInclude Include="AgentInteraction.h">
+      <Filter>Headers\AI Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

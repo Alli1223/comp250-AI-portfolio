@@ -15,16 +15,16 @@ public:
 	//! Movement method for Agent
 	void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint);
 
-	Point Agent::FindNearestCelltoAgent(Agent& agent, Level& level, std::string cellType);
-
-	double localSearchSize = 3.0;
-
 
 	//Getter methods
 	//! Gets the characters X value
 	int getX() { return x; }
 	//! Gets the characters Y value
 	int getY() { return y; }
+	//! Gets the characters X value
+	int getCellX() { return cellX; }
+	//! Gets the characters Y value
+	int getCellY() { return cellY; }
 	//! Gets the characters size
 	int getSize() { return size; }
 	//! Gets the characters speed
@@ -35,6 +35,10 @@ public:
 	int setX(int newX) { return x = newX; }
 	//! Sets the characters Y value
 	int setY(int newY) { return y = newY; }
+	//! Sets the characters cellX value
+	int setCellX(int newCellX) { return cellX = newCellX; }
+	//! Sets the characters cellY value
+	int setCellY(int newCellY) { return cellY = newCellY; }
 	//! Sets the characters current speed
 	int setSpeed(int newSpeed) { return speed = newSpeed; }
 
@@ -51,8 +55,12 @@ public:
 	std::vector<Point> path;
 
 	//! Contains what the current status of the agent is doing
-	/*! Types of agent state: (Idle, FoundPath, Dead)*/
+	/*! Types of agent state: (Idle, FoundPath, Dead...)*/
 	std::string agentStatus = "Idle";
+
+	//! Contains what the agent needs to do the most
+	/*! Types of agent state: (Food, WC, Bed...)*/
+	std::string agentNeed = "NA";
 
 	//! Gets and Sets the agents health
 	double getHealth() { return health; }
@@ -75,17 +83,19 @@ public:
 
 private:
 
-	//! Integers for the character's X and Y position
+	//! Integers for the agent's X and Y position
 	int x = 0; int y = 0;
-	//! Integer for the character's size when rendered
+	//! Integers for the agent's cellX and cellY positions below agent
+	int cellX = 0; int cellY = 0;
+	//! Integer for the agent's size when rendered
 	int size = 25;
-	//! Integer for the characters current speed
-	int speed = 1;
+	//! Integer for the agent current speed
+	int speed = 3;
 	//! A double for the agents's health
 	double health = 100.0;
-	//! Double to store character hunger
+	//! Double to store agent hunger
 	double hunger = 1.0;
-	//! Integer to store character tiredness
+	//! Integer to store agent tiredness
 	double tiredness = 0.0;
 	//! A int for the agents's stored oxygen
 	double oxygenLevel = 3.0;

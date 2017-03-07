@@ -119,7 +119,7 @@ void SpaceGame::run()
 		//////////////////////////////////
 		//MAIN LOOP
 		///////////////////////////////////
-
+		
 		for (int x = 0; x < level.grid.size(); x++)
 		{
 			for (int y = 0; y < level.grid[x].size(); y++)
@@ -127,6 +127,9 @@ void SpaceGame::run()
 				//Renders all he cells
 				cellrenderer.RenderCells(level, renderer, x, y);
 
+				
+				agentManager.agentBehaviour.UpdateLevelInfo(level, x, y);
+				
 				/* Fill the screen with room cells
 				if (x > 0 && y > 0 && x < room.getLevelWidth() - 1 && y < room.getLevelHeight() - 1 )
 				{
@@ -179,12 +182,12 @@ void SpaceGame::run()
 			agentManager.allAgents[i].Update(level);
 
 
-			/* DRAW THE PATH FOR ALL AGENTS (VERY RESOURCE INTENSIVE)
-			for (int it = 0; it < allAgents[i].path.size(); it++)
+			// DRAW THE PATH FOR ALL AGENTS (VERY RESOURCE INTENSIVE)
+			for (int it = 0; it < agentManager.allAgents[i].path.size(); it++)
 			{
-				drawPath(allAgents[i].path[i], level, allAgents[i].path);
+				drawPath(agentManager.allAgents[i].path[i], level, agentManager.allAgents[i].path);
 			}
-			*/
+			
 		}
 		
 		

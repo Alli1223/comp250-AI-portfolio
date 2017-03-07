@@ -14,7 +14,8 @@ Agent::~Agent()
 void Agent::Update(Level& level)
 {
 	int cellSize = level.getCellSize();
-
+	setCellX(getX() / level.getCellSize());
+	setCellY(getY() / level.getCellSize());
 	// Decrease stats over time
 	tiredness = tiredness + tirednessDecayRate;
 	hunger = hunger - hungerDecayRate;
@@ -23,7 +24,7 @@ void Agent::Update(Level& level)
 	
 
 	// If the agent has a path move along it
-	if (agentStatus == "FoundPath")
+	if (agentStatus == "TraversingPath")
 	{
 		// Move Left
 		if (getX() / cellSize > path[pathPointIterator].getX() && getY() / cellSize == path[pathPointIterator].getY())
@@ -69,12 +70,6 @@ void Agent::Update(Level& level)
 	if (this->getHealth() <= 0)
 		this->isAlive = false;
 
-	if (this->tiredness > 3.0)
-	{
-		Point bedlocation = FindNearestCelltoAgent(*this, level, "Bed");
-		Point agentLocation(this->x / cellSize, this->y / cellSize);
-		this->Move(level, agentLocation, bedlocation);
-	}
 
 
 
@@ -116,75 +111,22 @@ void Agent::Update(Level& level)
 		this->setOxygenLevel(this->getOxygenLevel() + oxygenDecayRate);
 	
 	//If the agent reaches a bed
-	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->isBed && agentStatus == "SearchingForBed")
+	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->isBed)
 	{
 		//Increase rest at twice the speed
-		tiredness = tiredness + tirednessDecayRate * 2;
-		agentStatus = "Sleeping";
+		tiredness = 0.0;
+		agentStatus = "Idle";
 	}
 	
-}
-Point Agent::FindNearestCelltoAgent(Agent& agent, Level& level, std::string cellType)
-{
-	Point endPoint;
-
-	// Do a local search of nearest 10 cells 
-	for (int x = agent.getX() - localSearchSize; x <= agent.getX() + localSearchSize; x++)
-	{
-		for (int y = agent.getY() - localSearchSize; y <= agent.getY() + localSearchSize; y++)
-		{
-			if (x > 0 && y > 0 && x < level.grid.size() && y < level.grid[x].size())
-			{
-				if (cellType == "BED" || cellType == "Bed")
-				{
-					if (level.grid[x][y]->isBed)
-					{
-						endPoint = Point(x, y);
-						return endPoint;
-					}
-				}
-				else if (cellType == "TOILET" || cellType == "Toilet")
-				{
-					if (level.grid[x][y]->isToilet)
-					{
-						endPoint = Point(x, y);
-						return endPoint;
-					}
-				}
-			}
-		}
-	}
-
-	localSearchSize = localSearchSize * 2;
-
-	// Seach entire map
-	for (int x = 0; x <= level.grid.size(); x++)
-	{
-		for (int y = 0; y <= level.grid[x].size(); y++)
-		{
-			if (cellType == "BED" || cellType == "Bed")
-			{
-				if (level.grid[x][y]->isBed)
-				{
-					endPoint = Point(x, y);
-					return endPoint;
-				}
-			}
-			else if (cellType == "TOILET" || cellType == "Toilet")
-			{
-				if (level.grid[x][y]->isToilet)
-				{
-					endPoint = Point(x, y);
-					return endPoint;
-				}
-			}
-		}
-	}
 }
 
 void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint)
 {
+	// Erase path
+	path.erase(path.begin(), path.end());
+
+	// Move along path
 	path = pathfinder.findPath(level, StartPoint, EndPoint);
 	if (path.size() > 0)
-		agentStatus = "FoundPath";
+		agentStatus = "TraversingPath";
 }

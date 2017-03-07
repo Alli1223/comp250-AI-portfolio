@@ -7,31 +7,25 @@ public:
 	AgentBehaviour();
 	~AgentBehaviour();
 
-	struct {
-		bool levelHasBed = false;
-		int bedNum = 0; 
 
-		bool LevelHasToilet = false;
-		int toiletNum = 0;
-	};
+
+	Sequence *root = new Sequence, *sequence1 = new Sequence;
+	Selector* selector1 = new Selector;
+
+
+	bool levelHasBed = false;
+	int bedNum = 0;
+
+	bool LevelHasToilet = false;
+	int toiletNum = 0;
 
 
 	int localSearchSize = 2;
 	//! Finds the nearest cell to the agent from the string cellType (e.g. "BED" || "TOILET")
-	Point AgentBehaviour::FindNearestCelltoAgent(Agent& agent, Level& level, std::string& cellType);
+	Point AgentBehaviour::FindNearestCelltoAgent(Agent& agent, Level& level, std::string cellType);
 
 	//! To Decide what task needs to be done
-	void AgentBehaviour::DecideTask();
-};
+	void AgentBehaviour::DecideTask(Level& level, Agent& agent);
 
-
-class ApproachBedTask : BehaviourTreeNode
-{
-public:
-	ApproachBedTask::ApproachBedTask(Agent& agent);
-
-	
-
-private:
-	
+	void AgentBehaviour::UpdateLevelInfo(Level& level, int cellX, int cellY);
 };
