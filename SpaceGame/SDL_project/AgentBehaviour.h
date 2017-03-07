@@ -30,7 +30,7 @@ public:
 	void AgentBehaviour::UpdateLevelInfo(Level& level, int cellX, int cellY);
 
 private:
-	double tirednessThreshold = 0.2;
+	double tirednessThreshold = 0.4;
 	double toiletThreshold = 0.2;
 	double hungerThreshold = 0.2;
 };

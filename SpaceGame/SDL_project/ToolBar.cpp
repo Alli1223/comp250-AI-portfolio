@@ -7,7 +7,7 @@ ToolBar::ToolBar()
 	roomCell("Resources\\roomSprites\\center.png"), emptyCell("Resources\\roomSprites\\emptyCell.png"), 
 	emptyCellIcon("Resources\\Toolbar\\empty.png"),
 	DoorTexture("Resources\\door_sprite.png"),
-	HydroponicsIconTexture("Resources\\Toolbar\\hydroponicsIcon.png"),
+	HydroponicsIconTexture("Resources\\Toolbar\\hydroponicsIcon2.png"),
 	BedIconTexture("Resources\\Toolbar\\Bed.png"),
 	ShipDockTexture("Resources\\Toolbar\\SpaceDockIcon.png"),
 	ToiletIconTexture("Resources\\Toolbar\\Toilet.png")

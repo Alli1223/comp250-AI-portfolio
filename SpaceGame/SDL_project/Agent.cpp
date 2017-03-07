@@ -19,9 +19,10 @@ void Agent::Update(Level& level)
 	setCellY(getY() / level.getCellSize());
 
 
-	// Decrease stats over time
+	// Decrease/Increase stats over time
 	tiredness = tiredness + tirednessDecayRate;
 	hunger = hunger - hungerDecayRate;
+	toiletLevel = toiletLevel + toiletDecayRate;
 	
 
 	// If the agent has a path move along it
@@ -108,7 +109,7 @@ void Agent::Update(Level& level)
 		else if (this->getOxygenLevel() <= 0.0)
 			this->setHealth(this->getHealth() - healthDecayRate);
 	}
-	else if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->getOxygenLevel() > 0.0)
+	else if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->getOxygenLevel() > 0.0 && oxygenLevel < 3.0)
 		this->setOxygenLevel(this->getOxygenLevel() + oxygenDecayRate);
 	
 	//If the agent reaches a bed
@@ -116,6 +117,14 @@ void Agent::Update(Level& level)
 	{
 		//Increase rest at twice the speed
 		tiredness = 0.0;
+		agentNeed = "NA";
+	}
+
+	//If the agent reaches a Toilet
+	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->isToilet)
+	{
+		//Increase rest at twice the speed
+		toiletLevel = 0.0;
 		agentNeed = "NA";
 	}
 	

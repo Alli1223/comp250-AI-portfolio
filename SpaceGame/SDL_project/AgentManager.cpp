@@ -67,6 +67,7 @@ void AgentManager::RenderAgents(Agent& agent, SDL_Renderer* renderer, Level& lev
 			npcLeft.render(renderer, x, y, agent.getSize(), agent.getSize());
 
 		//Render agent stats to the right of agent
+
 		if (agent.getHealth() < 100.0)
 			healthBarTexture.render(renderer, x + agent.getSize() - agent.getSize() / 10, y, agent.getSize() / 10, agent.getHealth() / 2);
 		if (agent.getOxygenLevel() < 100.0)
@@ -75,6 +76,9 @@ void AgentManager::RenderAgents(Agent& agent, SDL_Renderer* renderer, Level& lev
 			hungerBarTexture.render(renderer, x + agent.getSize() + agent.getSize() / 10, y, agent.getSize() / 10, agent.getHunger() * 30.0);
 		if (agent.getTiredness() > 0.0)
 			tiredBarTexture.render(renderer, x + agent.getSize() + agent.getSize() * 2 / 10, y, agent.getSize() / 10, agent.getTiredness() * 100);
+		if (agent.getTiredness() > 0.0)
+			healthBarTexture.render(renderer, x + agent.getSize() + agent.getSize() * 3 / 10, y, agent.getSize() / 10, agent.getToietNeed() * 100);
+
 
 	}
 	if (agent.characterType == "Player" && agent.isAlive)

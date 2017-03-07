@@ -1,2 +1,256 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Fire" Collapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgABAAAEQCCKAAAAAAAgAAA=</HashCode>
+      <FileName>Fire.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Oxygen" Collapsed="true">
+    <Position X="13.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQACAEAAAIAAAAAgCAIAAAAAACAACIAAAAQAEgAA=</HashCode>
+      <FileName>Oxygen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cell" Collapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IoAAAgBCoAAAAAEgAABGAJAAQAoJABAAAARgQWCAgAA=</HashCode>
+      <FileName>Cell.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomDesign" Collapsed="true">
+    <Position X="13.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAABAIAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RoomDesign.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Level" Collapsed="true">
+    <Position X="8" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAQAAIAAIACAAAAAAAQAAEAAAAAAABAABAAIAEAAA=</HashCode>
+      <FileName>Level.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Map" Collapsed="true">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABABAAEBQAQAAQAAEAAIAAACAAACQIIAAAAAA=</HashCode>
+      <FileName>Map.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Node" Collapsed="true">
+    <Position X="11.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAAAAAgAAAAAAAAAAAAAAAAAIQAAAAAEAAAA=</HashCode>
+      <FileName>PathFinder.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pathfinder" Collapsed="true">
+    <Position X="15" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAQAAAAAAAAAgAQAQAIAAAACAIAAIAA=</HashCode>
+      <FileName>PathFinder.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathfinderError" Collapsed="true">
+    <Position X="8" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PathFinder.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Point" Collapsed="true">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAABgAGAAAAA=</HashCode>
+      <FileName>Point.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CellRendering" Collapsed="true">
+    <Position X="15" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AdAQEIAAAgAAAFBgApAAIAkgwAGAgRAAACDEAIQQAIo=</HashCode>
+      <FileName>CellRendering.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameSettings" Collapsed="true">
+    <Position X="13.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACQBAAAAAAAAAAAAAAgAAAQAAAABCAAAAAgA=</HashCode>
+      <FileName>GameSettings.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InitialisationError" Collapsed="true">
+    <Position X="15" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>InitialisationError.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceGame" Collapsed="true">
+    <Position X="8" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BGACCoIgKQBAAWAAAEAQAAgAAIkAChAoBAAgCCgAgBA=</HashCode>
+      <FileName>SpaceGame.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Texture" Collapsed="true">
+    <Position X="9.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAghAAAAAAAAAAAAACAgAAAEIAAAAQAAA=</HashCode>
+      <FileName>Texture.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EscapeMenu" Collapsed="true">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QgEAABAAAAAAAAAAAAABAAEAAAAABAAAgAAAgCAAAAA=</HashCode>
+      <FileName>EscapeMenu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI" Collapsed="true">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAABAAAAAAAAAQAQAAGAAAABBAAQAAEAABgAGAAAAA=</HashCode>
+      <FileName>GUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Icon" Collapsed="true">
+    <Position X="0.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAACA=</HashCode>
+      <FileName>Icon.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerStats" Collapsed="true">
+    <Position X="3" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAACAABgEBACAABAICAAAAAAAAABAAgAAAAAAA=</HashCode>
+      <FileName>PlayerStats.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ToolBar" Collapsed="true">
+    <Position X="5.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAVCIBAEAACAAR0AAIAgQAEAAAAIhAAABRCAABTAN5A=</HashCode>
+      <FileName>ToolBar.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hydroponics" Collapsed="true">
+    <Position X="0.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAQCCAAAAAECACAAACBAAAAAAAAAAgAQEQAA=</HashCode>
+      <FileName>Hydroponics.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Items" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAACAQAQAAGAABAAAUAAAACIABgAGAAAAw=</HashCode>
+      <FileName>Items.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DockingDoors" Collapsed="true">
+    <Position X="8" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEIAAAAAAgAABAAAAAAAAAQACABAAEEAAAAgAA=</HashCode>
+      <FileName>DockingDoors.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ship" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QIAABAAEAARAAAQAQAQGAAAAAQCAQAREAABgAGAEAAg=</HashCode>
+      <FileName>Ship.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShipManager" Collapsed="true">
+    <Position X="15" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAGAAAAAAAAAAAAAAEACIAAAAAAAAABgAAAAFBg=</HashCode>
+      <FileName>ShipManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CargoShip" Collapsed="true">
+    <Position X="5.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CargoShip.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Agent" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IASAQggAAIIAAAABAoEGwACkEAISAQEDIEByCOMAAAg=</HashCode>
+      <FileName>Agent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgentManager" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAEEgQQAAAAAAFCgoAGAAhgCICAANAAAAAAAAAAAAQA=</HashCode>
+      <FileName>AgentManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerInteraction" Collapsed="true">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAQAAQAAAAAABAAQIEAABAA=</HashCode>
+      <FileName>AgentInteraction.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgentBehaviour" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAABABCAAAAAwCUAAIAgACAAAAACAAAABQgAAAAAAAA=</HashCode>
+      <FileName>AgentBehaviour.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BehaviourTreeNode" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BehaviourTree.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CompositeNode" Collapsed="true">
+    <Position X="1.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAABAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>BehaviourTree.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Selector" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BehaviourTree.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sequence" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BehaviourTree.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="CompareNodeByGPlusH" Collapsed="true">
+    <Position X="8" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PathFinder.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="NodeStatus" Collapsed="true">
+    <Position X="8" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAGAAAA=</HashCode>
+      <FileName>PathFinder.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

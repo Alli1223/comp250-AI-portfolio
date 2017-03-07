@@ -74,6 +74,10 @@ public:
 	double getTiredness() { return tiredness; }
 	double setTiredness(double newTiredness) { return tiredness = newTiredness; }
 
+	//! Gets and Sets the agents tiredness (Tiredness increaes from 0)
+	double getToietNeed() { return toiletLevel; }
+	double setToiletNeed(double newToiletNeed) { return toiletLevel = newToiletNeed; }
+
 	//! Gets and Sets the agents oxygen level
 	double getOxygenLevel() { return oxygenLevel; }
 	double setOxygenLevel(double newOxygenLevel) { return oxygenLevel = newOxygenLevel; }
@@ -97,15 +101,20 @@ private:
 	double hunger = 1.0;
 	//! Integer to store agent tiredness
 	double tiredness = 0.0;
+	//! A Double for toilet level
+	double toiletLevel = 0.0;
 	//! A int for the agents's stored oxygen
 	double oxygenLevel = 3.0;
+	
 
 	//! A double for storing agents health decay rate
 	double healthDecayRate = 0.1;
 	//! A double for storing agents hunger decay rate
 	double hungerDecayRate = 0.001;
+	//! A double for toilet decay rate
+	double toiletDecayRate = 0.002;
 	//! A double for storing agents tiredness decay rate
-	double tirednessDecayRate = 0.001;
+	double tirednessDecayRate = 0.0007;
 	//! A double for storing agents oxygen decay rate
 	double oxygenDecayRate = 0.01;
 

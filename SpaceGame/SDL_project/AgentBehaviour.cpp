@@ -20,16 +20,17 @@ void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 		if (levelHasBed)
 		{
 			Point AgentLocation(agent.getCellX(), agent.getCellY());
-			Point bedLocation = FindNearestCelltoAgent(agent, level, "BED");
+			Point bedLocation = FindNearestCelltoAgent(agent, level, "Bed");
 			agent.Move(level, AgentLocation, bedLocation);
 		}
 	}
 
-	else if (agent.getHunger() < hungerThreshold && agent.agentNeed != "Toilet" && LevelHasToilet)
+	if (agent.getToietNeed() > toiletThreshold && agent.agentNeed != "Bed" && LevelHasToilet)
 	{
-		agent.agentNeed = "Toilet";
+		agent.agentNeed = "Bed";
 		Point AgentLocation(agent.getCellX(), agent.getCellY());
-		Point bedLocation = FindNearestCelltoAgent(agent, level, "Toilet");
+		Point toiletLocation = FindNearestCelltoAgent(agent, level, "Toilet");
+		agent.Move(level, AgentLocation, toiletLocation);
 	}
 }
 
