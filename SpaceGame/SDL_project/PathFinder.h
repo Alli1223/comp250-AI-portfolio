@@ -51,6 +51,8 @@ private:
 	std::shared_ptr<Node> getOrCreateNode(int x, int y);
 	std::shared_ptr<Node> getOrCreateNode(const Point& point);
 	bool isInClosedSet(Point& point);
+
+	bool StringPullPath = false;
 };
 
 class PathfinderError : public std::exception

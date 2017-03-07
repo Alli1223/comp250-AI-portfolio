@@ -128,7 +128,10 @@ std::vector<Point> Pathfinder::findPath(Level& level, const Point& start, const 
 		//if the current cell is the goal, make the path
 		if (currentNode->point.getX() == goal.getX() && currentNode->point.getY() == goal.getY())
 		{
-			return StringPulling(reconstructPath(currentNode), level);
+			if (StringPullPath)
+				return StringPulling(reconstructPath(currentNode), level);
+			else
+				return reconstructPath(currentNode);
 		}
 
 		addToClosedSet(currentNode);
@@ -172,25 +175,20 @@ std::vector<Point> Pathfinder::reconstructPath(std::shared_ptr<Node> goalNode)
 
 std::vector<Point> Pathfinder::StringPulling(std::vector<Point> path, Level& level)
 {
-	int pathPointIterator = 0;
-	for (int i = 0; i < path.size() - 2; i++)
+	int i = 0;
+	while (i + 2 < path.size())
 	{
-		
-		
 		if (isPathObsructed(level, path[i], path[i + 2]))
-		{
 			path.erase(path.begin() + i + 1);
-		}
+
 		else
-		{
-			
-		}
-		
+			i++;
 	}
+	path.shrink_to_fit();
 	return path;
 
 	//TODO: Draw line between points and get the x and y values
-	
+
 }
 
 // Returns false if is obstructed
@@ -202,6 +200,7 @@ bool Pathfinder::isPathObsructed(Level& level, Point firstPoint, Point secondPoi
 	float y2 = secondPoint.getY();
 
 	// Bresenham's line algorithm copied and modified from internet
+	//Link from source (http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#C.2B.2B) Date accessed: 07.03.2017
 	const bool steep = (fabs(y2 - y1) > fabs(x2 - x1));
 	if (steep)
 	{

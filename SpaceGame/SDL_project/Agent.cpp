@@ -58,6 +58,7 @@ void Agent::Update(Level& level)
 		{
 			pathPointIterator++;
 		}
+		
 
 		// If the Agent has reached the end of the path then reset the pathfinder and set the agent to idle.
 		if (pathPointIterator >= path.size())
