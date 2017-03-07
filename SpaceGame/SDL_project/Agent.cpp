@@ -28,22 +28,22 @@ void Agent::Update(Level& level)
 	// If the agent has a path move along it
 	if (agentStatus == "TraversingPath")
 	{
-		/* Calculate angle
+		
+		// Calculate magnitude
 
-		double deltaY = (path[pathPointIterator].getY() * cellSize) + getY();
-		double deltaX = (path[pathPointIterator].getX() * cellSize) + getX();
+		double deltaY = (path[pathPointIterator].getY() * cellSize) - getX();
+		double deltaX = (path[pathPointIterator].getX() * cellSize) - getY();
 
 		deltaX = deltaX * deltaX;
 		deltaY = deltaY * deltaY;
-	
-		int magnitude = sqrt(pow(deltaX, 2) + pow(deltaY, 2));
-		
-		deltaX = (double)(cos(magnitude) * speed);
-		deltaY = (double)(sin(magnitude) * speed);
-		*/
-		double deltaY = (path[pathPointIterator].getY() * cellSize) + getY();
-		double deltaX = (path[pathPointIterator].getX() * cellSize) + getX();
 
+		// Calculate direction
+		double angleInDegrees = atan(deltaY / deltaX) * 360.0 / PI;
+
+
+		deltaX = (double)(cos(angleInDegrees) * speed);
+		deltaY = (double)(sin(angleInDegrees) * speed);
+		agentRotation = angleInDegrees;
 
 		setX(getX() + deltaX);
 		setY(getY() + deltaY);

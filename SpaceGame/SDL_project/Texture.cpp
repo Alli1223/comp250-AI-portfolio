@@ -56,12 +56,8 @@ void Texture::renderRotation(SDL_Renderer* renderer, int x, int y, int width, in
 	dest.y = y - height / 2;
 	dest.w = width;
 	dest.h = height;
-	SDL_Point *center;
-	center->x = x - width / 2;
-	center->y = y - height / 2;
-	SDL_RendererFlip flip;
 
-	SDL_RenderCopyEx(renderer, texture, nullptr, &dest, angle, center, flip );
+	SDL_RenderCopyEx(renderer, texture, nullptr, &dest, angle, 0, SDL_FLIP_NONE);
 }
 
 void Texture::alterTransparency(int transparencyLevel)
@@ -73,11 +69,3 @@ void Texture::alterTextureColour(int r, int g, int b)
 {
 	SDL_SetTextureColorMod(texture, r, g, b);
 }
-
-int SDL_RenderCopyEx(SDL_Renderer*       renderer,
-	SDL_Texture*           texture,
-	const SDL_Rect*        srcrect,
-	const SDL_Rect*        dstrect,
-	const double           angle,
-	const SDL_Point*       center,
-	const SDL_RendererFlip flip)

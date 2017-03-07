@@ -85,6 +85,8 @@ public:
 	//! Boolean for whether character is alive
 	bool isAlive = true;
 
+	int agentRotation = 0;
+
 private:
 
 	//! Integers for the agent's X and Y position

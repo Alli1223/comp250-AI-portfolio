@@ -62,7 +62,7 @@ void AgentManager::RenderAgents(Agent& agent, SDL_Renderer* renderer, Level& lev
 		if (agent.movementDirection == "Right")
 			npcRight.render(renderer, x, y, agent.getSize(), agent.getSize());
 		if (agent.movementDirection == "Down")
-			npcDown.render(renderer, x, y, agent.getSize(), agent.getSize());
+			npcDown.renderRotation(renderer, x, y, agent.getSize(), agent.getSize(), agent.agentRotation);
 		if (agent.movementDirection == "Left")
 			npcLeft.render(renderer, x, y, agent.getSize(), agent.getSize());
 
