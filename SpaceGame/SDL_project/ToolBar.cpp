@@ -9,7 +9,8 @@ ToolBar::ToolBar()
 	DoorTexture("Resources\\door_sprite.png"),
 	HydroponicsIconTexture("Resources\\Toolbar\\hydroponicsIcon.png"),
 	BedIconTexture("Resources\\Toolbar\\Bed.png"),
-	ShipDockTexture("Resources\\Toolbar\\SpaceDockIcon.png")
+	ShipDockTexture("Resources\\Toolbar\\SpaceDockIcon.png"),
+	ToiletIconTexture("Resources\\Toolbar\\Toilet.png")
 {
 
 }
@@ -152,7 +153,16 @@ void ToolBar::RenderToolbar(SDL_Renderer* renderer, int& WINDOW_WIDTH, int& WIND
 		}
 		else if (icon->getIconID() == 7)
 		{
+			ToiletIconTexture.render(renderer, icon->getX(), icon->getY(), toolbarIconSize, toolbarIconSize);
+			if (mouseX > icon->getX() - (toolbarIconSize / 2) && mouseX < icon->getX() + (toolbarIconSize / 2) && mouseY > toolbarYpos - toolbarIconSize / 2 && mouseY < toolbarYpos + toolbarSizeY / 2)
+			{
 
+				ToiletIconTexture.render(renderer, icon->getX(), icon->getY(), toolbarIconSize + mouseOverSizeIncrease, toolbarIconSize + mouseOverSizeIncrease);
+				if (SDL_GetMouseState(&mouseX, &mouseY) & SDL_BUTTON(SDL_BUTTON_LEFT))
+				{
+					setToolbarSelection(7);
+				}
+			}
 		}
 	}
 }
@@ -232,6 +242,13 @@ void ToolBar::ToolBarFunctionality(Level& level, RoomDesign& designroom,DockingD
 		{
 			if(level.grid[mouse_X / level.getCellSize()][mouse_Y / level.getCellSize()]->isRoom)
 				level.grid[mouse_X / level.getCellSize()][mouse_Y / level.getCellSize()]->isBed = true;
+		}
+
+		//Place Item 7 ( Toilet )
+		if (SDL_GetMouseState(&mouse_X, &mouse_Y) && toolbarSelection == 7)
+		{
+			if (level.grid[mouse_X / level.getCellSize()][mouse_Y / level.getCellSize()]->isRoom)
+				level.grid[mouse_X / level.getCellSize()][mouse_Y / level.getCellSize()]->isToilet = true;
 		}
 	}
 }

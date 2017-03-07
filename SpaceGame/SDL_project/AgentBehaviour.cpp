@@ -13,7 +13,7 @@ AgentBehaviour::~AgentBehaviour()
 
 void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 {
-	if (agent.getTiredness() > 0.1)
+	if (agent.getTiredness() > tirednessThreshold && agent.agentNeed != "Bed")
 	{
 		agent.agentNeed = "Bed";
 		//Move to bed if there is one
@@ -23,6 +23,13 @@ void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 			Point bedLocation = FindNearestCelltoAgent(agent, level, "BED");
 			agent.Move(level, AgentLocation, bedLocation);
 		}
+	}
+
+	else if (agent.getHunger() < hungerThreshold && agent.agentNeed != "Toilet" && LevelHasToilet)
+	{
+		agent.agentNeed = "Toilet";
+		Point AgentLocation(agent.getCellX(), agent.getCellY());
+		Point bedLocation = FindNearestCelltoAgent(agent, level, "Toilet");
 	}
 }
 
@@ -74,4 +81,5 @@ Point AgentBehaviour::FindNearestCelltoAgent(Agent& agent, Level& level, std::st
 		// Double search size if not found
 		localSearchSize = localSearchSize * 2;
 	}
+	localSearchSize = 2;
 }

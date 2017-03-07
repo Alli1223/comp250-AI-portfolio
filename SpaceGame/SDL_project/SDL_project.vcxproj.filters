@@ -79,9 +79,6 @@
     <ClCompile Include="CellRendering.cpp">
       <Filter>Source Files\Main Game Classes</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerInteraction.cpp">
-      <Filter>Source Files\AI Classes</Filter>
-    </ClCompile>
     <ClCompile Include="Agent.cpp">
       <Filter>Source Files\AI Classes</Filter>
     </ClCompile>
@@ -90,6 +87,9 @@
     </ClCompile>
     <ClCompile Include="AgentBehaviour.cpp">
       <Filter>Source Files\AI Classes\BehaviourTree</Filter>
+    </ClCompile>
+    <ClCompile Include="AgentInteraction.cpp">
+      <Filter>Source Files\AI Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -187,9 +187,6 @@
       <Filter>Headers\AI Classes\BehaviourTree</Filter>
     </ClInclude>
     <ClInclude Include="BehaviourTree.h">
-      <Filter>Headers\AI Classes\BehaviourTree</Filter>
-    </ClInclude>
-    <ClInclude Include="CompositeNode.h">
       <Filter>Headers\AI Classes\BehaviourTree</Filter>
     </ClInclude>
     <ClInclude Include="AgentInteraction.h">

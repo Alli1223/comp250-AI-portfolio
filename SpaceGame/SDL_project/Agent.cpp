@@ -13,14 +13,15 @@ Agent::~Agent()
 
 void Agent::Update(Level& level)
 {
+	// Set agents cell x & y tile values
 	int cellSize = level.getCellSize();
 	setCellX(getX() / level.getCellSize());
 	setCellY(getY() / level.getCellSize());
+
+
 	// Decrease stats over time
 	tiredness = tiredness + tirednessDecayRate;
 	hunger = hunger - hungerDecayRate;
-
-	//behaviour.BehaviourTree(*this, level);
 	
 
 	// If the agent has a path move along it
@@ -115,7 +116,7 @@ void Agent::Update(Level& level)
 	{
 		//Increase rest at twice the speed
 		tiredness = 0.0;
-		agentStatus = "Idle";
+		agentNeed = "NA";
 	}
 	
 }
@@ -124,6 +125,7 @@ void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint)
 {
 	// Erase path
 	path.erase(path.begin(), path.end());
+	pathPointIterator = 0;
 
 	// Move along path
 	path = pathfinder.findPath(level, StartPoint, EndPoint);

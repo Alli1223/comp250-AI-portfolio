@@ -28,4 +28,9 @@ public:
 	void AgentBehaviour::DecideTask(Level& level, Agent& agent);
 
 	void AgentBehaviour::UpdateLevelInfo(Level& level, int cellX, int cellY);
+
+private:
+	double tirednessThreshold = 0.2;
+	double toiletThreshold = 0.2;
+	double hungerThreshold = 0.2;
 };

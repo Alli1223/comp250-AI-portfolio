@@ -8,7 +8,7 @@ public:
 	PlayerInteraction();
 	~PlayerInteraction();
 
-	void PlayerInteraction::Interaction(Level& grid, Agent& agent, Oxygen& oxygen);
+	void PlayerInteraction::Interaction(Level& grid, Agent& agent);
 
 	//!Get door status
 	bool getDoorStatus() { return doorStatus; }

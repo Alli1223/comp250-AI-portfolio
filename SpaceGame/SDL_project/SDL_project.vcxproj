@@ -164,7 +164,6 @@
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellRendering.h" />
     <ClInclude Include="AgentManager.h" />
-    <ClInclude Include="CompositeNode.h" />
     <ClInclude Include="DockingDoors.h" />
     <ClInclude Include="EscapeMenu.h" />
     <ClInclude Include="GameSettings.h" />
@@ -207,7 +206,7 @@
     <ClCompile Include="Hydroponics.cpp" />
     <ClCompile Include="Icon.cpp" />
     <ClCompile Include="Items.cpp" />
-    <ClCompile Include="PlayerInteraction.cpp" />
+    <ClCompile Include="AgentInteraction.cpp" />
     <ClCompile Include="Fire.cpp" />
     <ClCompile Include="PathFinder.cpp" />
     <ClCompile Include="PlayerStats.cpp" />

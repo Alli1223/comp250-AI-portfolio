@@ -70,7 +70,7 @@ public:
 	double getHunger() { return hunger; }
 	double setHunger(double newHunger) { return hunger = newHunger; }
 
-	//! Gets and Sets the agents tiredness
+	//! Gets and Sets the agents tiredness (Tiredness increaes from 0)
 	double getTiredness() { return tiredness; }
 	double setTiredness(double newTiredness) { return tiredness = newTiredness; }
 
@@ -88,7 +88,7 @@ private:
 	//! Integers for the agent's cellX and cellY positions below agent
 	int cellX = 0; int cellY = 0;
 	//! Integer for the agent's size when rendered
-	int size = 25;
+	int size = 35;
 	//! Integer for the agent current speed
 	int speed = 3;
 	//! A double for the agents's health

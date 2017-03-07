@@ -51,6 +51,8 @@ public:
 	Texture BedIconTexture;
 	//! Is the texture for the shipDock
 	Texture ShipDockTexture;
+	//! Is the texture for the toilet
+	Texture ToiletIconTexture;
 
 	std::vector<std::shared_ptr<Icon>> allIcons;
 
