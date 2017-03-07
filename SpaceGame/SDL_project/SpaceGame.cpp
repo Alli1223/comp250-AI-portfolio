@@ -176,17 +176,20 @@ void SpaceGame::run()
 			}
 		}
 		
+		bool drawPaths = true;
 		// UPDATE ALL AGENTS POSITION
 		for (int i = 0; i < agentManager.allAgents.size(); i++)
 		{
 			agentManager.allAgents[i].Update(level);
 
-
-			// DRAW THE PATH FOR ALL AGENTS
-			for (int it = 0; it < agentManager.allAgents[i].path.size(); it++)
+			if (drawPaths)
 			{
-				if(agentManager.allAgents[i].path.size() > 0)
-					drawPath(agentManager.allAgents[i].path[i], level, agentManager.allAgents[i].path);
+				// DRAW THE PATH FOR ALL AGENTS
+				for (int it = 0; it < agentManager.allAgents[i].path.size(); it++)
+				{
+					if (agentManager.allAgents[i].path.size() > 0)
+						drawPath(agentManager.allAgents[i].path[i], level, agentManager.allAgents[i].path);
+				}
 			}
 			
 		}

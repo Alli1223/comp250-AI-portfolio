@@ -112,9 +112,9 @@ private:
 	//! A double for storing agents hunger decay rate
 	double hungerDecayRate = 0.001;
 	//! A double for toilet decay rate
-	double toiletDecayRate = 0.002;
+	double toiletDecayRate = 0.0002;
 	//! A double for storing agents tiredness decay rate
-	double tirednessDecayRate = 0.0007;
+	double tirednessDecayRate = 0.00007;
 	//! A double for storing agents oxygen decay rate
 	double oxygenDecayRate = 0.01;
 

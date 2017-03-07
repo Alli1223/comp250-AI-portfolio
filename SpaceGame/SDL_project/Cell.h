@@ -36,7 +36,7 @@ public:
 	//! Whether the cell is part of a room
 	bool isRoom = false;
 	//! Whether the cell is walkable
-	bool isWalkable = true;
+	bool isWalkable = false;
 	//! Whether the cell is a door is open
 	bool isOpenDoor = false;
 	//! Whether the cell door is closed

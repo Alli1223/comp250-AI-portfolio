@@ -29,29 +29,59 @@ void Agent::Update(Level& level)
 	if (agentStatus == "TraversingPath")
 	{
 		// Move Left
-		if (getX() / cellSize > path[pathPointIterator].getX() && getY() / cellSize == path[pathPointIterator].getY())
+		if (getCellX() > path[pathPointIterator].getX() && getCellY() == path[pathPointIterator].getY())
 		{
 			setX(getX() - speed);
 			movementDirection = "Left";
 		}
+
 		// Move Right
-		if (getX() / cellSize < path[pathPointIterator].getX() && getY() / cellSize == path[pathPointIterator].getY())
+		if (getCellX() < path[pathPointIterator].getX() && getCellY() == path[pathPointIterator].getY())
 		{
 			setX(getX() + speed);
 			movementDirection = "Right";
 		}
 		// Move Up
-		if (getY() / cellSize > path[pathPointIterator].getY() && getX() / cellSize == path[pathPointIterator].getX())
+		if (getCellY() > path[pathPointIterator].getY() && getCellX() == path[pathPointIterator].getX())
 		{
 			setY(getY() - speed);
 			movementDirection = "Up";
 		}
 		// Move Down
-		if (getY() / cellSize < path[pathPointIterator].getY() && getX() / cellSize == path[pathPointIterator].getX())
+		if (getCellY() < path[pathPointIterator].getY() && getCellX() == path[pathPointIterator].getX())
 		{
 			setY(getY() + speed);
 			movementDirection = "Down";
 		}
+
+		/////// DIAGONAL /////////
+		// Move up left
+		if (getX() / cellSize > path[pathPointIterator].getX() && getY() / cellSize > path[pathPointIterator].getY())
+		{
+			setX(getX() - speed); setY(getY() - speed);
+			movementDirection = "Left";
+		}
+		// Move up right
+		else if (getX() / cellSize < path[pathPointIterator].getX() && getY() / cellSize > path[pathPointIterator].getY())
+		{
+			setX(getX() + speed); setY(getY() - speed);
+			movementDirection = "Right";
+		}
+		// Move down left
+		if (getX() / cellSize > path[pathPointIterator].getX() && getY() / cellSize > path[pathPointIterator].getY())
+		{
+			setX(getX() - speed); setY(getY() + speed);
+			movementDirection = "Left";
+		}
+		// Move down right
+		else if (getX() / cellSize < path[pathPointIterator].getX() && getY() / cellSize > path[pathPointIterator].getY())
+		{
+			setX(getX() + speed); setY(getY() + speed);
+			movementDirection = "Right";
+		}
+		
+
+		/////////END////
 
 		// If the agent is at the point then iterate to the next point
 		if (getX() / cellSize == path[pathPointIterator].getX() && getY() / cellSize == path[pathPointIterator].getY())

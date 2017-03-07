@@ -44,12 +44,14 @@ std::vector<std::shared_ptr<Node>> Pathfinder::getNeighbours(std::shared_ptr<Nod
 				//down
 				result.push_back(getOrCreateNode(node->point.getX(), node->point.getY() + 1));
 
-				/* uncomment for diagonal paths 
-				result.push_back(getOrCreateNode(node->point.getX() - 1, node->point.getY() - 1));
-				result.push_back(getOrCreateNode(node->point.getX() - 1, node->point.getY() + 1));
-				result.push_back(getOrCreateNode(node->point.getX() + 1, node->point.getY() - 1));
-				result.push_back(getOrCreateNode(node->point.getX() + 1, node->point.getY() + 1));
-				*/
+				// uncomment for diagonal paths
+				if (diagonalPaths)
+				{
+					result.push_back(getOrCreateNode(node->point.getX() - 1, node->point.getY() - 1));
+					result.push_back(getOrCreateNode(node->point.getX() - 1, node->point.getY() + 1));
+					result.push_back(getOrCreateNode(node->point.getX() + 1, node->point.getY() - 1));
+					result.push_back(getOrCreateNode(node->point.getX() + 1, node->point.getY() + 1));
+				}
 
 				return result;
 			}
@@ -140,7 +142,7 @@ std::vector<Point> Pathfinder::findPath(Level& level, const Point& start, const 
 		for (auto neighbour : getNeighbours(currentNode, level))
 		{
 			//if the cell is a room and not in closed set and not on fire
-			if (level.grid[currentNode->point.getX()][currentNode->point.getY()]->isRoom && !isInClosedSet(neighbour->point))
+			if (level.grid[currentNode->point.getX()][currentNode->point.getY()]->isWalkable && !isInClosedSet(neighbour->point))
 			{
 				double gTentative = currentNode->g + euclideanDistance(neighbour->point, goal);
 
@@ -227,13 +229,13 @@ bool Pathfinder::isPathObsructed(Level& level, Point firstPoint, Point secondPoi
 	{
 		if (steep)
 		{
-			if (level.grid[y][x]->isRoom == false)
+			if (level.grid[y][x]->isWalkable == false)
 				return false;
 			//SetPixel(y, x);
 		}
 		else
 		{
-			if (level.grid[x][y]->isRoom == false)
+			if (level.grid[x][y]->isWalkable == false)
 				return false;
 			//SetPixel(x, y);
 		}
