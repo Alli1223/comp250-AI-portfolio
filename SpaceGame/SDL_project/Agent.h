@@ -32,9 +32,9 @@ public:
 
 	//Setter methods
 	//! Sets the characters X value
-	int setX(int newX) { return x = newX; }
+	double setX(double newX) { return x = newX; }
 	//! Sets the characters Y value
-	int setY(int newY) { return y = newY; }
+	double setY(double newY) { return y = newY; }
 	//! Sets the characters cellX value
 	int setCellX(int newCellX) { return cellX = newCellX; }
 	//! Sets the characters cellY value
@@ -90,7 +90,7 @@ public:
 private:
 
 	//! Integers for the agent's X and Y position
-	int x = 0; int y = 0;
+	double x = 0; double y = 0;
 	//! Integers for the agent's cellX and cellY positions below agent
 	int cellX = 0; int cellY = 0;
 	//! Integer for the agent's size when rendered

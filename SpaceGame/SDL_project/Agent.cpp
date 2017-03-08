@@ -34,12 +34,21 @@ void Agent::Update(Level& level)
 		double deltaY = (path[pathPointIterator].getY() * cellSize) - getX();
 		double deltaX = (path[pathPointIterator].getX() * cellSize) - getY();
 
-		deltaX = deltaX * deltaX;
-		deltaY = deltaY * deltaY;
 
+		//double dx = a.getX() - a.getY();
+		//double dy = b.getX() - b.getY();
+
+		//pythagoras
+		double dist;
+
+		dist = pow(deltaX, 2) + pow(deltaY, 2);
+		dist = sqrt(dist);
+
+
+		//double length = sqrt(deltaX + deltaY);
 		// Calculate direction
-		double angleInDegrees = atan(deltaY / deltaX) * 360.0 / PI;
-
+		double angleInDegrees = atan2(deltaY, deltaX) * 180.0 / PI;
+		
 
 		deltaX = (double)(cos(angleInDegrees) * speed);
 		deltaY = (double)(sin(angleInDegrees) * speed);
@@ -47,17 +56,6 @@ void Agent::Update(Level& level)
 
 		setX(getX() + deltaX);
 		setY(getY() + deltaY);
-
-		/*
-		A.x += dx;
-		A.y += dy;
-		*/
-
-		//TODO: normalize angle
-		
-
-		
-		
 
 		// If the agent is at the point then iterate to the next point
 		if (getCellX() == path[pathPointIterator].getX() && getCellY() == path[pathPointIterator].getY())
@@ -78,9 +76,6 @@ void Agent::Update(Level& level)
 
 	if (this->getHealth() <= 0)
 		this->isAlive = false;
-
-
-
 
 	// Agent will wonder randomly when idle
 	if (this->agentStatus == "Idle")
