@@ -28,7 +28,7 @@ public:
 	//! Gets the characters size
 	int getSize() { return size; }
 	//! Gets the characters speed
-	int getSpeed() { return speed; }
+	double getSpeed() { return speed; }
 
 	//Setter methods
 	//! Sets the characters X value
@@ -40,7 +40,7 @@ public:
 	//! Sets the characters cellY value
 	int setCellY(int newCellY) { return cellY = newCellY; }
 	//! Sets the characters current speed
-	int setSpeed(int newSpeed) { return speed = newSpeed; }
+	double setSpeed(double newSpeed) { return speed = newSpeed; }
 
 	//! Movement Direction
 	std::string movementDirection = "Down";
@@ -96,7 +96,7 @@ private:
 	//! Integer for the agent's size when rendered
 	int size = 35;
 	//! Integer for the agent current speed
-	double speed = 1.0;
+	double speed = 2.0;
 	//! A double for the agents's health
 	double health = 100.0;
 	//! Double to store agent hunger

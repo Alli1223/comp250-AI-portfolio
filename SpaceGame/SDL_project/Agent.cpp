@@ -15,8 +15,8 @@ void Agent::Update(Level& level)
 {
 	// Set agents cell x & y tile values
 	int cellSize = level.getCellSize();
-	setCellX(getX() / level.getCellSize());
-	setCellY(getY() / level.getCellSize());
+	setCellX((int)getX() / level.getCellSize());
+	setCellY((int)getY() / level.getCellSize());
 
 
 	// Decrease/Increase stats over time
@@ -28,41 +28,45 @@ void Agent::Update(Level& level)
 	// If the agent has a path move along it
 	if (agentStatus == "TraversingPath")
 	{
-		
-		// Calculate magnitude
 
-		double deltaY = (path[pathPointIterator].getY() * cellSize) - getX();
-		double deltaX = (path[pathPointIterator].getX() * cellSize) - getY();
+		// Magnitude is speed
 
-
-		//double dx = a.getX() - a.getY();
-		//double dy = b.getX() - b.getY();
+		double deltaY = getY() - (double)(path[pathPointIterator].getY() * cellSize);
+		double deltaX = getX() - (double)(path[pathPointIterator].getX() * cellSize);
 
 		//pythagoras
 		double dist;
 
-		dist = pow(deltaX, 2) + pow(deltaY, 2);
-		dist = sqrt(dist);
+
+		dist = sqrt(pow(deltaX, 2) + pow(deltaY, 2));
 
 
-		//double length = sqrt(deltaX + deltaY);
+		//dist = sqrt(deltaX + deltaY);
 		// Calculate direction
-		double angleInDegrees = atan2(deltaY, deltaX) * 180.0 / PI;
-		
+		double angleInDegrees = atan2(deltaY, deltaX) * 360.0 / PI;
 
-		deltaX = (double)(cos(angleInDegrees) * speed);
-		deltaY = (double)(sin(angleInDegrees) * speed);
+		if (angleInDegrees <= 0.0)
+			angleInDegrees = 360.0 - angleInDegrees;
+
+		deltaX = (double)(sin(angleInDegrees) * speed);
+		deltaY = (double)(cos(angleInDegrees) * speed);
 		agentRotation = angleInDegrees;
 
 		setX(getX() + deltaX);
-		setY(getY() + deltaY);
+		setY(getY() + -deltaY);
 
-		// If the agent is at the point then iterate to the next point
+
+
+
+
+		
+
 		if (getCellX() == path[pathPointIterator].getX() && getCellY() == path[pathPointIterator].getY())
 		{
 			pathPointIterator++;
 		}
-		
+
+
 
 		// If the Agent has reached the end of the path then reset the pathfinder and set the agent to idle.
 		if (pathPointIterator >= path.size())

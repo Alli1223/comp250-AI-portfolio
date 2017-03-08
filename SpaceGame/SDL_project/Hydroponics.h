@@ -25,7 +25,7 @@ public:
 
 	void spawnHydroponicBase(SDL_Renderer* renderer, Level& level, std::vector<Hydroponics>& allHydroponicsFarms, int x, int y);
 
-	int amountOfOxygenProducing = 0.1;
+	double amountOfOxygenProducing = 0.1;
 private:
 
 	
