@@ -18,9 +18,9 @@ public:
 
 	//Getter methods
 	//! Gets the characters X value
-	double getX() { return x; }
+	int getX() { return x; }
 	//! Gets the characters Y value
-	double getY() { return y; }
+	int getY() { return y; }
 	//! Gets the characters X value
 	int getCellX() { return cellX; }
 	//! Gets the characters Y value
@@ -32,9 +32,9 @@ public:
 
 	//Setter methods
 	//! Sets the characters X value
-	double setX(double newX) { return x = newX; }
+	int setX(int newX) { return x = newX; }
 	//! Sets the characters Y value
-	double setY(double newY) { return y = newY; }
+	int setY(int newY) { return y = newY; }
 	//! Sets the characters cellX value
 	int setCellX(int newCellX) { return cellX = newCellX; }
 	//! Sets the characters cellY value
@@ -85,18 +85,20 @@ public:
 	//! Boolean for whether character is alive
 	bool isAlive = true;
 
+	bool agentWonderWhenIdle = false;
+
 	int agentRotation = 0;
 
 private:
 
 	//! Integers for the agent's X and Y position
-	double x = 0; double y = 0;
+	int x = 0; int y = 0;
 	//! Integers for the agent's cellX and cellY positions below agent
 	int cellX = 0; int cellY = 0;
 	//! Integer for the agent's size when rendered
 	int size = 35;
 	//! Integer for the agent current speed
-	double speed = 2.0;
+	float speed = 1.5;
 	//! A double for the agents's health
 	double health = 100.0;
 	//! Double to store agent hunger

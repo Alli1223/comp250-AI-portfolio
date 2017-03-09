@@ -68,6 +68,7 @@ void SpaceGame::run()
 			if (state[SDL_SCANCODE_ESCAPE] && menu == false)
 			{
 				menu = true;
+				running = false;
 
 			}
 			else if (state[SDL_SCANCODE_ESCAPE] && menu == true)
@@ -131,10 +132,10 @@ void SpaceGame::run()
 				agentManager.agentBehaviour.UpdateLevelInfo(level, x, y);
 				
 				/* Fill the screen with room cells
-				if (x > 0 && y > 0 && x < room.getLevelWidth() - 1 && y < room.getLevelHeight() - 1 )
+				if (x > 0 && y > 0 && x < level.getLevelWidth() - 1 && y < level.getLevelHeight() - 1 )
 				{
-					room.grid[x][y]->isRoom = true;
-					//designroom.designRoom(room, x, y);
+					level.grid[x][y]->isRoom = true;
+					designroom.designRoom(level, x, y);
 				}
 				*/
 
@@ -144,7 +145,7 @@ void SpaceGame::run()
 				//fire.fireSpread(room, x, y);
 
 				// Runs Oxygen spread function
-				oxygen.update(level, x, y);
+				//oxygen.update(level, x, y);
 
 				
 				//hydroponics.update(level, allHydroponicsFarms, x, y);
@@ -185,13 +186,9 @@ void SpaceGame::run()
 			if (drawPaths)
 			{
 				// DRAW THE PATH FOR ALL AGENTS
-				for (int it = 0; it < agentManager.allAgents[i].path.size(); it++)
-				{
-					if (agentManager.allAgents[i].path.size() > 0)
-						drawPath(agentManager.allAgents[i].path[i], level, agentManager.allAgents[i].path);
-				}
+				if (agentManager.allAgents[i].path.size() > 0)
+					drawPath(agentManager.allAgents[i].path[i], level, agentManager.allAgents[i].path);
 			}
-			
 		}
 		
 		
@@ -211,6 +208,7 @@ void SpaceGame::run()
 			if (escapemenu.restart)
 			{
 				deleteVectors();
+				SpaceGame::~SpaceGame();
 				SpaceGame::run();
 			}
 		}
@@ -229,8 +227,8 @@ void SpaceGame::drawPath(Point& point, Level& level, std::vector<Point>& path)
 	// Start at the start point
 
 	// tileSize / 2 is added to all coordinates to put them in the centre of the tile
-	int lastX = point.getX() * (level.getCellSize() + level.getCellSize() / 2);
-	int lastY = point.getY() * (level.getCellSize() + level.getCellSize() / 2);
+	int lastX = point.getX() * level.getCellSize() + level.getCellSize() / 2;
+	int lastY = point.getY() * level.getCellSize() + level.getCellSize() / 2;
 
 
 	// Step through the path

@@ -44,7 +44,7 @@ std::vector<std::shared_ptr<Node>> Pathfinder::getNeighbours(std::shared_ptr<Nod
 				//down
 				result.push_back(getOrCreateNode(node->point.getX(), node->point.getY() + 1));
 
-				// uncomment for diagonal paths
+				// Diagonal paths
 				if (diagonalPaths)
 				{
 					result.push_back(getOrCreateNode(node->point.getX() - 1, node->point.getY() - 1));
@@ -142,7 +142,7 @@ std::vector<Point> Pathfinder::findPath(Level& level, const Point& start, const 
 		for (auto neighbour : getNeighbours(currentNode, level))
 		{
 			//if the cell is a room and not in closed set and not on fire
-			if (level.grid[currentNode->point.getX()][currentNode->point.getY()]->isWalkable && !isInClosedSet(neighbour->point))
+			if (level.grid[currentNode->point.getX()][currentNode->point.getY()]->isWalkable && level.grid[currentNode->point.getX()][currentNode->point.getY()]->isWalkable && !isInClosedSet(neighbour->point))
 			{
 				double gTentative = currentNode->g + euclideanDistance(neighbour->point, goal);
 
@@ -182,7 +182,6 @@ std::vector<Point> Pathfinder::StringPulling(std::vector<Point> path, Level& lev
 	{
 		if (isPathObsructed(level, path[i], path[i + 2]))
 			path.erase(path.begin() + i + 1);
-
 		else
 			i++;
 	}

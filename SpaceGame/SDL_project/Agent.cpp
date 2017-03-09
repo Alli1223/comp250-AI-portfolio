@@ -15,8 +15,8 @@ void Agent::Update(Level& level)
 {
 	// Set agents cell x & y tile values
 	int cellSize = level.getCellSize();
-	setCellX((int)getX() / level.getCellSize());
-	setCellY((int)getY() / level.getCellSize());
+	setCellX(getX() / level.getCellSize());
+	setCellY(getY() / level.getCellSize());
 
 
 	// Decrease/Increase stats over time
@@ -28,53 +28,50 @@ void Agent::Update(Level& level)
 	// If the agent has a path move along it
 	if (agentStatus == "TraversingPath")
 	{
+		//point.getX() * level.getCellSize() + level.getCellSize() / 2;
 
-		// Magnitude is speed
+		float deltaY = getY()  - path[pathPointIterator].getY() * cellSize;
+		float deltaX = getX()  - path[pathPointIterator].getX() * cellSize;
 
-		double deltaY = getY() - (double)(path[pathPointIterator].getY() * cellSize);
-		double deltaX = getX() - (double)(path[pathPointIterator].getX() * cellSize);
+		float dist = sqrt(deltaX * deltaX + deltaY * deltaY);
 
-		//pythagoras
-		double dist;
+		// Normalize 
+		deltaX /= dist;
+		deltaY /= dist;
 
-
-		dist = sqrt(pow(deltaX, 2) + pow(deltaY, 2));
-
-
-		//dist = sqrt(deltaX + deltaY);
 		// Calculate direction
-		double angleInDegrees = atan2(deltaY, deltaX) * 360.0 / PI;
+		float angleInDegrees = atan2(deltaY, deltaX) * 180.0 / PI;
 
-		if (angleInDegrees <= 0.0)
+		if (angleInDegrees < 0.0 || angleInDegrees > 360.0)
 			angleInDegrees = 360.0 - angleInDegrees;
 
-		deltaX = (double)(sin(angleInDegrees) * speed);
-		deltaY = (double)(cos(angleInDegrees) * speed);
+		//deltaX = (cos(angleInDegrees) * speed);
+		//deltaY = (sin(angleInDegrees) * speed);
 		agentRotation = angleInDegrees;
-
-		setX(getX() + deltaX);
-		setY(getY() + -deltaY);
-
-
-
-
-
 		
+		// Multiply direction by magnitude 
+		deltaX *= speed;
+		deltaY *= speed;
 
+		setX(getX() + -deltaX);
+		setY(getY() + -deltaY);
+		
+		// If the agent reaches the node in the path
 		if (getCellX() == path[pathPointIterator].getX() && getCellY() == path[pathPointIterator].getY())
 		{
-			pathPointIterator++;
+			// If the Agent has reached the end of the path then reset the pathfinder and set the agent to idle.
+			if (pathPointIterator >= path.size())
+			{
+				pathPointIterator = 0;
+				agentStatus = "Idle";
+
+			}
+			else
+				pathPointIterator++;
 		}
 
 
 
-		// If the Agent has reached the end of the path then reset the pathfinder and set the agent to idle.
-		if (pathPointIterator >= path.size())
-		{
-			agentStatus = "Idle";
-			pathPointIterator = 0;
-			path.erase(path.begin(), path.end());
-		}
 
 	}
 
@@ -88,22 +85,22 @@ void Agent::Update(Level& level)
 		Point endPoint;
 		while (!foundEndPoint)
 		{
-			int x = rand() % level.getLevelWidth();
-			int y = rand() % level.getLevelHeight();
-			if (level.grid[x][y]->isWalkable)
+			int x = rand() % level.grid.size();
+			int y = rand() % level.grid[x].size();
+			if (level.grid[x][y]->isWalkable && level.grid[x][y]->isRoom)
 			{
 				endPoint = Point(level.grid[x][y]->getX(), level.grid[x][y]->getY());
 				foundEndPoint = true;
 				this->agentStatus = "Wandering";
 			}
 		}
-		Point startPoint(this->getX() / level.getCellSize(), this->getY() / level.getCellSize());
+		Point startPoint(this->getCellX(), this->getCellY());
 		this->Move(level, startPoint, endPoint);
 	}
 
 	
 
-	/* DECREASE OXYGEN WHEN IN CELL WITH NO OXYGEN */
+	/* DECREASE OXYGEN WHEN IN CELL WITH NO OXYGEN 
 	// If the cell has no oxygen
 	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->getOxygenLevel() == 0.0)
 	{
@@ -133,6 +130,7 @@ void Agent::Update(Level& level)
 		toiletLevel = 0.0;
 		agentNeed = "NA";
 	}
+	*/
 	
 }
 
