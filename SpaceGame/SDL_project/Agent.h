@@ -44,9 +44,6 @@ public:
 	//! Sets the characters current speed
 	double setSpeed(double newSpeed) { return speed = newSpeed; }
 
-	//! Movement Direction
-	std::string movementDirection = "Down";
-
 	//! Character Type
 	std::string characterType = "NPC";
 
@@ -58,10 +55,14 @@ public:
 
 	//! Contains what the current status of the agent is doing
 	/*! Types of agent state: (Idle, FoundPath, Dead...)*/
-	std::string agentStatus = "Idle";
+	//std::string agentStatus = "Idle";
+	enum agentMovementStatus { Idle, TraversingPath, Waiting };
+	agentMovementStatus movementStatus = Idle;
 
 	//! Contains what the agent needs to do the most
 	/*! Types of agent state: (Food, WC, Bed...)*/
+	enum agentServicesStatus { NA, Hungry, Tired, WC, Suffocating };
+	//agentServicesStatus agentNeed = NA;
 	std::string agentNeed = "NA";
 
 	//! Gets and Sets the agents health
@@ -89,6 +90,7 @@ public:
 
 	bool agentWonderWhenIdle = false;
 
+	bool agentCanRotate = true;
 	int agentRotation = 0;
 
 private:

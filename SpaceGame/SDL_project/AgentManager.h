@@ -38,6 +38,8 @@ public:
 	//! Erases all the agents in the game
 	void AgentManager::EraseAllAgents(std::vector<Agent>& allAgents);
 
+	bool renderStats = false;
+
 private:
 	std::string characterTextureLocation = "Resources\\Character\\";
 	std::string playerStatsTextureLocation = "Resources\\GUI\\PlayerStats\\";

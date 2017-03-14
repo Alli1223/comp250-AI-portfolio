@@ -20,7 +20,6 @@ void AgentManager::SpawnAgent(std::string CharacterTypeVar, std::vector<Agent>& 
 		newAgent.setX(x);
 		newAgent.setY(y);
 		newAgent.characterType = CharacterTypeVar;
-		newAgent.movementDirection = "Down";
 		allAgents.push_back(newAgent);
 }
 
@@ -29,7 +28,7 @@ void AgentManager::EraseAllAgentPaths(std::vector<Agent>& allAgents)
 	for (int i = 0; i < allAgents.size(); i++)
 	{
 		allAgents[i].path.erase(allAgents[i].path.begin(), allAgents[i].path.end());
-		allAgents[i].agentStatus = "Idle";
+		allAgents[i].agentMovementStatus::Idle;
 	}
 }
 
@@ -56,41 +55,27 @@ void AgentManager::RenderAgents(Agent& agent, SDL_Renderer* renderer, Level& lev
 	int y = agent.getY() + (agent.getSize() / 2);
 	if (agent.characterType == "NPC" && agent.isAlive)
 	{
-		//npcDown.alterTextureColour(200, 100,100);
-		if (agent.movementDirection == "Up")
-			npcUp.render(renderer, x, y, agent.getSize(), agent.getSize());
-		if (agent.movementDirection == "Right")
-			npcRight.render(renderer, x, y, agent.getSize(), agent.getSize());
-		if (agent.movementDirection == "Down")
-			npcDown.renderRotation(renderer, x, y, agent.getSize(), agent.getSize(), agent.agentRotation);
-		if (agent.movementDirection == "Left")
-			npcLeft.render(renderer, x, y, agent.getSize(), agent.getSize());
+		npcDown.renderRotation(renderer, x, y, agent.getSize(), agent.getSize(), agent.agentRotation);
+
 
 		//Render agent stats to the right of agent
 
-		if (agent.getHealth() < 100.0)
-			healthBarTexture.render(renderer, x + agent.getSize() - agent.getSize() / 10, y, agent.getSize() / 10, agent.getHealth() / 2);
-		if (agent.getOxygenLevel() < 100.0)
-			oxygenBarTexture.render(renderer, x + agent.getSize(), y, agent.getSize() / 10, agent.getOxygenLevel() * 30.0);
-		if (agent.getHunger() < 100.0)
-			hungerBarTexture.render(renderer, x + agent.getSize() + agent.getSize() / 10, y, agent.getSize() / 10, agent.getHunger() * 30.0);
-		if (agent.getTiredness() > 0.0)
-			tiredBarTexture.render(renderer, x + agent.getSize() + agent.getSize() * 2 / 10, y, agent.getSize() / 10, agent.getTiredness() * 100);
-		if (agent.getTiredness() > 0.0)
-			healthBarTexture.render(renderer, x + agent.getSize() + agent.getSize() * 3 / 10, y, agent.getSize() / 10, agent.getToietNeed() * 100);
-
-
+		if (renderStats)
+		{
+			if (agent.getHealth() < 100.0)
+				healthBarTexture.render(renderer, x + agent.getSize() - agent.getSize() / 10, y, agent.getSize() / 10, agent.getHealth() / 2);
+			if (agent.getOxygenLevel() < 100.0)
+				oxygenBarTexture.render(renderer, x + agent.getSize(), y, agent.getSize() / 10, agent.getOxygenLevel() * 30.0);
+			if (agent.getHunger() < 100.0)
+				hungerBarTexture.render(renderer, x + agent.getSize() + agent.getSize() / 10, y, agent.getSize() / 10, agent.getHunger() * 30.0);
+			if (agent.getTiredness() > 0.0)
+				tiredBarTexture.render(renderer, x + agent.getSize() + agent.getSize() * 2 / 10, y, agent.getSize() / 10, agent.getTiredness() * 100);
+			if (agent.getTiredness() > 0.0)
+				healthBarTexture.render(renderer, x + agent.getSize() + agent.getSize() * 3 / 10, y, agent.getSize() / 10, agent.getToietNeed() * 100);
+		}
 	}
 	if (agent.characterType == "Player" && agent.isAlive)
 	{
-		if (agent.movementDirection == "Up")
-			characterUp.render(renderer, x, y, agent.getSize(), agent.getSize());
-		if (agent.movementDirection == "Right")
-			characterRight.render(renderer, x, y, agent.getSize(), agent.getSize());
-		if (agent.movementDirection == "Down")
-			characterDown.render(renderer, x, y, agent.getSize(), agent.getSize());
-		if (agent.movementDirection == "Left")
-			characterLeft.render(renderer, x, y, agent.getSize(), agent.getSize());
+		characterDown.render(renderer, x, y, agent.getSize(), agent.getSize());
 	}
-
 }

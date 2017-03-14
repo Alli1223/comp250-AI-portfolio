@@ -13,7 +13,7 @@ AgentBehaviour::~AgentBehaviour()
 
 void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 {
-	if (agent.getTiredness() > tirednessThreshold && agent.agentNeed != "Bed")
+	if (agent.getTiredness() > tirednessThreshold && agent.agentNeed != "Tired")
 	{
 		agent.agentNeed = "Bed";
 		//Move to bed if there is one

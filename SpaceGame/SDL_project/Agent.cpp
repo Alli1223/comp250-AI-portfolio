@@ -26,7 +26,7 @@ void Agent::Update(Level& level)
 	
 
 	// If the agent has a path move along it
-	if (agentStatus == "TraversingPath")
+	if (movementStatus == TraversingPath)
 	{
 		float deltaY = getY() - path[pathPointIterator].getY() * cellSize;
 		float deltaX = getX() - path[pathPointIterator].getX() * cellSize;
@@ -37,15 +37,16 @@ void Agent::Update(Level& level)
 		deltaX /= length;
 		deltaY /= length;
 
-		// Calculate direction
-		//float angleInDegrees = atan2(deltaY, deltaX) * 180.0 / PI;
+		// Calculate rotation
+		if (agentCanRotate)
+		{
+			float angleInDegrees = atan2(deltaY, deltaX) * 180.0 / PI;
 
-		//if (angleInDegrees < 0.0 || angleInDegrees > 360.0)
-			//angleInDegrees = 360.0 - angleInDegrees;
+			if (angleInDegrees < 0.0 || angleInDegrees > 360.0)
+				angleInDegrees = 360.0 - angleInDegrees;
 
-		//deltaX = (cos(angleInDegrees) * speed);
-		//deltaY = (sin(angleInDegrees) * speed);
-		//agentRotation = angleInDegrees;
+			agentRotation = angleInDegrees + 90;
+		}
 
 		// Multiply direction by magnitude 
 		deltaX *= speed;
@@ -67,8 +68,8 @@ void Agent::Update(Level& level)
 	if (this->getHealth() <= 0)
 		this->isAlive = false;
 
-	/* Agent will wonder randomly when idle
-	if (this->agentStatus == "Idle")
+	// Agent will wonder randomly when idle
+	if (movementStatus == Idle)
 	{
 		bool foundEndPoint = false;
 		Point endPoint;
@@ -80,19 +81,19 @@ void Agent::Update(Level& level)
 			{
 				endPoint = Point(level.grid[x][y]->getX(), level.grid[x][y]->getY());
 				foundEndPoint = true;
-				this->agentStatus = "Wandering";
+				movementStatus = TraversingPath;
 			}
 		}
 		Point startPoint(this->getCellX(), this->getCellY());
 		this->Move(level, startPoint, endPoint);
 	}
-	*/
+	
 	
 
 	// If the Agent has reached the end of the path then reset the pathfinder and set the agent to idle.
-	if (pathPointIterator >= path.size() && agentStatus == "TraversingPath")
+	if (pathPointIterator >= path.size() && movementStatus == TraversingPath)
 	{
-		agentStatus = "Idle";
+		movementStatus = Idle;
 		pathPointIterator = 0;
 	}
 }
@@ -106,5 +107,5 @@ void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint)
 	// Move along path
 	path = pathfinder.findPath(level, StartPoint, EndPoint);
 	if (path.size() > 0)
-		agentStatus = "TraversingPath";
+		movementStatus = TraversingPath;
 }

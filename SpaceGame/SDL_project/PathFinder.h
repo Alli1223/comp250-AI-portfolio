@@ -53,7 +53,7 @@ private:
 	bool isInClosedSet(Point& point);
 
 	bool StringPullPath = true;
-	bool diagonalPaths = true;
+	bool diagonalPaths = false;
 };
 
 class PathfinderError : public std::exception

@@ -128,16 +128,15 @@ void SpaceGame::run()
 				//Renders all he cells
 				cellrenderer.RenderCells(level, renderer, x, y);
 
-				
 				agentManager.agentBehaviour.UpdateLevelInfo(level, x, y);
 				
-				/* Fill the screen with room cells
+				// Fill the screen with room cells
 				if (x > 0 && y > 0 && x < level.getLevelWidth() - 1 && y < level.getLevelHeight() - 1 )
 				{
 					level.grid[x][y]->isRoom = true;
 					designroom.designRoom(level, x, y);
 				}
-				*/
+				
 
 				// Object Updates
 				//Spawns fire randomly in rooms over time
@@ -177,7 +176,7 @@ void SpaceGame::run()
 			}
 		}
 		
-		bool drawPaths = false;
+		bool drawPaths = true;
 		// UPDATE ALL AGENTS POSITION
 		for (int i = 0; i < agentManager.allAgents.size(); i++)
 		{
@@ -186,8 +185,7 @@ void SpaceGame::run()
 			if (drawPaths)
 			{
 				// DRAW THE PATH FOR ALL AGENTS
-				if (agentManager.allAgents[i].path.size() > 0)
-					drawPath(agentManager.allAgents[i].path[i], level, agentManager.allAgents[i].path);
+				drawPath(agentManager.allAgents[i].path[i], level, agentManager.allAgents[i].path);
 			}
 		}
 		
