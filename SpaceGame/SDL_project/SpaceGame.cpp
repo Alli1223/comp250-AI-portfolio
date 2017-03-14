@@ -170,14 +170,14 @@ void SpaceGame::run()
 			for (int i = 0; i < agentManager.allAgents.size(); i++)
 			{
 				agentManager.allAgents[i].path.erase(agentManager.allAgents[i].path.begin(), agentManager.allAgents[i].path.end());
-				Point StartPoint(agentManager.allAgents[i].getX() / cellSize, agentManager.allAgents[i].getY() / cellSize);
+				Point StartPoint(agentManager.allAgents[i].getCellX(), agentManager.allAgents[i].getCellY());
 				Point EndPoint(mouse_X / cellSize, mouse_Y / cellSize);
 
 				agentManager.allAgents[i].Move(level, StartPoint, EndPoint);
 			}
 		}
 		
-		bool drawPaths = true;
+		bool drawPaths = false;
 		// UPDATE ALL AGENTS POSITION
 		for (int i = 0; i < agentManager.allAgents.size(); i++)
 		{

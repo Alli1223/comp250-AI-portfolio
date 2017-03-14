@@ -84,3 +84,4 @@ Point AgentBehaviour::FindNearestCelltoAgent(Agent& agent, Level& level, std::st
 	}
 	localSearchSize = 2;
 }
+

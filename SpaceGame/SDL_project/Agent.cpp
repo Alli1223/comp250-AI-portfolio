@@ -28,57 +28,46 @@ void Agent::Update(Level& level)
 	// If the agent has a path move along it
 	if (agentStatus == "TraversingPath")
 	{
-		//point.getX() * level.getCellSize() + level.getCellSize() / 2;
+		float deltaY = getY() - path[pathPointIterator].getY() * cellSize;
+		float deltaX = getX() - path[pathPointIterator].getX() * cellSize;
 
-		float deltaY = getY()  - path[pathPointIterator].getY() * cellSize;
-		float deltaX = getX()  - path[pathPointIterator].getX() * cellSize;
-
-		float dist = sqrt(deltaX * deltaX + deltaY * deltaY);
+		float length = sqrt(deltaX * deltaX + deltaY * deltaY);
 
 		// Normalize 
-		deltaX /= dist;
-		deltaY /= dist;
+		deltaX /= length;
+		deltaY /= length;
 
 		// Calculate direction
-		float angleInDegrees = atan2(deltaY, deltaX) * 180.0 / PI;
+		//float angleInDegrees = atan2(deltaY, deltaX) * 180.0 / PI;
 
-		if (angleInDegrees < 0.0 || angleInDegrees > 360.0)
-			angleInDegrees = 360.0 - angleInDegrees;
+		//if (angleInDegrees < 0.0 || angleInDegrees > 360.0)
+			//angleInDegrees = 360.0 - angleInDegrees;
 
 		//deltaX = (cos(angleInDegrees) * speed);
 		//deltaY = (sin(angleInDegrees) * speed);
-		agentRotation = angleInDegrees;
-		
+		//agentRotation = angleInDegrees;
+
 		// Multiply direction by magnitude 
 		deltaX *= speed;
 		deltaY *= speed;
 
-		setX(getX() + -deltaX);
-		setY(getY() + -deltaY);
+		if (getX() - deltaX > 0 && getY() - deltaY > 0)
+		{
+			setX(getX() - deltaX);
+			setY(getY() - deltaY);
+		}
 		
 		// If the agent reaches the node in the path
 		if (getCellX() == path[pathPointIterator].getX() && getCellY() == path[pathPointIterator].getY())
 		{
-			// If the Agent has reached the end of the path then reset the pathfinder and set the agent to idle.
-			if (pathPointIterator >= path.size())
-			{
-				pathPointIterator = 0;
-				agentStatus = "Idle";
-
-			}
-			else
-				pathPointIterator++;
+			pathPointIterator++;
 		}
-
-
-
-
 	}
 
 	if (this->getHealth() <= 0)
 		this->isAlive = false;
 
-	// Agent will wonder randomly when idle
+	/* Agent will wonder randomly when idle
 	if (this->agentStatus == "Idle")
 	{
 		bool foundEndPoint = false;
@@ -97,41 +86,15 @@ void Agent::Update(Level& level)
 		Point startPoint(this->getCellX(), this->getCellY());
 		this->Move(level, startPoint, endPoint);
 	}
-
-	
-
-	/* DECREASE OXYGEN WHEN IN CELL WITH NO OXYGEN 
-	// If the cell has no oxygen
-	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->getOxygenLevel() == 0.0)
-	{
-		// And agent has personal oxygen
-		if (this->getOxygenLevel() > 0.0)
-			this->setOxygenLevel(this->getOxygenLevel() - oxygenDecayRate); //Reduce it's personal oxygen
-
-		// Decay health if the agent has no personal oxygen left
-		else if (this->getOxygenLevel() <= 0.0)
-			this->setHealth(this->getHealth() - healthDecayRate);
-	}
-	else if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->getOxygenLevel() > 0.0 && oxygenLevel < 3.0)
-		this->setOxygenLevel(this->getOxygenLevel() + oxygenDecayRate);
-	
-	//If the agent reaches a bed
-	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->isBed)
-	{
-		//Increase rest at twice the speed
-		tiredness = 0.0;
-		agentNeed = "NA";
-	}
-
-	//If the agent reaches a Toilet
-	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->isToilet)
-	{
-		//Increase rest at twice the speed
-		toiletLevel = 0.0;
-		agentNeed = "NA";
-	}
 	*/
 	
+
+	// If the Agent has reached the end of the path then reset the pathfinder and set the agent to idle.
+	if (pathPointIterator >= path.size() && agentStatus == "TraversingPath")
+	{
+		agentStatus = "Idle";
+		pathPointIterator = 0;
+	}
 }
 
 void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint)

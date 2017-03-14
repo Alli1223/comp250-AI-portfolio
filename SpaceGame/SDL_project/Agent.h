@@ -39,6 +39,8 @@ public:
 	int setCellX(int newCellX) { return cellX = newCellX; }
 	//! Sets the characters cellY value
 	int setCellY(int newCellY) { return cellY = newCellY; }
+	//! Sets the position that takes 2 arguments, x and y
+	int setPosition(int newX, int newY) { return x = newX, y = newY; }
 	//! Sets the characters current speed
 	double setSpeed(double newSpeed) { return speed = newSpeed; }
 
