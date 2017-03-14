@@ -13,25 +13,11 @@ AgentBehaviour::~AgentBehaviour()
 
 void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 {
-	if (agent.getTiredness() > tirednessThreshold && agent.agentNeed != "Tired")
-	{
-		agent.agentNeed = "Bed";
-		//Move to bed if there is one
-		if (levelHasBed)
-		{
-			Point AgentLocation(agent.getCellX(), agent.getCellY());
-			Point bedLocation = FindNearestCelltoAgent(agent, level, "Bed");
-			agent.Move(level, AgentLocation, bedLocation);
-		}
-	}
+	
+	BehaviourTree::Sequence *root = new BehaviourTree::Sequence, *sequence1 = new BehaviourTree::Sequence;
+	BehaviourTree::Selector* selector1 = new BehaviourTree::Selector;
 
-	if (agent.getToietNeed() > toiletThreshold && agent.agentNeed != "Bed" && LevelHasToilet)
-	{
-		agent.agentNeed = "Bed";
-		Point AgentLocation(agent.getCellX(), agent.getCellY());
-		Point toiletLocation = FindNearestCelltoAgent(agent, level, "Toilet");
-		agent.Move(level, AgentLocation, toiletLocation);
-	}
+
 }
 
 void AgentBehaviour::UpdateLevelInfo(Level& level, int cellX, int cellY)

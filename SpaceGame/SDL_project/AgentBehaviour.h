@@ -7,17 +7,11 @@ public:
 	AgentBehaviour();
 	~AgentBehaviour();
 
-
-
-	Sequence *root = new Sequence, *sequence1 = new Sequence;
-	Selector* selector1 = new Selector;
-
-
+	//! Bool that stores whether the level has a bed
 	bool levelHasBed = false;
-	int bedNum = 0;
-
+	//! Bool that stores whether the level has a toilet
 	bool LevelHasToilet = false;
-	int toiletNum = 0;
+
 
 
 	int localSearchSize = 2;
@@ -27,6 +21,7 @@ public:
 	//! To Decide what task needs to be done
 	void AgentBehaviour::DecideTask(Level& level, Agent& agent);
 
+	//! Updates some of the local class varaibles that store info about the level and what it contains for ease of use by behaviour tree
 	void AgentBehaviour::UpdateLevelInfo(Level& level, int cellX, int cellY);
 
 private:
