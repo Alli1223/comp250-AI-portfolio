@@ -22,6 +22,7 @@ public:
 		void addChild(Node* child) { children.emplace_back(child); }
 	};
 
+	// If one child succeeds, the entire operation run() succeeds.  Failure only results if all children fail.
 	class Selector : public CompositeNode
 	{
 	public:
@@ -29,13 +30,14 @@ public:
 		{
 			for (Node* child : getChildren())
 			{  // The generic Selector implementation
-				if (child->run())  // If one child succeeds, the entire operation run() succeeds.  Failure only results if all children fail.
+				if (child->run())  
 					return true;
 			}
 			return false;  // All children failed so the entire run() operation fails.
 		}
 	};
 
+	// If one child fails, then enter operation run() fails.  Success only results if all children succeed.
 	class Sequence : public CompositeNode
 	{
 	public:
@@ -43,7 +45,7 @@ public:
 		{
 			for (Node* child : getChildren())
 			{  // The generic Sequence implementation.
-				if (!child->run())  // If one child fails, then enter operation run() fails.  Success only results if all children succeed.
+				if (!child->run())  
 					return false;
 			}
 			return true;  // All children suceeded, so the entire run() operation succeeds.
@@ -53,5 +55,8 @@ public:
 
 class AgentActions : public BehaviourTree::Node
 {
-
+	class WalkToBed : public BehaviourTree::Node 
+	{
+		
+	};
 };

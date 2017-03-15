@@ -161,7 +161,9 @@ std::vector<Point> Pathfinder::findPath(Level& level, const Point& start, const 
 			}
 		}
 	}
-	throw PathfinderError();
+	std::vector<Point> EmptyPath;
+	return EmptyPath;
+	//throw PathfinderError();
 }
 
 std::vector<Point> Pathfinder::reconstructPath(std::shared_ptr<Node> goalNode)
@@ -187,9 +189,6 @@ std::vector<Point> Pathfinder::StringPulling(std::vector<Point> path, Level& lev
 	}
 	path.shrink_to_fit();
 	return path;
-
-	//TODO: Draw line between points and get the x and y values
-
 }
 
 // Returns false if is obstructed

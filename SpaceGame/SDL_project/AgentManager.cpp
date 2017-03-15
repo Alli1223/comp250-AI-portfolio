@@ -37,6 +37,26 @@ void AgentManager::EraseAllAgents(std::vector<Agent>& allAgents)
 	allAgents.erase(allAgents.begin(), allAgents.end());
 }
 
+void drawPath(Point& point, Level& level, std::vector<Point>& path, SDL_Renderer* renderer)
+{
+	// Start at the start point
+
+	// tileSize / 2 is added to all coordinates to put them in the centre of the tile
+	int lastX = point.getX() * level.getCellSize() + level.getCellSize() / 2;
+	int lastY = point.getY() * level.getCellSize() + level.getCellSize() / 2;
+
+
+	// Step through the path
+	for (const Point& point : path)
+	{
+		int nextX = point.getX() * level.getCellSize() + level.getCellSize() / 2;
+		int nextY = point.getY() * level.getCellSize() + level.getCellSize() / 2;
+
+		SDL_RenderDrawLine(renderer, lastX, lastY, nextX, nextY);
+		lastX = nextX;
+		lastY = nextY;
+	}
+}
 
 
 void AgentManager::UpdateAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level)
@@ -45,6 +65,17 @@ void AgentManager::UpdateAgents(std::vector<Agent>& allAgents, SDL_Renderer* ren
 	{
 		RenderAgents(agent, renderer, level);
 		agentBehaviour.DecideTask(level, agent);
+	}
+
+
+	// DRAW THE PATH FOR ALL AGENTS
+	if (drawAgentPaths)
+	{
+		for (int i = 0; i < allAgents.size(); i++)
+		{
+			allAgents[i].Update(level);
+			drawPath(allAgents[i].path[i], level, allAgents[i].path, renderer);
+		}
 	}
 }
 

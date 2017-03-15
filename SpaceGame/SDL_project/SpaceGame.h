@@ -36,11 +36,6 @@ public:
 	//! A deconstructor
 	~SpaceGame();
 
-	
-	const Point& getStartPoint() const { return startPoint; }
-	int getStartX() const { return startPoint.getX(); }
-	int getStartY() const { return startPoint.getY(); }
-
 	//! Main Run loop
 	void run();
 
@@ -64,10 +59,6 @@ public:
 	PlayerStats playerstats;
 	CellRendering cellrenderer;
 	Hydroponics hydroponics;
-	
-	
-	//! Pathfinding function
-	void SpaceGame::drawPath(Point& point, Level& level, std::vector<Point>& path);
 
 	//! Conains the list of nodes that makes the path
 	//std::vector<Point> path;

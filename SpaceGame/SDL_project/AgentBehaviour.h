@@ -1,6 +1,7 @@
 #pragma once
 #include "BehaviourTree.h"
 #include "Agent.h"
+
 class AgentBehaviour
 {
 public:
@@ -28,4 +29,23 @@ private:
 	double tirednessThreshold = 0.4;
 	double toiletThreshold = 0.2;
 	double hungerThreshold = 0.2;
+
+
+	class AgentActions : public BehaviourTree::Node
+	{
+		class WalkToBed : public BehaviourTree::Node
+		{
+		private:
+			Agent& agent;
+			Level& level;
+		public:
+			WalkToBed(Agent&, Level&);
+		private:
+			virtual bool run() override {
+
+			}
+			
+		};
+	};
 };
+

@@ -52,7 +52,7 @@ private:
 	std::shared_ptr<Node> getOrCreateNode(const Point& point);
 	bool isInClosedSet(Point& point);
 
-	bool StringPullPath = true;
+	bool StringPullPath = false;
 	bool diagonalPaths = false;
 };
 

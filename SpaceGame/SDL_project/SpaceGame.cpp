@@ -164,7 +164,7 @@ void SpaceGame::run()
 
 
 		// All agents move to mouse position
-		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_MIDDLE) )
+		if (SDL_GetMouseState(&mouse_X, &mouse_Y) & SDL_BUTTON(SDL_BUTTON_MIDDLE))
 		{
 			for (int i = 0; i < agentManager.allAgents.size(); i++)
 			{
@@ -175,20 +175,6 @@ void SpaceGame::run()
 				agentManager.allAgents[i].Move(level, StartPoint, EndPoint);
 			}
 		}
-		
-		bool drawPaths = false;
-		// UPDATE ALL AGENTS POSITION
-		for (int i = 0; i < agentManager.allAgents.size(); i++)
-		{
-			agentManager.allAgents[i].Update(level);
-
-			if (drawPaths)
-			{
-				// DRAW THE PATH FOR ALL AGENTS
-				drawPath(agentManager.allAgents[i].path[i], level, agentManager.allAgents[i].path);
-			}
-		}
-		
 		
 		
 
@@ -218,28 +204,6 @@ void SpaceGame::run()
 void SpaceGame::deleteVectors()
 {
 	allHydroponicsFarms.erase(allHydroponicsFarms.begin(), allHydroponicsFarms.end());
-}
-
-void SpaceGame::drawPath(Point& point, Level& level, std::vector<Point>& path)
-{
-	// Start at the start point
-
-	// tileSize / 2 is added to all coordinates to put them in the centre of the tile
-	int lastX = point.getX() * level.getCellSize() + level.getCellSize() / 2;
-	int lastY = point.getY() * level.getCellSize() + level.getCellSize() / 2;
-
-
-	// Step through the path
-	for (const Point& point : path)
-	{
-		int nextX = point.getX() * level.getCellSize() + level.getCellSize() / 2;
-		int nextY = point.getY() * level.getCellSize() + level.getCellSize() / 2;
-
-		SDL_RenderDrawLine(renderer, lastX, lastY, nextX, nextY);
-		lastX = nextX;
-		lastY = nextY;
-
-	}
 }
 
 bool static isMouseOverRoomCell(Level& level)
