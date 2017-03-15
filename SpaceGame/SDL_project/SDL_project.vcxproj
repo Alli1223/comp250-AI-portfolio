@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -29,26 +29,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -171,7 +171,7 @@
     <ClInclude Include="Hydroponics.h" />
     <ClInclude Include="Icon.h" />
     <ClInclude Include="Items.h" />
-    <ClInclude Include="PlayerInteraction.h" />
+    <ClInclude Include="AgentInteraction.h" />
     <ClInclude Include="Fire.h" />
     <ClInclude Include="PathFinder.h" />
     <ClInclude Include="PlayerStats.h" />
@@ -181,7 +181,6 @@
     <ClInclude Include="InitialisationError.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="ShipManager.h" />
-    <ClInclude Include="MainCharacter.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Oxygen.h" />
     <ClInclude Include="Resource.h" />
@@ -191,6 +190,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="ToolBar.h" />
+    <ClInclude Include="BehaviourTree.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
@@ -206,7 +206,7 @@
     <ClCompile Include="Hydroponics.cpp" />
     <ClCompile Include="Icon.cpp" />
     <ClCompile Include="Items.cpp" />
-    <ClCompile Include="PlayerInteraction.cpp" />
+    <ClCompile Include="AgentInteraction.cpp" />
     <ClCompile Include="Fire.cpp" />
     <ClCompile Include="PathFinder.cpp" />
     <ClCompile Include="PlayerStats.cpp" />
@@ -216,7 +216,6 @@
     <ClCompile Include="InitialisationError.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="ShipManager.cpp" />
-    <ClCompile Include="MainCharacter.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Oxygen.cpp" />
     <ClCompile Include="SDL_project.cpp" />
@@ -236,6 +235,9 @@
   <ItemGroup>
     <Image Include="SDL_project.ico" />
     <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -232,6 +232,7 @@ void RoomDesign::designRoom(Level& room, int cellX, int cellY)
 							if (room.grid[cellX - 1][cellY]->isRoom)
 							{
 								room.grid[cellX][cellY]->cellOrientation = 10;
+								room.grid[cellX][cellY]->isWalkable = true;
 							}
 						}
 					}

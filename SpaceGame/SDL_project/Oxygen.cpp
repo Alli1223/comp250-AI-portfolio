@@ -1,11 +1,10 @@
 #include "stdafx.h"
 #include "Oxygen.h"
 #include "Cell.h"
-#include "MainCharacter.h"
 #include "Level.h"
 #include "Map.h"
 #include "Fire.h"
-#include "PlayerInteraction.h"
+#include "AgentInteraction.h"
 
 
 

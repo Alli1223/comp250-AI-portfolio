@@ -119,7 +119,10 @@ void CellRendering::RenderCells(Level& level, SDL_Renderer* renderer, int x, int
 		oxygenTex.alterTransparency(level.grid[x][y]->oxygenLevel);
 		roomCell.render(renderer, xPos, yPos, cellSize, cellSize);
 		oxygenTex.render(renderer, xPos, yPos, cellSize, cellSize);
+		level.grid[x][y]->isWalkable = true;
 	}
+	if (level.grid[x][y]->isWalkable)
+		oxygenTex.render(renderer, xPos, yPos, cellSize, cellSize);
 	if (level.grid[x][y]->cellOrientation == 11)
 	{
 		level.grid[x][y]->setOxygenLevel(0);

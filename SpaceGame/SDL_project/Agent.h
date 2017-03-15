@@ -1,7 +1,6 @@
 #pragma once
 #include "Point.h"
 #include "PathFinder.h"
-#include "AgentBehaviour.h"
 
 class Agent
 {
@@ -9,7 +8,7 @@ public:
 	Agent();
 	~Agent();
 
-	AgentBehaviour behaviour;
+
 
 	//! Update method for Agent
 	void Agent::Update(Level& level);
@@ -22,21 +21,28 @@ public:
 	int getX() { return x; }
 	//! Gets the characters Y value
 	int getY() { return y; }
+	//! Gets the characters X value
+	int getCellX() { return cellX; }
+	//! Gets the characters Y value
+	int getCellY() { return cellY; }
 	//! Gets the characters size
 	int getSize() { return size; }
 	//! Gets the characters speed
-	int getSpeed() { return speed; }
+	double getSpeed() { return speed; }
 
 	//Setter methods
 	//! Sets the characters X value
 	int setX(int newX) { return x = newX; }
 	//! Sets the characters Y value
 	int setY(int newY) { return y = newY; }
+	//! Sets the characters cellX value
+	int setCellX(int newCellX) { return cellX = newCellX; }
+	//! Sets the characters cellY value
+	int setCellY(int newCellY) { return cellY = newCellY; }
+	//! Sets the position that takes 2 arguments, x and y
+	int setPosition(int newX, int newY) { return x = newX, y = newY; }
 	//! Sets the characters current speed
-	int setSpeed(int newSpeed) { return speed = newSpeed; }
-
-	//! Movement Direction
-	std::string movementDirection = "Down";
+	double setSpeed(double newSpeed) { return speed = newSpeed; }
 
 	//! Character Type
 	std::string characterType = "NPC";
@@ -48,8 +54,16 @@ public:
 	std::vector<Point> path;
 
 	//! Contains what the current status of the agent is doing
-	/*! Types of agent state: (Idle, FoundPath, Dead)*/
-	std::string agentStatus = "Idle";
+	/*! Types of agent state: (Idle, FoundPath, Dead...)*/
+	//std::string agentStatus = "Idle";
+	enum agentMovementStatus { Idle, TraversingPath, Waiting };
+	agentMovementStatus movementStatus = Idle;
+
+	//! Contains what the agent needs to do the most
+	/*! Types of agent state: (Food, WC, Bed...)*/
+	enum agentServicesStatus { NA, Hungry, Tired, WC, Suffocating };
+	//agentServicesStatus agentNeed = NA;
+	std::string agentNeed = "NA";
 
 	//! Gets and Sets the agents health
 	double getHealth() { return health; }
@@ -59,9 +73,13 @@ public:
 	double getHunger() { return hunger; }
 	double setHunger(double newHunger) { return hunger = newHunger; }
 
-	//! Gets and Sets the agents tiredness
+	//! Gets and Sets the agents tiredness (Tiredness increaes from 0)
 	double getTiredness() { return tiredness; }
 	double setTiredness(double newTiredness) { return tiredness = newTiredness; }
+
+	//! Gets and Sets the agents tiredness (Tiredness increaes from 0)
+	double getToietNeed() { return toiletLevel; }
+	double setToiletNeed(double newToiletNeed) { return toiletLevel = newToiletNeed; }
 
 	//! Gets and Sets the agents oxygen level
 	double getOxygenLevel() { return oxygenLevel; }
@@ -70,29 +88,41 @@ public:
 	//! Boolean for whether character is alive
 	bool isAlive = true;
 
+	bool agentWonderWhenIdle = false;
+
+	bool agentCanRotate = true;
+	int agentRotation = 0;
+
 private:
 
-	//! Integers for the character's X and Y position
+	//! Integers for the agent's X and Y position
 	int x = 0; int y = 0;
-	//! Integer for the character's size when rendered
-	int size = 25;
-	//! Integer for the characters current speed
-	int speed = 1;
+	//! Integers for the agent's cellX and cellY positions below agent
+	int cellX = 0; int cellY = 0;
+	//! Integer for the agent's size when rendered
+	int size = 35;
+	//! Integer for the agent current speed
+	float speed = 1.5;
 	//! A double for the agents's health
 	double health = 100.0;
-	//! Double to store character hunger
+	//! Double to store agent hunger
 	double hunger = 1.0;
-	//! Integer to store character tiredness
+	//! Integer to store agent tiredness
 	double tiredness = 0.0;
+	//! A Double for toilet level
+	double toiletLevel = 0.0;
 	//! A int for the agents's stored oxygen
 	double oxygenLevel = 3.0;
+	
 
 	//! A double for storing agents health decay rate
 	double healthDecayRate = 0.1;
 	//! A double for storing agents hunger decay rate
 	double hungerDecayRate = 0.001;
+	//! A double for toilet decay rate
+	double toiletDecayRate = 0.0002;
 	//! A double for storing agents tiredness decay rate
-	double tirednessDecayRate = 0.001;
+	double tirednessDecayRate = 0.00007;
 	//! A double for storing agents oxygen decay rate
 	double oxygenDecayRate = 0.01;
 

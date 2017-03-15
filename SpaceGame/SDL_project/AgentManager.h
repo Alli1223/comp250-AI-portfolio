@@ -7,6 +7,7 @@
 #include "AgentBehaviour.h"
 
 
+
 //!  The abstract character class 
 /*!
   This class is the controller for the Agent class and will manage how the agents behave.
@@ -19,12 +20,14 @@ public:
 	//! A destructor
 	~AgentManager();
 
+	//! Create an instance of AgentBehavour
 	AgentBehaviour agentBehaviour;
 
 	//! Contains a list of all the characters
 	std::vector<Agent> allAgents;
 
-	void AgentManager::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level);
+	void AgentManager::UpdateAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level);
+	void AgentManager::RenderAgents(Agent& agent, SDL_Renderer* renderer, Level& level);
 
 	//! Spawn character function (Character types are (NPC, Player)
 	void AgentManager::SpawnAgent(std::string CharacterTypeVar, std::vector<Agent>& allAgents, int x, int y);
@@ -34,6 +37,9 @@ public:
 
 	//! Erases all the agents in the game
 	void AgentManager::EraseAllAgents(std::vector<Agent>& allAgents);
+
+	bool renderStats = false;
+	bool drawAgentPaths = false;
 
 private:
 	std::string characterTextureLocation = "Resources\\Character\\";
