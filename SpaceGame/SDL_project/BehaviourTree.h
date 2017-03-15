@@ -6,6 +6,7 @@
 
 class BehaviourTree
 {
+
 public:
 	class Node
 	{
@@ -14,13 +15,26 @@ public:
 		virtual bool run() = 0;
 	};
 
+	class Root : public Node {
+	private:
+		Node* child;
+		friend class BehaviourTree;
+		void setChild(Node* newChild) { child = newChild; }
+		virtual bool run() override { return child->run(); }
+	};
+
 	class CompositeNode : public Node
 	{  //  This type of Node follows the Composite Pattern, containing a list of other Nodes.
 	private:
-		std::list<Node*> children;
+		std::vector<Node*> children;
 	public:
-		const std::list<Node*>& getChildren() const { return children; }
-		void addChild(Node* child) { children.emplace_back(child); }
+		const std::vector<Node*>& getChildren() const {return children;}
+				void addChild (Node* child) {children.emplace_back(child);}
+				void addChildren (std::initializer_list<Node*>&& newChildren) {for (Node* child : newChildren) addChild(child);}
+				template <typename CONTAINER>
+				void addChildren (const CONTAINER& newChildren) {for (Node* child : newChildren) addChild(child);}
+			protected:
+				std::vector<Node*> childrenShuffled() const {std::vector<Node*> temp = children;  std::random_shuffle (temp.begin(), temp.end());  return temp;}
 	};
 
 	// If one child succeeds, the entire operation run() succeeds.  Failure only results if all children fail.
@@ -52,7 +66,12 @@ public:
 			return true;  // All children suceeded, so the entire run() operation succeeds.
 		}
 	};
-
+private:
+	Root* root;
+public:
+	BehaviourTree() : root(new Root) {}
+	void setRootChild(Node* rootChild) const { root->setChild(rootChild); }
+	bool run() const { return root->run(); }
 	
 };
 

@@ -17,6 +17,23 @@ void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 	BehaviourTree::Selector* selector1 = new BehaviourTree::Selector;
 	Action action("BED", 1);
 
+	BehaviourTree behaviorTree;
+	BehaviourTree::Selector selector[3];
+	BehaviourTree::Sequence sequence[4];
+	Action walkToDoor("Walk to door", 99), openDoor1("Open door", 15), unlockDoor("Unlock door", 25), openDoor2("Open door after unlocking it", 99), smashDoor("Smash door", 60),
+		walkThroughDoor("Walk through door", 60), closeDoor("Close door", 100), walkToWindow("Walk to Window", 99), openWindow1("Open window", 70), unlockWindow("Unlock window", 65),
+		openWindow2("Open window after unlocking it", 85), smashWindow("Smash window", 95), climbThroughWindow("Climb through window", 85), closeWindow("Close window", 100);
+
+	behaviorTree.setRootChild(&selector[0]);
+	selector[0].addChildren({ &sequence[0],&sequence[2] });
+	sequence[0].addChildren({ &walkToDoor, &selector[1], &walkThroughDoor, &closeDoor });
+	selector[1].addChildren({ &openDoor1, &sequence[1], &smashDoor });
+	sequence[1].addChildren({ &unlockDoor, &openDoor2 });
+	sequence[2].addChildren({ &walkToWindow, &selector[2], &climbThroughWindow, &closeWindow });
+	const std::list<BehaviourTree::Node*> nodes = { &openWindow1, &sequence[3], &smashWindow };
+	selector[2].addChildren(nodes);
+	sequence[3].addChildren({ &unlockWindow, &openWindow2 });
+
 }
 
 void AgentBehaviour::UpdateLevelInfo(Level& level, int cellX, int cellY)
