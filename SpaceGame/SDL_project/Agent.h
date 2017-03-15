@@ -15,7 +15,7 @@ public:
 	//! Movement method for Agent
 	void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint);
 
-
+	
 	//Getter methods
 	//! Gets the characters X value
 	int getX() { return x; }
@@ -43,6 +43,8 @@ public:
 	int setPosition(int newX, int newY) { return x = newX, y = newY; }
 	//! Sets the characters current speed
 	double setSpeed(double newSpeed) { return speed = newSpeed; }
+	//! Point for where the agent is located
+	Point agentPoint;
 
 	//! Character Type
 	std::string characterType = "NPC";
@@ -62,8 +64,8 @@ public:
 	//! Contains what the agent needs to do the most
 	/*! Types of agent state: (Food, WC, Bed...)*/
 	enum agentServicesStatus { NA, Hungry, Tired, WC, Suffocating };
-	//agentServicesStatus agentNeed = NA;
-	std::string agentNeed = "NA";
+	agentServicesStatus agentNeed = NA;
+	//std::string agentNeed = "NA";
 
 	//! Gets and Sets the agents health
 	double getHealth() { return health; }
@@ -94,7 +96,7 @@ public:
 	int agentRotation = 0;
 
 private:
-
+	
 	//! Integers for the agent's X and Y position
 	int x = 0; int y = 0;
 	//! Integers for the agent's cellX and cellY positions below agent

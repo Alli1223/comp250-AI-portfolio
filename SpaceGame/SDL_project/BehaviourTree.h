@@ -10,6 +10,7 @@ public:
 	class Node
 	{
 	public:
+
 		virtual bool run() = 0;
 	};
 
@@ -51,12 +52,23 @@ public:
 			return true;  // All children suceeded, so the entire run() operation succeeds.
 		}
 	};
+
+	
 };
 
-class AgentActions : public BehaviourTree::Node
-{
-	class WalkToBed : public BehaviourTree::Node 
-	{
-		
-	};
+class Action : public BehaviourTree::Node {
+private:
+	std::string name;
+	int probabilityOfSuccess;
+public:
+	Action(const std::string newName, int prob) : name(newName), probabilityOfSuccess(prob) {}
+private:
+	virtual bool run() override {
+		if (std::rand() % 100 < probabilityOfSuccess) {
+			std::cout << name << " succeeded." << std::endl;
+			return true;
+		}
+		std::cout << name << " failed." << std::endl;
+		return false;
+	}
 };

@@ -10,10 +10,16 @@ public:
 
 	//! Bool that stores whether the level has a bed
 	bool levelHasBed = false;
+	//! A vector that stores empty bed locations
+	std::vector<Point> emptyBedLocations;
+
 	//! Bool that stores whether the level has a toilet
 	bool LevelHasToilet = false;
+	//! A vector that stores empty toilet locations 
+	std::vector<Point> emptyToiletLocations;
 
-
+	//! Create a new instance of behaviour tree
+	BehaviourTree behaviourTree;
 
 	int localSearchSize = 2;
 	//! Finds the nearest cell to the agent from the string cellType (e.g. "BED" || "TOILET")
@@ -31,21 +37,6 @@ private:
 	double hungerThreshold = 0.2;
 
 
-	class AgentActions : public BehaviourTree::Node
-	{
-		class WalkToBed : public BehaviourTree::Node
-		{
-		private:
-			Agent& agent;
-			Level& level;
-		public:
-			WalkToBed(Agent&, Level&);
-		private:
-			virtual bool run() override {
 
-			}
-			
-		};
-	};
 };
 

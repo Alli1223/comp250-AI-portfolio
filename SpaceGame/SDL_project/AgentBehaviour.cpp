@@ -13,10 +13,9 @@ AgentBehaviour::~AgentBehaviour()
 
 void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 {
-	
 	BehaviourTree::Sequence *root = new BehaviourTree::Sequence, *sequence1 = new BehaviourTree::Sequence;
 	BehaviourTree::Selector* selector1 = new BehaviourTree::Selector;
-
+	Action action("BED", 1);
 
 }
 
@@ -25,10 +24,12 @@ void AgentBehaviour::UpdateLevelInfo(Level& level, int cellX, int cellY)
 	if (level.grid[cellX][cellY]->isBed)
 	{
 		levelHasBed = true;
+		emptyBedLocations.push_back(Point(cellX, cellY));
 	}
 	if (level.grid[cellX][cellY]->isToilet)
 	{
 		LevelHasToilet = true;
+		emptyToiletLocations.push_back(Point(cellX, cellY));
 	}
 }
 
@@ -69,5 +70,6 @@ Point AgentBehaviour::FindNearestCelltoAgent(Agent& agent, Level& level, std::st
 		localSearchSize = localSearchSize * 2;
 	}
 	localSearchSize = 2;
+
 }
 
