@@ -41,6 +41,7 @@ void drawPath(Point& point, Level& level, std::vector<Point>& path, SDL_Renderer
 {
 	// Start at the start point
 
+
 	// tileSize / 2 is added to all coordinates to put them in the centre of the tile
 	int lastX = point.getX() * level.getCellSize() + level.getCellSize() / 2;
 	int lastY = point.getY() * level.getCellSize() + level.getCellSize() / 2;
@@ -56,11 +57,14 @@ void drawPath(Point& point, Level& level, std::vector<Point>& path, SDL_Renderer
 		lastX = nextX;
 		lastY = nextY;
 	}
+
 }
 
 
 void AgentManager::UpdateAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level)
 {
+
+	//Render Agents
 	for (Agent& agent : allAgents)
 	{
 		RenderAgents(agent, renderer, level);
@@ -68,13 +72,16 @@ void AgentManager::UpdateAgents(std::vector<Agent>& allAgents, SDL_Renderer* ren
 	}
 
 
-	// DRAW THE PATH FOR ALL AGENTS
-	if (drawAgentPaths)
+	// Update agents and draw agent paths
+	for (int i = 0; i < allAgents.size(); i++)
 	{
-		for (int i = 0; i < allAgents.size(); i++)
+		allAgents[i].Update(level);
+
+		// DRAW THE PATH FOR ALL AGENTS
+		if (drawAgentPaths)
 		{
-			allAgents[i].Update(level);
-			drawPath(allAgents[i].path[i], level, allAgents[i].path, renderer);
+			for (int ip = 0; ip < allAgents[i].path.size(); ip++)
+				drawPath(allAgents[i].path[ip], level, allAgents[i].path, renderer);
 		}
 	}
 }

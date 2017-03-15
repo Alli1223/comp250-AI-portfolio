@@ -39,7 +39,7 @@ public:
 	void AgentManager::EraseAllAgents(std::vector<Agent>& allAgents);
 
 	bool renderStats = false;
-	bool drawAgentPaths = true;
+	bool drawAgentPaths = false;
 
 private:
 	std::string characterTextureLocation = "Resources\\Character\\";
