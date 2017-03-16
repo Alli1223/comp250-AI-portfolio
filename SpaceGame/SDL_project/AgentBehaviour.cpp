@@ -13,11 +13,45 @@ AgentBehaviour::~AgentBehaviour()
 
 void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 {
-	BehaviourTree::Sequence *root = new BehaviourTree::Sequence, *sequence1 = new BehaviourTree::Sequence;
-	BehaviourTree::Selector* selector1 = new BehaviourTree::Selector;
-	Action action("BED", 1);
+	//BehaviourTree::Sequence *root = new BehaviourTree::Sequence, *sequence1 = new BehaviourTree::Sequence;
+	//BehaviourTree::Selector* selector1 = new BehaviourTree::Selector;
+	//Action action("BED", 1);
 
-	BehaviourTree behaviorTree;
+	{
+		BehaviourTree agentNeedsBehaviourTree;
+		Action WalkToBed("WalkToBed", levelHasBed), AgentIsTired("AgentIsTired", true);
+
+		Action WalkToToilet("WalkToToilet", LevelHasToilet), AgentNeedsToilet("AgentNeedsToilet", true);
+
+
+
+		//Create 1 selector & 1 sequence
+		BehaviourTree::Selector selector[1];
+		BehaviourTree::Sequence sequence[1];
+
+		agentNeedsBehaviourTree.setRootChild(&selector[0]);
+		selector[0].addChildren({ &WalkToBed, &sequence[0] });
+		sequence[0].addChildren({ &WalkToToilet, &AgentNeedsToilet });
+
+		Point startPoint(agent.getAgentPointLocation());
+		if (agentNeedsBehaviourTree.run())
+		{
+			if (agent.isMoving == false)
+			{
+				agent.isMoving = true;
+				agent.Move(level, startPoint, emptyBedLocations[0]);
+				
+			}
+		}
+	}
+
+
+
+
+
+
+
+	/*
 	BehaviourTree::Selector selector[3];
 	BehaviourTree::Sequence sequence[4];
 	Action walkToDoor("Walk to door", 99), openDoor1("Open door", 15), unlockDoor("Unlock door", 25), openDoor2("Open door after unlocking it", 99), smashDoor("Smash door", 60),
@@ -33,6 +67,7 @@ void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 	const std::list<BehaviourTree::Node*> nodes = { &openWindow1, &sequence[3], &smashWindow };
 	selector[2].addChildren(nodes);
 	sequence[3].addChildren({ &unlockWindow, &openWindow2 });
+	*/
 
 }
 

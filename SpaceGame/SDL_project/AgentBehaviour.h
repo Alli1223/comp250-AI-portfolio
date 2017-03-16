@@ -18,9 +18,6 @@ public:
 	//! A vector that stores empty toilet locations 
 	std::vector<Point> emptyToiletLocations;
 
-	//! Create a new instance of behaviour tree
-	BehaviourTree behaviourTree;
-
 	int localSearchSize = 2;
 	//! Finds the nearest cell to the agent from the string cellType (e.g. "BED" || "TOILET")
 	Point AgentBehaviour::FindNearestCelltoAgent(Agent& agent, Level& level, std::string cellType);
@@ -39,4 +36,3 @@ private:
 
 
 };
-

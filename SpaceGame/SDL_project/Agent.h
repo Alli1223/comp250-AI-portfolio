@@ -43,8 +43,10 @@ public:
 	int setPosition(int newX, int newY) { return x = newX, y = newY; }
 	//! Sets the characters current speed
 	double setSpeed(double newSpeed) { return speed = newSpeed; }
-	//! Point for where the agent is located
-	Point agentPoint;
+	
+	//! Gets and sets the agents point location
+	Point getAgentPointLocation() { return agentPointLocation; }
+	Point setAgentPointLocation(Point newPointLocation) { return agentPointLocation = newPointLocation; }
 
 	//! Character Type
 	std::string characterType = "NPC";
@@ -65,7 +67,8 @@ public:
 	/*! Types of agent state: (Food, WC, Bed...)*/
 	enum agentServicesStatus { NA, Hungry, Tired, WC, Suffocating };
 	agentServicesStatus agentNeed = NA;
-	//std::string agentNeed = "NA";
+
+	bool isMoving = false;
 
 	//! Gets and Sets the agents health
 	double getHealth() { return health; }
@@ -101,6 +104,8 @@ private:
 	int x = 0; int y = 0;
 	//! Integers for the agent's cellX and cellY positions below agent
 	int cellX = 0; int cellY = 0;
+	//! Point for where the agent is located
+	Point agentPointLocation;
 	//! Integer for the agent's size when rendered
 	int size = 35;
 	//! Integer for the agent current speed

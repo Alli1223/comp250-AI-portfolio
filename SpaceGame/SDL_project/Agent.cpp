@@ -17,7 +17,7 @@ void Agent::Update(Level& level)
 	int cellSize = level.getCellSize();
 	setCellX(getX() / level.getCellSize());
 	setCellY(getY() / level.getCellSize());
-	agentPoint = Point(getCellX(), getCellY());
+	agentPointLocation = Point(getCellX(), getCellY());
 
 	// Decrease/Increase stats over time
 	tiredness = tiredness + tirednessDecayRate;
@@ -70,7 +70,7 @@ void Agent::Update(Level& level)
 		this->isAlive = false;
 
 	// Agent will wonder randomly when idle
-	if (movementStatus == Idle)
+	if (movementStatus == Idle && agentWonderWhenIdle)
 	{
 		bool foundEndPoint = false;
 		Point endPoint;
@@ -95,6 +95,7 @@ void Agent::Update(Level& level)
 	if (pathPointIterator >= path.size() && movementStatus == TraversingPath)
 	{
 		movementStatus = Idle;
+		isMoving = false;
 		pathPointIterator = 0;
 	}
 }

@@ -75,19 +75,24 @@ public:
 	
 };
 
-class Action : public BehaviourTree::Node {
+
+class Action : public BehaviourTree::Node 
+{
 private:
 	std::string name;
-	int probabilityOfSuccess;
+	bool isThereItem;
 public:
-	Action(const std::string newName, int prob) : name(newName), probabilityOfSuccess(prob) {}
+	Action(const std::string newName, bool isthereItem) : name(newName), isThereItem(isthereItem) {}
 private:
-	virtual bool run() override {
-		if (std::rand() % 100 < probabilityOfSuccess) {
-			std::cout << name << " succeeded." << std::endl;
+	virtual bool run() override 
+	{
+		if (name == "WalkToBed" && isThereItem) 
 			return true;
-		}
-		std::cout << name << " failed." << std::endl;
-		return false;
+		
+		else if(name == "AgentIsTired")
+			return true;
+
+		else
+			return false;
 	}
 };
