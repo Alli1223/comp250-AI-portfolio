@@ -18,23 +18,27 @@ void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 	//Action action("BED", 1);
 
 	{
-		BehaviourTree agentNeedsBehaviourTree;
+		BehaviourTree agentSerivesBehaviourTree;
 		Action WalkToBed("WalkToBed", levelHasBed), AgentIsTired("AgentIsTired", true);
 
 		Action WalkToToilet("WalkToToilet", LevelHasToilet), AgentNeedsToilet("AgentNeedsToilet", true);
 
 
 
-		//Create 1 selector & 1 sequence
+		//Create 1 selector
 		BehaviourTree::Selector selector[1];
-		BehaviourTree::Sequence sequence[1];
+		// Create 2 selectors
+		BehaviourTree::Sequence sequence[2];
 
-		agentNeedsBehaviourTree.setRootChild(&selector[0]);
-		selector[0].addChildren({ &WalkToBed, &sequence[0] });
-		sequence[0].addChildren({ &WalkToToilet, &AgentNeedsToilet });
+		// Set root node & add a selector that has 2 sequences 
+		agentSerivesBehaviourTree.setRootChild(&selector[0]);
+		selector[0].addChildren({ &sequence[0], &sequence[1] });
+
+		sequence[0].addChildren({ &WalkToBed, &AgentIsTired });
+		sequence[1].addChildren({ &WalkToToilet, &AgentNeedsToilet });
 
 		Point startPoint(agent.getAgentPointLocation());
-		if (agentNeedsBehaviourTree.run())
+		if (agentSerivesBehaviourTree.run())
 		{
 			if (agent.isMoving == false)
 			{

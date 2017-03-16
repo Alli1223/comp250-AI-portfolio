@@ -89,7 +89,7 @@ private:
 		if (name == "WalkToBed" && isThereItem) 
 			return true;
 		
-		else if(name == "AgentIsTired")
+		else if(name == "AgentIsTired" && isThereItem)
 			return true;
 
 		else
