@@ -2,12 +2,13 @@
 #include "stdafx.h"
 
 // This is the root class for each node
-// These classes and code are derrived from this fourm code http://www.cplusplus.com/forum/general/141582/
+// These classes and code are copied and modified from this CPP fourm code http://www.cplusplus.com/forum/general/141582/
 
 class BehaviourTree
 {
 
 public:
+	std::string leafNodeToRun = "NA";
 	class Node
 	{
 	public:
@@ -79,19 +80,19 @@ public:
 class Action : public BehaviourTree::Node 
 {
 private:
+	BehaviourTree bt;
 	std::string name;
 	bool isThereItem;
 public:
-	Action(const std::string newName, bool isthereItem) : name(newName), isThereItem(isthereItem) {}
+	Action(BehaviourTree& newbt, std::string newName, bool isthereItem) : name(newName), bt(newbt), isThereItem(isthereItem) {}
 private:
 	virtual bool run() override 
 	{
-		if (name == "WalkToBed" && isThereItem) 
+		if (isThereItem)
+		{
+			bt.leafNodeToRun = name;
 			return true;
-		
-		else if(name == "AgentIsTired" && isThereItem)
-			return true;
-
+		}
 		else
 			return false;
 	}

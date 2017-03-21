@@ -32,7 +32,4 @@ private:
 	double tirednessThreshold = 0.4;
 	double toiletThreshold = 0.2;
 	double hungerThreshold = 0.2;
-
-
-
 };

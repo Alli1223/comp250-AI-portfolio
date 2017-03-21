@@ -22,7 +22,7 @@ public:
 	void shipDocked(Level& level, Ship& ship);
 	bool thereIsDockingPath = false;
 
-	bool doOnce = true;
+	bool fillLevelWithCells = true;
 	
 	
 private:
