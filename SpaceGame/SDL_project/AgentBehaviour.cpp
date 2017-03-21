@@ -19,76 +19,83 @@ void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 	bool ThereisPathtobed = false;
 	bool AgentisTired = false;
 	bool ThereisPathtoToilet = false;
-	if (agent.getTiredness() > 0.002 && levelHasBed)
+	bool AgentNeedsToilet = false;
+	//only run if agent needs something
+	if (agent.getToietNeed() > 0.2 || agent.getTiredness() > 0.5 && agent.isMoving == false)
 	{
-		AgentisTired = true;
-		// Find path to bed
-		agent.pathfinder.findPath(level, agent.getAgentPointLocation(), emptyBedLocations[0]);
-		if (agent.path.size() > 0)
+		// Level has bed and agent is tired
+		if (levelHasBed && !AgentisTired)
 		{
-			ThereisPathtobed = true;
-		}
-	}
-	else if (agent.getToietNeed() > 0.002 && LevelHasToilet)
-	{
-		//Find path to toilet
-		agent.pathfinder.findPath(level, agent.getAgentPointLocation(), emptyToiletLocations[0]);
-		if (agent.path.size() > 0)
-		{
-			ThereisPathtoToilet = true;
-		}
-	}
-
-
-	BehaviourTree agentServicesBehaviourTree;
-
-	// A list of leaf nodes
-	//BED ACTIONS
-	Action isAgentTired(agentServicesBehaviourTree, "bed", AgentisTired), PathToBed(agentServicesBehaviourTree, "bed", ThereisPathtobed);
-
-	//WC ACTIONS
-	Action WalkToToilet(agentServicesBehaviourTree, "wc", LevelHasToilet), PathToToilet(agentServicesBehaviourTree, "wc", ThereisPathtoToilet);
-
-
-
-
-	//Create 1 selector
-	BehaviourTree::Selector selector[1];
-	// Create 2 selectors
-	BehaviourTree::Sequence sequence[2];
-
-	// Set root node & add a selector that has 2 sequences 
-	agentServicesBehaviourTree.setRootChild(&selector[0]);
-	selector[0].addChildren({ &sequence[0], &sequence[1] });
-
-	sequence[0].addChildren({ &isAgentTired, &PathToBed });
-	sequence[1].addChildren({ &WalkToToilet, &PathToToilet });
-
-	//if the behaviour tree runs then move the agent
-	if (agentServicesBehaviourTree.run())
-	{
-		// Bed Tree
-		if (sequence[0].run())
-		{
-			//Move to BED
-			if (agent.isMoving == false)
+			AgentisTired = true;
+			// Find path to bed
+			agent.pathfinder.findPath(level, agent.getAgentPointLocation(), emptyBedLocations[0]);
+			if (agent.path.size() > 0)
 			{
-				agent.isMoving = true;
-				agent.Move(level, agent.getAgentPointLocation(), emptyBedLocations[0]);
+				ThereisPathtobed = true;
 			}
 		}
 
-		// WC Tree
-		else if (sequence[1].run())
+		// Level has toilet and agent needs it
+		else if (LevelHasToilet && !AgentNeedsToilet)
 		{
-			//Move to WC
-			if (agent.isMoving == false)
+			//Find path to toilet
+			agent.pathfinder.findPath(level, agent.getAgentPointLocation(), emptyToiletLocations[0]);
+			if (agent.path.size() > 0)
 			{
-				agent.isMoving = true;
-				agent.Move(level, agent.getAgentPointLocation(), emptyToiletLocations[0]);
+				ThereisPathtoToilet = true;
 			}
 		}
 
+
+		BehaviourTree agentServicesBehaviourTree;
+
+		// A list of leaf nodes
+		//BED ACTIONS
+		Action isAgentTired(agentServicesBehaviourTree, "bed", AgentisTired), PathToBed(agentServicesBehaviourTree, "bed", ThereisPathtobed);
+
+		//WC ACTIONS
+		Action WalkToToilet(agentServicesBehaviourTree, "wc", LevelHasToilet), PathToToilet(agentServicesBehaviourTree, "wc", ThereisPathtoToilet);
+
+
+
+
+		//Create 1 selector
+		BehaviourTree::Selector selector[1];
+		// Create 2 selectors
+		BehaviourTree::Sequence sequence[2];
+
+		// Set root node & add a selector that has 2 sequences 
+		agentServicesBehaviourTree.setRootChild(&selector[0]);
+		selector[0].addChildren({ &sequence[0], &sequence[1] });
+
+		sequence[0].addChildren({ &isAgentTired, &PathToBed });
+		sequence[1].addChildren({ &WalkToToilet, &PathToToilet });
+
+		//if the behaviour tree runs then move the agent
+		if (agentServicesBehaviourTree.run())
+		{
+			// Bed Tree
+			if (sequence[0].run())
+			{
+				//Move to BED
+				if (agent.isMoving == false)
+				{
+					agent.isMoving = true;
+					agent.Move(level, agent.getAgentPointLocation(), emptyBedLocations[0]);
+				}
+			}
+
+			// WC Tree
+			else if (sequence[1].run())
+			{
+				//Move to WC
+				if (agent.isMoving == false)
+				{
+					agent.isMoving = true;
+					agent.Move(level, agent.getAgentPointLocation(), emptyToiletLocations[0]);
+				}
+			}
+		}
 	}
 }
 
