@@ -13,11 +13,11 @@ Agent::~Agent()
 
 void Agent::Update(Level& level)
 {
-	// Set agents cell x & y tile values
+	// Set agents cell x & y tile values & point values
 	int cellSize = level.getCellSize();
 	setCellX(getX() / level.getCellSize());
 	setCellY(getY() / level.getCellSize());
-
+	agentPointLocation = Point(getCellX(), getCellY());
 
 	// Decrease/Increase stats over time
 	tiredness = tiredness + tirednessDecayRate;
@@ -30,6 +30,7 @@ void Agent::Update(Level& level)
 	{
 		float deltaY = getY() - path[pathPointIterator].getY() * cellSize;
 		float deltaX = getX() - path[pathPointIterator].getX() * cellSize;
+		
 
 		float length = sqrt(deltaX * deltaX + deltaY * deltaY);
 
@@ -42,8 +43,8 @@ void Agent::Update(Level& level)
 		{
 			float angleInDegrees = atan2(deltaY, deltaX) * 180.0 / PI;
 
-			if (angleInDegrees < 0.0 || angleInDegrees > 360.0)
-				angleInDegrees = 360.0 - angleInDegrees;
+			//if (angleInDegrees < 0.0 || angleInDegrees > 360.0)
+				//angleInDegrees = 360.0 - angleInDegrees;
 
 			agentRotation = angleInDegrees + 90;
 		}
@@ -65,11 +66,18 @@ void Agent::Update(Level& level)
 		}
 	}
 
+	// if agent is dead
 	if (this->getHealth() <= 0)
 		this->isAlive = false;
 
+	// if agent reaches bed || toilet then reset values
+	if (level.grid[cellX][cellY]->isToilet)
+		this->setToiletNeed(0.0);
+	if (level.grid[cellX][cellY]->isBed)
+		this->setTiredness(0.0);
+
 	// Agent will wonder randomly when idle
-	if (movementStatus == Idle)
+	if (movementStatus == Idle && agentWonderWhenIdle)
 	{
 		bool foundEndPoint = false;
 		Point endPoint;
@@ -94,6 +102,7 @@ void Agent::Update(Level& level)
 	if (pathPointIterator >= path.size() && movementStatus == TraversingPath)
 	{
 		movementStatus = Idle;
+		isMoving = false;
 		pathPointIterator = 0;
 	}
 }

@@ -72,7 +72,7 @@ public:
 	int numberOfItem5 = 15;
 	int numberOfItem6 = 15;
 
-	bool doOnce = true;
+	bool fillLevelWithCells = true;
 
 
 private:

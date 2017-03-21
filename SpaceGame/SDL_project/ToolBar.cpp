@@ -28,7 +28,7 @@ void ToolBar::RenderToolbar(SDL_Renderer* renderer, int& WINDOW_WIDTH, int& WIND
 	toolbarXpos = WINDOW_WIDTH / 2;
 	toolbarYpos = (WINDOW_HEIGHT - toolbarSizeY);
 	int toobarIconXPos = toolbarXpos - (toolbarIconSize * 10);
-	if (doOnce)
+	if (fillLevelWithCells)
 	{
 
 		// Set the icons position and ID
@@ -45,7 +45,7 @@ void ToolBar::RenderToolbar(SDL_Renderer* renderer, int& WINDOW_WIDTH, int& WIND
 
 			allIcons.push_back(sharedIcon);
 		}
-		doOnce = false;
+		fillLevelWithCells = false;
 	}
 	
 
