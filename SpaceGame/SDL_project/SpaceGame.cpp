@@ -45,12 +45,14 @@ void SpaceGame::run()
 	//mapLoader.generateMap(level, designroom);
 
 
+
 	running = true;
 	unsigned int timer = 0;
 	int cellSize = level.getCellSize();
 
 	while (running)
 	{
+
 		// Handle events
 		SDL_Event ev;
 		if (SDL_PollEvent(&ev))

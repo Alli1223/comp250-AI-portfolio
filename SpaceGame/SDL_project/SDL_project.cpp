@@ -8,6 +8,7 @@
 int main(int argc, char* args[])
 
 {
+	
 	SpaceGame game;
 	game.run();
 
