@@ -1,0 +1,64 @@
+\hypertarget{class_level}{}\section{Level Class Reference}
+\label{class_level}\index{Level@{Level}}
+
+
+This class generates the base of the level.  
+
+
+
+
+{\ttfamily \#include $<$Level.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_level_a7a696c928ca5d5354db6e50e46d0f67d}\label{class_level_a7a696c928ca5d5354db6e50e46d0f67d}} 
+\hyperlink{class_level_a7a696c928ca5d5354db6e50e46d0f67d}{Level} ()
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_level_a249eac1e8f19ff44134efa5e986feaca}\label{class_level_a249eac1e8f19ff44134efa5e986feaca}} 
+\hyperlink{class_level_a249eac1e8f19ff44134efa5e986feaca}{$\sim$\+Level} ()
+\begin{DoxyCompactList}\small\item\em A deconstructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_level_a0b6d16a7850bee00c1079ae6caa09658}\label{class_level_a0b6d16a7850bee00c1079ae6caa09658}} 
+int \hyperlink{class_level_a0b6d16a7850bee00c1079ae6caa09658}{get\+Cell\+Size} ()
+\begin{DoxyCompactList}\small\item\em Return the cell\+Size. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_level_a097cc355bb986141ab1293b6326fc7dd}\label{class_level_a097cc355bb986141ab1293b6326fc7dd}} 
+int {\bfseries set\+Cell\+Size} (int new\+Cell\+Size)
+\item 
+\mbox{\Hypertarget{class_level_a986cd05306bcdbb9f8e1dbddab258076}\label{class_level_a986cd05306bcdbb9f8e1dbddab258076}} 
+int {\bfseries get\+Level\+Width} ()
+\item 
+\mbox{\Hypertarget{class_level_a78ab827c2c598cc5e9ae29af6617eee7}\label{class_level_a78ab827c2c598cc5e9ae29af6617eee7}} 
+int {\bfseries get\+Level\+Height} ()
+\item 
+\mbox{\Hypertarget{class_level_a711767475094a647d934c11416adc732}\label{class_level_a711767475094a647d934c11416adc732}} 
+void \hyperlink{class_level_a711767475094a647d934c11416adc732}{make\+Grid} (int Window\+\_\+\+Width, int Window\+\_\+\+Height)
+\begin{DoxyCompactList}\small\item\em Fills grid with vectors of shared pointers to cells. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_level_a48cd01c916a30fa65a72ccca7ad79fe1}\label{class_level_a48cd01c916a30fa65a72ccca7ad79fe1}} 
+std\+::vector$<$ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_cell}{Cell} $>$ $>$ $>$ \hyperlink{class_level_a48cd01c916a30fa65a72ccca7ad79fe1}{grid}
+\begin{DoxyCompactList}\small\item\em The base grid that contains the cells. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_level_a50fe4de705aaa281592ddc26c21362ec}\label{class_level_a50fe4de705aaa281592ddc26c21362ec}} 
+int \hyperlink{class_level_a50fe4de705aaa281592ddc26c21362ec}{cell\+Size} = 50
+\begin{DoxyCompactList}\small\item\em The size that the cell will be rendered at. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_level_a96a0acf0f21c6d980f9b8c75f13b1672}\label{class_level_a96a0acf0f21c6d980f9b8c75f13b1672}} 
+int {\bfseries level\+Width}
+\item 
+\mbox{\Hypertarget{class_level_a629c045305fc11af293d710df7cadc5e}\label{class_level_a629c045305fc11af293d710df7cadc5e}} 
+int {\bfseries level\+Height}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class generates the base of the level. 
+
+This class creates a vector of vector of shared pointers to cells 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Alastair/\+Documents/\+Git\+Hub/comp250-\/\+A\+I-\/portfolio/\+Space\+Game/\+S\+D\+L\+\_\+project/Level.\+h\item 
+C\+:/\+Users/\+Alastair/\+Documents/\+Git\+Hub/comp250-\/\+A\+I-\/portfolio/\+Space\+Game/\+S\+D\+L\+\_\+project/Level.\+cpp\end{DoxyCompactItemize}

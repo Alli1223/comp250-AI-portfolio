@@ -1,0 +1,38 @@
+\hypertarget{class_agent_behaviour}{}\section{Agent\+Behaviour Class Reference}
+\label{class_agent_behaviour}\index{Agent\+Behaviour@{Agent\+Behaviour}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_agent_behaviour_afbb7103a8960b8b1982b71d25c036e71}\label{class_agent_behaviour_afbb7103a8960b8b1982b71d25c036e71}} 
+\hyperlink{class_point}{Point} \hyperlink{class_agent_behaviour_afbb7103a8960b8b1982b71d25c036e71}{Find\+Nearest\+Cellto\+Agent} (\hyperlink{class_agent}{Agent} \&agent, \hyperlink{class_level}{Level} \&level, std\+::string cell\+Type)
+\begin{DoxyCompactList}\small\item\em Finds the nearest cell to the agent from the string cell\+Type (e.\+g. \char`\"{}\+B\+E\+D\char`\"{} $\vert$$\vert$ \char`\"{}\+T\+O\+I\+L\+E\+T\char`\"{}) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_behaviour_a2a4f982b17f2bc0c7753aff6441d2667}\label{class_agent_behaviour_a2a4f982b17f2bc0c7753aff6441d2667}} 
+void \hyperlink{class_agent_behaviour_a2a4f982b17f2bc0c7753aff6441d2667}{Decide\+Task} (\hyperlink{class_level}{Level} \&level, \hyperlink{class_agent}{Agent} \&agent)
+\begin{DoxyCompactList}\small\item\em To Decide what task needs to be done. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_behaviour_a8f86aedeaebdab4553e0fe04e8593999}\label{class_agent_behaviour_a8f86aedeaebdab4553e0fe04e8593999}} 
+void \hyperlink{class_agent_behaviour_a8f86aedeaebdab4553e0fe04e8593999}{Update\+Level\+Info} (\hyperlink{class_level}{Level} \&level, int cellX, int cellY)
+\begin{DoxyCompactList}\small\item\em Updates some of the local class varaibles that store info about the level and what it contains for ease of use by behaviour tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_agent_behaviour_a2b26dafd1b01890c52803f19b18f846a}\label{class_agent_behaviour_a2b26dafd1b01890c52803f19b18f846a}} 
+bool \hyperlink{class_agent_behaviour_a2b26dafd1b01890c52803f19b18f846a}{level\+Has\+Bed} = false
+\begin{DoxyCompactList}\small\item\em Bool that stores whether the level has a bed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_behaviour_a30450ea561add5573dffeb78b32e3bca}\label{class_agent_behaviour_a30450ea561add5573dffeb78b32e3bca}} 
+std\+::vector$<$ \hyperlink{class_point}{Point} $>$ \hyperlink{class_agent_behaviour_a30450ea561add5573dffeb78b32e3bca}{empty\+Bed\+Locations}
+\begin{DoxyCompactList}\small\item\em A vector that stores empty bed locations. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_behaviour_af3def48bbce26581630f0f1cf3d2f67e}\label{class_agent_behaviour_af3def48bbce26581630f0f1cf3d2f67e}} 
+bool \hyperlink{class_agent_behaviour_af3def48bbce26581630f0f1cf3d2f67e}{Level\+Has\+Toilet} = false
+\begin{DoxyCompactList}\small\item\em Bool that stores whether the level has a toilet. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_behaviour_ad2018440fabd1aaad74f6ce3c22c64f1}\label{class_agent_behaviour_ad2018440fabd1aaad74f6ce3c22c64f1}} 
+std\+::vector$<$ \hyperlink{class_point}{Point} $>$ \hyperlink{class_agent_behaviour_ad2018440fabd1aaad74f6ce3c22c64f1}{empty\+Toilet\+Locations}
+\begin{DoxyCompactList}\small\item\em A vector that stores empty toilet locations. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_behaviour_ac541d443fc80b6c5d7758533d554648f}\label{class_agent_behaviour_ac541d443fc80b6c5d7758533d554648f}} 
+int {\bfseries local\+Search\+Size} = 2
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Alastair/\+Documents/\+Git\+Hub/comp250-\/\+A\+I-\/portfolio/\+Space\+Game/\+S\+D\+L\+\_\+project/Agent\+Behaviour.\+h\item 
+C\+:/\+Users/\+Alastair/\+Documents/\+Git\+Hub/comp250-\/\+A\+I-\/portfolio/\+Space\+Game/\+S\+D\+L\+\_\+project/Agent\+Behaviour.\+cpp\end{DoxyCompactItemize}

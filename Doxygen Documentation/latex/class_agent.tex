@@ -1,0 +1,162 @@
+\hypertarget{class_agent}{}\section{Agent Class Reference}
+\label{class_agent}\index{Agent@{Agent}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_agent_af0b2c4596f7df623b5912509a09d0449}{agent\+Movement\+Status} \{ {\bfseries Idle}, 
+{\bfseries Traversing\+Path}, 
+{\bfseries Waiting}
+ \}\begin{DoxyCompactList}\small\item\em Contains what the current status of the agent is doing. \end{DoxyCompactList}
+\item 
+enum \hyperlink{class_agent_ac7c6344403211868f101f7903fa9cb82}{agent\+Services\+Status} \{ \newline
+{\bfseries NA}, 
+{\bfseries Hungry}, 
+{\bfseries Tired}, 
+{\bfseries WC}, 
+\newline
+{\bfseries Suffocating}
+ \}\begin{DoxyCompactList}\small\item\em Contains what the agent needs to do the most. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_agent_aa273213a1d5fbd26b473b6ed7c99ddb8}\label{class_agent_aa273213a1d5fbd26b473b6ed7c99ddb8}} 
+void \hyperlink{class_agent_aa273213a1d5fbd26b473b6ed7c99ddb8}{Update} (\hyperlink{class_level}{Level} \&level)
+\begin{DoxyCompactList}\small\item\em Update method for \hyperlink{class_agent}{Agent}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_ab42895cf783c51c67a8719b7bdab9794}\label{class_agent_ab42895cf783c51c67a8719b7bdab9794}} 
+void \hyperlink{class_agent_ab42895cf783c51c67a8719b7bdab9794}{Move} (\hyperlink{class_level}{Level} \&level, \hyperlink{class_point}{Point} \&Start\+Point, \hyperlink{class_point}{Point} \&End\+Point)
+\begin{DoxyCompactList}\small\item\em Movement method for \hyperlink{class_agent}{Agent}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_a207c925e3183a06c4ee6ce06d3d10f25}\label{class_agent_a207c925e3183a06c4ee6ce06d3d10f25}} 
+int \hyperlink{class_agent_a207c925e3183a06c4ee6ce06d3d10f25}{getX} ()
+\begin{DoxyCompactList}\small\item\em Gets the characters X value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_ae354a9492265ed3686565676bbe27bf9}\label{class_agent_ae354a9492265ed3686565676bbe27bf9}} 
+int \hyperlink{class_agent_ae354a9492265ed3686565676bbe27bf9}{getY} ()
+\begin{DoxyCompactList}\small\item\em Gets the characters Y value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_af8ae93713803f18c352981c6c96ed89e}\label{class_agent_af8ae93713803f18c352981c6c96ed89e}} 
+int \hyperlink{class_agent_af8ae93713803f18c352981c6c96ed89e}{get\+CellX} ()
+\begin{DoxyCompactList}\small\item\em Gets the characters X value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_a73da67739c721597ad206901766c618a}\label{class_agent_a73da67739c721597ad206901766c618a}} 
+int \hyperlink{class_agent_a73da67739c721597ad206901766c618a}{get\+CellY} ()
+\begin{DoxyCompactList}\small\item\em Gets the characters Y value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_a3acead21f857626ca791c8b911b4cfa4}\label{class_agent_a3acead21f857626ca791c8b911b4cfa4}} 
+int \hyperlink{class_agent_a3acead21f857626ca791c8b911b4cfa4}{get\+Size} ()
+\begin{DoxyCompactList}\small\item\em Gets the characters size. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_a8a5364ce3ed78c09ab47e91a02776e92}\label{class_agent_a8a5364ce3ed78c09ab47e91a02776e92}} 
+double \hyperlink{class_agent_a8a5364ce3ed78c09ab47e91a02776e92}{get\+Speed} ()
+\begin{DoxyCompactList}\small\item\em Gets the characters speed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_a93cb897625e7650683cfb345e5d77559}\label{class_agent_a93cb897625e7650683cfb345e5d77559}} 
+int \hyperlink{class_agent_a93cb897625e7650683cfb345e5d77559}{setX} (int newX)
+\begin{DoxyCompactList}\small\item\em Sets the characters X value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_a8105325d19923df18912578b28f702b1}\label{class_agent_a8105325d19923df18912578b28f702b1}} 
+int \hyperlink{class_agent_a8105325d19923df18912578b28f702b1}{setY} (int newY)
+\begin{DoxyCompactList}\small\item\em Sets the characters Y value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_a579b5b77437e523552005066b12b9983}\label{class_agent_a579b5b77437e523552005066b12b9983}} 
+int \hyperlink{class_agent_a579b5b77437e523552005066b12b9983}{set\+CellX} (int new\+CellX)
+\begin{DoxyCompactList}\small\item\em Sets the characters cellX value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_aa5e72b9928f0c0cfc7dd93240dbf6bfc}\label{class_agent_aa5e72b9928f0c0cfc7dd93240dbf6bfc}} 
+int \hyperlink{class_agent_aa5e72b9928f0c0cfc7dd93240dbf6bfc}{set\+CellY} (int new\+CellY)
+\begin{DoxyCompactList}\small\item\em Sets the characters cellY value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_ad0b44c550842be01f5cf530eaaa1d21f}\label{class_agent_ad0b44c550842be01f5cf530eaaa1d21f}} 
+int \hyperlink{class_agent_ad0b44c550842be01f5cf530eaaa1d21f}{set\+Position} (int newX, int newY)
+\begin{DoxyCompactList}\small\item\em Sets the position that takes 2 arguments, x and y. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_a75e2e56c3a0a8bdee42ddc5750a06684}\label{class_agent_a75e2e56c3a0a8bdee42ddc5750a06684}} 
+double \hyperlink{class_agent_a75e2e56c3a0a8bdee42ddc5750a06684}{set\+Speed} (double new\+Speed)
+\begin{DoxyCompactList}\small\item\em Sets the characters current speed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_a78215921c404b25326daa1ba3bf6d15d}\label{class_agent_a78215921c404b25326daa1ba3bf6d15d}} 
+\hyperlink{class_point}{Point} \hyperlink{class_agent_a78215921c404b25326daa1ba3bf6d15d}{get\+Agent\+Point\+Location} ()
+\begin{DoxyCompactList}\small\item\em Gets and sets the agents point location. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_a384d639479f5c149275780f4e39c64c7}\label{class_agent_a384d639479f5c149275780f4e39c64c7}} 
+\hyperlink{class_point}{Point} {\bfseries set\+Agent\+Point\+Location} (\hyperlink{class_point}{Point} new\+Point\+Location)
+\item 
+\mbox{\Hypertarget{class_agent_af30ae01f87dcf622ceb50921ecaa3075}\label{class_agent_af30ae01f87dcf622ceb50921ecaa3075}} 
+double \hyperlink{class_agent_af30ae01f87dcf622ceb50921ecaa3075}{get\+Health} ()
+\begin{DoxyCompactList}\small\item\em Gets and Sets the agents health. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_abf38df47b1f8c4a183c655d80275cb20}\label{class_agent_abf38df47b1f8c4a183c655d80275cb20}} 
+double {\bfseries set\+Health} (double new\+Health)
+\item 
+\mbox{\Hypertarget{class_agent_a51b835d48e31e09698ecdceb721c3f23}\label{class_agent_a51b835d48e31e09698ecdceb721c3f23}} 
+double \hyperlink{class_agent_a51b835d48e31e09698ecdceb721c3f23}{get\+Hunger} ()
+\begin{DoxyCompactList}\small\item\em Gets and Sets the agents hunger. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_a7f972fff138634c1b455e63db413c702}\label{class_agent_a7f972fff138634c1b455e63db413c702}} 
+double {\bfseries set\+Hunger} (double new\+Hunger)
+\item 
+\mbox{\Hypertarget{class_agent_a5519977f67de721081136fe11efcd8c7}\label{class_agent_a5519977f67de721081136fe11efcd8c7}} 
+double \hyperlink{class_agent_a5519977f67de721081136fe11efcd8c7}{get\+Tiredness} ()
+\begin{DoxyCompactList}\small\item\em Gets and Sets the agents tiredness (Tiredness increaes from 0) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_a4a8525ce42c08122282051efe077c791}\label{class_agent_a4a8525ce42c08122282051efe077c791}} 
+double {\bfseries set\+Tiredness} (double new\+Tiredness)
+\item 
+\mbox{\Hypertarget{class_agent_aa6910d23593e6e7fbff838e60585e79c}\label{class_agent_aa6910d23593e6e7fbff838e60585e79c}} 
+double \hyperlink{class_agent_aa6910d23593e6e7fbff838e60585e79c}{get\+Toiet\+Need} ()
+\begin{DoxyCompactList}\small\item\em Gets and Sets the agents tiredness (Tiredness increaes from 0) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_a0db1170e6cc50f37981a5ab305a181e0}\label{class_agent_a0db1170e6cc50f37981a5ab305a181e0}} 
+double {\bfseries set\+Toilet\+Need} (double new\+Toilet\+Need)
+\item 
+\mbox{\Hypertarget{class_agent_a9abbdf8d3a9e2116faddce591865164b}\label{class_agent_a9abbdf8d3a9e2116faddce591865164b}} 
+double \hyperlink{class_agent_a9abbdf8d3a9e2116faddce591865164b}{get\+Oxygen\+Level} ()
+\begin{DoxyCompactList}\small\item\em Gets and Sets the agents oxygen level. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_a58c4462e557ee00c45b3a8a8186980ee}\label{class_agent_a58c4462e557ee00c45b3a8a8186980ee}} 
+double {\bfseries set\+Oxygen\+Level} (double new\+Oxygen\+Level)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_agent_a88eff9b9a41c730d03e1b14dd730fe72}\label{class_agent_a88eff9b9a41c730d03e1b14dd730fe72}} 
+std\+::string \hyperlink{class_agent_a88eff9b9a41c730d03e1b14dd730fe72}{character\+Type} = \char`\"{}N\+PC\char`\"{}
+\begin{DoxyCompactList}\small\item\em Character Type. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_ae4e1c9d4a042a0aa761392c45bed3a2b}\label{class_agent_ae4e1c9d4a042a0aa761392c45bed3a2b}} 
+$\ast$Create an instance of pathfinder $\ast$\hyperlink{class_pathfinder}{Pathfinder} {\bfseries pathfinder}
+\item 
+\mbox{\Hypertarget{class_agent_ad221d98ce80b1f5ddd06182a825e50c5}\label{class_agent_ad221d98ce80b1f5ddd06182a825e50c5}} 
+std\+::vector$<$ \hyperlink{class_point}{Point} $>$ \hyperlink{class_agent_ad221d98ce80b1f5ddd06182a825e50c5}{path}
+\begin{DoxyCompactList}\small\item\em Conains the list of nodes that makes the path. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_a2d0b3cc1362a8bbbddda3476573f6733}\label{class_agent_a2d0b3cc1362a8bbbddda3476573f6733}} 
+\hyperlink{class_agent_af0b2c4596f7df623b5912509a09d0449}{agent\+Movement\+Status} {\bfseries movement\+Status} = Idle
+\item 
+\mbox{\Hypertarget{class_agent_a38888c7ca94b440873b5ea3b2c01e52f}\label{class_agent_a38888c7ca94b440873b5ea3b2c01e52f}} 
+\hyperlink{class_agent_ac7c6344403211868f101f7903fa9cb82}{agent\+Services\+Status} {\bfseries agent\+Need} = NA
+\item 
+\mbox{\Hypertarget{class_agent_aab5675be1775cd18ff37e3e1870d51be}\label{class_agent_aab5675be1775cd18ff37e3e1870d51be}} 
+bool {\bfseries is\+Moving} = false
+\item 
+\mbox{\Hypertarget{class_agent_ac256f4583cc7f7c581ee1f7250f05f4f}\label{class_agent_ac256f4583cc7f7c581ee1f7250f05f4f}} 
+bool \hyperlink{class_agent_ac256f4583cc7f7c581ee1f7250f05f4f}{is\+Alive} = true
+\begin{DoxyCompactList}\small\item\em Boolean for whether character is alive. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_af3384cfb4c86b2ca093ad02a4ce57d37}\label{class_agent_af3384cfb4c86b2ca093ad02a4ce57d37}} 
+bool {\bfseries agent\+Wonder\+When\+Idle} = false
+\item 
+\mbox{\Hypertarget{class_agent_ab150cbcd976d2c50b1f34503c3a98168}\label{class_agent_ab150cbcd976d2c50b1f34503c3a98168}} 
+bool {\bfseries agent\+Can\+Rotate} = true
+\item 
+\mbox{\Hypertarget{class_agent_a02a2a7245b8677b8bcdf3bd311f5a420}\label{class_agent_a02a2a7245b8677b8bcdf3bd311f5a420}} 
+int {\bfseries agent\+Rotation} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_agent_af0b2c4596f7df623b5912509a09d0449}\label{class_agent_af0b2c4596f7df623b5912509a09d0449}} 
+\index{Agent@{Agent}!agent\+Movement\+Status@{agent\+Movement\+Status}}
+\index{agent\+Movement\+Status@{agent\+Movement\+Status}!Agent@{Agent}}
+\subsubsection{\texorpdfstring{agent\+Movement\+Status}{agentMovementStatus}}
+{\footnotesize\ttfamily enum \hyperlink{class_agent_af0b2c4596f7df623b5912509a09d0449}{Agent\+::agent\+Movement\+Status}}
+
+
+
+Contains what the current status of the agent is doing. 
+
+Types of agent state\+: (Idle, Found\+Path, Dead...) \mbox{\Hypertarget{class_agent_ac7c6344403211868f101f7903fa9cb82}\label{class_agent_ac7c6344403211868f101f7903fa9cb82}} 
+\index{Agent@{Agent}!agent\+Services\+Status@{agent\+Services\+Status}}
+\index{agent\+Services\+Status@{agent\+Services\+Status}!Agent@{Agent}}
+\subsubsection{\texorpdfstring{agent\+Services\+Status}{agentServicesStatus}}
+{\footnotesize\ttfamily enum \hyperlink{class_agent_ac7c6344403211868f101f7903fa9cb82}{Agent\+::agent\+Services\+Status}}
+
+
+
+Contains what the agent needs to do the most. 
+
+Types of agent state\+: (Food, WC, Bed...) 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Alastair/\+Documents/\+Git\+Hub/comp250-\/\+A\+I-\/portfolio/\+Space\+Game/\+S\+D\+L\+\_\+project/Agent.\+h\item 
+C\+:/\+Users/\+Alastair/\+Documents/\+Git\+Hub/comp250-\/\+A\+I-\/portfolio/\+Space\+Game/\+S\+D\+L\+\_\+project/Agent.\+cpp\end{DoxyCompactItemize}
