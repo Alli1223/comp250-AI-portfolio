@@ -13,106 +13,108 @@ Agent::~Agent()
 
 void Agent::Update(Level& level)
 {
+	// Set agents cell x & y tile values & point values
 	int cellSize = level.getCellSize();
+	setCellX(getX() / level.getCellSize());
+	setCellY(getY() / level.getCellSize());
+	agentPointLocation = Point(getCellX(), getCellY());
 
-	// Decrease stats over time
-	tiredness = tiredness - tirednessDecayRate;
+	// Decrease/Increase stats over time
+	tiredness = tiredness + tirednessDecayRate;
 	hunger = hunger - hungerDecayRate;
+	toiletLevel = toiletLevel + toiletDecayRate;
+	
 
 	// If the agent has a path move along it
-	if (agentStatus == "FoundPath")
+	if (movementStatus == TraversingPath)
 	{
-		// Move Left
-		if (getX() / cellSize > path[pathPointIterator].getX() && getY() / cellSize == path[pathPointIterator].getY())
+		float deltaY = getY() - path[pathPointIterator].getY() * cellSize;
+		float deltaX = getX() - path[pathPointIterator].getX() * cellSize;
+		
+
+		float length = sqrt(deltaX * deltaX + deltaY * deltaY);
+
+		// Normalize 
+		deltaX /= length;
+		deltaY /= length;
+
+		// Calculate rotation
+		if (agentCanRotate)
 		{
-			setX(getX() - speed);
-			movementDirection = "Left";
-		}
-		// Move Right
-		if (getX() / cellSize < path[pathPointIterator].getX() && getY() / cellSize == path[pathPointIterator].getY())
-		{
-			setX(getX() + speed);
-			movementDirection = "Right";
-		}
-		// Move Up
-		if (getY() / cellSize > path[pathPointIterator].getY() && getX() / cellSize == path[pathPointIterator].getX())
-		{
-			setY(getY() - speed);
-			movementDirection = "Up";
-		}
-		// Move Down
-		if (getY() / cellSize < path[pathPointIterator].getY() && getX() / cellSize == path[pathPointIterator].getX())
-		{
-			setY(getY() + speed);
-			movementDirection = "Down";
+			float angleInDegrees = atan2(deltaY, deltaX) * 180.0 / PI;
+
+			//if (angleInDegrees < 0.0 || angleInDegrees > 360.0)
+				//angleInDegrees = 360.0 - angleInDegrees;
+
+			agentRotation = angleInDegrees + 90;
 		}
 
+		// Multiply direction by magnitude 
+		deltaX *= speed;
+		deltaY *= speed;
 
-
-		// If the agent is at the point then iterate to the next point
-		if (getX() / cellSize == path[pathPointIterator].getX() && getY() / cellSize == path[pathPointIterator].getY())
+		if (getX() - deltaX > 0 && getY() - deltaY > 0)
+		{
+			setX(getX() - deltaX);
+			setY(getY() - deltaY);
+		}
+		
+		// If the agent reaches the node in the path
+		if (getCellX() == path[pathPointIterator].getX() && getCellY() == path[pathPointIterator].getY())
 		{
 			pathPointIterator++;
 		}
-
-		// If the Agent has reached the end of the path then reset the pathfinder and set the agent to idle.
-		if (pathPointIterator >= path.size())
-		{
-			agentStatus = "Idle";
-			pathPointIterator = 0;
-			path.erase(path.begin(), path.end());
-		}
-
 	}
 
-	// If the agent dies
+	// if agent is dead
 	if (this->getHealth() <= 0)
-	{
 		this->isAlive = false;
-		this->agentStatus = "Dead";
-	}
+
+	// if agent reaches bed || toilet then reset values
+	if (level.grid[cellX][cellY]->isToilet)
+		this->setToiletNeed(0.0);
+	if (level.grid[cellX][cellY]->isBed)
+		this->setTiredness(0.0);
 
 	// Agent will wonder randomly when idle
-	if (this->agentStatus == "Idle")
+	if (movementStatus == Idle && agentWonderWhenIdle)
 	{
 		bool foundEndPoint = false;
 		Point endPoint;
 		while (!foundEndPoint)
 		{
-			int x = rand() % level.getLevelWidth();
-			int y = rand() % level.getLevelHeight();
-			if (level.grid[x][y]->isRoom)
+			int x = rand() % level.grid.size();
+			int y = rand() % level.grid[x].size();
+			if (level.grid[x][y]->isWalkable && level.grid[x][y]->isRoom)
 			{
 				endPoint = Point(level.grid[x][y]->getX(), level.grid[x][y]->getY());
 				foundEndPoint = true;
-				this->agentStatus = "Wandering";
+				movementStatus = TraversingPath;
 			}
 		}
-		Point startPoint(this->getX() / cellSize, this->getY() / cellSize);
+		Point startPoint(this->getCellX(), this->getCellY());
 		this->Move(level, startPoint, endPoint);
 	}
-
-	//Decrease health if suffocating
-	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->getOxygenLevel() == 0)
-	{
-		//this->setHealth(this->getHealth() - 1);
-	}
-	//If the agent reaches a bed
-	if (level.grid[x / level.getCellSize()][y / level.getCellSize()]->isBed && agentStatus == "SearchingForBed")
-	{
-		//Increase rest at twice the speed
-		tiredness = tiredness + tirednessDecayRate * 2;
-		agentStatus = "Sleeping";
-	}
+	
 	
 
-
-	
+	// If the Agent has reached the end of the path then reset the pathfinder and set the agent to idle.
+	if (pathPointIterator >= path.size() && movementStatus == TraversingPath)
+	{
+		movementStatus = Idle;
+		isMoving = false;
+		pathPointIterator = 0;
+	}
 }
 
 void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint)
 {
+	// Erase path
+	path.erase(path.begin(), path.end());
+	pathPointIterator = 0;
+
+	// Move along path
 	path = pathfinder.findPath(level, StartPoint, EndPoint);
 	if (path.size() > 0)
-		agentStatus = "FoundPath";
+		movementStatus = TraversingPath;
 }

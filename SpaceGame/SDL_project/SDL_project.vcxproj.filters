@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="MainCharacter.cpp">
-      <Filter>Source Files\AI Classes</Filter>
-    </ClCompile>
     <ClCompile Include="Fire.cpp">
       <Filter>Source Files\Disaster Classes</Filter>
     </ClCompile>
@@ -82,9 +79,6 @@
     <ClCompile Include="CellRendering.cpp">
       <Filter>Source Files\Main Game Classes</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerInteraction.cpp">
-      <Filter>Source Files\AI Classes</Filter>
-    </ClCompile>
     <ClCompile Include="Agent.cpp">
       <Filter>Source Files\AI Classes</Filter>
     </ClCompile>
@@ -92,13 +86,13 @@
       <Filter>Source Files\AI Classes</Filter>
     </ClCompile>
     <ClCompile Include="AgentBehaviour.cpp">
+      <Filter>Source Files\AI Classes\BehaviourTree</Filter>
+    </ClCompile>
+    <ClCompile Include="AgentInteraction.cpp">
       <Filter>Source Files\AI Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MainCharacter.h">
-      <Filter>Headers\AI Classes</Filter>
-    </ClInclude>
     <ClInclude Include="Fire.h">
       <Filter>Headers\Disaster Classes</Filter>
     </ClInclude>
@@ -183,9 +177,6 @@
     <ClInclude Include="CellRendering.h">
       <Filter>Headers\Main Game Classes</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerInteraction.h">
-      <Filter>Headers\AI Classes</Filter>
-    </ClInclude>
     <ClInclude Include="Agent.h">
       <Filter>Headers\AI Classes</Filter>
     </ClInclude>
@@ -193,6 +184,12 @@
       <Filter>Headers\AI Classes</Filter>
     </ClInclude>
     <ClInclude Include="AgentBehaviour.h">
+      <Filter>Headers\AI Classes\BehaviourTree</Filter>
+    </ClInclude>
+    <ClInclude Include="BehaviourTree.h">
+      <Filter>Headers\AI Classes\BehaviourTree</Filter>
+    </ClInclude>
+    <ClInclude Include="AgentInteraction.h">
       <Filter>Headers\AI Classes</Filter>
     </ClInclude>
   </ItemGroup>
@@ -266,6 +263,15 @@
     </Filter>
     <Filter Include="Headers\AI Classes">
       <UniqueIdentifier>{0072aba4-18bc-42ba-8ec0-c5d7603daa9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\AI Classes\BehaviourTree">
+      <UniqueIdentifier>{db0a5e59-1c0b-4930-aed7-3cc1b7af3814}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AI Classes\BehaviourTree">
+      <UniqueIdentifier>{ff694f21-84df-4b18-8560-6797e343383a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\AI Classes\BehaviourTree\Tasks">
+      <UniqueIdentifier>{573f0559-96f8-4d31-9fc6-3f991cdb622e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

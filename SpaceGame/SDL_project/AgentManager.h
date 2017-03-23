@@ -4,6 +4,8 @@
 #include "PathFinder.h"
 #include "Texture.h"
 #include "Agent.h"
+#include "AgentBehaviour.h"
+
 
 
 //!  The abstract character class 
@@ -18,10 +20,14 @@ public:
 	//! A destructor
 	~AgentManager();
 
+	//! Create an instance of AgentBehavour
+	AgentBehaviour agentBehaviour;
+
 	//! Contains a list of all the characters
 	std::vector<Agent> allAgents;
 
-	void AgentManager::RenderAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level);
+	void AgentManager::UpdateAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level);
+	void AgentManager::RenderAgents(Agent& agent, SDL_Renderer* renderer, Level& level);
 
 	//! Spawn character function (Character types are (NPC, Player)
 	void AgentManager::SpawnAgent(std::string CharacterTypeVar, std::vector<Agent>& allAgents, int x, int y);
@@ -31,6 +37,9 @@ public:
 
 	//! Erases all the agents in the game
 	void AgentManager::EraseAllAgents(std::vector<Agent>& allAgents);
+
+	bool renderStats = true;
+	bool drawAgentPaths = true;
 
 private:
 	std::string characterTextureLocation = "Resources\\Character\\";
@@ -53,5 +62,6 @@ private:
 	Texture healthBarTexture;
 	Texture hungerBarTexture;
 	Texture tiredBarTexture;
+	Texture oxygenBarTexture;
 };
 

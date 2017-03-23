@@ -51,6 +51,8 @@ public:
 	Texture BedIconTexture;
 	//! Is the texture for the shipDock
 	Texture ShipDockTexture;
+	//! Is the texture for the toilet
+	Texture ToiletIconTexture;
 
 	std::vector<std::shared_ptr<Icon>> allIcons;
 
@@ -70,7 +72,7 @@ public:
 	int numberOfItem5 = 15;
 	int numberOfItem6 = 15;
 
-	bool doOnce = true;
+	bool fillLevelWithCells = true;
 
 
 private:

@@ -6,11 +6,10 @@
 #include "Point.h"
 #include "SDL2_image-2.0.1\include\SDL_image.h"
 #include "Cell.h"
-#include "MainCharacter.h"
 #include "Oxygen.h"
 #include "Fire.h"
 #include "RoomDesign.h"
-#include "PlayerInteraction.h"
+#include "AgentInteraction.h"
 #include "PathFinder.h"
 #include "GameSettings.h"
 #include "GUI.h"
@@ -24,6 +23,7 @@
 #include "CellRendering.h"
 #include "Agent.h"
 
+
 //! The main class
 /*!
 This is the main class where the game is laoded and run. 
@@ -35,11 +35,6 @@ public:
 	SpaceGame();
 	//! A deconstructor
 	~SpaceGame();
-
-	
-	const Point& getStartPoint() const { return startPoint; }
-	int getStartX() const { return startPoint.getX(); }
-	int getStartY() const { return startPoint.getY(); }
 
 	//! Main Run loop
 	void run();
@@ -64,9 +59,6 @@ public:
 	PlayerStats playerstats;
 	CellRendering cellrenderer;
 	Hydroponics hydroponics;
-	
-	//! Pathfinding function
-	void SpaceGame::drawPath(Point& point, Level& level, std::vector<Point>& path);
 
 	//! Conains the list of nodes that makes the path
 	//std::vector<Point> path;
@@ -76,7 +68,7 @@ public:
 
 	//! Contains a list of all the ship
 	std::vector<Ship> allShips;
-
+	bool fillLevelWithCells = false;
 
 	//! The window width 
 	int WINDOW_WIDTH = gameSettings.WINDOW_WIDTH;
