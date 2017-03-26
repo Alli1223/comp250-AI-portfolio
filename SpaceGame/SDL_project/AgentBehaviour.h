@@ -5,7 +5,9 @@
 class AgentBehaviour
 {
 public:
+	//! Constructor
 	AgentBehaviour();
+	// Destructor
 	~AgentBehaviour();
 
 	//! Bool that stores whether the level has a bed

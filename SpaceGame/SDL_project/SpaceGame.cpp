@@ -37,7 +37,7 @@ SpaceGame::~SpaceGame()
 
 void SpaceGame::run()
 {
-	// Level generation
+	// Creates a grid of cells
 	level.makeGrid(WINDOW_WIDTH, WINDOW_HEIGHT);
 
 	// Choose whether to generate or load a map
@@ -50,9 +50,9 @@ void SpaceGame::run()
 	unsigned int timer = 0;
 	int cellSize = level.getCellSize();
 
+	// Main loop
 	while (running)
 	{
-
 		// Handle events
 		SDL_Event ev;
 		if (SDL_PollEvent(&ev))

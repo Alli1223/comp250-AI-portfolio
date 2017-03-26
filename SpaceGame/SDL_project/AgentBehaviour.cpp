@@ -11,15 +11,17 @@ AgentBehaviour::~AgentBehaviour()
 {
 }
 
+//Decides what the agent will do based on level info and agent needs
 void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 {
 	bool ThereisPathtobed = false;
 	bool ThereisPathtoToilet = false;
 
+	
 
 		// Set whether the actions are possible
 		// Level has bed and agent is tired
-		if (levelHasBed && agent.getTiredness() > 0.1 && agent.isMoving == false)
+		if (levelHasBed && agent.getTiredness() > tirednessThreshold && agent.isMoving == false)
 		{
 			// Find path to bed
 			std::vector<Point> testpath = agent.pathfinder.findPath(level, agent.getAgentPointLocation(), emptyBedLocations[0]);
@@ -30,7 +32,7 @@ void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 		}
 
 		// Level has toilet and agent needs it
-		else if (LevelHasToilet && agent.getToietNeed() > 0.2 && agent.isMoving == false)
+		else if (LevelHasToilet && agent.getToietNeed() > toiletThreshold && agent.isMoving == false)
 		{
 			// Find path to toilet
 			std::vector<Point> testpath = agent.pathfinder.findPath(level, agent.getAgentPointLocation(), emptyToiletLocations[0]);
@@ -82,6 +84,7 @@ void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 	}
 }
 
+// Updates the local class stats about the level
 void AgentBehaviour::UpdateLevelInfo(Level& level, int cellX, int cellY)
 {
 	if (level.grid[cellX][cellY]->isBed)
@@ -96,6 +99,7 @@ void AgentBehaviour::UpdateLevelInfo(Level& level, int cellX, int cellY)
 	}
 }
 
+// Will search an area around the agent to find a cell of cellType
 Point AgentBehaviour::FindNearestCelltoAgent(Agent& agent, Level& level, std::string cellType)
 {
 	Point endPoint;

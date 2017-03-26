@@ -29,6 +29,7 @@ void AgentManager::EraseAllAgentPaths(std::vector<Agent>& allAgents)
 	{
 		allAgents[i].path.erase(allAgents[i].path.begin(), allAgents[i].path.end());
 		allAgents[i].agentMovementStatus::Idle;
+		allAgents[i].
 	}
 }
 

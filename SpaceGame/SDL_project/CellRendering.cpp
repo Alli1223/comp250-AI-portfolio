@@ -23,7 +23,7 @@ CellRendering::CellRendering() : roomCell(RoomSpriteTextureLocation + "center.pn
 	deathAnim("Resources\\deathAnim.png"),
 	goalTexture("Resources\\roomSprites\\crate1.png"),
 	bedSideTexture(RoomSpriteTextureLocation + "Bed.png"),
-	toiletTexture(RoomSpriteTextureLocation + "crate1.png"),
+	toiletTexture(RoomSpriteTextureLocation + "wc.png"),
 	kitchenTexture(RoomSpriteTextureLocation + "cargoBayStorage.png")
 {
 }
@@ -121,8 +121,6 @@ void CellRendering::RenderCells(Level& level, SDL_Renderer* renderer, int x, int
 		oxygenTex.render(renderer, xPos, yPos, cellSize, cellSize);
 		level.grid[x][y]->isWalkable = true;
 	}
-	if (level.grid[x][y]->isWalkable)
-		oxygenTex.render(renderer, xPos, yPos, cellSize, cellSize);
 	if (level.grid[x][y]->cellOrientation == 11)
 	{
 		level.grid[x][y]->setOxygenLevel(0);
