@@ -29,7 +29,7 @@ void AgentManager::EraseAllAgentPaths(std::vector<Agent>& allAgents)
 	{
 		allAgents[i].path.erase(allAgents[i].path.begin(), allAgents[i].path.end());
 		allAgents[i].agentMovementStatus::Idle;
-		allAgents[i].
+
 	}
 }
 
@@ -65,14 +65,6 @@ void drawPath(Point& point, Level& level, std::vector<Point>& path, SDL_Renderer
 void AgentManager::UpdateAgents(std::vector<Agent>& allAgents, SDL_Renderer* renderer, Level& level)
 {
 
-	//Render Agents
-	for (Agent& agent : allAgents)
-	{
-		RenderAgents(agent, renderer, level);
-		agentBehaviour.DecideTask(level, agent);
-	}
-
-
 	// Update agents and draw agent paths
 	for (int i = 0; i < allAgents.size(); i++)
 	{
@@ -84,6 +76,13 @@ void AgentManager::UpdateAgents(std::vector<Agent>& allAgents, SDL_Renderer* ren
 			for (int ip = 0; ip < allAgents[i].path.size(); ip++)
 				drawPath(allAgents[i].path[ip], level, allAgents[i].path, renderer);
 		}
+	}
+
+	//Render Agents
+	for (Agent& agent : allAgents)
+	{
+		RenderAgents(agent, renderer, level);
+		agentBehaviour.DecideTask(level, agent);
 	}
 }
 

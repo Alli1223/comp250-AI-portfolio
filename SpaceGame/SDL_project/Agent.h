@@ -93,7 +93,7 @@ public:
 	//! Boolean for whether character is alive
 	bool isAlive = true;
 
-	bool agentWonderWhenIdle = false;
+	bool agentWonderWhenIdle = true;
 
 	bool agentCanRotate = true;
 	int agentRotation = 0;

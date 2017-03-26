@@ -68,7 +68,6 @@ public:
 
 	//! Contains a list of all the ship
 	std::vector<Ship> allShips;
-	bool fillLevelWithCells = false;
 
 	//! The window width 
 	int WINDOW_WIDTH = gameSettings.WINDOW_WIDTH;

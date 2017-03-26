@@ -38,8 +38,11 @@ public:
 	//! Erases all the agents in the game
 	void AgentManager::EraseAllAgents(std::vector<Agent>& allAgents);
 
+	//! Whether the game will render agent stats
 	bool renderStats = true;
-	bool drawAgentPaths = true;
+
+	//! Whether the game will draw the agent paths
+	bool drawAgentPaths = false;
 
 private:
 	std::string characterTextureLocation = "Resources\\Character\\";

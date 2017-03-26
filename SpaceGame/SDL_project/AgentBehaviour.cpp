@@ -19,7 +19,7 @@ void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 
 	
 
-		// Set whether the actions are possible
+		// Set whether the actions are possible //TODO: make this run once every few seconds, not every frame
 		// Level has bed and agent is tired
 		if (levelHasBed && agent.getTiredness() > tirednessThreshold && agent.isMoving == false)
 		{
@@ -32,7 +32,7 @@ void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 		}
 
 		// Level has toilet and agent needs it
-		else if (LevelHasToilet && agent.getToietNeed() > toiletThreshold && agent.isMoving == false)
+		if (LevelHasToilet && agent.getToietNeed() > toiletThreshold && agent.isMoving == false)
 		{
 			// Find path to toilet
 			std::vector<Point> testpath = agent.pathfinder.findPath(level, agent.getAgentPointLocation(), emptyToiletLocations[0]);
@@ -63,7 +63,7 @@ void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 	agentServicesBehaviourTree.setRootChild(&selector[0]);
 	selector[0].addChildren({ &sequence[0], &sequence[1] });
 
-	// Sequence of if there is a bed and 
+	// Sequence of if there is a bed and the agent can walk to it
 	sequence[0].addChildren({ &Bed, &PathToBed });
 
 
@@ -74,11 +74,11 @@ void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 	//if the behaviour tree runs
 	if (agentServicesBehaviourTree.run())
 	{
-		// Bed Tree
+		// If bed tree runs then move
 		if (sequence[0].run())
 			agent.Move(level, agent.getAgentPointLocation(), emptyBedLocations[0]);
 		
-		// WC Tree
+		// else if toilet tree runs then move
 		else if (sequence[1].run())
 			agent.Move(level, agent.getAgentPointLocation(), emptyToiletLocations[0]);
 	}

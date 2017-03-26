@@ -26,10 +26,10 @@ void Agent::Update(Level& level)
 	
 
 	// If the agent has a path move along it
-	if (movementStatus == TraversingPath)
+	if (movementStatus == TraversingPath && path.size() > 0)
 	{
-		float deltaY = getY() - path[pathPointIterator].getY() * cellSize;
-		float deltaX = getX() - path[pathPointIterator].getX() * cellSize;
+		float deltaY = getY() - path[pathPointIterator].getY() * 50.0;
+		float deltaX = getX() - path[pathPointIterator].getX() * 50.0;
 		
 
 		float length = sqrt(deltaX * deltaX + deltaY * deltaY);
@@ -43,9 +43,7 @@ void Agent::Update(Level& level)
 		{
 			float angleInDegrees = atan2(deltaY, deltaX) * 180.0 / PI;
 
-			//if (angleInDegrees < 0.0 || angleInDegrees > 360.0)
-				//angleInDegrees = 360.0 - angleInDegrees;
-
+			// Apply correction to rotation
 			agentRotation = angleInDegrees + 90;
 		}
 

@@ -116,26 +116,9 @@ void SpaceGame::run()
 		}
 		
 
-		if (fillLevelWithCells)
-		{
-			// Fill the screen with room cells
-			for (int x = 0; x < level.grid.size(); x++)
-			{
-				for (int y = 0; y < level.grid[x].size(); y++)
-				{
-					if (x > 0 && y > 0 && x < level.getLevelWidth() - 1 && y < level.getLevelHeight() - 1)
-					{
-						level.grid[x][y]->isRoom = true;
-						level.grid[x][y]->isWalkable = true;
-						
-						
-					}
-				}
-			}
-			fillLevelWithCells = false;
-		}
+		
 		//////////////////////////////////
-		//MAIN LOOP
+		//MAIN CELL LOOP
 		///////////////////////////////////
 		
 		for (int x = 0; x < level.grid.size(); x++)
