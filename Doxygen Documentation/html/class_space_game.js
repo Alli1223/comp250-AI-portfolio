@@ -13,7 +13,6 @@ var class_space_game =
     [ "designroom", "class_space_game.html#a33e95e1290f822fe6568da5b8493f186", null ],
     [ "dockingdoors", "class_space_game.html#a6e1f6ecc91ec7f3e4d66af8dcf6d5b5d", null ],
     [ "escapemenu", "class_space_game.html#ab64693c91c01491cb2de38ae66ca73a2", null ],
-    [ "fillLevelWithCells", "class_space_game.html#a969661713225da053f9c046f7ce2415b", null ],
     [ "fire", "class_space_game.html#ac42eea67a31352b71500da32875b66b9", null ],
     [ "gameSettings", "class_space_game.html#abb8dbac6e9bf0c31d618be71dec942f5", null ],
     [ "hydroponics", "class_space_game.html#a06039d5815d6a3110dc7eb38a542d25e", null ],

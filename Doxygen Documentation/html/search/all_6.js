@@ -7,7 +7,6 @@ var searchData=
   ['getcellsize',['getCellSize',['../class_level.html#a0b6d16a7850bee00c1079ae6caa09658',1,'Level']]],
   ['getcellx',['getCellX',['../class_agent.html#af8ae93713803f18c352981c6c96ed89e',1,'Agent']]],
   ['getcelly',['getCellY',['../class_agent.html#a73da67739c721597ad206901766c618a',1,'Agent']]],
-  ['getdoorstatus',['getDoorStatus',['../class_player_interaction.html#a9f3d8145f18c2dc0c1dcaae55ad02b02',1,'PlayerInteraction']]],
   ['gethealth',['getHealth',['../class_agent.html#af30ae01f87dcf622ceb50921ecaa3075',1,'Agent']]],
   ['getheight',['getHeight',['../class_ship.html#aa776da1fa8f5fd12019ec0030ae138c0',1,'Ship']]],
   ['gethunger',['getHunger',['../class_agent.html#a51b835d48e31e09698ecdceb721c3f23',1,'Agent']]],

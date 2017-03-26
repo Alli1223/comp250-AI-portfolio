@@ -12,6 +12,8 @@ var searchData=
   ['ishullbreach',['isHullBreach',['../class_cell.html#a408414f3a38c859dec3df3a6bd05bb1f',1,'Cell']]],
   ['ishydroponicsbay',['isHydroponicsBay',['../class_cell.html#a6b1c886b18165fa9eb8282ab50a514d6',1,'Cell']]],
   ['iskitchen',['isKitchen',['../class_cell.html#a2a7426d84b03f02c565199adf2ac7c30',1,'Cell']]],
+  ['isoccupiedbed',['isOccupiedBed',['../class_cell.html#ac653b32cbc54e679883ad9699557f86c',1,'Cell']]],
+  ['isoccupiedtoilet',['isOccupiedToilet',['../class_cell.html#a31692ab53e4de80fd78153acb4553bb3',1,'Cell']]],
   ['isonfire',['isOnFire',['../class_cell.html#a6cc1b533215a2fe1a0ba96265b43997f',1,'Cell']]],
   ['isopendoor',['isOpenDoor',['../class_cell.html#a6d40064791a7160a9bb85a2e47a8dff4',1,'Cell']]],
   ['isoxygentank',['isOxygenTank',['../class_cell.html#ab789483cf35f76b8f90b1460330f7f80',1,'Cell']]],

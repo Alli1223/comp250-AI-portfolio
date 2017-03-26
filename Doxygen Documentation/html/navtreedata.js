@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "Comp250-AI", "index.html", [
+  [ "comp250-AI", "index.html", [
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -21,7 +21,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_agent_8h_source.html",
-"class_items.html#aab5dfe9d18f6a547dfa3a719d7f5bb0f"
+"class_items.html#a8c1844d384ae3785dbdfca56be94e15c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

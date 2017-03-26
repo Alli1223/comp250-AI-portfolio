@@ -3,7 +3,6 @@ var searchData=
   ['setamountofcargo',['setAmountOfCargo',['../class_ship.html#aabc3adc1bd83da7022bbfb8e5bc06757',1,'Ship']]],
   ['setcellx',['setCellX',['../class_agent.html#a579b5b77437e523552005066b12b9983',1,'Agent']]],
   ['setcelly',['setCellY',['../class_agent.html#aa5e72b9928f0c0cfc7dd93240dbf6bfc',1,'Agent']]],
-  ['setdoorstatus',['setDoorStatus',['../class_player_interaction.html#a896e8a5f3c2312ac2050419ebd0704d9',1,'PlayerInteraction']]],
   ['setoxygenlevel',['setOxygenLevel',['../class_cell.html#a15a5726bfb5e111fb3de449a70107b36',1,'Cell']]],
   ['setoxygenreserves',['setOxygenReserves',['../class_oxygen.html#a2e224ac6b5700c28018c1250c4a13fd5',1,'Oxygen']]],
   ['setposition',['setPosition',['../class_agent.html#ad0b44c550842be01f5cf530eaaa1d21f',1,'Agent']]],

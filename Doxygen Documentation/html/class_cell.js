@@ -21,6 +21,8 @@ var class_cell =
     [ "isHullBreach", "class_cell.html#a408414f3a38c859dec3df3a6bd05bb1f", null ],
     [ "isHydroponicsBay", "class_cell.html#a6b1c886b18165fa9eb8282ab50a514d6", null ],
     [ "isKitchen", "class_cell.html#a2a7426d84b03f02c565199adf2ac7c30", null ],
+    [ "isOccupiedBed", "class_cell.html#ac653b32cbc54e679883ad9699557f86c", null ],
+    [ "isOccupiedToilet", "class_cell.html#a31692ab53e4de80fd78153acb4553bb3", null ],
     [ "isOnFire", "class_cell.html#a6cc1b533215a2fe1a0ba96265b43997f", null ],
     [ "isOpenDoor", "class_cell.html#a6d40064791a7160a9bb85a2e47a8dff4", null ],
     [ "isOxygenTank", "class_cell.html#ab789483cf35f76b8f90b1460330f7f80", null ],
