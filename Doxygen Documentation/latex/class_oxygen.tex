@@ -1,0 +1,57 @@
+\hypertarget{class_oxygen}{}\section{Oxygen Class Reference}
+\label{class_oxygen}\index{Oxygen@{Oxygen}}
+
+
+{\ttfamily \#include $<$Oxygen.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_oxygen_ac8c86509d4c1510faa526a65922d920e}\label{class_oxygen_ac8c86509d4c1510faa526a65922d920e}} 
+\hyperlink{class_oxygen_ac8c86509d4c1510faa526a65922d920e}{Oxygen} ()
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_oxygen_aca530b4693aa5ddc4c8b7702f5220206}\label{class_oxygen_aca530b4693aa5ddc4c8b7702f5220206}} 
+\hyperlink{class_oxygen_aca530b4693aa5ddc4c8b7702f5220206}{$\sim$\+Oxygen} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_oxygen_aeb1dcdc2f34b7b875a71e9acb8838b2e}\label{class_oxygen_aeb1dcdc2f34b7b875a71e9acb8838b2e}} 
+void \hyperlink{class_oxygen_aeb1dcdc2f34b7b875a71e9acb8838b2e}{update} (\hyperlink{class_level}{Level} \&grid, int \hyperlink{class_oxygen_aa0447b2be5aa10a55ab258470dc62fa0}{cellX}, int cellY)
+\begin{DoxyCompactList}\small\item\em Update method updates the oxygen level each frame. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_oxygen_a49cb9f5a906b1cc2004fa7bb36d57f70}\label{class_oxygen_a49cb9f5a906b1cc2004fa7bb36d57f70}} 
+void \hyperlink{class_oxygen_a49cb9f5a906b1cc2004fa7bb36d57f70}{add\+Oxygen} (int mouseX, int mouseY, int cell\+Size, \hyperlink{class_level}{Level} grid)
+\begin{DoxyCompactList}\small\item\em Adds oxygen based on where the mouse was clicked. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_oxygen_ae3c28e2013618899a992576620be4621}\label{class_oxygen_ae3c28e2013618899a992576620be4621}} 
+void \hyperlink{class_oxygen_ae3c28e2013618899a992576620be4621}{remove\+Oxygen} (\hyperlink{class_level}{Level} \&grid)
+\begin{DoxyCompactList}\small\item\em Removes oxygen based on where the mouse was clicked. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_oxygen_a178833a45a5ce351a8eb5f13b3f9807c}\label{class_oxygen_a178833a45a5ce351a8eb5f13b3f9807c}} 
+int \hyperlink{class_oxygen_a178833a45a5ce351a8eb5f13b3f9807c}{get\+Oxygen\+Reserves} ()
+\begin{DoxyCompactList}\small\item\em Getter for getting the oxygen reserve level. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_oxygen_a2e224ac6b5700c28018c1250c4a13fd5}\label{class_oxygen_a2e224ac6b5700c28018c1250c4a13fd5}} 
+int \hyperlink{class_oxygen_a2e224ac6b5700c28018c1250c4a13fd5}{set\+Oxygen\+Reserves} (int new\+Oxygen\+Reserve\+Level)
+\begin{DoxyCompactList}\small\item\em Setter for setting the oxygen reserve level. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_oxygen_a54f5ad1a9069339457cbb2a696f9951b}\label{class_oxygen_a54f5ad1a9069339457cbb2a696f9951b}} 
+std\+::vector$<$ \hyperlink{class_point}{Point} $>$ \hyperlink{class_oxygen_a54f5ad1a9069339457cbb2a696f9951b}{get\+Neighbour\+Cells} (\hyperlink{class_point}{Point} \&point, \hyperlink{class_level}{Level} \&grid)
+\begin{DoxyCompactList}\small\item\em Gets the neighbouring cells. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_oxygen_ac187545007ac0a6250aa22911a9e99cd}\label{class_oxygen_ac187545007ac0a6250aa22911a9e99cd}} 
+\hyperlink{class_point}{Point} {\bfseries point}
+\item 
+\mbox{\Hypertarget{class_oxygen_a2bd23b48e83052778acfdd0ddc49eefa}\label{class_oxygen_a2bd23b48e83052778acfdd0ddc49eefa}} 
+int \hyperlink{class_oxygen_a2bd23b48e83052778acfdd0ddc49eefa}{oxygen\+Spread\+Rate} = 10
+\begin{DoxyCompactList}\small\item\em oxygen spread rate \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_oxygen_aa0447b2be5aa10a55ab258470dc62fa0}\label{class_oxygen_aa0447b2be5aa10a55ab258470dc62fa0}} 
+int \hyperlink{class_oxygen_aa0447b2be5aa10a55ab258470dc62fa0}{cellX}
+\begin{DoxyCompactList}\small\item\em Initialising cellX and cellY for cell loop. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_oxygen_a805797dd4e99fa85688d1f83611958d0}\label{class_oxygen_a805797dd4e99fa85688d1f83611958d0}} 
+int {\bfseries cellY}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class manages how the oxygen spreads through the room cells and how much oxygen is able to be placed. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Alastair/\+Documents/\+Git\+Hub/comp250-\/\+A\+I-\/portfolio/\+Space\+Game/\+S\+D\+L\+\_\+project/Oxygen.\+h\item 
+C\+:/\+Users/\+Alastair/\+Documents/\+Git\+Hub/comp250-\/\+A\+I-\/portfolio/\+Space\+Game/\+S\+D\+L\+\_\+project/Oxygen.\+cpp\end{DoxyCompactItemize}

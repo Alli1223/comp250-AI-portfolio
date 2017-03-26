@@ -1,0 +1,61 @@
+\hypertarget{class_agent_manager}{}\section{Agent\+Manager Class Reference}
+\label{class_agent_manager}\index{Agent\+Manager@{Agent\+Manager}}
+
+
+The abstract character class.  
+
+
+
+
+{\ttfamily \#include $<$Agent\+Manager.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_agent_manager_a49ff5a8f60bae1c0b8d6c9aeda8f6961}\label{class_agent_manager_a49ff5a8f60bae1c0b8d6c9aeda8f6961}} 
+\hyperlink{class_agent_manager_a49ff5a8f60bae1c0b8d6c9aeda8f6961}{Agent\+Manager} ()
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_manager_a6b3efb95b74c9c96b9dbaf0868f17759}\label{class_agent_manager_a6b3efb95b74c9c96b9dbaf0868f17759}} 
+\hyperlink{class_agent_manager_a6b3efb95b74c9c96b9dbaf0868f17759}{$\sim$\+Agent\+Manager} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_manager_aeb29779b8f17a2a4b0583ba45ec88e21}\label{class_agent_manager_aeb29779b8f17a2a4b0583ba45ec88e21}} 
+void {\bfseries Update\+Agents} (std\+::vector$<$ \hyperlink{class_agent}{Agent} $>$ \&\hyperlink{class_agent_manager_a599aa8ac7b9ac078c77b493278d2b6da}{all\+Agents}, S\+D\+L\+\_\+\+Renderer $\ast$renderer, \hyperlink{class_level}{Level} \&level)
+\item 
+\mbox{\Hypertarget{class_agent_manager_a23fa29fff7f4ce6e01b4c4cd1757be6a}\label{class_agent_manager_a23fa29fff7f4ce6e01b4c4cd1757be6a}} 
+void {\bfseries Render\+Agents} (\hyperlink{class_agent}{Agent} \&agent, S\+D\+L\+\_\+\+Renderer $\ast$renderer, \hyperlink{class_level}{Level} \&level)
+\item 
+\mbox{\Hypertarget{class_agent_manager_a67b4e05ac1f86c7cb3cf5d5ea0573b91}\label{class_agent_manager_a67b4e05ac1f86c7cb3cf5d5ea0573b91}} 
+void \hyperlink{class_agent_manager_a67b4e05ac1f86c7cb3cf5d5ea0573b91}{Spawn\+Agent} (std\+::string Character\+Type\+Var, std\+::vector$<$ \hyperlink{class_agent}{Agent} $>$ \&\hyperlink{class_agent_manager_a599aa8ac7b9ac078c77b493278d2b6da}{all\+Agents}, int x, int y)
+\begin{DoxyCompactList}\small\item\em Spawn character function (Character types are (N\+PC, Player) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_manager_ab99bb1f844d39a407c73ab8ec57c8a8a}\label{class_agent_manager_ab99bb1f844d39a407c73ab8ec57c8a8a}} 
+void \hyperlink{class_agent_manager_ab99bb1f844d39a407c73ab8ec57c8a8a}{Erase\+All\+Agent\+Paths} (std\+::vector$<$ \hyperlink{class_agent}{Agent} $>$ \&\hyperlink{class_agent_manager_a599aa8ac7b9ac078c77b493278d2b6da}{all\+Agents})
+\begin{DoxyCompactList}\small\item\em Erases all the agents path. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_manager_aeb752dda5f920cadcf18f5e5ee90b2d6}\label{class_agent_manager_aeb752dda5f920cadcf18f5e5ee90b2d6}} 
+void \hyperlink{class_agent_manager_aeb752dda5f920cadcf18f5e5ee90b2d6}{Erase\+All\+Agents} (std\+::vector$<$ \hyperlink{class_agent}{Agent} $>$ \&\hyperlink{class_agent_manager_a599aa8ac7b9ac078c77b493278d2b6da}{all\+Agents})
+\begin{DoxyCompactList}\small\item\em Erases all the agents in the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_agent_manager_ac83790e3aa445b1c1547d4c9a9016cb2}\label{class_agent_manager_ac83790e3aa445b1c1547d4c9a9016cb2}} 
+\hyperlink{class_agent_behaviour}{Agent\+Behaviour} \hyperlink{class_agent_manager_ac83790e3aa445b1c1547d4c9a9016cb2}{agent\+Behaviour}
+\begin{DoxyCompactList}\small\item\em Create an instance of Agent\+Behavour. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_manager_a599aa8ac7b9ac078c77b493278d2b6da}\label{class_agent_manager_a599aa8ac7b9ac078c77b493278d2b6da}} 
+std\+::vector$<$ \hyperlink{class_agent}{Agent} $>$ \hyperlink{class_agent_manager_a599aa8ac7b9ac078c77b493278d2b6da}{all\+Agents}
+\begin{DoxyCompactList}\small\item\em Contains a list of all the characters. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_agent_manager_a7d43712823386d03a70dede42b1358e2}\label{class_agent_manager_a7d43712823386d03a70dede42b1358e2}} 
+bool {\bfseries render\+Stats} = true
+\item 
+\mbox{\Hypertarget{class_agent_manager_a6b8f87746c5ff0deef91b13e5d1983c6}\label{class_agent_manager_a6b8f87746c5ff0deef91b13e5d1983c6}} 
+bool {\bfseries draw\+Agent\+Paths} = true
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The abstract character class. 
+
+This class is the controller for the \hyperlink{class_agent}{Agent} class and will manage how the agents behave. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Alastair/\+Documents/\+Git\+Hub/comp250-\/\+A\+I-\/portfolio/\+Space\+Game/\+S\+D\+L\+\_\+project/Agent\+Manager.\+h\item 
+C\+:/\+Users/\+Alastair/\+Documents/\+Git\+Hub/comp250-\/\+A\+I-\/portfolio/\+Space\+Game/\+S\+D\+L\+\_\+project/Agent\+Manager.\+cpp\end{DoxyCompactItemize}

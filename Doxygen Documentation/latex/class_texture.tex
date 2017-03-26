@@ -1,0 +1,58 @@
+\hypertarget{class_texture}{}\section{Texture Class Reference}
+\label{class_texture}\index{Texture@{Texture}}
+
+
+Loads and renders images in the window.  
+
+
+
+
+{\ttfamily \#include $<$Texture.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_texture_ab303a4548e5c5822de490b99b5d3f928}{Texture} (const std\+::string \&file\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_a09c4bcb7462f64c1d20fa69dba3cee8a}\label{class_texture_a09c4bcb7462f64c1d20fa69dba3cee8a}} 
+\hyperlink{class_texture_a09c4bcb7462f64c1d20fa69dba3cee8a}{$\sim$\+Texture} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_a684e829a07a77e13b17a10e65734562b}\label{class_texture_a684e829a07a77e13b17a10e65734562b}} 
+S\+D\+L\+\_\+\+Texture $\ast$ \hyperlink{class_texture_a684e829a07a77e13b17a10e65734562b}{get\+Texture} ()
+\begin{DoxyCompactList}\small\item\em Loads the texture. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_a3a541d62f7e282d8f206a0b6a4022006}\label{class_texture_a3a541d62f7e282d8f206a0b6a4022006}} 
+void \hyperlink{class_texture_a3a541d62f7e282d8f206a0b6a4022006}{render} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, int x, int y, int width, int height)
+\begin{DoxyCompactList}\small\item\em Renders the image in the window. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_abadbea608d1cbfb2663e0f72f931ac47}\label{class_texture_abadbea608d1cbfb2663e0f72f931ac47}} 
+void \hyperlink{class_texture_abadbea608d1cbfb2663e0f72f931ac47}{render\+Rotation} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, int x, int y, int width, int height, int angle)
+\begin{DoxyCompactList}\small\item\em Renders the image in the window with rotation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_a5b56b0778a0417bddf0442aadad3a444}\label{class_texture_a5b56b0778a0417bddf0442aadad3a444}} 
+void \hyperlink{class_texture_a5b56b0778a0417bddf0442aadad3a444}{alter\+Transparency} (int transparency\+Level)
+\begin{DoxyCompactList}\small\item\em Alters the alpha value of the image to make it appear transparent in the window. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_a9fa98f7326aebee23beb05167689faa8}\label{class_texture_a9fa98f7326aebee23beb05167689faa8}} 
+void \hyperlink{class_texture_a9fa98f7326aebee23beb05167689faa8}{alter\+Texture\+Colour} (int r, int g, int b)
+\begin{DoxyCompactList}\small\item\em Alters the r,g,b colours of the texture. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Loads and renders images in the window. 
+
+This class is used for all the images in the game. It loads textures from a given file location and can alter the image transparency if the image is a P\+NG. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_texture_ab303a4548e5c5822de490b99b5d3f928}\label{class_texture_ab303a4548e5c5822de490b99b5d3f928}} 
+\index{Texture@{Texture}!Texture@{Texture}}
+\index{Texture@{Texture}!Texture@{Texture}}
+\subsubsection{\texorpdfstring{Texture()}{Texture()}}
+{\footnotesize\ttfamily Texture\+::\+Texture (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+Requires a file path to load the image from 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Alastair/\+Documents/\+Git\+Hub/comp250-\/\+A\+I-\/portfolio/\+Space\+Game/\+S\+D\+L\+\_\+project/Texture.\+h\item 
+C\+:/\+Users/\+Alastair/\+Documents/\+Git\+Hub/comp250-\/\+A\+I-\/portfolio/\+Space\+Game/\+S\+D\+L\+\_\+project/Texture.\+cpp\end{DoxyCompactItemize}

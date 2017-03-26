@@ -116,5 +116,8 @@ void Agent::Move(Level& level, Point& StartPoint, Point& EndPoint)
 	// Move along path
 	path = pathfinder.findPath(level, StartPoint, EndPoint);
 	if (path.size() > 0)
+	{
 		movementStatus = TraversingPath;
+		this->isMoving = true;
+	}
 }

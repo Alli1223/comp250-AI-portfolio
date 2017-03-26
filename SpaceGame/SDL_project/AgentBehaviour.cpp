@@ -11,48 +11,46 @@ AgentBehaviour::~AgentBehaviour()
 {
 }
 
+//Decides what the agent will do based on level info and agent needs
 void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 {
-
-
-
 	bool ThereisPathtobed = false;
-	bool AgentisTired = false;
 	bool ThereisPathtoToilet = false;
-	bool AgentNeedsToilet = false;
-	// Set whether the actions are possible
-	// Level has bed and agent is tired
-	if (levelHasBed && agent.getTiredness() > 0.2 && agent.isMoving == false)
-	{
-		// Find path to bed
-		std::vector<Point> testpath = agent.pathfinder.findPath(level, agent.getAgentPointLocation(), emptyBedLocations[0]);
-		if (testpath.size() > 0)
-		{
-			ThereisPathtobed = true;
-		}
-	}
 
-	// Level has toilet and agent needs it
-	else if (LevelHasToilet && agent.getToietNeed() > 0.1 && agent.isMoving == false)
-	{
-		//Find path to toilet
-		std::vector<Point> testpath = agent.pathfinder.findPath(level, agent.getAgentPointLocation(), emptyToiletLocations[0]);
-		if (testpath.size() > 0)
-		{
-			ThereisPathtoToilet = true;
-		}
-	}
+	
 
+		// Set whether the actions are possible
+		// Level has bed and agent is tired
+		if (levelHasBed && agent.getTiredness() > tirednessThreshold && agent.isMoving == false)
+		{
+			// Find path to bed
+			std::vector<Point> testpath = agent.pathfinder.findPath(level, agent.getAgentPointLocation(), emptyBedLocations[0]);
+			if (testpath.size() > 0)
+			{
+				ThereisPathtobed = true;
+			}
+		}
+
+		// Level has toilet and agent needs it
+		else if (LevelHasToilet && agent.getToietNeed() > toiletThreshold && agent.isMoving == false)
+		{
+			// Find path to toilet
+			std::vector<Point> testpath = agent.pathfinder.findPath(level, agent.getAgentPointLocation(), emptyToiletLocations[0]);
+			if (testpath.size() > 0)
+			{
+				ThereisPathtoToilet = true;
+			}
+		}
 
 	// Initalise behaviour tree and all the possible actions
 	BehaviourTree agentServicesBehaviourTree;
 
 	// A list of leaf nodes
 	//BED ACTIONS
-	Action isAgentTired(agentServicesBehaviourTree, "bed", AgentisTired), PathToBed(agentServicesBehaviourTree, "bed", ThereisPathtobed);
+	Action Bed(agentServicesBehaviourTree, "bed", levelHasBed), PathToBed(agentServicesBehaviourTree, "bed", ThereisPathtobed);
 
 	//WC ACTIONS
-	Action WalkToToilet(agentServicesBehaviourTree, "wc", LevelHasToilet), PathToToilet(agentServicesBehaviourTree, "wc", ThereisPathtoToilet);
+	Action Toilet(agentServicesBehaviourTree, "wc", LevelHasToilet), PathToToilet(agentServicesBehaviourTree, "wc", ThereisPathtoToilet);
 
 
 	//Create 1 selector
@@ -65,33 +63,28 @@ void AgentBehaviour::DecideTask(Level& level, Agent& agent)
 	agentServicesBehaviourTree.setRootChild(&selector[0]);
 	selector[0].addChildren({ &sequence[0], &sequence[1] });
 
-	sequence[0].addChildren({ &isAgentTired, &PathToBed });
-	sequence[1].addChildren({ &WalkToToilet, &PathToToilet });
+	// Sequence of if there is a bed and 
+	sequence[0].addChildren({ &Bed, &PathToBed });
 
 
-	//if the behaviour tree runs then move the agent
+	// Sequence of if there is toilet and agent can walk to it
+	sequence[1].addChildren({ &Toilet, &PathToToilet });
+
+
+	//if the behaviour tree runs
 	if (agentServicesBehaviourTree.run())
 	{
 		// Bed Tree
 		if (sequence[0].run())
-		{
-			//Move to BED
-
-			agent.isMoving = true;
 			agent.Move(level, agent.getAgentPointLocation(), emptyBedLocations[0]);
-		}
-
+		
 		// WC Tree
 		else if (sequence[1].run())
-		{
-			//Move to WC
-
-			agent.isMoving = true;
 			agent.Move(level, agent.getAgentPointLocation(), emptyToiletLocations[0]);
-		}
 	}
 }
 
+// Updates the local class stats about the level
 void AgentBehaviour::UpdateLevelInfo(Level& level, int cellX, int cellY)
 {
 	if (level.grid[cellX][cellY]->isBed)
@@ -106,6 +99,7 @@ void AgentBehaviour::UpdateLevelInfo(Level& level, int cellX, int cellY)
 	}
 }
 
+// Will search an area around the agent to find a cell of cellType
 Point AgentBehaviour::FindNearestCelltoAgent(Agent& agent, Level& level, std::string cellType)
 {
 	Point endPoint;

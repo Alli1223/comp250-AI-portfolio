@@ -109,7 +109,7 @@ private:
 	//! Integer for the agent's size when rendered
 	int size = 35;
 	//! Integer for the agent current speed
-	float speed = 1.5;
+	float speed = 2.0;
 	//! A double for the agents's health
 	double health = 100.0;
 	//! Double to store agent hunger
@@ -119,7 +119,7 @@ private:
 	//! A Double for toilet level
 	double toiletLevel = 0.0;
 	//! A int for the agents's stored oxygen
-	double oxygenLevel = 3.0;
+	double oxygenLevel = 100.0;
 	
 
 	//! A double for storing agents health decay rate
@@ -127,9 +127,9 @@ private:
 	//! A double for storing agents hunger decay rate
 	double hungerDecayRate = 0.001;
 	//! A double for toilet decay rate
-	double toiletDecayRate = 0.0002;
+	double toiletDecayRate = 0.0004;
 	//! A double for storing agents tiredness decay rate
-	double tirednessDecayRate = 0.00007;
+	double tirednessDecayRate = 0.00010;
 	//! A double for storing agents oxygen decay rate
 	double oxygenDecayRate = 0.01;
 
